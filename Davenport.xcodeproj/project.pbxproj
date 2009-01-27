@@ -38,7 +38,6 @@
 		549BC6C60EFDC6A6002DFF80 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		54B09E660F192DAC005D3E2F /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54B09E800F192E47005D3E2F /* CouchObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
-		54B0E6980F27567900096B94 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B0E6970F27567900096B94 /* OrderedDictionary.m */; };
 		54B7DD990F0967290081F3A3 /* STIGMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B7DD980F0967290081F3A3 /* STIGMainWindowController.m */; };
 		54B7DEB30F097D430081F3A3 /* STIGCouchDbFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54983DAE0F08FA59004CE599 /* STIGCouchDbFrameworkTest.m */; };
 		54B7DECD0F097EE20081F3A3 /* STIGLoadDataAtStartupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54B7DECC0F097EE20081F3A3 /* STIGLoadDataAtStartupTest.m */; };
@@ -182,8 +181,6 @@
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Release/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
-		54B0E6960F27567900096B94 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
-		54B0E6970F27567900096B94 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
 		54B7DD970F0967290081F3A3 /* STIGMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STIGMainWindowController.h; sourceTree = "<group>"; };
 		54B7DD980F0967290081F3A3 /* STIGMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STIGMainWindowController.m; sourceTree = "<group>"; };
 		54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				54F73B0F0F1CBC7B00B7B9F4 /* headers */,
-				54B0E6970F27567900096B94 /* OrderedDictionary.m */,
 				548AAA0D0F0A1D05009A49AD /* STIGFetchServerInfoOperation.m */,
 				5402015A0F07D28500E8B039 /* STIGSourceListCell.m */,
 				54FEF0370F1033DB0009BB14 /* STIGBreadCrumbCell.m */,
@@ -467,7 +463,6 @@
 		54F73B0F0F1CBC7B00B7B9F4 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				54B0E6960F27567900096B94 /* OrderedDictionary.h */,
 				54E74FBD0F066C0500DDE6AD /* NSTreeNode+STIG.h */,
 				54F87EB00F1A862D008D8266 /* STIG.h */,
 				548AAA0C0F0A1D05009A49AD /* STIGFetchServerInfoOperation.h */,
@@ -767,7 +762,6 @@
 				547B27ED0F237CA600580370 /* STIGFunctionEditorController.m in Sources */,
 				546602770F23DE82000C77E7 /* STIGCouchDocumentController.m in Sources */,
 				546602900F23E4F2000C77E7 /* STIGDocumentKeyCell.m in Sources */,
-				54B0E6980F27567900096B94 /* OrderedDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

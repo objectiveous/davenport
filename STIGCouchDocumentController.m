@@ -8,7 +8,7 @@
 
 #import "STIGCouchDocumentController.h"
 #import <JSON/JSON.h>
-#import "OrderedDictionary.h"
+
 
 #define COLUMNID_FIELD @"Field"
 #define COLUMNID_VALUE @"Value"

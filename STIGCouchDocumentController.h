@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/CouchObjC.h>
-#import "OrderedDictionary.h"
 #import "STIGControlBarView.h"
 
 @interface STIGCouchDocumentController : NSViewController {

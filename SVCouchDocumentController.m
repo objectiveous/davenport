@@ -47,7 +47,7 @@
     if (item == nil)
         return [couchDocument count];
     
-    if ([item isKindOfClass:[OrderedDictionary class]] || [item isKindOfClass:[NSArray class]]) 
+    if ([item isKindOfClass:[SBOrderedDictionary class]] || [item isKindOfClass:[NSArray class]]) 
         return [item count];
         
     return 0; 
@@ -64,7 +64,7 @@
     // Column One
     if ([[[tableColumn headerCell] stringValue] compare:@"Field"] == NSOrderedSame) {        
         if(parentObject != nil){
-            if([parentObject isKindOfClass:[OrderedDictionary class]]){                                        
+            if([parentObject isKindOfClass:[SBOrderedDictionary class]]){                                        
 
                 // TODO how are we gonna get around this? What we really need is the 
                 // the index of item. 
@@ -78,7 +78,7 @@
         
     // Column Two    
     } else if([[[tableColumn headerCell] stringValue] compare:@"Value"] == NSOrderedSame)  {      
-        if([item isKindOfClass:[OrderedDictionary class]]) {
+        if([item isKindOfClass:[SBOrderedDictionary class]]) {
             label = nil;
         }else if ( [item isKindOfClass:[NSArray class]] ){
             label = nil;
@@ -87,7 +87,7 @@
         }
             
     } else if([[[tableColumn headerCell] stringValue] compare:@"Type"] == NSOrderedSame)  {      
-        if([item isKindOfClass:[OrderedDictionary class]]) {
+        if([item isKindOfClass:[SBOrderedDictionary class]]) {
             label = [NSString stringWithFormat:@"%i key/value pairs", [item count]]; 
         }else if ( [item isKindOfClass:[NSArray class]] ){
             label = [NSString stringWithFormat:@"%i ordered objects", [item count]]; 
@@ -112,14 +112,14 @@
     
     if ([item isKindOfClass:[NSArray class]]) {
         return [item objectAtIndex:index];
-    }else if ([item isKindOfClass:[OrderedDictionary class]]) {
+    }else if ([item isKindOfClass:[SBOrderedDictionary class]]) {
         return [item objectForKey:[item keyAtIndex:index]];
     }    
     return nil;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{    
-    if ([item isKindOfClass:[NSArray class]] || [item isKindOfClass:[OrderedDictionary class]]){
+    if ([item isKindOfClass:[NSArray class]] || [item isKindOfClass:[SBOrderedDictionary class]]){
         if ([item count] > 0)
             return YES;
     }        

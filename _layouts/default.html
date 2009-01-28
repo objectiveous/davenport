@@ -2,12 +2,14 @@
 "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
+    <script src="/js-global/FancyZoom.js" type="text/javascript"></script>
+    <script src="/js-global/FancyZoomHTML.js" type="text/javascript"></script>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width = 750">
     <link rel="stylesheet" type="text/css" href="css/macromates.css" charset="utf-8">
     <title>{{ page.title }}</title>
   </head>
-  <body id="intro">
+  <body id="intro" onload="setupZoom()>
     <div id="wrapper">
       <div id="header" onclick="javascript:window.location='/davenport/'">
         <h1></h1>
@@ -42,7 +44,17 @@
             <p>Coming soon</p>
           </div>
           <div class="item">
-            <!-- Tickets   
+
+            <h4>Screenshots</h4>
+            <p>
+              one <br/>
+              two
+            </p>
+          </div>
+          
+          <!-- Tickets   
+          <div class="item">
+
             <a href="http://objectiveous.lighthouseapp.com/projects/TODO/tickets" id="tickets" name="tickets">Tickets</a>
             <h4>Tickets</h4>
             <p>
@@ -66,6 +78,8 @@
           </div>
         </div>
       </div>
+
+
       <div id="footer">
         <p><a href="http://github.com/objectiveous/davenport/tree/gh-pages" 
            title="objectiveous's davenport at gh-pages &mdash; GitHub">website source</a> </p>

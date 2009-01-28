@@ -3,5 +3,5 @@ layout: default
 title: Davenport
 ---
 
-This project <a href="http://github.com/objectiveous/davenport">Davenport</a> is awesome.
+<a href="http://github.com/objectiveous/davenport">Davenport</a> is a Cocoa port of Futon, a CouchDB front end. 
 

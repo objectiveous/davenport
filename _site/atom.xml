@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Davenport</title>
+ <link href="http://objectiveous.github.com/davenport/atom.xml" rel="self"/>
+ <link href="http://objectiveous.github.com/davenport/"/>
+ <updated>2009-01-28T17:54:05-02:00</updated>
+ <id>http://objectiveous.github.com/davenport/</id>
+ <author>
+   <name>Dr Nic Williams</name>
+   <email>objectiveouswilliams@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Welcome to 'Davenport'</title>
+   <link href="http://objectiveous.github.com/davenport/2009/01/28/first-post.html"/>
+   <updated>2009-01-28T00:00:00-02:00</updated>
+   <id>http://objectiveous.github.com/davenport/2009/01/28/first-post</id>
+   <content type="html">&lt;p&gt;Davenport is going to be an awesome project.&lt;/p&gt;</content>
+ </entry>
+ 
+ 
+</feed>

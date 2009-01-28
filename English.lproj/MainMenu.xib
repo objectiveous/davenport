@@ -1113,7 +1113,7 @@
 				<string key="NSClassName">NSFontManager</string>
 			</object>
 			<object class="NSCustomObject" id="759760163">
-				<string key="NSClassName">STIGAppDelegate</string>
+				<string key="NSClassName">SVAppDelegate</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -3032,11 +3032,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">STIGAppDelegate</string>
+					<string key="className">SVAppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">STIGAppDelegate.h</string>
+						<string key="majorKey">IBUserSource</string>
+						<string key="minorKey"/>
 					</object>
 				</object>
 			</object>

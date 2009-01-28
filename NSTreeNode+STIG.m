@@ -6,22 +6,22 @@
 //  Copyright 2008 South And Valley. All rights reserved.
 //
 
-#import "NSTreeNode+STIG.h"
-#import "STIGSectionDescriptor.h"
-#import "STIGDatabaseDescriptor.h"
+#import "NSTreeNode+SVDavenport.h"
+#import "SVSectionDescriptor.h"
+#import "SVDatabaseDescriptor.h"
 
 
 @implementation NSTreeNode (STIG)
 
 -(NSTreeNode *) addSection:(NSString *)sectionName{
-    STIGSectionDescriptor *section = [[[STIGSectionDescriptor alloc] init] autorelease];
+    SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] init] autorelease];
     section.label = sectionName;
     return [self addChildNodeWithObject:section];
     
 }
 
 -(NSTreeNode *) addDatabase:(NSString *)databaseName{
-    STIGDatabaseDescriptor *database = [[[STIGDatabaseDescriptor alloc] init] autorelease];
+    SVDatabaseDescriptor *database = [[[SVDatabaseDescriptor alloc] init] autorelease];
     database.label = databaseName;
     return [self addChildNodeWithObject:database];
 }

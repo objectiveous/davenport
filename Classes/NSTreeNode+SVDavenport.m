@@ -11,7 +11,7 @@
 #import "SVDatabaseDescriptor.h"
 
 
-@implementation NSTreeNode (STIG)
+@implementation NSTreeNode (SVDavenport)
 
 -(NSTreeNode *) addSection:(NSString *)sectionName{
     SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] init] autorelease];

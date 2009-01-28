@@ -6,8 +6,10 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+
+
 #import "GTMSenTestCase.h"
-#import "STIG.h"
+#import "SVDavenport.h"
 #import <CouchObjC/CouchObjC.h>
 #import <JSON/JSON.h>
 @interface SVJsonTest : SenTestCase{
@@ -23,7 +25,7 @@
     SBCouchDatabase *database = [server database:@"database-for-test"];
     
     NSDictionary *doc = [database get:@"00f359337e7e16e6a2430df3cc7506b0"];
-    
+    STAssertNotNULL(doc, nil);
 }
 
 

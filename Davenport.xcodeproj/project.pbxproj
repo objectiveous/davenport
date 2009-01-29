@@ -45,16 +45,16 @@
 		549BC6C60EFDC6A6002DFF80 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		54B09E660F192DAC005D3E2F /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54B09E800F192E47005D3E2F /* CouchObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		54B546120F31D006004E675B /* arrow-25.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B546090F31D006004E675B /* arrow-25.jpg */; };
+		54B546130F31D006004E675B /* arrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460A0F31D006004E675B /* arrow.jpg */; };
+		54B546140F31D006004E675B /* divan-2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460B0F31D006004E675B /* divan-2.icns */; };
+		54B546150F31D006004E675B /* divan-3.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460C0F31D006004E675B /* divan-3.icns */; };
+		54B546160F31D006004E675B /* divan-4.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460D0F31D006004E675B /* divan-4.icns */; };
+		54B546170F31D006004E675B /* divan-5.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460E0F31D006004E675B /* divan-5.icns */; };
+		54B546180F31D006004E675B /* divan.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460F0F31D006004E675B /* divan.icns */; };
+		54B546190F31D006004E675B /* documents.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 54B546100F31D006004E675B /* documents.tiff */; };
+		54B5461A0F31D006004E675B /* segment.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B546110F31D006004E675B /* segment.jpg */; };
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
-		54DF2F980F30C5C200A720D9 /* arrow-25.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F8F0F30C5C200A720D9 /* arrow-25.jpg */; };
-		54DF2F990F30C5C200A720D9 /* arrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F900F30C5C200A720D9 /* arrow.jpg */; };
-		54DF2F9A0F30C5C200A720D9 /* divan-2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F910F30C5C200A720D9 /* divan-2.icns */; };
-		54DF2F9B0F30C5C200A720D9 /* divan-3.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F920F30C5C200A720D9 /* divan-3.icns */; };
-		54DF2F9C0F30C5C200A720D9 /* divan-4.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F930F30C5C200A720D9 /* divan-4.icns */; };
-		54DF2F9D0F30C5C200A720D9 /* divan-5.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F940F30C5C200A720D9 /* divan-5.icns */; };
-		54DF2F9E0F30C5C200A720D9 /* divan.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F950F30C5C200A720D9 /* divan.icns */; };
-		54DF2F9F0F30C5C200A720D9 /* documents.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F960F30C5C200A720D9 /* documents.tiff */; };
-		54DF2FA00F30C5C200A720D9 /* segment.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54DF2F970F30C5C200A720D9 /* segment.jpg */; };
 		54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		54F73B570F1CDC3E00B7B9F4 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
@@ -189,6 +189,15 @@
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Release/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
+		54B546090F31D006004E675B /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "Images/arrow-25.jpg"; sourceTree = "<group>"; };
+		54B5460A0F31D006004E675B /* arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow.jpg; path = Images/arrow.jpg; sourceTree = "<group>"; };
+		54B5460B0F31D006004E675B /* divan-2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-2.icns"; path = "Images/divan-2.icns"; sourceTree = "<group>"; };
+		54B5460C0F31D006004E675B /* divan-3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-3.icns"; path = "Images/divan-3.icns"; sourceTree = "<group>"; };
+		54B5460D0F31D006004E675B /* divan-4.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-4.icns"; path = "Images/divan-4.icns"; sourceTree = "<group>"; };
+		54B5460E0F31D006004E675B /* divan-5.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-5.icns"; path = "Images/divan-5.icns"; sourceTree = "<group>"; };
+		54B5460F0F31D006004E675B /* divan.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = divan.icns; path = Images/divan.icns; sourceTree = "<group>"; };
+		54B546100F31D006004E675B /* documents.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = documents.tiff; path = Images/documents.tiff; sourceTree = "<group>"; };
+		54B546110F31D006004E675B /* segment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = segment.jpg; path = Images/segment.jpg; sourceTree = "<group>"; };
 		54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C53FED0F06527300C337BC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		54DF2F7E0F30C59000A720D9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
@@ -197,15 +206,6 @@
 		54DF2F810F30C59000A720D9 /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-Info.plist"; path = "Resources/Tests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F820F30C59000A720D9 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Unit Tests-Info.plist"; path = "Resources/Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vendorTests-Info.plist"; path = "Resources/vendorTests-Info.plist"; sourceTree = "<group>"; };
-		54DF2F8F0F30C5C200A720D9 /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "../tmp/myProjects/davenport/Images/arrow-25.jpg"; sourceTree = DEVELOPER_DIR; };
-		54DF2F900F30C5C200A720D9 /* arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow.jpg; path = ../tmp/myProjects/davenport/Images/arrow.jpg; sourceTree = DEVELOPER_DIR; };
-		54DF2F910F30C5C200A720D9 /* divan-2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-2.icns"; path = "../tmp/myProjects/davenport/Images/divan-2.icns"; sourceTree = DEVELOPER_DIR; };
-		54DF2F920F30C5C200A720D9 /* divan-3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-3.icns"; path = "../tmp/myProjects/davenport/Images/divan-3.icns"; sourceTree = DEVELOPER_DIR; };
-		54DF2F930F30C5C200A720D9 /* divan-4.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-4.icns"; path = "../tmp/myProjects/davenport/Images/divan-4.icns"; sourceTree = DEVELOPER_DIR; };
-		54DF2F940F30C5C200A720D9 /* divan-5.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-5.icns"; path = "../tmp/myProjects/davenport/Images/divan-5.icns"; sourceTree = DEVELOPER_DIR; };
-		54DF2F950F30C5C200A720D9 /* divan.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = divan.icns; path = ../tmp/myProjects/davenport/Images/divan.icns; sourceTree = DEVELOPER_DIR; };
-		54DF2F960F30C5C200A720D9 /* documents.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = documents.tiff; path = ../tmp/myProjects/davenport/Images/documents.tiff; sourceTree = DEVELOPER_DIR; };
-		54DF2F970F30C5C200A720D9 /* segment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = segment.jpg; path = ../tmp/myProjects/davenport/Images/segment.jpg; sourceTree = DEVELOPER_DIR; };
 		54DF2FBD0F30C7DD00A720D9 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = /tmp/myProjects/davenport/Classes/Davenport_Prefix.pch; sourceTree = "<absolute>"; };
 		54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RBSplitView.framework; sourceTree = "<group>"; };
 		54F9F3330F0080B100EE414E /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,15 +459,15 @@
 		5405B42F0F1450B2000EF28E /* images */ = {
 			isa = PBXGroup;
 			children = (
-				54DF2F8F0F30C5C200A720D9 /* arrow-25.jpg */,
-				54DF2F900F30C5C200A720D9 /* arrow.jpg */,
-				54DF2F910F30C5C200A720D9 /* divan-2.icns */,
-				54DF2F920F30C5C200A720D9 /* divan-3.icns */,
-				54DF2F930F30C5C200A720D9 /* divan-4.icns */,
-				54DF2F940F30C5C200A720D9 /* divan-5.icns */,
-				54DF2F950F30C5C200A720D9 /* divan.icns */,
-				54DF2F960F30C5C200A720D9 /* documents.tiff */,
-				54DF2F970F30C5C200A720D9 /* segment.jpg */,
+				54B546090F31D006004E675B /* arrow-25.jpg */,
+				54B5460A0F31D006004E675B /* arrow.jpg */,
+				54B5460B0F31D006004E675B /* divan-2.icns */,
+				54B5460C0F31D006004E675B /* divan-3.icns */,
+				54B5460D0F31D006004E675B /* divan-4.icns */,
+				54B5460E0F31D006004E675B /* divan-5.icns */,
+				54B5460F0F31D006004E675B /* divan.icns */,
+				54B546100F31D006004E675B /* documents.tiff */,
+				54B546110F31D006004E675B /* segment.jpg */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -637,15 +637,15 @@
 				548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */,
 				547B283F0F23821200580370 /* FunctionEditor.xib in Resources */,
 				546769BD0F2538A9006F6114 /* CouchDocument.xib in Resources */,
-				54DF2F980F30C5C200A720D9 /* arrow-25.jpg in Resources */,
-				54DF2F990F30C5C200A720D9 /* arrow.jpg in Resources */,
-				54DF2F9A0F30C5C200A720D9 /* divan-2.icns in Resources */,
-				54DF2F9B0F30C5C200A720D9 /* divan-3.icns in Resources */,
-				54DF2F9C0F30C5C200A720D9 /* divan-4.icns in Resources */,
-				54DF2F9D0F30C5C200A720D9 /* divan-5.icns in Resources */,
-				54DF2F9E0F30C5C200A720D9 /* divan.icns in Resources */,
-				54DF2F9F0F30C5C200A720D9 /* documents.tiff in Resources */,
-				54DF2FA00F30C5C200A720D9 /* segment.jpg in Resources */,
+				54B546120F31D006004E675B /* arrow-25.jpg in Resources */,
+				54B546130F31D006004E675B /* arrow.jpg in Resources */,
+				54B546140F31D006004E675B /* divan-2.icns in Resources */,
+				54B546150F31D006004E675B /* divan-3.icns in Resources */,
+				54B546160F31D006004E675B /* divan-4.icns in Resources */,
+				54B546170F31D006004E675B /* divan-5.icns in Resources */,
+				54B546180F31D006004E675B /* divan.icns in Resources */,
+				54B546190F31D006004E675B /* documents.tiff in Resources */,
+				54B5461A0F31D006004E675B /* segment.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

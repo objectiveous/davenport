@@ -1,10 +1,11 @@
 ---
-layout: post
+layout: default
 title: Hacking Davenport
+section: hacking
 ---
 
-This document will explain how to get the Davenport source code installed and building on your Mac. 
 
+This document explains how to get the Davenport source code installed and building on your Mac. 
 
 {% highlight bash %}
 #!/bin/sh
@@ -32,5 +33,6 @@ price:davenport robevans$ open Davenport.xcodeproj/
 
 
 {% endhighlight %}
+
 
 

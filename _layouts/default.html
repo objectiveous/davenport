@@ -10,9 +10,9 @@
     <meta name="viewport" content="width = 750">
     <link rel="stylesheet" type="text/css" href="css/macromates.css" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/syntax.css" charset="utf-8">
-    <title>{{ page.title }}</title>
+    <title>{{ page.section }}</title>
   </head>
-  <body id="intro" onload="setupZoom()">
+  <body id="{{ page.section }}" onload="setupZoom()">
     <div id="wrapper">
       <div id="header" onclick="javascript:window.location='/davenport/'">
         <img src="images/banner-2.png">

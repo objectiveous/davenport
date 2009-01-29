@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Davenport
+section: intro
 ---
 
 [Davenport](http://github.com/objectiveous/davenport "Davenport") is a Cocoa port of Futon, a CouchDB front end.

@@ -100,7 +100,7 @@ There are two **targets** that are primary interest to the new Davenport hacker:
 
 The only difference between these two targets is that **Davenport with Embedded CouchDB** includes a **Run Script** that will copy the contents of CouchDBX into the Davenport build. In other words, it puts a version of CouchDB into build/Release/Davenport.app/Contents/Resources/CouchDb. 
 
-![img](/images/targets.png)
+![img](./images/targets.png)
 
 
 # Running and Writing Tests

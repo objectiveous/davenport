@@ -16,12 +16,15 @@
     <div id="wrapper">
       <div id="header" onclick="javascript:window.location='/davenport/'">
         <img src="images/banner-2.png">
+
         <a href="http://github.com/objectiveous/davenport/tree/master">
           <img style="position: absolute; top: 0; right: 0; border: 0;" 
             src="http://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" 
             alt="Fork me on GitHub" />
         </a>
+
       </div>
+
       <div id="navigation">
         <ul>
           <li id="navi_intro">
@@ -32,63 +35,14 @@
           </li>
           <li id="navi_source">
             <a href="http://github.com/objectiveous/davenport">Source</a>
-          </li>
-          <!--
-          <li id="navi_tickets">
-            <a href="http://objectiveous.lighthouseapp.com/projects/TODO/tickets">Tickets</a>
-          </li>
-          <li id="navi_textmate">
-            <a href="http://www.macromates.com/">TextMate</a>
-          </li>
-        -->
+          </li>                
         </ul>
       </div>
-      <div id="page_body">
-        <div id="content">
-          {{ content }}
-        </div>
-        <div id="sidebar">
-          <!-- 
-          <div class="item">
-            <a id="download">Install Bundle</a>
-            <h4>Install Bundle</h4>
-            <p>Coming soon</p>
-          </div>
-          <div class="item">
-            <h4>Screenshots</h4>
-            <p>
-              one <br/>
-              two
-            </p>
-          </div>
-          
-          <div class="item">
 
-            <a href="http://objectiveous.lighthouseapp.com/projects/TODO/tickets" id="tickets" name="tickets">Tickets</a>
-            <h4>Tickets</h4>
-            <p>
-              Found a bug?<br />
-              Request a feature?
-            </p>
-          </div>
-          -->
-          <div class="item">
-            <!-- Blog   
-            <a href="atom.xml" id="rss_feed" name="rss_feed">Blog Posts</a>
-            -->
-            <h4>Blog Posts</h4>
-            <p>
-              {% for post in site.posts %} 
-                <span>{{ post.date | date_to_string }}</span> » <a href="/davenport{{ post.url }}">{{ post.title }}</a><br>
-              {% endfor %}
-            </p>
-          </div>
-          <!--
-          <div class="item">
-            <script type="text/javascript" src="http://disqus.com/forums/davenport/combination_widget.js?num_items=5&color=orange&default_tab=recent"></script>
-          </div>
-        -->
-        </div>
+      <div id="page_body">
+          <div id="content">
+             {{ content }}
+           </div>       
       </div>
 
 

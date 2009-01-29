@@ -209,7 +209,7 @@
 		54DF2FBD0F30C7DD00A720D9 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = /tmp/myProjects/davenport/Classes/Davenport_Prefix.pch; sourceTree = "<absolute>"; };
 		54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RBSplitView.framework; sourceTree = "<group>"; };
 		54F9F3330F0080B100EE414E /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D15AC370486D014006FF6A4 /* stigmergic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stigmergic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D15AC370486D014006FF6A4 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,7 +280,7 @@
 		19C28FB0FE9D524F11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D15AC370486D014006FF6A4 /* stigmergic.app */,
+				8D15AC370486D014006FF6A4 /* Davenport.app */,
 				54F9F3330F0080B100EE414E /* Unit Tests.octest */,
 				54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */,
 				546603EB0F24CF75000C77E7 /* vendorTests.octest */,
@@ -559,7 +559,7 @@
 			name = Davenport;
 			productInstallPath = "$(HOME)/Applications";
 			productName = stigmergic;
-			productReference = 8D15AC370486D014006FF6A4 /* stigmergic.app */;
+			productReference = 8D15AC370486D014006FF6A4 /* Davenport.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1079,7 +1079,7 @@
 				);
 				OTHER_CFLAGS = "";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
-				PRODUCT_NAME = stigmergic;
+				PRODUCT_NAME = Davenport;
 			};
 			name = Debug;
 		};
@@ -1107,7 +1107,7 @@
 					"\"$(SRCROOT)/../CouchDb\"",
 				);
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
-				PRODUCT_NAME = stigmergic;
+				PRODUCT_NAME = Davenport;
 			};
 			name = Release;
 		};

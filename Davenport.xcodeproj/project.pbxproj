@@ -84,7 +84,7 @@
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
 		549BC6B00EFDC106002DFF80 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		549BC6C60EFDC6A6002DFF80 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
-		54B09E660F192DAC005D3E2F /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		549F374F0F3331700033A0C9 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54B09E800F192E47005D3E2F /* CouchObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54B546120F31D006004E675B /* arrow-25.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B546090F31D006004E675B /* arrow-25.jpg */; };
 		54B546130F31D006004E675B /* arrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460A0F31D006004E675B /* arrow.jpg */; };
@@ -111,6 +111,13 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CouchObjC;
 		};
+		549F37490F3331480033A0C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* CouchObjC */;
+			remoteInfo = CouchObjC;
+		};
 		54B09E8C0F195834005D3E2F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
@@ -124,13 +131,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 5315EE640D94078D001E3B2E;
 			remoteInfo = Tests;
-		};
-		54B09E900F195867005D3E2F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = CouchObjC;
 		};
 		54B7DE800F097BF00081F3A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -242,7 +242,6 @@
 		540089C90F30C040002D56A4 /* SVSourceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListView.m; sourceTree = "<group>"; };
 		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = SOURCE_ROOT; };
 		5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = Classes/Davenport_Prefix.pch; sourceTree = "<group>"; };
-		540C88FC0F31D51700E02727 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Davenport.app; path = /Users/robevans/Projects/cocoa/davenport/build/Debug/Davenport.app; sourceTree = "<absolute>"; };
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
 		540C893E0F31D66E00E02727 /* PLAN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PLAN; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
@@ -252,6 +251,7 @@
 		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FunctionEditor.xib; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
+		549F36EA0F332DD50033A0C9 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Davenport.app; path = build/Debug/Davenport.app; sourceTree = "<group>"; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
 		54B546090F31D006004E675B /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "Images/arrow-25.jpg"; sourceTree = "<group>"; };
@@ -320,9 +320,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				549F374F0F3331700033A0C9 /* CouchObjC.framework in Frameworks */,
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				549BC6B00EFDC106002DFF80 /* BWToolkitFramework.framework in Frameworks */,
-				54B09E660F192DAC005D3E2F /* CouchObjC.framework in Frameworks */,
 				54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */,
 				540108BD0F1DA33D002AC9E5 /* JSON.framework in Frameworks */,
 			);
@@ -360,6 +360,7 @@
 				54F9F3330F0080B100EE414E /* Unit Tests.octest */,
 				54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */,
 				546603EB0F24CF75000C77E7 /* vendorTests.octest */,
+				549F36EA0F332DD50033A0C9 /* Davenport.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -588,7 +589,7 @@
 			name = "Davenport with Embedded CouchDB";
 			productInstallPath = "$(HOME)/Applications";
 			productName = stigmergic;
-			productReference = 540C88FC0F31D51700E02727 /* Davenport.app */;
+			productReference = 549F36EA0F332DD50033A0C9 /* Davenport.app */;
 			productType = "com.apple.product-type.application";
 		};
 		546603EA0F24CF75000C77E7 /* vendorTests */ = {
@@ -660,7 +661,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				54B09E910F195867005D3E2F /* PBXTargetDependency */,
+				549F374A0F3331480033A0C9 /* PBXTargetDependency */,
 			);
 			name = Davenport;
 			productInstallPath = "$(HOME)/Applications";
@@ -920,10 +921,10 @@
 			name = CouchObjC;
 			targetProxy = 540C88CA0F31D51700E02727 /* PBXContainerItemProxy */;
 		};
-		54B09E910F195867005D3E2F /* PBXTargetDependency */ = {
+		549F374A0F3331480033A0C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CouchObjC;
-			targetProxy = 54B09E900F195867005D3E2F /* PBXContainerItemProxy */;
+			targetProxy = 549F37490F3331480033A0C9 /* PBXContainerItemProxy */;
 		};
 		54B7DE7F0F097BF00081F3A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1285,6 +1286,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1318,6 +1320,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

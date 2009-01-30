@@ -1,5 +1,5 @@
 //
-//  STIGQueryResultController.m
+//  SVQueryResultController.m
 //  stigmergic
 //
 //  Created by Robert Evans on 1/8/09.
@@ -33,7 +33,7 @@
     if(self){
         [self setDatabaseName:dbName];
    
-        STIGDebug(@"*** dbName [%@]", [self databaseName]);
+        SVDebug(@"*** dbName [%@]", [self databaseName]);
     
     
         // TODO don't hard code this. Look it up somehow
@@ -125,7 +125,7 @@
     NSOutlineView *object = [notification object];
 
     NSDictionary *couchDocument = [object itemAtRow:[object selectedRow]];
-    STIGDebug(@"selected document [%@]", [couchDocument objectForKey:@"key"] );
+    SVDebug(@"selected document [%@]", [couchDocument objectForKey:@"key"] );
     
     // TODO make notification name a define
     [[NSNotificationCenter defaultCenter] postNotificationName:@"appendBreadCrumb" 
@@ -140,7 +140,7 @@
     SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
     NSView *inspectorView = [mainWindowController inspectorView]; 
 
-    STIGDebug(@"inspectorView [%@]", inspectorView);
+    SVDebug(@"inspectorView [%@]", inspectorView);
     
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];

@@ -1,5 +1,5 @@
 //
-//  STIG.h
+//  SVDavenport.h
 //  stigmergic
 //
 //  Created by Robert Evans on 1/11/09.
@@ -37,7 +37,7 @@ The DEBUG Flag
 
 #define SVDebug(format, ...){ \
     aslmsg msg = asl_new(ASL_TYPE_MSG); \
-    asl_set(msg, ASL_KEY_FACILITY, "stigmergic"); \
+    asl_set(msg, ASL_KEY_FACILITY, "davenport"); \
     asl_log(NULL, msg, ASL_LEVEL_DEBUG, "%s", [[NSString stringWithFormat:[NSString stringWithFormat:@"%s %@", __PRETTY_FUNCTION__,format], ##__VA_ARGS__] UTF8String]); \
 }
 

@@ -241,7 +241,8 @@
 		540089C80F30C040002D56A4 /* SVSourceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListView.h; sourceTree = "<group>"; };
 		540089C90F30C040002D56A4 /* SVSourceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListView.m; sourceTree = "<group>"; };
 		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = SOURCE_ROOT; };
-		540C88FC0F31D51700E02727 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = Classes/Davenport_Prefix.pch; sourceTree = "<group>"; };
+		540C88FC0F31D51700E02727 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Davenport.app; path = /Users/robevans/Projects/cocoa/davenport/build/Debug/Davenport.app; sourceTree = "<absolute>"; };
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
 		540C893E0F31D66E00E02727 /* PLAN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PLAN; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
@@ -251,7 +252,7 @@
 		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FunctionEditor.xib; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
-		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Release/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
+		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
 		54B546090F31D006004E675B /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "Images/arrow-25.jpg"; sourceTree = "<group>"; };
 		54B5460A0F31D006004E675B /* arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow.jpg; path = Images/arrow.jpg; sourceTree = "<group>"; };
@@ -270,7 +271,6 @@
 		54DF2F810F30C59000A720D9 /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-Info.plist"; path = "Resources/Tests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F820F30C59000A720D9 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Unit Tests-Info.plist"; path = "Resources/Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vendorTests-Info.plist"; path = "Resources/vendorTests-Info.plist"; sourceTree = "<group>"; };
-		54DF2FBD0F30C7DD00A720D9 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = /tmp/myProjects/davenport/Classes/Davenport_Prefix.pch; sourceTree = "<absolute>"; };
 		54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RBSplitView.framework; sourceTree = "<group>"; };
 		54F9F3330F0080B100EE414E /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D15AC370486D014006FF6A4 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,7 +360,6 @@
 				54F9F3330F0080B100EE414E /* Unit Tests.octest */,
 				54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */,
 				546603EB0F24CF75000C77E7 /* vendorTests.octest */,
-				540C88FC0F31D51700E02727 /* Davenport.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -383,7 +382,7 @@
 		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				54DF2FBD0F30C7DD00A720D9 /* Davenport_Prefix.pch */,
+				5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */,
 				540089A40F30C040002D56A4 /* main.m */,
 			);
 			name = "Other Sources";
@@ -465,15 +464,11 @@
 		540089EF0F30C12D002D56A4 /* Controllers and Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				540089A90F30C040002D56A4 /* SVAppDelegate.h */,
+				5456930B0F3256F400100237 /* headers */,
 				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
-				540089B00F30C040002D56A4 /* SVCouchDocumentController.h */,
 				540089B10F30C040002D56A4 /* SVCouchDocumentController.m */,
-				540089BA0F30C040002D56A4 /* SVFunctionEditorController.h */,
 				540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */,
-				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
-				540089C20F30C040002D56A4 /* SVQueryResultController.h */,
 				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
 			);
 			name = "Controllers and Delegates";
@@ -549,6 +544,18 @@
 				54B546110F31D006004E675B /* segment.jpg */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		5456930B0F3256F400100237 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				540089C20F30C040002D56A4 /* SVQueryResultController.h */,
+				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
+				540089BA0F30C040002D56A4 /* SVFunctionEditorController.h */,
+				540089B00F30C040002D56A4 /* SVCouchDocumentController.h */,
+				540089A90F30C040002D56A4 /* SVAppDelegate.h */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 		54B09E880F195834005D3E2F /* Products */ = {
@@ -1325,6 +1332,7 @@
 					"\"$(SRCROOT)/../CouchDb/lib/erlang/usr/lib\"",
 					"\"$(SRCROOT)/../CouchDb\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = Davenport;
 			};

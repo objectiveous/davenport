@@ -26,8 +26,8 @@
 
 - (void)awakeFromNib{
     NSInteger count = [[self.couchDocument objectForKey:@"_revs"] count];
-    
-    [[[self versionTextField] cell] setTitle:[NSString stringWithFormat:@"Showing revision X of %i", count]];
+    NSInteger thisRevision = (count - [self.couchDocument revision]);
+    [[[self versionTextField] cell] setTitle:[NSString stringWithFormat:@"Showing revision %i of %i", thisRevision , count]];
 
 }
 

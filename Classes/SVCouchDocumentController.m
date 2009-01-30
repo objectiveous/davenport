@@ -1,5 +1,5 @@
 //
-//  STIGCouchDocument.m
+//  SVCouchDocument.m
 //  stigmergic
 //
 //  Created by Robert Evans on 1/18/09.
@@ -25,11 +25,10 @@
 #pragma mark -
 
 - (void)awakeFromNib{
-    //STIGDebug(@"****");
     NSInteger count = [[self.couchDocument objectForKey:@"_revs"] count];
-
+    
     [[[self versionTextField] cell] setTitle:[NSString stringWithFormat:@"Showing revision X of %i", count]];
-    //STIGDebug(@"versionTextField [%@]", [self versionTextField]);
+
 }
 
 
@@ -37,8 +36,9 @@
 
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){                
-        [self setCouchDocument:[couchDB getDocument:[couchDBDocument objectForKey:@"id"] withRevisionCount:YES]];
+        [self setCouchDocument:[couchDB getDocument:[couchDBDocument objectForKey:@"id"] withRevisionCount:YES andInfo:YES]];
     }
+    SVDebug(@"---> %@", [self couchDocument]);
     return self;
 }
 
@@ -103,9 +103,9 @@
 // of the hierarchy. 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item{
     if (item == nil){
-        STIGDebug(@"index        [%i]", index);
-        STIGDebug(@"key          [%@]", [couchDocument keyAtIndex:index]);
-        STIGDebug(@"objectForKey [%@]", [couchDocument objectForKey:[couchDocument keyAtIndex:index]])
+        //SVDebug(@"index        [%i]", index);
+        //SVDebug(@"key          [%@]", [couchDocument keyAtIndex:index]);
+        //SVDebug(@"objectForKey [%@]", [couchDocument objectForKey:[couchDocument keyAtIndex:index]])
         return [couchDocument objectForKey:[couchDocument keyAtIndex:index]];        
     }
         

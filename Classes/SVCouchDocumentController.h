@@ -11,7 +11,7 @@
 #import "SVControlBarView.h"
 
 @interface SVCouchDocumentController : NSViewController {
-    IBOutlet SVControlBarView *documentControlBar;
+    IBOutlet SVControlBarView   *documentControlBar;
     IBOutlet NSOutlineView      *documentOutlineView;
     IBOutlet NSTextField        *versionTextField;
     
@@ -20,7 +20,7 @@
     
 }
 
-@property (retain) SVControlBarView *documentControlBar;
+@property (retain) SVControlBarView   *documentControlBar;
 @property (retain) NSOutlineView      *documentOutlineView;
 @property (retain) SBCouchDocument    *couchDocument;
 @property (retain) SBCouchDatabase    *couchDatabase;

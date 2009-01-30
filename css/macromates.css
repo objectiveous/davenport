@@ -67,6 +67,7 @@ html>body #wrapper {
 #blog			#navi_blog			a,
 #hacking		#navi_hacking		a,
 #contact		#navi_contact		a,
+#builds		#navi_builds		a,
 #navigation li a:hover {
 	color: #fff;
 }

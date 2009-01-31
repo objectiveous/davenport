@@ -79,6 +79,10 @@
 		5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		546604150F24D282000C77E7 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		546604160F24D285000C77E7 /* CouchObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */; };
+		546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */; };
+		546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
+		546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
 		546769BD0F2538A9006F6114 /* CouchDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546769BB0F2538A9006F6114 /* CouchDocument.xib */; };
 		547B283F0F23821200580370 /* FunctionEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* FunctionEditor.xib */; };
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
@@ -115,7 +119,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* CouchObjC */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CouchObjC;
 		};
 		54B09E8C0F195834005D3E2F /* PBXContainerItemProxy */ = {
@@ -247,11 +251,14 @@
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		543D2A870F09650D00AAA9A5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		546603EB0F24CF75000C77E7 /* vendorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vendorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDatabasePanel.xib; sourceTree = "<group>"; };
+		546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseCreateSheetController.h; sourceTree = "<group>"; };
+		546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDatabaseCreateSheetController.m; sourceTree = "<group>"; };
 		546769BC0F2538A9006F6114 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CouchDocument.xib; sourceTree = "<group>"; };
 		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FunctionEditor.xib; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
-		549F36EA0F332DD50033A0C9 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Davenport.app; path = build/Debug/Davenport.app; sourceTree = "<group>"; };
+		549F36EA0F332DD50033A0C9 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
 		54B546090F31D006004E675B /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "Images/arrow-25.jpg"; sourceTree = "<group>"; };
@@ -407,6 +414,7 @@
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 				540C88FE0F31D51700E02727 /* Info copy.plist */,
+				546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 				540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
 				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
+				546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */,
 			);
 			name = "Controllers and Delegates";
 			sourceTree = "<group>";
@@ -550,6 +559,7 @@
 		5456930B0F3256F400100237 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */,
 				540089C20F30C040002D56A4 /* SVQueryResultController.h */,
 				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
 				540089BA0F30C040002D56A4 /* SVFunctionEditorController.h */,
@@ -733,6 +743,7 @@
 				540C88D80F31D51700E02727 /* divan.icns in Resources */,
 				540C88D90F31D51700E02727 /* documents.tiff in Resources */,
 				540C88DA0F31D51700E02727 /* segment.jpg in Resources */,
+				546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,6 +787,7 @@
 				54B546180F31D006004E675B /* divan.icns in Resources */,
 				54B546190F31D006004E675B /* documents.tiff in Resources */,
 				54B5461A0F31D006004E675B /* segment.jpg in Resources */,
+				546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +873,7 @@
 				540C88EF0F31D51700E02727 /* SVSectionDescriptor.m in Sources */,
 				540C88F00F31D51700E02727 /* SVSourceListCell.m in Sources */,
 				540C88F10F31D51700E02727 /* SVSourceListView.m in Sources */,
+				546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,6 +923,7 @@
 				540089DF0F30C040002D56A4 /* SVSectionDescriptor.m in Sources */,
 				540089E00F30C040002D56A4 /* SVSourceListCell.m in Sources */,
 				540089E10F30C040002D56A4 /* SVSourceListView.m in Sources */,
+				546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

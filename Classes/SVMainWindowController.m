@@ -14,6 +14,10 @@
 #import "SVQueryResultController.h"
 #import "SVFunctionEditorController.h"
 #import "SVCouchDocumentController.h"
+#import <CouchObjC/CouchObjC.h>
+#import "SVDatabaseDescriptor.h"
+#import "SVAppDelegate.h"
+#import "SVDatabaseCreateSheetController.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -47,9 +51,11 @@
 @synthesize createDocumentToolBarItem;
 @synthesize horizontalSplitView;
 
-- (void)awakeFromNib{       
+- (void)awakeFromNib{     
+    
+    
+  	createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
     inspectorShowing = NO;
-    [[self inspectorView] setHidden:YES];
     [[self inspectorView] setHidden:YES];
    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -306,6 +312,67 @@
     
 }
 
+#pragma mark -
+#pragma mark ContextMenu Handlers and Delegate Methods
+
+/*
+ Controls what menu items are shown for a given NSOutlineView selection. 
+ */
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    NSInteger clickedRow = [sourceView clickedRow];
+    
+    if(clickedRow == -1)
+        return;
+        
+    NSTreeNode *item = [sourceView itemAtRow:clickedRow];
+    SVAbstractDescriptor *descriptor = [item representedObject];
+            
+    if(! [descriptor isKindOfClass:[SVDatabaseDescriptor class]]){
+        // hide all the menu items. This will prevent any context menu from appearing. 
+        for(NSMenuItem *i in [menu itemArray]){
+            [i setHidden:TRUE];
+        }
+    }else{
+        NSMenuItem *menuItem = [menu itemAtIndex:0];
+        [menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
+        [menuItem setRepresentedObject:item];    
+        // Ensure the menu items are visible. 
+        for(NSMenuItem *i in [menu itemArray]){
+            [i setHidden:FALSE];
+        }
+    }
+
+}
+
+- (IBAction)deleteDatabaseAction:(id)sender{
+    if(![sender isKindOfClass:[NSMenuItem class]])
+        return;
+
+    NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];        
+    SVDatabaseDescriptor *descriptor = [item representedObject];
+    
+    SVDebug(@"Going to delete database [%@]", [descriptor label]);
+
+    SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
+    BOOL didDelete = [couchServer deleteDatabase:[descriptor label]];
+    
+    if(didDelete){
+        [[[item parentNode] mutableChildNodes] removeObject:item];
+        [self.sourceView reloadData];
+    }
+}
+
+- (IBAction)createDatabaseAction:(id)sender{
+    SVDebug(@"Show a view for database");
+    
+	NSString  *newDatabaseName = [createDatabaseSheet edit:nil from:self];
+	if (![createDatabaseSheet wasCancelled] && newDatabaseName){
+        SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
+        [couchServer createDatabase:newDatabaseName];
+        // Now reaload all the datafrom the server. 
+        [(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];    
+	}
+}
 @end
 
 #pragma mark -
@@ -315,6 +382,8 @@
 -(BOOL)outlineView:(NSOutlineView*)outlineView shouldShowDisclosureTriangleForItem:(id)item{
     return NO;
 }
+
+
 @end
 
 

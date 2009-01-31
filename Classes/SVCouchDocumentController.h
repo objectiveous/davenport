@@ -14,6 +14,7 @@
     IBOutlet SVControlBarView   *documentControlBar;
     IBOutlet NSOutlineView      *documentOutlineView;
     IBOutlet NSTextField        *versionTextField;
+  
     
     SBCouchDocument             *couchDocument;
     SBCouchDatabase             *couchDatabase;

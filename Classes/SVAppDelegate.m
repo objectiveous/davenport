@@ -43,7 +43,7 @@ int LOCAL_PORT = 5984;
 }
 
 - (void) performFetchServerInfoOperation {
-     SVDebug(@"Queue'ing up a fetch operation"); 
+    SVDebug(@"Queue'ing up a fetch operation"); 
     SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer];
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
@@ -55,16 +55,14 @@ int LOCAL_PORT = 5984;
 
 }
 -(void) loadMainWindow{
-     SVDebug(@"loading MainWindow nib.");
+    SVDebug(@"loading MainWindow nib.");
     
     mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
    	[mainWindowController showWindow:self];
     if(LOCAL_PORT == 5983)
         [self launchCouchDB];
     else
-         [self performFetchServerInfoOperation]; 
-    
-    //[self performFetchServerInfoOperation];
+         [self performFetchServerInfoOperation];     
 }
 
 
@@ -72,6 +70,9 @@ int LOCAL_PORT = 5984;
     [self loadMainWindow];        
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender{
+	return YES;
+}
 - (void)observeValueForKeyPath:(NSString*)keyPath 
                       ofObject:(id)object 
                         change:(NSDictionary*)change 
@@ -79,11 +80,12 @@ int LOCAL_PORT = 5984;
 
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){
      
-        if([(SVFetchServerInfoOperation*)object rootNode] == nil){
+        id sourceViewModelRootNode = [(SVFetchServerInfoOperation*)object rootNode];
+        if(sourceViewModelRootNode == nil){
             [self performFetchServerInfoOperation];            
         }else{
             [lock lock];
-            [mainWindowController setRootNode:[(SVFetchServerInfoOperation*)object rootNode]];
+            [mainWindowController setRootNode:sourceViewModelRootNode];
             [[mainWindowController sourceView] reloadData];
             [lock unlock];
         }

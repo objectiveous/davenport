@@ -13,19 +13,19 @@
 
 @interface SVAppDelegate : NSObject {
 	SVMainWindowController *mainWindowController;
-    NSOperationQueue *queue;
-    NSTask *task;
-    NSPipe *in, *out;
-    NSLock *lock;
+    NSOperationQueue       *queue;
+    NSTask                 *task;
+    NSPipe                 *in, *out;
+    NSLock                 *lock;
     // This will eventually become a dictionary of servers when we start supporting 
     // multiple couch servers. 
-    SBCouchServer *couchServer;
+    SBCouchServer          *couchServer;
 }
 
 @property (retain) SVMainWindowController *mainWindowController;
-@property (retain) SBCouchServer            *couchServer;
+@property (retain) SBCouchServer          *couchServer;
 
--(void) loadMainWindow;
+-(void)loadMainWindow;
 -(void)performFetch:(NSNotification *)notification;
-//- (void)dataReady:(NSNotification *)notification;
+- (void) performFetchServerInfoOperation;
 @end

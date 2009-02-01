@@ -19,7 +19,7 @@
     for (int i =0; i < 200; i++) {
         NSDictionary *doc = [NSDictionary dictionary];
         SBCouchResponse *meta = [db postDocument:doc];
-        STIGDebug(@"[%@]", meta);
+        SVDebug(@"[%@]", meta);
         STAssertTrue(meta.ok, nil);
         STAssertNotNil(meta.name, nil);
         STAssertNotNil(meta.rev, nil);

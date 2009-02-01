@@ -1,6 +1,6 @@
 //
-//  STIGQueryResultController.h
-//  stigmergic
+//  SVQueryResultController.h
+//  
 //
 //  Created by Robert Evans on 1/8/09.
 //  Copyright 2009 South And Valley. All rights reserved.

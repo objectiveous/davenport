@@ -185,11 +185,7 @@
 	
 	NSOutlineView* hostingOutlineView = (NSOutlineView*)[self controlView];
 	if (hostingOutlineView){
-		//NSInteger selectedRow = [hostingOutlineView selectedRow];
-		//STIGAbstractDescriptor *node = [[hostingOutlineView itemAtRow:selectedRow] representedObject];
 
-		//if (![node isDraggable])	// is the node isDraggable (i.e. non-file system based objects)
-		//	result = NSCellHitTrackableArea;
 	}
 		
 	return result;

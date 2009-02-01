@@ -1,6 +1,6 @@
 //
-//  STIGMainWindowController.m
-//  stigmergic
+//  SVMainWindowController.m
+//  
 //
 //  Created by Robert Evans on 12/29/08.
 //  Copyright 2008 South And Valley. All rights reserved.
@@ -184,7 +184,7 @@
     NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
 
     SVAbstractDescriptor *descriptor = [item representedObject];
-    STIGDebug(@"Selection changed [%@]", [descriptor label]);
+    SVDebug(@"Selection changed [%@]", [descriptor label]);
     [self updateBreadCrumbs:item];
 
 
@@ -217,7 +217,6 @@
 // support. It's okay for now because we don't really understand where the 
 // design is headed. 
 -(void)updateBreadCrumbs:(NSTreeNode*)item{    
-    //STIGAbstractDescriptor *parentDescriptor = [[item parentNode] representedObject];
     // Hard coding the root element name. Temporary. 
     SVBreadCrumbCell *rNode = [[[SVBreadCrumbCell alloc] initWithPathLabel:@"Database"] autorelease];
     SVBreadCrumbCell *dbNode   = [[[SVBreadCrumbCell alloc] initWithPathLabel:[[item representedObject] label]] autorelease];
@@ -235,7 +234,7 @@
     // The idea here is that there will always be a subject area path that consists of two 
     // elements. i.e. Database > dbName 
     // 
-    STIGDebug(@"count of breadcrumb items [%i]", [currentPath count]);
+    SVDebug(@"count of breadcrumb items [%i]", [currentPath count]);
     if([currentPath count] >= 3){
         [self removeBreadCrumb:nil];
     }
@@ -274,12 +273,12 @@
 
 - (IBAction)showCreateDocument:(id)sender{
     //[[self window] setContentView:logView];
-    STIGDebug(@"Okay, so we got the message. ");
+    SVDebug(@"Okay, so we got the message. ");
 }
 
 - (IBAction)showInspector:(id)sender{
     //[[self window] setContentView:logView];
-    STIGDebug(@"Show the inspector to the user. ");
+    SVDebug(@"Show the inspector to the user. ");
     if(inspectorShowing){  // Inspector is currently showing, so hide it. 
         [[self inspectorView] setHidden:YES];
         inspectorShowing = NO;

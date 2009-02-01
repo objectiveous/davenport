@@ -1,6 +1,6 @@
 #import "GTMSenTestCase.h"
 #import <CouchObjC/CouchObjC.h>
-#import "STIG.h"
+
 
 @interface SVCouchDbFrameworkTest : SenTestCase{
     SBCouchServer *couchDb;
@@ -28,7 +28,7 @@
     NSArray *list = [couchDb listDatabases];
     [list containsObject:testDatabaseName];    
     list = [couchDb listDatabases];    
-    STIGDebug(@"[Databases %@]", list);
+    SVDebug(@"[Databases %@]", list);
 
 }
 

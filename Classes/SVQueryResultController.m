@@ -1,6 +1,6 @@
 //
 //  SVQueryResultController.m
-//  stigmergic
+//  
 //
 //  Created by Robert Evans on 1/8/09.
 //  Copyright 2009 South And Valley. All rights reserved.
@@ -179,12 +179,7 @@
         frame.size.height = superFrame.size.height;
         [documentView setFrame:frame];
     
-        /*
-        STIGDebug(@" inspector view : %@", [inspectorView class]);
-        STIGDebug(@" auto resize : %i", [inspectorView autoresizesSubviews]);
-        STIGDebug(@" INSPECTOR %@", NSStringFromRect([inspectorView frame]));
-        STIGDebug(@"   |---> DOC %@", NSStringFromRect([documentView frame]));
-        */
+ 
     
     }
     

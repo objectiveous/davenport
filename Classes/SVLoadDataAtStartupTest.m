@@ -1,7 +1,7 @@
 #import "GTMSenTestCase.h"
 #import "SVMainWindowController.h"
 #import "SVAppDelegate.h"
-#import "STIG.h"
+
 
 @interface SVLoadDataAtStartupTest : SenTestCase {
      BOOL fetchFinishedIVar;    
@@ -27,14 +27,14 @@ static NSTimeInterval kRunLoopInterval = 0.01;
     
     NSTreeNode *databasesNode = [rootNode descendantNodeAtIndexPath:[NSIndexPath indexPathWithIndex:0.0]];
     STAssertNotNil(databasesNode, @"NSIndexPath failed to return database");
-    STIGDebug(@"Searched for node [%@] ", databasesNode);
+    SVDebug(@"Searched for node [%@] ", databasesNode);
     
     BOOL PASS = NO;
     // Can NSPredicates help here? 
     for(NSTreeNode *database in [databasesNode childNodes]){
         if([[[database representedObject] label] isEqual:@"test_suite_db"] ){
             PASS = YES;
-            STIGDebug(@"Searched for and found test database [%@] ", [[database representedObject] label]);
+            SVDebug(@"Searched for and found test database [%@] ", [[database representedObject] label]);
         }
             
     }
@@ -46,7 +46,7 @@ static NSTimeInterval kRunLoopInterval = 0.01;
 
 
 -(void) wait{
-    STIGDebug(@"***** WAITING ");
+    SVDebug(@"***** WAITING ");
     // Wait until we get the databack 
     NSDate* giveUpDate = [NSDate dateWithTimeIntervalSinceNow:kGiveUpInterval];
     fetchFinishedIVar = NO;
@@ -55,7 +55,7 @@ static NSTimeInterval kRunLoopInterval = 0.01;
         [[NSRunLoop currentRunLoop] runUntilDate:loopIntervalDate];
     }     
     
-     STIGDebug(@"***** DONE WAITING ");
+     SVDebug(@"***** DONE WAITING ");
 }
 
 @end

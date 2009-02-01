@@ -34,7 +34,7 @@
 
 -(NSString*) description{
    
-    NSMutableString *description = [NSMutableString stringWithString:@"STIGPathControl:"];
+    NSMutableString *description = [NSMutableString stringWithString:@"SVPathControl:"];
 
     
     NSArray *cells = [self pathComponentCells];

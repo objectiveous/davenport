@@ -1,6 +1,6 @@
 //
-//  STIGFetchServerInfoOperation.m
-//  stigmergic
+//  SVFetchServerInfoOperation.m
+// 
 //
 //  Created by Robert Evans on 12/30/08.
 //  Copyright 2008 South And Valley. All rights reserved.
@@ -29,14 +29,14 @@
 }
 
 - (void)main {
-    STIGDebug(@"Trying to fetch server information from localhot:5983");
+    SVDebug(@"Trying to fetch server information from localhot:5983");
     fetchReturnedData = NO;
 
     assert(couchServer);
     NSArray *databases = [couchServer listDatabases];
 
     if(databases == nil){
-        STIGDebug(@"No databases found.");
+        SVDebug(@"No databases found.");
         return;
     }
     fetchReturnedData = YES;

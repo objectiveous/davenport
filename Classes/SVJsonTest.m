@@ -1,6 +1,6 @@
 //
 //  JsonTest.m
-//  stigmergic
+//  
 //
 //  Created by Robert Evans on 1/19/09.
 //  Copyright 2009 South And Valley. All rights reserved.
@@ -35,7 +35,7 @@
     SBCouchDatabase *database = [server database:@"twitter-client"];    
     NSDictionary *doc = [database get:@"000daeafe428da1df0f0e76056e84b16"];
     
-    STIGDebug(@"WTF [%@]", [doc JSONRepresentation] );
+    SVDebug(@"WTF [%@]", [doc JSONRepresentation] );
 }
 
 @end

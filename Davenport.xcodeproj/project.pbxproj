@@ -406,6 +406,7 @@
 				54DF2F820F30C59000A720D9 /* Unit Tests-Info.plist */,
 				54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */,
 				5405B42F0F1450B2000EF28E /* images */,
+				546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */,
 				547B283B0F23821200580370 /* FunctionEditor.xib */,
 				546769BB0F2538A9006F6114 /* CouchDocument.xib */,
 				548AACAA0F0AD50C009A49AD /* QueryResultView.xib */,
@@ -414,7 +415,6 @@
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
 				540C88FE0F31D51700E02727 /* Info copy.plist */,
-				546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

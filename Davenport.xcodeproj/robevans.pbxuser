@@ -11,7 +11,7 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 5442DF950EFD624800CC67FC /* Davenport */;
 		activeSDKPreference = macosx10.5;
-		activeTarget = 8D15AC270486D014006FF6A4 /* Davenport */;
+		activeTarget = 54F9F2230F006DE900EE414E /* Unit Tests */;
 		addToTargets = (
 			540C88C80F31D51700E02727 /* Davenport with Embedded CouchDB */,
 			8D15AC270486D014006FF6A4 /* Davenport */,
@@ -212,7 +212,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_FiletypeID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					745,
+					701,
 					60,
 					20,
 					48,
@@ -831,6 +831,13 @@
 			548BB12B0F35FD1600DB4DCB /* PBXTextBookmark */ = 548BB12B0F35FD1600DB4DCB /* PBXTextBookmark */;
 			548BB13B0F35FEDE00DB4DCB /* PBXTextBookmark */ = 548BB13B0F35FEDE00DB4DCB /* PBXTextBookmark */;
 			548BB13D0F35FF2E00DB4DCB /* PBXTextBookmark */ = 548BB13D0F35FF2E00DB4DCB /* PBXTextBookmark */;
+			548BB1410F361DED00DB4DCB /* PBXTextBookmark */ = 548BB1410F361DED00DB4DCB /* PBXTextBookmark */;
+			548BB1420F361DED00DB4DCB /* PBXTextBookmark */ = 548BB1420F361DED00DB4DCB /* PBXTextBookmark */;
+			548BB16A0F36319100DB4DCB /* PBXTextBookmark */ = 548BB16A0F36319100DB4DCB /* PBXTextBookmark */;
+			548BB16B0F36319100DB4DCB /* PBXTextBookmark */ = 548BB16B0F36319100DB4DCB /* PBXTextBookmark */;
+			548BB16C0F36319100DB4DCB /* PBXTextBookmark */ = 548BB16C0F36319100DB4DCB /* PBXTextBookmark */;
+			548BB16D0F36319100DB4DCB /* PBXTextBookmark */ = 548BB16D0F36319100DB4DCB /* PBXTextBookmark */;
+			548BB1710F3631EF00DB4DCB /* PBXTextBookmark */ = 548BB1710F3631EF00DB4DCB /* PBXTextBookmark */;
 			549F37850F33684F0033A0C9 = 549F37850F33684F0033A0C9 /* PBXTextBookmark */;
 			549F378B0F336A320033A0C9 = 549F378B0F336A320033A0C9 /* PBXTextBookmark */;
 			549F381A0F338E350033A0C9 = 549F381A0F338E350033A0C9 /* PBXTextBookmark */;
@@ -974,9 +981,9 @@
 	};
 	540089B10F30C040002D56A4 /* SVCouchDocumentController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {919, 4427}}";
-			sepNavSelRange = "{2368, 0}";
-			sepNavVisRange = "{1537, 991}";
+			sepNavIntBoundsRect = "{{0, 0}, {919, 4180}}";
+			sepNavSelRange = "{4783, 0}";
+			sepNavVisRange = "{4471, 1077}";
 		};
 	};
 	540089B20F30C040002D56A4 /* SVCreateAndLoadSampleDatabaseTest.m */ = {
@@ -1044,9 +1051,9 @@
 	};
 	540089BC0F30C040002D56A4 /* SVJsonTest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {919, 792}}";
-			sepNavSelRange = "{22, 0}";
-			sepNavVisRange = "{0, 931}";
+			sepNavIntBoundsRect = "{{0, 0}, {919, 822}}";
+			sepNavSelRange = "{995, 0}";
+			sepNavVisRange = "{130, 865}";
 		};
 	};
 	540089BD0F30C040002D56A4 /* SVLoadDataAtStartupTest.m */ = {
@@ -7405,6 +7412,76 @@
 		rType = 0;
 		vrLen = 991;
 		vrLoc = 1537;
+	};
+	548BB1410F361DED00DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 546649FE0F34FA4300A8A709 /* SVCouchDocumentController.m */;
+		name = "SVCouchDocumentController.m: 66";
+		rLen = 0;
+		rLoc = 2368;
+		rType = 0;
+		vrLen = 531;
+		vrLoc = 1786;
+	};
+	548BB1420F361DED00DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */;
+		name = "SVCouchDocumentController.m: 131";
+		rLen = 0;
+		rLoc = 4783;
+		rType = 0;
+		vrLen = 798;
+		vrLoc = 4471;
+	};
+	548BB16A0F36319100DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */;
+		name = "SVCouchDocumentController.m: 131";
+		rLen = 0;
+		rLoc = 4783;
+		rType = 0;
+		vrLen = 1084;
+		vrLoc = 4276;
+	};
+	548BB16B0F36319100DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 3";
+		rLen = 0;
+		rLoc = 22;
+		rType = 0;
+		vrLen = 673;
+		vrLoc = 0;
+	};
+	548BB16C0F36319100DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */;
+		name = "SVCouchDocumentController.m: 131";
+		rLen = 0;
+		rLoc = 4783;
+		rType = 0;
+		vrLen = 1084;
+		vrLoc = 4276;
+	};
+	548BB16D0F36319100DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 42";
+		rLen = 0;
+		rLoc = 995;
+		rType = 0;
+		vrLen = 865;
+		vrLoc = 130;
+	};
+	548BB1710F3631EF00DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 42";
+		rLen = 0;
+		rLoc = 995;
+		rType = 0;
+		vrLen = 865;
+		vrLoc = 130;
 	};
 	549F36EB0F332DD50033A0C9 /* Davenport with Embedded CouchDB */ = {
 		isa = PBXExecutable;

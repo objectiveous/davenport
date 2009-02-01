@@ -1221,7 +1221,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(NATIVE_ARCH)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/stigmergic.app/Contents/MacOS/stigmergic";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Davenport.app/Contents/MacOS/Davenport";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",

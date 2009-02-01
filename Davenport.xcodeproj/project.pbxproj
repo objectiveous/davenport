@@ -1237,6 +1237,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/UnitTesting",
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/Foundation",

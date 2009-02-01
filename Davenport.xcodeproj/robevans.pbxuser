@@ -111,7 +111,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					853,
-					78,
+					225,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -138,7 +138,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Errors_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					741,
+					888,
 					20,
 					48,
 					43,
@@ -212,7 +212,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_FiletypeID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					701,
+					848,
 					60,
 					20,
 					48,
@@ -838,6 +838,14 @@
 			548BB16C0F36319100DB4DCB /* PBXTextBookmark */ = 548BB16C0F36319100DB4DCB /* PBXTextBookmark */;
 			548BB16D0F36319100DB4DCB /* PBXTextBookmark */ = 548BB16D0F36319100DB4DCB /* PBXTextBookmark */;
 			548BB1710F3631EF00DB4DCB /* PBXTextBookmark */ = 548BB1710F3631EF00DB4DCB /* PBXTextBookmark */;
+			548BB1750F3634BB00DB4DCB /* PBXTextBookmark */ = 548BB1750F3634BB00DB4DCB /* PBXTextBookmark */;
+			548BB1760F3634BB00DB4DCB /* PBXTextBookmark */ = 548BB1760F3634BB00DB4DCB /* PBXTextBookmark */;
+			548BB17A0F36355B00DB4DCB /* PBXTextBookmark */ = 548BB17A0F36355B00DB4DCB /* PBXTextBookmark */;
+			548BB17D0F3635C500DB4DCB /* PBXTextBookmark */ = 548BB17D0F3635C500DB4DCB /* PBXTextBookmark */;
+			548BB17E0F3635C500DB4DCB /* PBXTextBookmark */ = 548BB17E0F3635C500DB4DCB /* PBXTextBookmark */;
+			548BB17F0F3635C500DB4DCB /* PBXTextBookmark */ = 548BB17F0F3635C500DB4DCB /* PBXTextBookmark */;
+			548BB1800F3635C500DB4DCB /* PBXTextBookmark */ = 548BB1800F3635C500DB4DCB /* PBXTextBookmark */;
+			548BB1810F3635C500DB4DCB /* PBXTextBookmark */ = 548BB1810F3635C500DB4DCB /* PBXTextBookmark */;
 			549F37850F33684F0033A0C9 = 549F37850F33684F0033A0C9 /* PBXTextBookmark */;
 			549F378B0F336A320033A0C9 = 549F378B0F336A320033A0C9 /* PBXTextBookmark */;
 			549F381A0F338E350033A0C9 = 549F381A0F338E350033A0C9 /* PBXTextBookmark */;
@@ -904,9 +912,9 @@
 	};
 	540089A50F30C040002D56A4 /* NSTreeNode+SVDavenport.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {919, 684}}";
-			sepNavSelRange = "{36, 0}";
-			sepNavVisRange = "{0, 657}";
+			sepNavIntBoundsRect = "{{0, 0}, {1066, 691}}";
+			sepNavSelRange = "{245, 41}";
+			sepNavVisRange = "{0, 961}";
 		};
 	};
 	540089A60F30C040002D56A4 /* NSTreeNode+SVDavenport.h */ = {
@@ -1009,9 +1017,9 @@
 	};
 	540089B50F30C040002D56A4 /* SVDavenport.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {919, 1235}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1066, 1064}}";
 			sepNavSelRange = "{25, 0}";
-			sepNavVisRange = "{0, 637}";
+			sepNavVisRange = "{260, 1637}";
 		};
 	};
 	540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */ = {
@@ -1051,9 +1059,9 @@
 	};
 	540089BC0F30C040002D56A4 /* SVJsonTest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {919, 822}}";
-			sepNavSelRange = "{995, 0}";
-			sepNavVisRange = "{130, 865}";
+			sepNavIntBoundsRect = "{{0, 0}, {1066, 691}}";
+			sepNavSelRange = "{166, 11}";
+			sepNavVisRange = "{0, 649}";
 		};
 	};
 	540089BD0F30C040002D56A4 /* SVLoadDataAtStartupTest.m */ = {
@@ -7468,7 +7476,7 @@
 		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
 		name = "SVJsonTest.m: 42";
 		rLen = 0;
-		rLoc = 995;
+		rLoc = 649;
 		rType = 0;
 		vrLen = 865;
 		vrLoc = 130;
@@ -7478,10 +7486,90 @@
 		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
 		name = "SVJsonTest.m: 42";
 		rLen = 0;
-		rLoc = 995;
+		rLoc = 649;
 		rType = 0;
 		vrLen = 865;
 		vrLoc = 130;
+	};
+	548BB1750F3634BB00DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 42";
+		rLen = 0;
+		rLoc = 649;
+		rType = 0;
+		vrLen = 929;
+		vrLoc = 66;
+	};
+	548BB1760F3634BB00DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 28";
+		rLen = 0;
+		rLoc = 579;
+		rType = 0;
+		vrLen = 602;
+		vrLoc = 0;
+	};
+	548BB17A0F36355B00DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 29";
+		rLen = 0;
+		rLoc = 637;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 0;
+	};
+	548BB17D0F3635C500DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089A50F30C040002D56A4 /* NSTreeNode+SVDavenport.m */;
+		name = "NSTreeNode+SVDavenport.m: 14";
+		rLen = 41;
+		rLoc = 245;
+		rType = 0;
+		vrLen = 961;
+		vrLoc = 0;
+	};
+	548BB17E0F3635C500DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089B50F30C040002D56A4 /* SVDavenport.h */;
+		name = "SVDavenport.h: 3";
+		rLen = 0;
+		rLoc = 25;
+		rType = 0;
+		vrLen = 1637;
+		vrLoc = 260;
+	};
+	548BB17F0F3635C500DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 12";
+		rLen = 11;
+		rLoc = 166;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 0;
+	};
+	548BB1800F3635C500DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089B50F30C040002D56A4 /* SVDavenport.h */;
+		name = "SVDavenport.h: 3";
+		rLen = 0;
+		rLoc = 25;
+		rType = 0;
+		vrLen = 1637;
+		vrLoc = 260;
+	};
+	548BB1810F3635C500DB4DCB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
+		name = "SVJsonTest.m: 12";
+		rLen = 11;
+		rLoc = 166;
+		rType = 0;
+		vrLen = 649;
+		vrLoc = 0;
 	};
 	549F36EB0F332DD50033A0C9 /* Davenport with Embedded CouchDB */ = {
 		isa = PBXExecutable;

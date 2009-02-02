@@ -19,6 +19,7 @@
     
     SBCouchDocument             *couchDocument;
     SBCouchDatabase             *couchDatabase;
+    NSTreeNode                  *rootNode;
     
     // The number of revisions for the doc we are showing. Note, documents 
     // only know about past revisions, so the next revision of couchDocuemnt 
@@ -26,7 +27,7 @@
     NSInteger                   numberOfRevisions;
     NSInteger                   currentRevision;    
     NSArray                     *revisions;
-
+    
 }
 
 @property (retain) SVControlBarView   *documentControlBar;
@@ -37,6 +38,7 @@
 @property (retain) NSButton           *nextRevisionButton;
 @property (retain) NSButton           *previousRevisionButton;
 @property (retain) NSArray            *revisions;
+@property (retain) NSTreeNode         *rootNode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchDocument:(NSDictionary *)couchDBDocument couchDatabase:(SBCouchDatabase*)couchDB;
 

@@ -8,7 +8,8 @@
 
 #import "SVCouchDocumentController.h"
 #import <JSON/JSON.h>
-
+#import "NSTreeNode+SVDavenport.h"
+#import "SVJSONDescriptor.h"
 
 #define COLUMNID_FIELD @"Field"
 #define COLUMNID_VALUE @"Value"
@@ -23,6 +24,7 @@
 @synthesize previousRevisionButton;
 @synthesize nextRevisionButton;
 @synthesize revisions;
+@synthesize rootNode;
 
 #pragma mark -
 
@@ -54,6 +56,7 @@
                                   withRevisionCount:YES 
                                             andInfo:YES 
                                            revision:nil]];
+        [self setRootNode:[self.couchDocument asNSTreeNode]];
         [self setCouchDatabase:couchDB];
     }
     return self;
@@ -64,61 +67,40 @@
 
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item{
     SVDebug(@"So, like, why don't we try to update this record. ");    
+    
+    SVJSONDescriptor *descriptor = [(NSTreeNode*)item representedObject];
+    [descriptor setValue:object];
 }
 
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item{    
     if (item == nil)
-        return  [self.couchDocument count];
+        return  [[self.rootNode childNodes] count];
     
-    if ([item isKindOfClass:[SBOrderedDictionary class]] || [item isKindOfClass:[NSArray class]]) 
-        return [item count];
+    if ([item isKindOfClass:[NSTreeNode class]]) 
+        return [[item childNodes] count];
         
     return 0; 
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item{    
-    SVDebug(@"couchdocument %@", [self couchDocument])
-
-    id parentObject = [outlineView parentForItem:item] ? : [self couchDocument];
-
+    id parentObject = [outlineView parentForItem:item] ? : [self rootNode];
     if(item == nil)
         return @"missing item";
-    
-    id label;
+
+    NSTreeNode *treeNode = item;
+    id label = @"xxx";
     
     // Column One
-    if ([[[tableColumn headerCell] stringValue] compare:@"Field"] == NSOrderedSame) {        
-        if(parentObject != nil){
-            if([parentObject isKindOfClass:[SBOrderedDictionary class]]){                                        
-
-                // TODO how are we gonna get around this? What we really need is the 
-                // the index of item. 
-                label = [[parentObject allKeysForObject:item] lastObject];
-            }else if([parentObject isKindOfClass:[NSArray class]]){
-                label = [NSString stringWithFormat:@"%d", [parentObject indexOfObject:item]];
-            }else if([parentObject isKindOfClass:[SBCouchDocument class]]){
-                label = [[parentObject allKeysForObject:item] lastObject];
-            }
-        }
-        
+    if ([[[tableColumn headerCell] stringValue] compare:@"Field"] == NSOrderedSame) {   
+        SVJSONDescriptor *descriptor = [treeNode representedObject];
+        label = descriptor.label;
     // Column Two    
     } else if([[[tableColumn headerCell] stringValue] compare:@"Value"] == NSOrderedSame)  {      
-        if([item isKindOfClass:[SBOrderedDictionary class]]) {
-            label = nil;
-        }else if ( [item isKindOfClass:[NSArray class]] ){
-            label = nil;
-        }else{
-            label = item;
-        }
-            
+        SVJSONDescriptor *descriptor = [treeNode representedObject];
+        label = descriptor.value;        
     } else if([[[tableColumn headerCell] stringValue] compare:@"Type"] == NSOrderedSame)  {      
-        if([item isKindOfClass:[SBOrderedDictionary class]]) {
-            label = [NSString stringWithFormat:@"%i key/value pairs", [item count]]; 
-        }else if ( [item isKindOfClass:[NSArray class]] ){
-            label = [NSString stringWithFormat:@"%i ordered objects", [item count]]; 
-        }else{
-            label = nil;
-        }
+        SVJSONDescriptor *descriptor = [treeNode representedObject];
+        //label = descriptor.jsonType;     
     }
     return label;
 }
@@ -128,22 +110,17 @@
 // of the hierarchy. 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item{
     if (item == nil){
-        return [self.couchDocument objectForKey:[self.couchDocument keyAtIndex:index]];        
+        return [[self.rootNode childNodes] objectAtIndex:index];        
     }
-        
-    if ([item isKindOfClass:[NSArray class]]) {
-        return [item objectAtIndex:index];
-    }else if ([item isKindOfClass:[SBOrderedDictionary class]]) {
-        return [item objectForKey:[item keyAtIndex:index]];
-    }    
-    return nil;
+    
+    return [ [item childNodes] objectAtIndex:index];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item{    
-    if ([item isKindOfClass:[NSArray class]] || [item isKindOfClass:[SBOrderedDictionary class]]){
-        if ([item count] > 0)
-            return YES;
-    }        
+
+     if ([[item childNodes] count]> 0)
+         return YES;
+    
     return NO;
 }
 #pragma mark -

@@ -74,8 +74,12 @@
 		540C892E0F31D63300E02727 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		540C89340F31D63B00E02727 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
-		544463980F379A610098BD0E /* SVJsonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */; };
 		5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
+		544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */; };
+		544463D00F379D1E0098BD0E /* GTMNSObject+UnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400899F0F30C040002D56A4 /* GTMNSObject+UnitTesting.m */; };
+		544463D10F379D1E0098BD0E /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A10F30C040002D56A4 /* GTMSenTestCase.m */; };
+		544463D20F379D1E0098BD0E /* GTMSystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A30F30C040002D56A4 /* GTMSystemVersion.m */; };
+		544463D60F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */; };
 		5466040B0F24D15F000C77E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		5466040C0F24D162000C77E7 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -256,6 +260,9 @@
 		540C893E0F31D66E00E02727 /* PLAN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PLAN; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		543D2A870F09650D00AAA9A5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAbstractIntegrationTest.h; sourceTree = "<group>"; };
+		544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAbstractIntegrationTest.m; sourceTree = "<group>"; };
+		544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDocumentTreeNodeTest.m; sourceTree = "<group>"; };
 		546603EB0F24CF75000C77E7 /* vendorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vendorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDatabasePanel.xib; sourceTree = "<group>"; };
 		546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseCreateSheetController.h; sourceTree = "<group>"; };
@@ -551,6 +558,9 @@
 		54008A1D0F30C4A3002D56A4 /* Integration */ = {
 			isa = PBXGroup;
 			children = (
+				544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */,
+				544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */,
+				544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */,
 			);
 			name = Integration;
 			sourceTree = "<group>";
@@ -905,7 +915,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				544463980F379A610098BD0E /* SVJsonTest.m in Sources */,
+				544463D00F379D1E0098BD0E /* GTMNSObject+UnitTesting.m in Sources */,
+				544463D10F379D1E0098BD0E /* GTMSenTestCase.m in Sources */,
+				544463D20F379D1E0098BD0E /* GTMSystemVersion.m in Sources */,
+				544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */,
+				544463D60F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,6 +1199,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/UnitTesting",
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/Foundation",

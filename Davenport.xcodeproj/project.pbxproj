@@ -74,6 +74,8 @@
 		540C892E0F31D63300E02727 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		540C89340F31D63B00E02727 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
+		544463980F379A610098BD0E /* SVJsonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */; };
+		5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		5466040B0F24D15F000C77E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		5466040C0F24D162000C77E7 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -318,6 +320,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */,
 				54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -902,6 +905,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544463980F379A610098BD0E /* SVJsonTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,12 +1169,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(NATIVE_ARCH)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/stigmergic.app/Contents/MacOS/stigmergic";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Davenport.app/Contents/MacOS/Davenport";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\\\"$(SRCROOT)\\\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1185,7 +1190,7 @@
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/Foundation",
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/DebugUtils",
 				);
-				INFOPLIST_FILE = "IntegrationTests-Info.plist";
+				INFOPLIST_FILE = "Resources/IntegrationTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1211,13 +1216,14 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\\\"$(SRCROOT)\\\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "IntegrationTests-Info.plist";
+				INFOPLIST_FILE = "Resources/IntegrationTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",

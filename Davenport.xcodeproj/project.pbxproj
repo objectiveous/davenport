@@ -84,6 +84,34 @@
 		5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
 		544466820F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
 		544466830F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
+		544466DA0F3885490098BD0E /* button-plus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544466D90F3885490098BD0E /* button-plus.pdf */; };
+		544466DB0F3885490098BD0E /* button-plus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544466D90F3885490098BD0E /* button-plus.pdf */; };
+		544467CF0F38BB570098BD0E /* button-delete-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C30F38BB570098BD0E /* button-delete-on.pdf */; };
+		544467D00F38BB570098BD0E /* button-edit-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C40F38BB570098BD0E /* button-edit-on.pdf */; };
+		544467D10F38BB570098BD0E /* button-edit.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C50F38BB570098BD0E /* button-edit.pdf */; };
+		544467D20F38BB570098BD0E /* button-functions-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C60F38BB570098BD0E /* button-functions-on.pdf */; };
+		544467D30F38BB570098BD0E /* button-functions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C70F38BB570098BD0E /* button-functions.pdf */; };
+		544467D40F38BB570098BD0E /* button-minus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C80F38BB570098BD0E /* button-minus.pdf */; };
+		544467D50F38BB570098BD0E /* button-plus-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C90F38BB570098BD0E /* button-plus-on.pdf */; };
+		544467D60F38BB570098BD0E /* button-plus-template.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CA0F38BB570098BD0E /* button-plus-template.pdf */; };
+		544467D70F38BB570098BD0E /* css-close-normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CB0F38BB570098BD0E /* css-close-normal.pdf */; };
+		544467D80F38BB570098BD0E /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467CC0F38BB570098BD0E /* divider.png */; };
+		544467D90F38BB570098BD0E /* preview-back.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CD0F38BB570098BD0E /* preview-back.pdf */; };
+		544467DA0F38BB570098BD0E /* preview-forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CE0F38BB570098BD0E /* preview-forward.pdf */; };
+		544467DB0F38BB570098BD0E /* button-delete-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C30F38BB570098BD0E /* button-delete-on.pdf */; };
+		544467DC0F38BB570098BD0E /* button-edit-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C40F38BB570098BD0E /* button-edit-on.pdf */; };
+		544467DD0F38BB570098BD0E /* button-edit.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C50F38BB570098BD0E /* button-edit.pdf */; };
+		544467DE0F38BB570098BD0E /* button-functions-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C60F38BB570098BD0E /* button-functions-on.pdf */; };
+		544467DF0F38BB570098BD0E /* button-functions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C70F38BB570098BD0E /* button-functions.pdf */; };
+		544467E00F38BB570098BD0E /* button-minus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C80F38BB570098BD0E /* button-minus.pdf */; };
+		544467E10F38BB570098BD0E /* button-plus-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C90F38BB570098BD0E /* button-plus-on.pdf */; };
+		544467E20F38BB570098BD0E /* button-plus-template.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CA0F38BB570098BD0E /* button-plus-template.pdf */; };
+		544467E30F38BB570098BD0E /* css-close-normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CB0F38BB570098BD0E /* css-close-normal.pdf */; };
+		544467E40F38BB570098BD0E /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467CC0F38BB570098BD0E /* divider.png */; };
+		544467E50F38BB570098BD0E /* preview-back.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CD0F38BB570098BD0E /* preview-back.pdf */; };
+		544467E60F38BB570098BD0E /* preview-forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CE0F38BB570098BD0E /* preview-forward.pdf */; };
+		544467F40F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
+		544467F50F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
 		5466040B0F24D15F000C77E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		5466040C0F24D162000C77E7 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -270,6 +298,20 @@
 		544466580F3865D00098BD0E /* SVDocumentControlBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDocumentControlBarView.h; sourceTree = "<group>"; };
 		544466590F3865D00098BD0E /* SVDocumentControlBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentControlBarView.m; sourceTree = "<group>"; };
 		544466810F3869AC0098BD0E /* segment1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = segment1.png; path = Images/segment1.png; sourceTree = "<group>"; };
+		544466D90F3885490098BD0E /* button-plus.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-plus.pdf"; path = "Images/button-plus.pdf"; sourceTree = "<group>"; };
+		544467C30F38BB570098BD0E /* button-delete-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-delete-on.pdf"; path = "Images/button-delete-on.pdf"; sourceTree = "<group>"; };
+		544467C40F38BB570098BD0E /* button-edit-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-edit-on.pdf"; path = "Images/button-edit-on.pdf"; sourceTree = "<group>"; };
+		544467C50F38BB570098BD0E /* button-edit.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-edit.pdf"; path = "Images/button-edit.pdf"; sourceTree = "<group>"; };
+		544467C60F38BB570098BD0E /* button-functions-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-functions-on.pdf"; path = "Images/button-functions-on.pdf"; sourceTree = "<group>"; };
+		544467C70F38BB570098BD0E /* button-functions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-functions.pdf"; path = "Images/button-functions.pdf"; sourceTree = "<group>"; };
+		544467C80F38BB570098BD0E /* button-minus.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-minus.pdf"; path = "Images/button-minus.pdf"; sourceTree = "<group>"; };
+		544467C90F38BB570098BD0E /* button-plus-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-plus-on.pdf"; path = "Images/button-plus-on.pdf"; sourceTree = "<group>"; };
+		544467CA0F38BB570098BD0E /* button-plus-template.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-plus-template.pdf"; path = "Images/button-plus-template.pdf"; sourceTree = "<group>"; };
+		544467CB0F38BB570098BD0E /* css-close-normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "css-close-normal.pdf"; path = "Images/css-close-normal.pdf"; sourceTree = "<group>"; };
+		544467CC0F38BB570098BD0E /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = divider.png; path = Images/divider.png; sourceTree = "<group>"; };
+		544467CD0F38BB570098BD0E /* preview-back.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "preview-back.pdf"; path = "Images/preview-back.pdf"; sourceTree = "<group>"; };
+		544467CE0F38BB570098BD0E /* preview-forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "preview-forward.pdf"; path = "Images/preview-forward.pdf"; sourceTree = "<group>"; };
+		544467F30F38C1570098BD0E /* blank-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blank-back.png"; path = "Images/blank-back.png"; sourceTree = "<group>"; };
 		546603EB0F24CF75000C77E7 /* vendorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vendorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDatabasePanel.xib; sourceTree = "<group>"; };
 		546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseCreateSheetController.h; sourceTree = "<group>"; };
@@ -571,6 +613,20 @@
 		5405B42F0F1450B2000EF28E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				544467F30F38C1570098BD0E /* blank-back.png */,
+				544467C30F38BB570098BD0E /* button-delete-on.pdf */,
+				544467C40F38BB570098BD0E /* button-edit-on.pdf */,
+				544467C50F38BB570098BD0E /* button-edit.pdf */,
+				544467C60F38BB570098BD0E /* button-functions-on.pdf */,
+				544467C70F38BB570098BD0E /* button-functions.pdf */,
+				544467C80F38BB570098BD0E /* button-minus.pdf */,
+				544467C90F38BB570098BD0E /* button-plus-on.pdf */,
+				544467CA0F38BB570098BD0E /* button-plus-template.pdf */,
+				544467CB0F38BB570098BD0E /* css-close-normal.pdf */,
+				544467CC0F38BB570098BD0E /* divider.png */,
+				544467CD0F38BB570098BD0E /* preview-back.pdf */,
+				544467CE0F38BB570098BD0E /* preview-forward.pdf */,
+				544466D90F3885490098BD0E /* button-plus.pdf */,
 				54B546090F31D006004E675B /* arrow-25.jpg */,
 				54B5460A0F31D006004E675B /* arrow.jpg */,
 				54B5460B0F31D006004E675B /* divan-2.icns */,
@@ -788,6 +844,20 @@
 				540C88DA0F31D51700E02727 /* segment.jpg in Resources */,
 				546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
 				544466830F3869AC0098BD0E /* segment1.png in Resources */,
+				544466DB0F3885490098BD0E /* button-plus.pdf in Resources */,
+				544467DB0F38BB570098BD0E /* button-delete-on.pdf in Resources */,
+				544467DC0F38BB570098BD0E /* button-edit-on.pdf in Resources */,
+				544467DD0F38BB570098BD0E /* button-edit.pdf in Resources */,
+				544467DE0F38BB570098BD0E /* button-functions-on.pdf in Resources */,
+				544467DF0F38BB570098BD0E /* button-functions.pdf in Resources */,
+				544467E00F38BB570098BD0E /* button-minus.pdf in Resources */,
+				544467E10F38BB570098BD0E /* button-plus-on.pdf in Resources */,
+				544467E20F38BB570098BD0E /* button-plus-template.pdf in Resources */,
+				544467E30F38BB570098BD0E /* css-close-normal.pdf in Resources */,
+				544467E40F38BB570098BD0E /* divider.png in Resources */,
+				544467E50F38BB570098BD0E /* preview-back.pdf in Resources */,
+				544467E60F38BB570098BD0E /* preview-forward.pdf in Resources */,
+				544467F50F38C1570098BD0E /* blank-back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +903,20 @@
 				54B5461A0F31D006004E675B /* segment.jpg in Resources */,
 				546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
 				544466820F3869AC0098BD0E /* segment1.png in Resources */,
+				544466DA0F3885490098BD0E /* button-plus.pdf in Resources */,
+				544467CF0F38BB570098BD0E /* button-delete-on.pdf in Resources */,
+				544467D00F38BB570098BD0E /* button-edit-on.pdf in Resources */,
+				544467D10F38BB570098BD0E /* button-edit.pdf in Resources */,
+				544467D20F38BB570098BD0E /* button-functions-on.pdf in Resources */,
+				544467D30F38BB570098BD0E /* button-functions.pdf in Resources */,
+				544467D40F38BB570098BD0E /* button-minus.pdf in Resources */,
+				544467D50F38BB570098BD0E /* button-plus-on.pdf in Resources */,
+				544467D60F38BB570098BD0E /* button-plus-template.pdf in Resources */,
+				544467D70F38BB570098BD0E /* css-close-normal.pdf in Resources */,
+				544467D80F38BB570098BD0E /* divider.png in Resources */,
+				544467D90F38BB570098BD0E /* preview-back.pdf in Resources */,
+				544467DA0F38BB570098BD0E /* preview-forward.pdf in Resources */,
+				544467F40F38C1570098BD0E /* blank-back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

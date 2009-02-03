@@ -39,6 +39,8 @@
 @property (retain) NSButton           *previousRevisionButton;
 @property (retain) NSArray            *revisions;
 @property (retain) NSTreeNode         *rootNode;
+@property NSInteger numberOfRevisions;
+@property NSInteger currentRevision;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchDocument:(NSDictionary *)couchDBDocument couchDatabase:(SBCouchDatabase*)couchDB;
 

@@ -26,6 +26,8 @@
 @synthesize nextRevisionButton;
 @synthesize revisions;
 @synthesize rootNode;
+@synthesize currentRevision;
+@synthesize numberOfRevisions;
 
 #pragma mark -
 
@@ -65,6 +67,14 @@
 
 #pragma mark -
 #pragma mark Delegate 
+
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item{
+
+    if(self.currentRevision == self.numberOfRevisions)
+        return YES;
+    return NO;
+}
 
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item{
     SVDebug(@"So, like, why don't we try to update this record. ");    

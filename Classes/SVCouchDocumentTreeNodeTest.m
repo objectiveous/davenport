@@ -2,6 +2,7 @@
 #import "SVAbstractIntegrationTest.h"
 #import "SVDavenport.h"
 #import "NSDictionary+SVDavenport.h"
+#import "NSTreeNode+SVDavenport.h"
 #import <CouchObjC/CouchObjC.h>
 
 @interface SVCouchDocumentTreeNodeTest : SVAbstractIntegrationTest{
@@ -32,7 +33,10 @@
         SVDebug(@"CouchDocument %@", couchDocument);
         NSTreeNode *rootNode = [couchDocument asNSTreeNode];
         STAssertNotNil(rootNode, nil);
-        
+        NSDictionary *dict = [rootNode asDictionary];
+        STAssertNotNil(dict, nil);
+        SVDebug(@"DICT DUMP %@", dict);
+        SVDebug(@"JSON DUMP %@", [dict JSONFragment]);
     }   
 }
 

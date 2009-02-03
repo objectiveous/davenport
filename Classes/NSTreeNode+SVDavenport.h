@@ -14,5 +14,5 @@
 -(NSTreeNode *) addSection:(NSString *)sectionName;
 -(NSTreeNode *) addDatabase:(NSString *)addDatabase;
 -(NSTreeNode *) addChildNodeWithObject:(id)object;
-
+-(NSDictionary *)asDictionary;
 @end

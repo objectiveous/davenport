@@ -10,6 +10,7 @@
 #import <JSON/JSON.h>
 #import "NSTreeNode+SVDavenport.h"
 #import "SVJSONDescriptor.h"
+#import "NSTreeNode+SVDavenport.h"
 
 #define COLUMNID_FIELD @"Field"
 #define COLUMNID_VALUE @"Value"
@@ -69,7 +70,15 @@
     SVDebug(@"So, like, why don't we try to update this record. ");    
     
     SVJSONDescriptor *descriptor = [(NSTreeNode*)item representedObject];
-    [descriptor setValue:object];
+            
+    if ([[[tableColumn headerCell] stringValue] compare:@"Field"] == NSOrderedSame) {   
+        [descriptor setLabel:object];
+    } else if([[[tableColumn headerCell] stringValue] compare:@"Value"] == NSOrderedSame)  {      
+        [descriptor setValue:object];    
+    }
+    
+    // XXX Mark this document as needing updates and don't let folks update past revisions. 
+    SBCouchResponse *response = [self.couchDatabase putDocument:[rootNode asDictionary] named:[self.couchDocument identity]];
 }
 
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item{    

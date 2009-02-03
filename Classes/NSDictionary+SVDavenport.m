@@ -28,7 +28,9 @@
         }else{                    
             SVJSONDescriptor *jsonDescriptor = [[[SVJSONDescriptor alloc] init] autorelease];
             [jsonDescriptor setLabel:key];
-            [jsonDescriptor setValue:[self objectForKey:key]];        
+            [jsonDescriptor setValue:[self objectForKey:key]];      
+            [jsonDescriptor setJsonType:JSON_TYPE_SCALAR];      
+            
             NSTreeNode *childNode = [NSTreeNode treeNodeWithRepresentedObject:jsonDescriptor];
             [[rootNode mutableChildNodes] addObject:childNode];
         }
@@ -61,7 +63,7 @@
             SVJSONDescriptor *jsonDescriptor = [[[SVJSONDescriptor alloc] init] autorelease];
             [jsonDescriptor setLabel:key];
             [jsonDescriptor setValue:[dictionary objectForKey:key]];
-            
+            [jsonDescriptor setJsonType:JSON_TYPE_SCALAR]; 
             NSTreeNode *childNode = [NSTreeNode treeNodeWithRepresentedObject:jsonDescriptor];
             
             [[rootNode mutableChildNodes] addObject:childNode];

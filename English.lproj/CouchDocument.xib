@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="38"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -132,7 +132,7 @@
 						</object>
 						<string key="NSFrame">{{0, 279}, {1037, 21}}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<string key="NSClassName">SVControlBarView</string>
+						<string key="NSClassName">SVDocumentControlBarView</string>
 					</object>
 					<object class="NSScrollView" id="86023696">
 						<reference key="NSNextResponder" ref="1005"/>
@@ -160,7 +160,7 @@
 										<object class="_NSCornerView" key="NSCornerView" id="448186647">
 											<reference key="NSNextResponder" ref="86023696"/>
 											<int key="NSvFlags">-2147483392</int>
-											<string key="NSFrame">{{-26, 0}, {16, 17}}</string>
+											<string key="NSFrame">{{1022, 0}, {16, 17}}</string>
 											<reference key="NSSuperview" ref="86023696"/>
 										</object>
 										<object class="NSMutableArray" key="NSTableColumns">
@@ -238,7 +238,7 @@
 											</object>
 											<object class="NSTableColumn" id="410067268">
 												<string key="NSIdentifier">Type</string>
-												<double key="NSWidth">2.300000e+02</double>
+												<double key="NSWidth">2.270000e+02</double>
 												<double key="NSMinWidth">1.000000e+01</double>
 												<double key="NSMaxWidth">2.000000e+03</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -276,7 +276,7 @@
 										<double key="NSIntercellSpacingHeight">3.000000e+00</double>
 										<object class="NSColor" key="NSBackgroundColor">
 											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MC44MzEzNzI2MiAwLjgzMTM3MjYyIDAuODMxMzcyNjIAA</bytes>
+											<bytes key="NSRGB">MC43ODAzOTIyMyAwLjgzNTI5NDE5IDAuODgyMzUzMDEAA</bytes>
 										</object>
 										<object class="NSColor" key="NSGridColor">
 											<int key="NSColorSpace">6</int>
@@ -287,14 +287,13 @@
 												<bytes key="NSWhite">MC41AA</bytes>
 											</object>
 										</object>
-										<double key="NSRowHeight">2.200000e+01</double>
+										<double key="NSRowHeight">1.700000e+01</double>
 										<int key="NSTvFlags">-750780416</int>
 										<int key="NSGridStyleMask">1</int>
 										<int key="NSColumnAutoresizingStyle">2</int>
 										<int key="NSDraggingSourceMaskForLocal">15</int>
 										<int key="NSDraggingSourceMaskForNonLocal">0</int>
 										<bool key="NSAllowsTypeSelect">YES</bool>
-										<float key="NSOutlineViewIndentationPerLevelKey">2.000000e+01</float>
 									</object>
 								</object>
 								<string key="NSFrame">{{0, 17}, {1037, 263}}</string>
@@ -321,7 +320,7 @@
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="86023696"/>
 								<string key="NSAction">_doScroller:</string>
-								<double key="NSPercent">9.990366e-01</double>
+								<double key="NSPercent">9.971154e-01</double>
 							</object>
 							<object class="NSClipView" id="933996762">
 								<reference key="NSNextResponder" ref="86023696"/>
@@ -348,7 +347,7 @@
 						<reference key="NSContentView" ref="1039725736"/>
 						<reference key="NSHeaderClipView" ref="933996762"/>
 						<reference key="NSCornerView" ref="448186647"/>
-						<bytes key="NSScrollAmts">QSAAAEEgAABByAAAQcgAAA</bytes>
+						<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 					</object>
 				</object>
 				<string key="NSFrameSize">{1037, 300}</string>
@@ -779,6 +778,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SVDocumentControlBarView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/SVDocumentControlBarView.h</string>
 					</object>
 				</object>
 			</object>

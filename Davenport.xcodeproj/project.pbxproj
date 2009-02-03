@@ -80,6 +80,10 @@
 		544463D10F379D1E0098BD0E /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A10F30C040002D56A4 /* GTMSenTestCase.m */; };
 		544463D20F379D1E0098BD0E /* GTMSystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A30F30C040002D56A4 /* GTMSystemVersion.m */; };
 		544463D60F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */; };
+		5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
+		5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
+		544466820F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
+		544466830F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
 		5466040B0F24D15F000C77E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		5466040C0F24D162000C77E7 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -263,6 +267,9 @@
 		544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAbstractIntegrationTest.h; sourceTree = "<group>"; };
 		544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAbstractIntegrationTest.m; sourceTree = "<group>"; };
 		544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDocumentTreeNodeTest.m; sourceTree = "<group>"; };
+		544466580F3865D00098BD0E /* SVDocumentControlBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDocumentControlBarView.h; sourceTree = "<group>"; };
+		544466590F3865D00098BD0E /* SVDocumentControlBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentControlBarView.m; sourceTree = "<group>"; };
+		544466810F3869AC0098BD0E /* segment1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = segment1.png; path = Images/segment1.png; sourceTree = "<group>"; };
 		546603EB0F24CF75000C77E7 /* vendorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vendorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDatabasePanel.xib; sourceTree = "<group>"; };
 		546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseCreateSheetController.h; sourceTree = "<group>"; };
@@ -494,8 +501,8 @@
 			isa = PBXGroup;
 			children = (
 				5456930B0F3256F400100237 /* headers */,
-				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
 				540089B10F30C040002D56A4 /* SVCouchDocumentController.m */,
+				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
 				540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
 				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
@@ -507,18 +514,14 @@
 		540089F00F30C13F002D56A4 /* Views, Cells and Controls */ = {
 			isa = PBXGroup;
 			children = (
-				540089C00F30C040002D56A4 /* SVPathControl.h */,
+				544466530F38657A0098BD0E /* headers */,
 				540089C10F30C040002D56A4 /* SVPathControl.m */,
-				540089AB0F30C040002D56A4 /* SVBreadCrumbCell.h */,
 				540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */,
-				540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */,
 				540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */,
-				540089C60F30C040002D56A4 /* SVSourceListCell.h */,
 				540089C70F30C040002D56A4 /* SVSourceListCell.m */,
-				540089AD0F30C040002D56A4 /* SVControlBarView.h */,
-				540089AE0F30C040002D56A4 /* SVControlBarView.m */,
-				540089C80F30C040002D56A4 /* SVSourceListView.h */,
 				540089C90F30C040002D56A4 /* SVSourceListView.m */,
+				540089AE0F30C040002D56A4 /* SVControlBarView.m */,
+				544466590F3865D00098BD0E /* SVDocumentControlBarView.m */,
 			);
 			name = "Views, Cells and Controls";
 			sourceTree = "<group>";
@@ -577,8 +580,23 @@
 				54B5460F0F31D006004E675B /* divan.icns */,
 				54B546100F31D006004E675B /* documents.tiff */,
 				54B546110F31D006004E675B /* segment.jpg */,
+				544466810F3869AC0098BD0E /* segment1.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		544466530F38657A0098BD0E /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				544466580F3865D00098BD0E /* SVDocumentControlBarView.h */,
+				540089C00F30C040002D56A4 /* SVPathControl.h */,
+				540089AB0F30C040002D56A4 /* SVBreadCrumbCell.h */,
+				540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */,
+				540089C60F30C040002D56A4 /* SVSourceListCell.h */,
+				540089AD0F30C040002D56A4 /* SVControlBarView.h */,
+				540089C80F30C040002D56A4 /* SVSourceListView.h */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 		5456930B0F3256F400100237 /* headers */ = {
@@ -769,6 +787,7 @@
 				540C88D90F31D51700E02727 /* documents.tiff in Resources */,
 				540C88DA0F31D51700E02727 /* segment.jpg in Resources */,
 				546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
+				544466830F3869AC0098BD0E /* segment1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +832,7 @@
 				54B546190F31D006004E675B /* documents.tiff in Resources */,
 				54B5461A0F31D006004E675B /* segment.jpg in Resources */,
 				546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
+				544466820F3869AC0098BD0E /* segment1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,6 +921,7 @@
 				546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 				548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */,
 				548BB1BC0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */,
+				5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +979,7 @@
 				546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 				548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */,
 				548BB1BD0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */,
+				5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@
 #import "SVBreadCrumbCell.h"
 #import "SVQueryResultController.h"
 #import "SVFunctionEditorController.h"
-#import "SVCouchDocumentController.h"
+#import "SVInspectorDocumentController.h"
 #import <CouchObjC/CouchObjC.h>
 #import "SVDatabaseDescriptor.h"
 #import "SVAppDelegate.h"
@@ -28,9 +28,12 @@
 // Source List column names used in IB. 
 #define COLUMNID_LABEL			@"LabelColumn"	
 #define COLUMNID_INFO			@"InfoColumn"
+
+// PRIVATE INTERFACE
 @interface SVMainWindowController (Private)
 
--(void)updateBreadCrumbs:(NSTreeNode*)descriptor;
+- (void)updateBreadCrumbs:(NSTreeNode*)descriptor;
+- (void)showEmptyInspectorView;
 
 @end 
 
@@ -50,13 +53,13 @@
 @synthesize pathControl;
 @synthesize createDocumentToolBarItem;
 @synthesize horizontalSplitView;
-
+@synthesize emptyInspectorView;
 - (void)awakeFromNib{     
     
     
   	createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
-    inspectorShowing = NO;
-    [[self inspectorView] setHidden:YES];
+    inspectorShowing = YES;
+    [[self inspectorView] setHidden:NO];
    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     
@@ -190,8 +193,8 @@
 
     // TODO There ought to be some caching happening here.
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
-                                                                                            bundle:nil 
-                                                                                      databaseName:[descriptor label]
+                                                                                               bundle:nil 
+                                                                                         databaseName:[descriptor label]
     ];
     
     
@@ -200,6 +203,8 @@
         [view removeFromSuperview];
     }
     
+
+    
     [bodyView addSubview:[queryResultController view]];
     
     NSRect frame = [[queryResultController view] frame];
@@ -207,9 +212,24 @@
     frame.size.width = superFrame.size.width;
     frame.size.height = superFrame.size.height;
     [[queryResultController view] setFrame:frame];
+
+    [self showEmptyInspectorView];
     
 }
 
+- (void)showEmptyInspectorView{
+    
+    // Only show the davenport name once. This only needs to be preformed once. 
+    // XXX This could be made faster. 
+    for (NSView *view in [self.emptyInspectorView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    for (NSView *view in [self.inspectorView subviews]) {
+        [view removeFromSuperview];
+    }
+    [self.inspectorView addSubview:self.emptyInspectorView];
+}
 
 #pragma mark -
 

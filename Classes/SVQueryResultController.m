@@ -11,7 +11,7 @@
 #import "SVAppDelegate.h"
 #import <JSON/JSON.h>
 #import "SVFunctionEditorController.h"
-#import "SVCouchDocumentController.h"
+#import "SVInspectorDocumentController.h"
 
 @interface  SVQueryResultController (Private)
 
@@ -163,7 +163,7 @@
         [[functionController view] setFrame:frame];
         
     }else{
-        SVCouchDocumentController *documentController = [[SVCouchDocumentController alloc]                                                                  
+        SVInspectorDocumentController *documentController = [[SVInspectorDocumentController alloc]                                                                  
                                                                 initWithNibName:@"CouchDocument" 
                                                                          bundle:nil
                                                                   couchDocument:couchDocument

@@ -27,7 +27,7 @@
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSCustomObject" id="1001">
-				<string key="NSClassName">SVCouchDocumentController</string>
+				<string key="NSClassName">SVInspectorDocumentController</string>
 			</object>
 			<object class="NSCustomObject" id="1003">
 				<string key="NSClassName">FirstResponder</string>
@@ -206,6 +206,34 @@
 									<object class="NSCustomResource" key="NSAlternateImage">
 										<string key="NSClassName">NSImage</string>
 										<string key="NSResourceName">button-delete-on</string>
+									</object>
+									<string key="NSAlternateContents"/>
+									<string key="NSKeyEquivalent"/>
+									<int key="NSPeriodicDelay">400</int>
+									<int key="NSPeriodicInterval">75</int>
+								</object>
+							</object>
+							<object class="NSButton" id="125371204">
+								<reference key="NSNextResponder" ref="628250507"/>
+								<int key="NSvFlags">265</int>
+								<string key="NSFrame">{{658, 0}, {76, 21}}</string>
+								<reference key="NSSuperview" ref="628250507"/>
+								<bool key="NSEnabled">YES</bool>
+								<object class="NSButtonCell" key="NSCell" id="951536684">
+									<int key="NSCellFlags">67239424</int>
+									<int key="NSCellFlags2">32768</int>
+									<string key="NSContents">Refresh</string>
+									<reference key="NSSupport" ref="871376162"/>
+									<reference key="NSControlView" ref="125371204"/>
+									<int key="NSButtonFlags">138166527</int>
+									<int key="NSButtonFlags2">162</int>
+									<object class="NSCustomResource" key="NSNormalImage">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">button-reload</string>
+									</object>
+									<object class="NSCustomResource" key="NSAlternateImage">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">button-reload-on</string>
 									</object>
 									<string key="NSAlternateContents"/>
 									<string key="NSKeyEquivalent"/>
@@ -580,6 +608,35 @@
 						<reference key="NSCornerView" ref="448186647"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 					</object>
+					<object class="NSImageView" id="904373832">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">256</int>
+						<object class="NSMutableSet" key="NSDragTypes">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="NSMutableArray" key="set.sortedObjects">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<string>Apple PDF pasteboard type</string>
+								<string>Apple PICT pasteboard type</string>
+								<string>Apple PNG pasteboard type</string>
+								<string>NSFilenamesPboardType</string>
+								<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
+								<string>NeXT TIFF v4.0 pasteboard type</string>
+							</object>
+						</object>
+						<string key="NSFrame">{{646, 279}, {1, 20}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSImageCell" key="NSCell" id="282910207">
+							<int key="NSCellFlags">130560</int>
+							<int key="NSCellFlags2">33554432</int>
+							<reference key="NSContents" ref="501178994"/>
+							<int key="NSAlign">0</int>
+							<int key="NSScale">0</int>
+							<int key="NSStyle">0</int>
+							<bool key="NSAnimates">YES</bool>
+						</object>
+						<bool key="NSEditable">YES</bool>
+					</object>
 				</object>
 				<string key="NSFrameSize">{1037, 300}</string>
 				<reference key="NSSuperview"/>
@@ -661,6 +718,30 @@
 					</object>
 					<int key="connectionID">71</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveDocumentAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="934420618"/>
+					</object>
+					<int key="connectionID">96</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">refreshDocumentAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="125371204"/>
+					</object>
+					<int key="connectionID">101</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">saveButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="109845003"/>
+					</object>
+					<int key="connectionID">102</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -698,6 +779,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="628250507"/>
 							<reference ref="86023696"/>
+							<reference ref="904373832"/>
 						</object>
 						<reference key="parent" ref="1002"/>
 						<string key="objectName">CouchDocument</string>
@@ -718,6 +800,7 @@
 							<reference ref="16853909"/>
 							<reference ref="127853875"/>
 							<reference ref="129780518"/>
+							<reference ref="125371204"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 						<string key="objectName">documentControlBar</string>
@@ -956,6 +1039,34 @@
 						<reference key="object" ref="1017219130"/>
 						<reference key="parent" ref="127853875"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">97</int>
+						<reference key="object" ref="125371204"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="951536684"/>
+						</object>
+						<reference key="parent" ref="628250507"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">98</int>
+						<reference key="object" ref="951536684"/>
+						<reference key="parent" ref="125371204"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">99</int>
+						<reference key="object" ref="904373832"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="282910207"/>
+						</object>
+						<reference key="parent" ref="1005"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100</int>
+						<reference key="object" ref="282910207"/>
+						<reference key="parent" ref="904373832"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -993,6 +1104,8 @@
 					<string>83.IBPluginDependency</string>
 					<string>84.IBPluginDependency</string>
 					<string>85.IBPluginDependency</string>
+					<string>97.IBPluginDependency</string>
+					<string>98.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1003,6 +1116,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1049,7 +1164,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">95</int>
+			<int key="maxID">102</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1100,17 +1215,29 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">SVCouchDocumentController</string>
+					<string key="className">SVDocumentControlBarView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/SVDocumentControlBarView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SVInspectorDocumentController</string>
 					<string key="superclassName">NSViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>refreshDocumentAction:</string>
+							<string>saveDocumentAction:</string>
 							<string>showNextRevisionAction:</string>
 							<string>showPreviousRevisionAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -1123,6 +1250,7 @@
 							<string>documentOutlineView</string>
 							<string>nextRevisionButton</string>
 							<string>previousRevisionButton</string>
+							<string>saveButton</string>
 							<string>versionTextField</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1131,28 +1259,21 @@
 							<string>NSOutlineView</string>
 							<string>NSButton</string>
 							<string>NSButton</string>
+							<string>NSButton</string>
 							<string>NSTextField</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/SVCouchDocumentController.h</string>
+						<string key="minorKey">Classes/SVInspectorDocumentController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">SVCouchDocumentController</string>
+					<string key="className">SVInspectorDocumentController</string>
 					<string key="superclassName">NSViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SVDocumentControlBarView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/SVDocumentControlBarView.h</string>
 					</object>
 				</object>
 			</object>

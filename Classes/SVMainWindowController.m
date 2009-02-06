@@ -12,12 +12,14 @@
 #import "NSTreeNode+SVDavenport.h"
 #import "SVBreadCrumbCell.h"
 #import "SVQueryResultController.h"
-#import "SVFunctionEditorController.h"
+#import "SVInspectorFunctionDocumentController.h"
 #import "SVInspectorDocumentController.h"
 #import <CouchObjC/CouchObjC.h>
 #import "SVDatabaseDescriptor.h"
 #import "SVAppDelegate.h"
 #import "SVDatabaseCreateSheetController.h"
+#import "SVSectionDescriptor.h"
+#import "SVDesignDocumentDescriptor.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -54,6 +56,8 @@
 @synthesize createDocumentToolBarItem;
 @synthesize horizontalSplitView;
 @synthesize emptyInspectorView;
+
+
 - (void)awakeFromNib{     
     
     
@@ -90,22 +94,67 @@
 }
 
 #pragma mark -
-#pragma mark NSOutlineViewDataSource delegate
+#pragma mark NSOutlineViewDataSource delegate ( Left Hand Nav. )
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
     if(item == nil){
-        return [[(NSTreeNode *)rootNode childNodes] count];
+        NSInteger count =  [[(NSTreeNode *)rootNode childNodes] count];
+        return count;
     }else{
+        
+        // Let's lazy load the design documents. 
+        if([item isKindOfClass:[SBCouchDesignDocument class]]){
+            // Create an operation and fetch the missing queries. We might consider 
+            // doing this once the databases have been displayed. That way the user is not waiting 
+            // to see stuff in the left-hand nav. 
+        }
+            
+        
+        
         return  [[item childNodes] count];
     }        
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return (item == nil) ? YES : ([[item childNodes] count] >  0);
+    if (item == nil)
+        return NO;
+    
+    SVAbstractDescriptor *desc = [item representedObject];
+    
+    if([desc isKindOfClass:[SVSectionDescriptor class]])
+        return YES;
+
+    if([desc isKindOfClass:[SVDatabaseDescriptor class]])
+        return YES;
+    
+    if([desc isKindOfClass:[SVDesignDocumentDescriptor class]])
+        return YES;
+    
+    return NO;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    return (item == nil) ? [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index] : [[(NSTreeNode *)item childNodes] objectAtIndex:index];
+    //return (item == nil) ? [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index] : [[(NSTreeNode *)item childNodes] objectAtIndex:index];
+    
+    if(item == nil)
+        return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
+    
+    NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
+    //SVAbstractDescriptor *desc = [childNode representedObject];
+    
+    /*
+    if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
+
+        //[[[NSApp delegate] couchDatabase] ]
+        
+        NSTreeNode *newChild = [NSTreeNode treeNodeWithRepresentedObject:desc];
+        [[childNode mutableChildNodes] addObject:newChild];
+        return childNode;
+    }
+     */
+    return childNode;    
+    
+    
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn 
@@ -118,16 +167,20 @@
 }
 
 - (BOOL)isSpecialGroup:(SVAbstractDescriptor *)groupNode{ 
-	return ([groupNode nodeIcon] == nil &&
-			[[groupNode label] isEqualToString:DATABASES] || [[groupNode label] isEqualToString:TOOLS] || [[groupNode label] isEqualToString:QUERIES]);
+	if([[groupNode label] isEqualToString:DATABASES] || [[groupNode label] isEqualToString:TOOLS] || [[groupNode label] isEqualToString:QUERIES]){
+        return YES;
+    }
+                
+    return NO;
+    
 }
 
 #pragma mark -
-#pragma mark - NSOutlineView delegate
+#pragma mark - NSOutlineView delegate  (Left Hand Nav)
 
 -(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{
     if ([self isSpecialGroup:[item representedObject]]){
-        [outlineView expandItem:item];
+        //[outlineView expandItem:item];
 		return YES;
 	}else{
 		return NO;
@@ -139,9 +192,8 @@
     return YES;
 }
 
-// Once opened it can't be closed. 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item{
-    return NO;
+    return YES;
 }
 
 // -------------------------------------------------------------------------------

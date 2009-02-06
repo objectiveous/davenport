@@ -10,7 +10,7 @@
 #import <CouchObjC/CouchObjC.h>
 #import "SVAppDelegate.h"
 #import <JSON/JSON.h>
-#import "SVFunctionEditorController.h"
+#import "SVInspectorFunctionDocumentController.h"
 #import "SVInspectorDocumentController.h"
 
 @interface  SVQueryResultController (Private)
@@ -70,7 +70,10 @@
 // TODO - We need to return the value for the value column. 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
     //NSString *col = [tableColumn identifier];
-        
+    if(![item isKindOfClass:[SBCouchDocument class]])
+        return @"ERROR";
+    
+    
     if([ [tableColumn identifier] isEqualToString:@"Key"])
         return [item valueForKey:@"key"];
 
@@ -152,7 +155,7 @@
     // subview in existence. 
     NSString *tmp = [couchDocument objectForKey:@"key"];   
     if([tmp hasPrefix:@"_design/"]){     
-        SVFunctionEditorController *functionController = [[SVFunctionEditorController alloc] 
+        SVInspectorFunctionDocumentController *functionController = [[SVInspectorFunctionDocumentController alloc] 
                                                             initWithNibName:@"FunctionEditor" bundle:nil];
         
         [inspectorView addSubview:[functionController view]];

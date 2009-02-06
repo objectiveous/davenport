@@ -10,7 +10,15 @@
 #import <CouchObjC/CouchObjC.h>
 
 @interface SVAbstractIntegrationTest : SenTestCase {
-      SBCouchServer *couchServer;
+    SBCouchServer *couchServer;
+    SBCouchDatabase *couchDatabase;
+    BOOL leaveDatabase;    
 }
 
+@property (retain) SBCouchServer *couchServer;
+@property (retain) SBCouchDatabase *couchDatabase;
+@property BOOL leaveDatabase; 
+
+-(SBCouchResponse*)provisionViews;
+-(NSString*)designDocName;
 @end

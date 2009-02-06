@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "SVAbstractDescriptor.h"
 
-@interface SVSectionDescriptor :  SVAbstractDescriptor {
+@interface SVSectionDescriptor : SVAbstractDescriptor {
 
 }
 

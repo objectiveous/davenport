@@ -45,6 +45,7 @@ int LOCAL_PORT = 5984;
 - (void) performFetchServerInfoOperation {
     SVDebug(@"Queue'ing up a fetch operation"); 
     SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer];
+
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
                         options:0

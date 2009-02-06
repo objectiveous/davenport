@@ -86,7 +86,7 @@
   }
 
 #pragma mark -
-#pragma mark Delegate 
+#pragma mark OutlineView DataSource Delegate  
 
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item{

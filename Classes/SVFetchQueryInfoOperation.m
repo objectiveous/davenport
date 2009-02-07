@@ -11,53 +11,53 @@
 #import "SVViewDescriptor.h"
 #import "NSTreeNode+SVDavenport.h"
 
-@implementation SVFetchQueryInfoOperation
-@synthesize rootNode;
+@implementation SVFetchQueryInfoOperation;
+@synthesize viewTreeNodes;
 @synthesize couchServer;
 @synthesize couchDatabase;
 @synthesize documentId;
 @synthesize fetchReturnedData;
+@synthesize parentDesignDocTreeNode;
 
-
-
--(id) initWithCouchServer:(SBCouchServer *)server database:(SBCouchDatabase*)database  forDesignDocument:(NSString*)docId{
+-(id) initWithCouchServer:(SBCouchServer *)server database:(SBCouchDatabase*)database parentDesignDocTreeNode:(NSTreeNode*)node;
+{
     self = [super init];
     if(self){
+        //SVAbstractDescriptor *desc = [docId representedObject];
+        self.parentDesignDocTreeNode = node;
         self.couchServer = server;
-        self.documentId = docId;
+        //self.documentId = desc.label;
         self.couchDatabase = database;
         self.fetchReturnedData = NO;
+        self.viewTreeNodes = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-
+- (void)dealloc{
+    [viewTreeNodes release];
+    [super dealloc];
+}
 
 - (void)main {
-
-    SBCouchDesignDocument *designDoc = [self.couchDatabase getDesignDocument:self.documentId];
-    //SVDebug(@"doc ID [ %@ ]", self.documentId);
-    SVDebug(@"--->  designDoc [ %@ ]", designDoc);
-    //SVDebug(@"--->  database name  [ %@ ]", self.couchDatabase.name);
-    
-    //assert(designDoc);
-
-    
-    
-    NSTreeNode *root = [[[NSTreeNode alloc] init] autorelease];
-    
+    SVAbstractDescriptor *d = [parentDesignDocTreeNode representedObject];
+    SBCouchDesignDocument *designDoc = [self.couchDatabase getDesignDocument:d.label];
+    //NSLog(@"--->  designDoc [ %@ ]", designDoc);
+  
     NSDictionary *views = [designDoc views];
-    
-    
     for(NSString *key in [views allKeys]){
-       SVViewDescriptor *desc = [[[SVViewDescriptor alloc] init] autorelease];
+        NSLog(@"    %@", key);
+        
+        SVViewDescriptor *desc = [[[SVViewDescriptor alloc] init] autorelease];    
         desc.label = key;
-        [root addChildNodeWithObject:desc];    
+        NSTreeNode *viewNode = [NSTreeNode treeNodeWithRepresentedObject:desc];
+        [self.viewTreeNodes addObject:viewNode];
+        
+        [[parentDesignDocTreeNode mutableChildNodes] addObject:viewNode];        
+        
     }
     
-    [self setRootNode:root];
-    self.fetchReturnedData = YES;
-    SVDebug(@"!!!!!!!! **************** Here is the root %@", self.rootNode);
+    self.fetchReturnedData = YES;    
 }
 
 -(BOOL)fetchReturnedData{

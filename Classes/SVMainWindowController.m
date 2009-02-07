@@ -20,6 +20,7 @@
 #import "SVDatabaseCreateSheetController.h"
 #import "SVSectionDescriptor.h"
 #import "SVDesignDocumentDescriptor.h"
+#import "SVFetchQueryInfoOperation.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -134,24 +135,44 @@
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    //return (item == nil) ? [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index] : [[(NSTreeNode *)item childNodes] objectAtIndex:index];
-    
     if(item == nil)
         return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
-    
-    NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
-    //SVAbstractDescriptor *desc = [childNode representedObject];
-    
-    /*
-    if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
-
-        //[[[NSApp delegate] couchDatabase] ]
         
-        NSTreeNode *newChild = [NSTreeNode treeNodeWithRepresentedObject:desc];
-        [[childNode mutableChildNodes] addObject:newChild];
-        return childNode;
+    SVAbstractDescriptor *itemDescriptor = [item representedObject];
+    NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
+        
+    SVAbstractDescriptor *desc = [childNode representedObject];
+
+    // XXX THIS IS A GROSS HACK. 
+    if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
+        NSLog(@"   label -> %@",desc.label);
+       
+        // We are only going to do this once. 
+        
+        if(operationQueue == nil){
+           operationQueue = [[NSOperationQueue alloc] init];
+        }
+        
+        SBCouchServer *server = [[NSApp delegate] couchServer];
+        SBCouchDatabase *database = [server database:itemDescriptor.label];
+            
+        SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] 
+                                                     initWithCouchServer:server
+                                                                database:database
+                                                parentDesignDocTreeNode:childNode];
+        
+        
+        [fetchOperation addObserver:self
+                         forKeyPath:@"isFinished" 
+                            options:0
+                            context:nil];
+            NSLog(@"   queuing up fetchOperation ");
+        [operationQueue addOperation:fetchOperation];
+        //[operationQueue waitUntilAllOperationsAreFinished];
+        [fetchOperation release];
+        
     }
-     */
+    
     return childNode;    
     
     
@@ -169,11 +190,21 @@
 - (BOOL)isSpecialGroup:(SVAbstractDescriptor *)groupNode{ 
 	if([[groupNode label] isEqualToString:DATABASES] || [[groupNode label] isEqualToString:TOOLS] || [[groupNode label] isEqualToString:QUERIES]){
         return YES;
-    }
-                
+    }                
     return NO;
     
 }
+
+#pragma mark -
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
+    
+    if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){
+        
+        id root = [(SVFetchQueryInfoOperation*)object parentDesignDocTreeNode];
+        NSLog(@"Made it here %@", root);
+    } 
+}
+
 
 #pragma mark -
 #pragma mark - NSOutlineView delegate  (Left Hand Nav)

@@ -37,6 +37,8 @@
     BOOL                              inspectorShowing;
     
     SVDatabaseCreateSheetController  *createDatabaseSheet;
+    @private
+    NSOperationQueue                  *operationQueue;
 }
 
 @property (retain)  NSTreeNode                     *rootNode;

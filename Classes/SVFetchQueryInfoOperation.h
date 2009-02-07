@@ -10,8 +10,9 @@
 #import <CouchObjC/SBCouchServer.h>
 
 @interface SVFetchQueryInfoOperation : NSOperation {
-    NSTreeNode *rootNode;
-    BOOL        fetchReturnedData;
+    NSMutableArray *viewTreeNodes;
+    NSTreeNode     *parentDesignDocTreeNode;
+    BOOL            fetchReturnedData;
 
 @protected
     SBCouchServer   *couchServer;
@@ -19,13 +20,14 @@
     NSString        *documentId;
 }
 
-@property (assign) NSTreeNode      *rootNode;
+@property (assign) NSMutableArray  *viewTreeNodes;
+@property (assign) NSTreeNode      *parentDesignDocTreeNode;  
 @property (retain) SBCouchServer   *couchServer;
 @property (retain) SBCouchDatabase *couchDatabase;
 @property (retain) NSString        *documentId; 
 @property          BOOL             fetchReturnedData;
 
--(id) initWithCouchServer:(SBCouchServer *)server database:(SBCouchDatabase*)database forDesignDocument:(NSString*)docId;
+-(id) initWithCouchServer:(SBCouchServer *)server database:(SBCouchDatabase*)database parentDesignDocTreeNode:(NSTreeNode*)node;
 -(BOOL)fetchReturnedData;
 
 @end

@@ -37,7 +37,7 @@
 
 - (void)updateBreadCrumbs:(NSTreeNode*)descriptor;
 - (void)showEmptyInspectorView;
-
+- (void)fetchViews:(NSTreeNode*)designNode;
 @end 
 
 @implementation SVMainWindowController
@@ -60,7 +60,6 @@
 
 
 - (void)awakeFromNib{     
-    
     
   	createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
     inspectorShowing = YES;
@@ -87,11 +86,14 @@
 -(void) dealloc{
     [urlImage release];
     [rootNode release];
+    [operationQueue release];
     [super dealloc];
 }
 
 - (void)performUpdateRoot:(NSTreeNode *)inObject{
     [self setRootNode:inObject];
+
+    // TODO we might consider loading the views now. 
 }
 
 #pragma mark -
@@ -122,8 +124,11 @@
     
     SVAbstractDescriptor *desc = [item representedObject];
     
-    if([desc isKindOfClass:[SVSectionDescriptor class]])
+    if([desc isKindOfClass:[SVSectionDescriptor class]]){
+        //[self.sourceView expandItem:item];
         return YES;
+    }
+        
 
     if([desc isKindOfClass:[SVDatabaseDescriptor class]])
         return YES;
@@ -138,44 +143,23 @@
     if(item == nil)
         return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
         
-    SVAbstractDescriptor *itemDescriptor = [item representedObject];
+    //SVAbstractDescriptor *itemDescriptor = [item representedObject];
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
         
     SVAbstractDescriptor *desc = [childNode representedObject];
 
+     //if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
+     //    [self.sourceView expandItem:item];
+     //}
     // XXX THIS IS A GROSS HACK. 
     if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
-        NSLog(@"   label -> %@",desc.label);
-       
-        // We are only going to do this once. 
-        
-        if(operationQueue == nil){
-           operationQueue = [[NSOperationQueue alloc] init];
-        }
-        
-        SBCouchServer *server = [[NSApp delegate] couchServer];
-        SBCouchDatabase *database = [server database:itemDescriptor.label];
-            
-        SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] 
-                                                     initWithCouchServer:server
-                                                                database:database
-                                                parentDesignDocTreeNode:childNode];
-        
-        
-        [fetchOperation addObserver:self
-                         forKeyPath:@"isFinished" 
-                            options:0
-                            context:nil];
-            NSLog(@"   queuing up fetchOperation ");
-        [operationQueue addOperation:fetchOperation];
-        //[operationQueue waitUntilAllOperationsAreFinished];
-        [fetchOperation release];
-        
-    }
-    
-    return childNode;    
-    
-    
+        // ChildNode at this point is a a design document. We perfectly capable to
+        // displaying it at this point be ought to load up its actual views. 
+        // XXX This works but not for option + cliking on the root node to expand all items. 
+        // might be better to load the views sooner. 
+        [self fetchViews:childNode];
+    }    
+    return childNode;            
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn 
@@ -188,20 +172,53 @@
 }
 
 - (BOOL)isSpecialGroup:(SVAbstractDescriptor *)groupNode{ 
-	if([[groupNode label] isEqualToString:DATABASES] || [[groupNode label] isEqualToString:TOOLS] || [[groupNode label] isEqualToString:QUERIES]){
+	if([[groupNode label] isEqualToString:DATABASES] || [[groupNode label] isEqualToString:TOOLS]){
         return YES;
     }                
     return NO;
-    
 }
 
 #pragma mark -
+
+/*
+- (void)outlineViewItemDidExpand:(NSNotification *)notification{
+    NSTreeNode *item = (NSTreeNode*) [notification object];
+    //SVAbstractDescriptor *desc = [item representedObject];
+    
+}
+*/
+ 
+#pragma mark -
+-(void)fetchViews:(NSTreeNode*)designNode{
+    if(operationQueue == nil){
+        operationQueue = [[NSOperationQueue alloc] init];
+    }
+
+    SVAbstractDescriptor *parentDescriptor =  [[designNode parentNode] representedObject];
+        
+    // XXX If we had the actuall SBCouchDatabase, we could simplify this signature. 
+    SBCouchServer *server = [[NSApp delegate] couchServer];
+    SBCouchDatabase *couchDatabase = [server database:parentDescriptor.label];
+    SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] 
+                                                 initWithCouchDatabase:couchDatabase                                                 designDocTreeNode:designNode];
+    
+    
+    [fetchOperation addObserver:self
+                     forKeyPath:@"isFinished" 
+                        options:0
+                        context:nil];
+    NSLog(@"   queuing up fetchOperation ");
+    [operationQueue addOperation:fetchOperation];
+    [fetchOperation release];
+    
+}
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
     
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){
         
-        id root = [(SVFetchQueryInfoOperation*)object parentDesignDocTreeNode];
-        NSLog(@"Made it here %@", root);
+        id root = [(SVFetchQueryInfoOperation*)object designDocTreeNode];
+        // XXX Might want to do something if we failed to get the views we were expecting. 
+        // perhapse check the fetchReturnedData property. 
     } 
 }
 
@@ -209,15 +226,13 @@
 #pragma mark -
 #pragma mark - NSOutlineView delegate  (Left Hand Nav)
 
--(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{
+-(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{          
     if ([self isSpecialGroup:[item representedObject]]){
-        //[outlineView expandItem:item];
 		return YES;
 	}else{
 		return NO;
 	}    
 }
-
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item{
     return YES;
@@ -270,17 +285,21 @@
     NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
 
     SVAbstractDescriptor *descriptor = [item representedObject];
-    SVDebug(@"Selection changed [%@]", [descriptor label]);
+    SVDebug(@"Selection changed [%@]", descriptor.identity);
     [self updateBreadCrumbs:item];
 
-
     // TODO There ought to be some caching happening here.
+    /*
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
                                                                                                bundle:nil 
-                                                                                         databaseName:[descriptor label]
+                                                                                         databaseName:descriptor.identity
     ];
+    */
     
-    
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+                                                                                               bundle:nil 
+                                                                                             treeNode:item];
+              
     // brutal
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];

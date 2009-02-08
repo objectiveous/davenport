@@ -22,15 +22,13 @@
 @implementation NSTreeNode (SVDavenport)
 
 -(NSTreeNode *) addSection:(NSString *)sectionName{
-    SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] init] autorelease];
-    section.label = sectionName;
+    SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
     return [self addChildNodeWithObject:section];
     
 }
 
 -(NSTreeNode *) addDatabase:(NSString *)databaseName{
-    SVDatabaseDescriptor *database = [[[SVDatabaseDescriptor alloc] init] autorelease];
-    database.label = databaseName;
+    SVDatabaseDescriptor *database = [[[SVDatabaseDescriptor alloc] initWithLabel:databaseName andIdentity:databaseName] autorelease];
     return [self addChildNodeWithObject:database];
 }
 

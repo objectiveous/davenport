@@ -37,7 +37,6 @@
 
     assert(couchServer);
     NSArray *databases = [couchServer listDatabases];
-
     
     if(databases == nil){
         SVDebug(@"No databases found.");
@@ -57,8 +56,12 @@
         NSEnumerator *designDocs = [database getDesignDocuments];
         SBCouchDocument *designDoc;
         while((designDoc = [designDocs nextObject])){
-           SVDesignDocumentDescriptor *designDesc = [[[SVDesignDocumentDescriptor alloc] init] autorelease];
-           designDesc.label = designDoc.identity;
+            
+            
+           SVDesignDocumentDescriptor *designDesc = [[[SVDesignDocumentDescriptor alloc] 
+                                                      initWithLabel:[designDoc.identity lastPathComponent]
+                                                        andIdentity:designDoc.identity] autorelease];
+
            //designDesc.label = @"asdf";
             
            [databaseInstance addChildNodeWithObject:designDesc];

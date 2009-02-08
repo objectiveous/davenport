@@ -12,12 +12,18 @@
 #import <JSON/JSON.h>
 #import "SVInspectorFunctionDocumentController.h"
 #import "SVInspectorDocumentController.h"
+#import "SVAbstractDescriptor.h"
+#import "SVDatabaseDescriptor.h"
+#import "SVViewDescriptor.h"
+#import "SVDesignDocumentDescriptor.h"
+
 
 @interface  SVQueryResultController (Private)
 
--(NSString*)stripNewLines:(NSString*)string;
--(void) handleCouchDocumentSelected:(NSDictionary*)couchDocument;
-
+- (NSString*)stripNewLines:(NSString*)string;
+- (void) handleCouchDocumentSelected:(NSDictionary*)couchDocument;
+- (NSString*)theNodesDatabase:(NSTreeNode*)node;
+- (NSString*)theNodesDocumentIdentity:(NSTreeNode*)node;
 @end
 
 
@@ -28,14 +34,36 @@
 @synthesize couchDatabase;
 
 #pragma mark -
+
+// Since our treeNodes get stuffed w/ SVAbstractDescriptors, and because these descriptors have the identity 
+// of the resource, we can build the URL that that any particular TreeNeds represents. 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){        
+        [self setDatabaseName:[self theNodesDatabase:node]];
+        NSString *docId = [self theNodesDocumentIdentity:node];
+        
+        SBCouchServer *server = [[NSApp delegate] couchServer];  
+        SBCouchDatabase *database = [server database:self.databaseName];
+        
+        [self setQueryResult:(SBCouchEnumerator*) [database getViewEnumerator:docId]];
+        [self setCouchDatabase:database];
+        
+        //NSLog(@"queryResult [%@]", queryResult);
+        //NSLog(@"totalRows [%i]", [queryResult totalRows]);
+    } 
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
         [self setDatabaseName:dbName];
-   
+        
         SVDebug(@"*** dbName [%@]", [self databaseName]);
-    
-    
+        
+        
         // TODO don't hard code this. Look it up somehow
         //SBCouchServer *server = [[SBCouchServer alloc] initWithHost:@"localhost" port:LOCAL_PORT];
         
@@ -44,11 +72,50 @@
         SBCouchDatabase *database = [server database:dbName];
         [self setQueryResult:(SBCouchEnumerator*) [database allDocsInBatchesOf:10]];
         [self setCouchDatabase:database];
-    
+        
         NSLog(@"queryResult [%@]", queryResult);
         NSLog(@"totalRows [%i]", [queryResult totalRows]);
     } 
     return self;
+}
+
+
+#pragma mark -
+
+-(NSString*) theNodesDatabase:(NSTreeNode*)node{
+    if([node parentNode] == nil)
+        return nil;
+            
+    SVAbstractDescriptor *desc = [node representedObject];
+    if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
+        return desc.identity;
+    }else{
+        return [self theNodesDatabase:[node parentNode]];
+    }
+}
+-(NSString*) theNodesDocumentIdentity:(NSTreeNode*)node{
+    if([node parentNode] == nil)
+        return nil;
+    
+    SVAbstractDescriptor *desc = [node representedObject];
+    if([desc isKindOfClass:[SVViewDescriptor class]]){ 
+        NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
+        // The parent of a view is a esign doc. 
+        SVDesignDocumentDescriptor *designDesc = [[node parentNode] representedObject];
+
+        // sofa-blog/_view/datacenter/hardware
+        // database/_view/domain/view
+        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_view/%@/%@",designDesc.label,viewPathPart];
+        
+        return urlPath;
+    }else if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
+        //NSMutableString *viewPathPart = [NSMutableString stringWithFormat:@"/%@/_all_docs",desc.identity];
+        return @"_all_docs";
+    }else{        
+        return desc.identity;
+        //[self theNodesDatabase:[node parentNode]];
+    }
+    
 }
 
 #pragma mark -

@@ -12,52 +12,38 @@
 #import "NSTreeNode+SVDavenport.h"
 
 @implementation SVFetchQueryInfoOperation;
-@synthesize viewTreeNodes;
-@synthesize couchServer;
 @synthesize couchDatabase;
-@synthesize documentId;
 @synthesize fetchReturnedData;
-@synthesize parentDesignDocTreeNode;
+@synthesize designDocTreeNode;
 
--(id) initWithCouchServer:(SBCouchServer *)server database:(SBCouchDatabase*)database parentDesignDocTreeNode:(NSTreeNode*)node;
-{
+-(id) initWithCouchDatabase:(SBCouchDatabase*)database designDocTreeNode:(NSTreeNode*)node{
     self = [super init];
     if(self){
-        //SVAbstractDescriptor *desc = [docId representedObject];
-        self.parentDesignDocTreeNode = node;
-        self.couchServer = server;
-        //self.documentId = desc.label;
+        self.designDocTreeNode = node;
         self.couchDatabase = database;
         self.fetchReturnedData = NO;
-        self.viewTreeNodes = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)dealloc{
-    [viewTreeNodes release];
     [super dealloc];
 }
 
 - (void)main {
-    SVAbstractDescriptor *d = [parentDesignDocTreeNode representedObject];
-    SBCouchDesignDocument *designDoc = [self.couchDatabase getDesignDocument:d.label];
-    //NSLog(@"--->  designDoc [ %@ ]", designDoc);
+    SVAbstractDescriptor *desc = [designDocTreeNode representedObject];
+    SBCouchDesignDocument *designDoc = [self.couchDatabase getDesignDocument:desc.identity];
   
-    NSDictionary *views = [designDoc views];
-    for(NSString *key in [views allKeys]){
-        NSLog(@"    %@", key);
+    for(NSString *key in [[designDoc views] allKeys]){
+        // TODO gets called more than once needlessly. 
+        self.fetchReturnedData = YES;
+
         
-        SVViewDescriptor *desc = [[[SVViewDescriptor alloc] init] autorelease];    
-        desc.label = key;
-        NSTreeNode *viewNode = [NSTreeNode treeNodeWithRepresentedObject:desc];
-        [self.viewTreeNodes addObject:viewNode];
-        
-        [[parentDesignDocTreeNode mutableChildNodes] addObject:viewNode];        
-        
+        SVViewDescriptor *desc = [[[SVViewDescriptor alloc] initWithLabel:key andIdentity:key] autorelease];    
+        NSTreeNode *viewNode = [NSTreeNode treeNodeWithRepresentedObject:desc];        
+        [[self.designDocTreeNode mutableChildNodes] addObject:viewNode];        
     }
-    
-    self.fetchReturnedData = YES;    
+
 }
 
 -(BOOL)fetchReturnedData{

@@ -21,6 +21,7 @@
 #import "SVSectionDescriptor.h"
 #import "SVDesignDocumentDescriptor.h"
 #import "SVFetchQueryInfoOperation.h"
+#import "SVViewDescriptor.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -38,6 +39,9 @@
 - (void)updateBreadCrumbs:(NSTreeNode*)descriptor;
 - (void)showEmptyInspectorView;
 - (void)fetchViews:(NSTreeNode*)designNode;
+- (void)showItemInMainView:(NSTreeNode*)item;
+- (void)showViewInMainView:(NSTreeNode*)item;
+- (void)showDesignView:(NSTreeNode*)item;
 @end 
 
 @implementation SVMainWindowController
@@ -283,29 +287,76 @@
         return;
             
     NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
-
     SVAbstractDescriptor *descriptor = [item representedObject];
     SVDebug(@"Selection changed [%@]", descriptor.identity);
     [self updateBreadCrumbs:item];
-
-    // TODO There ought to be some caching happening here.
-    /*
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
-                                                                                               bundle:nil 
-                                                                                         databaseName:descriptor.identity
-    ];
-    */
     
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
-                                                                                               bundle:nil 
-                                                                                             treeNode:item];
-              
-    // brutal
+    // Show database results (_all_docs) in the main window and design document views as well. 
+    if([descriptor isKindOfClass:[SVDatabaseDescriptor class]]){        
+        [self showItemInMainView:item];
+    }else if([descriptor isKindOfClass:[SVDesignDocumentDescriptor class]]){
+        [self showDesignView:item];
+    }else if([descriptor isKindOfClass:[SVViewDescriptor class]]){
+        [self showViewInMainView:item];
+    }    
+}
+
+- (void)showDesignView:(NSTreeNode*)item{
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
     }
     
+    [self showEmptyInspectorView];        
+}
 
+-(void)showViewInMainView:(NSTreeNode*)item{
+    for (NSView *view in [bodyView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    SVInspectorFunctionDocumentController *functionController = [[SVInspectorFunctionDocumentController alloc] 
+                                                                 initWithNibName:@"FunctionEditor" bundle:nil];
+    
+    [bodyView addSubview:[functionController view]];
+    
+    NSRect frame = [[functionController  view] frame];
+    NSRect superFrame = [bodyView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [[functionController  view] setFrame:frame];
+    
+    //[self showEmptyInspectorView];
+    
+    for (id view in [inspectorView subviews]){
+        [view removeFromSuperview];
+    }
+    
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+                                                                                               bundle:nil 
+                                                                                             treeNode:item];
+
+    [inspectorView addSubview:[queryResultController view]];
+    
+    frame = [[queryResultController view] frame];
+    superFrame = [inspectorView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [[queryResultController view] setFrame:frame];
+    
+    
+    
+    
+}
+
+-(void)showItemInMainView:(NSTreeNode*)item{
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+                                                                                               bundle:nil 
+                                                                                             treeNode:item];
+    
+    // brutal
+    for (NSView *view in [bodyView subviews]) {
+        [view removeFromSuperview];
+    }
     
     [bodyView addSubview:[queryResultController view]];
     
@@ -314,7 +365,7 @@
     frame.size.width = superFrame.size.width;
     frame.size.height = superFrame.size.height;
     [[queryResultController view] setFrame:frame];
-
+    
     [self showEmptyInspectorView];
     
 }

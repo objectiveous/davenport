@@ -15,10 +15,14 @@
 @class SVDatabaseCreateSheetController;
 
 @interface SVMainWindowController : NSWindowController {
-    IBOutlet NSOutlineView	         *sourceView;
+    IBOutlet NSOutlineView	         *sourceView;    
     IBOutlet SVEmptyInspectorView    *emptyInspectorView;
+
+    
+    // The three primary views of Davenport. 
     IBOutlet NSView                  *adminView;
     IBOutlet NSView                  *bodyView;
+    IBOutlet RBSplitSubview          *inspectorView;
     IBOutlet NSView                  *logView;
 
     IBOutlet NSTextView              *outputView;
@@ -26,7 +30,7 @@
     IBOutlet SVPathControl           *pathControl;    
     IBOutlet NSToolbar               *toolBar;
     IBOutlet NSToolbarItem           *createDocumentToolBarItem;
-    IBOutlet RBSplitSubview          *inspectorView;
+
     IBOutlet RBSplitView             *horizontalSplitView;
 
     IBOutlet NSMenu                  *outlineViewContextMenu;

@@ -79,7 +79,7 @@
 							</object>
 							<object class="NSButton" id="129780518">
 								<reference key="NSNextResponder" ref="628250507"/>
-								<int key="NSvFlags">265</int>
+								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{212, 0}, {17, 21}}</string>
 								<reference key="NSSuperview" ref="628250507"/>
 								<bool key="NSEnabled">YES</bool>

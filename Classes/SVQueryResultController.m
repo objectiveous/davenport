@@ -16,14 +16,13 @@
 #import "SVDatabaseDescriptor.h"
 #import "SVViewDescriptor.h"
 #import "SVDesignDocumentDescriptor.h"
-
+#import "NSTreeNode+SVDavenport.h"
 
 @interface  SVQueryResultController (Private)
-
 - (NSString*)stripNewLines:(NSString*)string;
 - (void) handleCouchDocumentSelected:(NSDictionary*)couchDocument;
-- (NSString*)theNodesDatabase:(NSTreeNode*)node;
-- (NSString*)theNodesDocumentIdentity:(NSTreeNode*)node;
+//- (NSString*)theNodesDatabase:(NSTreeNode*)node;
+//- (NSString*)theNodesDocumentIdentity:(NSTreeNode*)node;
 @end
 
 
@@ -35,14 +34,36 @@
 
 #pragma mark -
 
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchView:(SBCouchView*)couchView{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        SBCouchServer *server = [[NSApp delegate] couchServer];
+        SBCouchDatabase *database = [server database:couchView.couchDatabase];
+        
+        SBCouchEnumerator *couchEnumerator = (SBCouchEnumerator*) [database slowViewEnumerator:couchView];
+        // TODO We do this becuase here because I'm clueless as to where this should 
+        // really happen. 
+        //[couchEnumerator totalRows:[[couchEnumerator rows] count]];
+        [self setQueryResult:couchEnumerator];
+        [self setCouchDatabase:database];
+    } 
+    return self;
+}
+
 // Since our treeNodes get stuffed w/ SVAbstractDescriptors, and because these descriptors have the identity 
 // of the resource, we can build the URL that that any particular TreeNeds represents. 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){        
-        [self setDatabaseName:[self theNodesDatabase:node]];
-        NSString *docId = [self theNodesDocumentIdentity:node];
+        //[self setDatabaseName:[self theNodesDatabase:node]];
+        [self setDatabaseName:[node deriveDatabaseName]];
+        
+        //[self setDatabaseName:[self theNodesDatabase:node]];
+        //NSString *docId = [self theNodesDocumentIdentity:node];
+        NSString *docId = [node deriveDocumentIdentity];
         
         SBCouchServer *server = [[NSApp delegate] couchServer];  
         SBCouchDatabase *database = [server database:self.databaseName];
@@ -82,42 +103,6 @@
 
 #pragma mark -
 
--(NSString*) theNodesDatabase:(NSTreeNode*)node{
-    if([node parentNode] == nil)
-        return nil;
-            
-    SVAbstractDescriptor *desc = [node representedObject];
-    if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
-        return desc.identity;
-    }else{
-        return [self theNodesDatabase:[node parentNode]];
-    }
-}
--(NSString*) theNodesDocumentIdentity:(NSTreeNode*)node{
-    if([node parentNode] == nil)
-        return nil;
-    
-    SVAbstractDescriptor *desc = [node representedObject];
-    if([desc isKindOfClass:[SVViewDescriptor class]]){ 
-        NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
-        // The parent of a view is a esign doc. 
-        SVDesignDocumentDescriptor *designDesc = [[node parentNode] representedObject];
-
-        // sofa-blog/_view/datacenter/hardware
-        // database/_view/domain/view
-        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_view/%@/%@",designDesc.label,viewPathPart];
-        
-        return urlPath;
-    }else if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
-        //NSMutableString *viewPathPart = [NSMutableString stringWithFormat:@"/%@/_all_docs",desc.identity];
-        return @"_all_docs";
-    }else{        
-        return desc.identity;
-        //[self theNodesDatabase:[node parentNode]];
-    }
-    
-}
-
 #pragma mark -
 #pragma mark NSOutlineViewDataSource delegate
 
@@ -145,7 +130,13 @@
         return [item valueForKey:@"key"];
 
     if([ [tableColumn identifier] isEqualToString:@"Value"]){
-        return [[item valueForKey:@"value"] JSONRepresentation];
+        
+        id value = [item valueForKey:@"value"];
+
+        if([value isKindOfClass:[NSString class]])
+            return value;
+        else
+            return [value JSONRepresentation];
     }            
     return @"Error: Unknown";
     

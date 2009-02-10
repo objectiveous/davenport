@@ -54,6 +54,7 @@
 
         
         NSEnumerator *designDocs = [database getDesignDocuments];
+        // TODO Maybe this ought to return actual design documents. 
         SBCouchDocument *designDoc;
         while((designDoc = [designDocs nextObject])){
             

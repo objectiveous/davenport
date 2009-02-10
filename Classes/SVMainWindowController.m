@@ -22,6 +22,7 @@
 #import "SVDesignDocumentDescriptor.h"
 #import "SVFetchQueryInfoOperation.h"
 #import "SVViewDescriptor.h"
+#import "SVDavenport.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -80,6 +81,13 @@
                            selector:@selector(appendBreadCrumb:)
                                name:@"appendBreadCrumb"
                              object:nil];    
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(runAndDisplaySlowView:)
+                               name:SV_NOTIFICATION_RUN_SLOW_VIEW
+                             object:nil];    
+    
+    
     
     [self setUrlImage:[[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericURLIcon)] retain]];
     [[self urlImage] setSize:NSMakeSize(16,16)];
@@ -314,11 +322,13 @@
         [view removeFromSuperview];
     }
     
-    SVInspectorFunctionDocumentController *functionController = [[SVInspectorFunctionDocumentController alloc] 
-                                                                 initWithNibName:@"FunctionEditor" bundle:nil];
+    // SHOW FUNTION EDITOR IN THE MAIN VIEW
+    SVInspectorFunctionDocumentController *functionController = [[SVInspectorFunctionDocumentController alloc]                                                                 
+                                                                    initWithNibName:@"FunctionEditor" 
+                                                                             bundle:nil
+                                                                           treeNode:item];
     
-    [bodyView addSubview:[functionController view]];
-    
+    [bodyView addSubview:[functionController view]];    
     NSRect frame = [[functionController  view] frame];
     NSRect superFrame = [bodyView frame];
     frame.size.width = superFrame.size.width;
@@ -331,6 +341,7 @@
         [view removeFromSuperview];
     }
     
+    // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
                                                                                                bundle:nil 
                                                                                              treeNode:item];
@@ -342,11 +353,30 @@
     frame.size.width = superFrame.size.width;
     frame.size.height = superFrame.size.height;
     [[queryResultController view] setFrame:frame];
+}
+
+-(void)showSlowViewInMainView:(SBCouchView*)couchView{
+
+    // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+                                                                                               bundle:nil 
+                                                                                            couchView:couchView];
     
+
     
+    for (id view in [inspectorView subviews]){
+        [view removeFromSuperview];
+    }
+    [inspectorView addSubview:[queryResultController view]];
     
+    NSRect frame = [[queryResultController view] frame];
+    NSRect superFrame = [inspectorView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [[queryResultController view] setFrame:frame];
     
 }
+
 
 -(void)showItemInMainView:(NSTreeNode*)item{
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
@@ -545,6 +575,15 @@
         [(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];    
 	}
 }
+
+#pragma mark -
+#pragma mark Notification Handlers
+- (void)runAndDisplaySlowView:(NSNotification *)notification{
+    SBCouchView *view = [notification object];
+
+    [self showSlowViewInMainView:view];    
+}
+
 @end
 
 #pragma mark -

@@ -593,10 +593,10 @@
 				5456930B0F3256F400100237 /* headers */,
 				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
-				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
 				546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */,
 				54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */,
 				540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */,
+				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
 			);
 			name = "Controllers and Delegates";
 			sourceTree = "<group>";
@@ -723,9 +723,9 @@
 				546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */,
 				540089C20F30C040002D56A4 /* SVQueryResultController.h */,
 				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
-				540089BA0F30C040002D56A4 /* SVInspectorFunctionDocumentController.h */,
-				540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */,
 				540089A90F30C040002D56A4 /* SVAppDelegate.h */,
+				540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */,
+				540089BA0F30C040002D56A4 /* SVInspectorFunctionDocumentController.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";

@@ -10,7 +10,9 @@
 #import "SVSectionDescriptor.h"
 #import "SVDatabaseDescriptor.h"
 #import "SVJSONDescriptor.h"
-
+#import "SVAbstractDescriptor.h"
+#import "SVViewDescriptor.h"
+#import "SVDesignDocumentDescriptor.h"
 @interface  NSTreeNode (Private)
 
 -(NSDictionary*)convertJSONObjectToDictionary:(NSTreeNode*)treeNode;
@@ -93,6 +95,56 @@
         }                
     }    
     return array;
+    
+}
+
+#pragma mark - 
+#pragma mark Descriptor Magic
+
+-(NSString*) deriveDatabaseName{
+    
+    SVAbstractDescriptor *desc = [self representedObject];
+    if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
+        return desc.identity;
+    }else{
+        return [[self parentNode] deriveDatabaseName];
+    }
+}
+
+// Will derive a path structure like the following _design/docId if given an instance 
+// of SVViewDescriptor. 
+
+-(NSString*) deriveDesignDocumentPath{
+    SVAbstractDescriptor *desc = [self representedObject];
+    if([desc isKindOfClass:[SVViewDescriptor class]]){
+        NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
+        SVDesignDocumentDescriptor *designDesc = [[self parentNode] representedObject];
+        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_design/%@",designDesc.label];
+        return urlPath;
+    }    
+        
+    return nil;    
+}
+
+-(NSString*) deriveDocumentIdentity{
+    SVAbstractDescriptor *desc = [self representedObject];
+    if([desc isKindOfClass:[SVViewDescriptor class]]){ 
+        NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
+        // The parent of a view is a esign doc. 
+        SVDesignDocumentDescriptor *designDesc = [[self parentNode] representedObject];
+        
+        // sofa-blog/_view/datacenter/hardware
+        // database/_view/domain/view
+        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_view/%@/%@",designDesc.label,viewPathPart];
+        
+        return urlPath;
+    }else if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
+        //NSMutableString *viewPathPart = [NSMutableString stringWithFormat:@"/%@/_all_docs",desc.identity];
+        return @"_all_docs";
+    }else{        
+        return desc.identity;
+        //[self theNodesDatabase:[node parentNode]];
+    }
     
 }
 

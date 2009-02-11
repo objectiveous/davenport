@@ -12,6 +12,7 @@
 @interface NSTreeNode (SVDavenport) 
     
 -(NSTreeNode *) addSection:(NSString *)sectionName;
+-(NSTreeNode *) addCouchServerSection:(NSString *)sectionName;
 -(NSTreeNode *) addDatabase:(NSString *)addDatabase;
 -(NSTreeNode *) addChildNodeWithObject:(id)object;
 -(NSDictionary *)asDictionary;

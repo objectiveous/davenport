@@ -13,6 +13,7 @@
 #import "SVAbstractDescriptor.h"
 #import "SVViewDescriptor.h"
 #import "SVDesignDocumentDescriptor.h"
+#import "SVCouchServerDescriptor.h"
 @interface  NSTreeNode (Private)
 
 -(NSDictionary*)convertJSONObjectToDictionary:(NSTreeNode*)treeNode;
@@ -23,10 +24,14 @@
 
 @implementation NSTreeNode (SVDavenport)
 
+-(NSTreeNode *) addCouchServerSection:(NSString *)sectionName{
+    SVCouchServerDescriptor *section = [[[SVCouchServerDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
+    return [self addChildNodeWithObject:section]; 
+}
+
 -(NSTreeNode *) addSection:(NSString *)sectionName{
     SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
-    return [self addChildNodeWithObject:section];
-    
+    return [self addChildNodeWithObject:section];    
 }
 
 -(NSTreeNode *) addDatabase:(NSString *)databaseName{

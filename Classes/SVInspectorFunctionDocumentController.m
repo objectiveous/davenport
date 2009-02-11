@@ -40,19 +40,17 @@
     return self;    
 }
 - (void)awakeFromNib{
-    NSFont *font = [NSFont fontWithName:@"Monaco" size:18];
-    [[self.mapTextView textStorage] setFont:font];
-    [[self.reduceTextView textStorage] setFont:font];    
-    
     NSString *viewIdentity = [[self.treeNode representedObject] label];
     SBCouchView *view = [self.designDocument view:viewIdentity];
-    NSString *reduceText = [view reduce];
     
     [self.mapTextView setString:[view map]];
-    if(reduceText == nil)
-        [self.reduceTextView setString:@""];
-    else
-        [self.reduceTextView setString:reduceText];
+    NSString *reduceText = [view reduce];
+    if(reduceText != nil)
+        [self.reduceTextView setString:reduceText];   
+    
+    //NSFont *font = [NSFont fontWithName:@"Monaco" size:18];
+    [[self.mapTextView textStorage] setFont:[NSFont fontWithName:@"Monaco" size:18]];
+    [[self.reduceTextView textStorage] setFont:[NSFont fontWithName:@"Monaco" size:18]];               
 }
 #pragma mark - Actions
 - (IBAction)runFunction:(id)sender{
@@ -66,14 +64,11 @@
     
     [view setMap:[[self.mapTextView textStorage] string]];
 
-    // Set the reduce function if it's not empty. 
+    // TODO Need much smarter parsing of function code. 
     NSString *reduceString = [[self.reduceTextView textStorage] string]; 
     if(reduceString != nil && [reduceString hasPrefix:@"function"])
         [view setReduce:reduceString];
-    /*
-    else
-        [self.reduceTextView setString:NULL];
-    */
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:SV_NOTIFICATION_RUN_SLOW_VIEW object:view];
 }
 @end

@@ -32,4 +32,8 @@
      
 }
 
+-(BOOL)outlineView:(NSOutlineView*)outlineView shouldShowDisclosureTriangleForItem:(id)item{
+    return YES;
+}
+
 @end

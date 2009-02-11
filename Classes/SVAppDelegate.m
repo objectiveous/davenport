@@ -87,7 +87,7 @@ int LOCAL_PORT = 5984;
         }else{
             [lock lock];
             [mainWindowController setRootNode:sourceViewModelRootNode];
-            [[mainWindowController sourceView] reloadData];
+            //[[mainWindowController sourceView] reloadData];
             [lock unlock];
         }
     } 

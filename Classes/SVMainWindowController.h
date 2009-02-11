@@ -12,6 +12,7 @@
 #import <RBSplitView/RBSplitSubview.h>
 #import <BWToolkitFramework/BWSplitView.h>
 #import "SVEmptyInspectorView.h"
+#import "SVSourceView.h"
 @class SVDatabaseCreateSheetController;
 
 @interface SVMainWindowController : NSWindowController {

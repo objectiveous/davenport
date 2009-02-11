@@ -43,13 +43,26 @@
         return;
     }
     fetchReturnedData = YES;
- 
+
+    NSTreeNode *root = [[[NSTreeNode alloc] init] autorelease];
+    // EXPERIMENT
+    /*
+
+    [root addSection:@"section one"];
+    [root addDatabase:@"fake"];
     
-    NSTreeNode *root = [[[NSTreeNode alloc] init] autorelease];    
-    NSTreeNode *databaseNode = [root addSection:DATABASES];
+    NSTreeNode *hostSection = [root addCouchServerSection:@"hostsection"];
+    [hostSection addDatabase:@"fakeDB 1"];
+    [hostSection addDatabase:@"fakeDB 2"];
+    [hostSection addDatabase:@"fakeDB 3"];
+    */
+    
+    
+    NSString *hostAndPort = [NSString stringWithFormat:@"%@:%i",self.couchServer.host, self.couchServer.port];
+    NSTreeNode *couchServerNode = [root addCouchServerSection:hostAndPort];
 
     for(NSString *databaseName in databases){
-        NSTreeNode *databaseInstance = [databaseNode addDatabase:databaseName];
+        NSTreeNode *databaseInstance = [couchServerNode addDatabase:databaseName];
         SBCouchDatabase *database = [self.couchServer database:databaseName];
 
         
@@ -70,7 +83,7 @@
     }
         
     //[root addSection:QUERIES];
-    [root addSection:TOOLS];
+    //[root addSection:TOOLS];
     
      [self setRootNode:root];
 

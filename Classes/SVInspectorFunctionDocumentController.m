@@ -20,8 +20,6 @@
 
 #pragma mark -
 
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node{
  
     // _design/domain

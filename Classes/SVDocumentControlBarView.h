@@ -12,5 +12,5 @@
 @interface SVDocumentControlBarView : NSView {
     NSImage *image;
 }
-
+-(BOOL)outlineView:(NSOutlineView*)outlineView shouldShowDisclosureTriangleForItem:(id)item;
 @end

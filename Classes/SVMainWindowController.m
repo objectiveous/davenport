@@ -23,6 +23,7 @@
 #import "SVFetchQueryInfoOperation.h"
 #import "SVViewDescriptor.h"
 #import "SVDavenport.h"
+#import "SVCouchServerDescriptor.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -65,7 +66,6 @@
 
 
 - (void)awakeFromNib{     
-    
   	createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
     inspectorShowing = YES;
     [[self inspectorView] setHidden:NO];
@@ -102,16 +102,26 @@
     [super dealloc];
 }
 
+/*
 - (void)performUpdateRoot:(NSTreeNode *)inObject{
     [self setRootNode:inObject];
-
+    
+    
+    for(NSTreeNode *node in [rootNode childNodes]){
+        [self.sourceView expandItem:node expandChildren:YES];        
+    }
+    
     // TODO we might consider loading the views now. 
 }
+*/
 
 #pragma mark -
 #pragma mark NSOutlineViewDataSource delegate ( Left Hand Nav. )
 
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {    
+  
+    
+    //[(SVSourceView*)sourceView testFoo];
     if(item == nil){
         NSInteger count =  [[(NSTreeNode *)rootNode childNodes] count];
         return count;
@@ -130,18 +140,18 @@
     }        
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {    
     if (item == nil)
         return NO;
     
     SVAbstractDescriptor *desc = [item representedObject];
-    
-    if([desc isKindOfClass:[SVSectionDescriptor class]]){
-        //[self.sourceView expandItem:item];
+    /*
+    if([desc isKindOfClass:[SVCouchServerDescriptor class]])
         return YES;
-    }
-        
-
+    
+    if([desc isKindOfClass:[SVSectionDescriptor class]])
+        return YES;
+    
     if([desc isKindOfClass:[SVDatabaseDescriptor class]])
         return YES;
     
@@ -149,20 +159,25 @@
         return YES;
     
     return NO;
+     */
+    
+    if([desc isKindOfClass:[SVSectionDescriptor class]])
+        return NO;
+
+    if([desc isKindOfClass:[SVViewDescriptor class]])
+        return NO;
+
+    return YES;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     if(item == nil)
         return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
         
-    //SVAbstractDescriptor *itemDescriptor = [item representedObject];
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
         
     SVAbstractDescriptor *desc = [childNode representedObject];
 
-     //if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
-     //    [self.sourceView expandItem:item];
-     //}
     // XXX THIS IS A GROSS HACK. 
     if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
         // ChildNode at this point is a a design document. We perfectly capable to
@@ -184,21 +199,22 @@
 }
 
 - (BOOL)isSpecialGroup:(SVAbstractDescriptor *)groupNode{ 
-	if([[groupNode label] isEqualToString:DATABASES] || [[groupNode label] isEqualToString:TOOLS]){
+	if([groupNode isKindOfClass:[SVCouchServerDescriptor class]] || [groupNode isKindOfClass:[SVSectionDescriptor class]]){
         return YES;
     }                
     return NO;
+    
 }
 
 #pragma mark -
 
-/*
+
 - (void)outlineViewItemDidExpand:(NSNotification *)notification{
     NSTreeNode *item = (NSTreeNode*) [notification object];
     //SVAbstractDescriptor *desc = [item representedObject];
     
 }
-*/
+
  
 #pragma mark -
 -(void)fetchViews:(NSTreeNode*)designNode{
@@ -238,6 +254,7 @@
 #pragma mark -
 #pragma mark - NSOutlineView delegate  (Left Hand Nav)
 
+
 -(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{          
     if ([self isSpecialGroup:[item representedObject]]){
 		return YES;
@@ -247,11 +264,22 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item{
+    SVAbstractDescriptor *desc = [item representedObject];
+    if([desc isKindOfClass:[SVViewDescriptor class]]){
+        return NO;
+    }
     return YES;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item{
+    // I like being able to collapse the hosts. 
+    /*
+    SVAbstractDescriptor *desc = [item representedObject];    
+    if([desc isKindOfClass:[SVCouchServerDescriptor class]])
+        return NO;
+    */
     return YES;
+    
 }
 
 // -------------------------------------------------------------------------------
@@ -269,13 +297,19 @@
 - (void)outlineView:(NSOutlineView *)olv willDisplayCell:(NSCell*)cell 
      forTableColumn:(NSTableColumn *)tableColumn item:(id)item{
         
-    if ([cell isKindOfClass:[SVSourceListCell class]]){
+    
         if ([self isSpecialGroup:[item representedObject]]){
-            [(SVSourceListCell*)cell setImage:nil];
-        }else{
+            NSMutableAttributedString *newTitle = [[cell attributedStringValue] mutableCopy];
+            [newTitle replaceCharactersInRange:NSMakeRange(0,[newTitle length]) withString:[[newTitle string] uppercaseString]];
+            [cell setAttributedStringValue:newTitle];
+            [newTitle release];
+        }
+        /*
+        else{
             [(SVSourceListCell*)cell setImage:urlImage];
-        }        
-    }        
+        } 
+         */
+    
     
 }
 
@@ -414,18 +448,46 @@
     [self.inspectorView addSubview:self.emptyInspectorView];
 }
 
-#pragma mark -
+#pragma mark - 
+#pragma mark Breadcrumb Management
 
 // TODO This is only partially completed and will break when we add Tool 
 // support. It's okay for now because we don't really understand where the 
 // design is headed. 
 -(void)updateBreadCrumbs:(NSTreeNode*)item{    
     // Hard coding the root element name. Temporary. 
-    SVBreadCrumbCell *rNode = [[[SVBreadCrumbCell alloc] initWithPathLabel:@"Database"] autorelease];
-    SVBreadCrumbCell *dbNode   = [[[SVBreadCrumbCell alloc] initWithPathLabel:[[item representedObject] label]] autorelease];
+
+    NSInteger elements = [[item indexPath] length];
+    NSMutableArray *pathElementCells = [NSMutableArray arrayWithCapacity:elements+1];
     
-    NSArray *cells = [NSArray arrayWithObjects:rNode, dbNode, nil];
-    [pathControl setPathComponentCells:cells];
+    id currentNode = [[[SVBreadCrumbCell alloc] initWithPathLabel:[[item representedObject] label]] autorelease];
+    [pathElementCells addObject:currentNode];
+    
+    // A typicall path might look like this:
+    //   Couch DB > database > design_doc > view 
+    
+    NSTreeNode *parent;
+    while((parent = [item parentNode]) != nil){
+        // If the parent does not hold an SVAbstactDescriptor, then its the root 
+        // of the hierarchy and we need to cease processing. 
+        if([parent representedObject] == nil){
+            item = nil;
+            continue;
+        }
+        id descriptorLabel = [[parent representedObject] label];
+        SVBreadCrumbCell *pathCell = [[[SVBreadCrumbCell alloc] initWithPathLabel:descriptorLabel] autorelease];
+        [pathElementCells addObject:pathCell];
+        // Setting item to the parent allows us to process the next item in the hierarchy. 
+        item = parent; 
+    }
+    
+    // Tac on the CouchDB breadcrumb at the end so we know what we are looking at. 
+    id couch = [[[SVBreadCrumbCell alloc] initWithPathLabel:@"CouchDB"] autorelease];
+    [pathElementCells addObject:couch];
+    
+    // Now we reverse the order of the collection
+    NSArray *objectInReversOrder = [[pathElementCells reverseObjectEnumerator] allObjects];
+    [pathControl setPathComponentCells:objectInReversOrder];
     [pathControl setNeedsDisplay];    
 }
 
@@ -584,6 +646,21 @@
     [self showSlowViewInMainView:view];    
 }
 
+#pragma mark - Property GET/SET Overrides
+- (void)setRootNode:(NSTreeNode *)treeNode {
+    
+    if (treeNode != rootNode) {        
+        rootNode = [treeNode retain];        
+    }
+    [self.sourceView reloadData];
+    //[self.sourceView expandItem:rootNode expandChildren:YES];        
+    
+    for(NSTreeNode *node in [rootNode childNodes]){
+        [self.sourceView expandItem:node];  
+    }
+    
+}
+
 @end
 
 #pragma mark -
@@ -591,7 +668,14 @@
 
 @implementation NSObject(DisclosureTriangleAdditions)
 -(BOOL)outlineView:(NSOutlineView*)outlineView shouldShowDisclosureTriangleForItem:(id)item{
-    return NO;
+    // We'd like to hide the disclosure triangle but we need to ensure that 
+    // the CouchServer node is expanded first. 
+    
+    SVAbstractDescriptor *desc = [item representedObject];       
+    if([desc isKindOfClass:[SVCouchServerDescriptor class]])
+        return NO;
+    
+    return YES;
 }
 
 

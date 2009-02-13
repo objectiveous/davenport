@@ -54,8 +54,9 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
     if(!leaveDatabase)
         [couchServer deleteDatabase:couchDatabase.name];
 
+    
     [couchDatabase release];
-    [couchServer release];    
+    [couchServer release];
 }
 
 // TODO is there a better way?

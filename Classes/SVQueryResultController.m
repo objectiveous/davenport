@@ -211,19 +211,8 @@
     // no need to show the view. I'd fix it now but I need to think about how to how to handle 
     // drawing the inspector views when the inspector becomes un-hidden and there's no inspector 
     // subview in existence. 
-    NSString *tmp = [couchDocument objectForKey:@"key"];   
-    if([tmp hasPrefix:@"_design/"]){     
-        SVInspectorFunctionDocumentController *functionController = [[SVInspectorFunctionDocumentController alloc] 
-                                                            initWithNibName:@"FunctionEditor" bundle:nil];
+ 
         
-        [inspectorView addSubview:[functionController view]];
-        NSRect frame = [[functionController view] frame];
-        NSRect superFrame = [inspectorView frame];
-        frame.size.width = superFrame.size.width;
-        frame.size.height = superFrame.size.height;
-        [[functionController view] setFrame:frame];
-        
-    }else{
         SVInspectorDocumentController *documentController = [[SVInspectorDocumentController alloc]                                                                  
                                                                 initWithNibName:@"CouchDocument" 
                                                                          bundle:nil
@@ -242,8 +231,7 @@
     
  
     
-    }
-    
+        
 }
 
 

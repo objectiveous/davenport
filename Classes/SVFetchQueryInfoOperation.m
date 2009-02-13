@@ -8,7 +8,7 @@
 
 #import "SVFetchQueryInfoOperation.h"
 #import <CouchObjC/CouchObjC.h>
-#import "SVViewDescriptor.h"
+#import "SVViewDescriptor.h" 
 #import "NSTreeNode+SVDavenport.h"
 
 @implementation SVFetchQueryInfoOperation;

@@ -9,7 +9,7 @@
 #import "SVAppDelegate.h"
 #import "SVMainWindowController.h"
 #import "SVFetchServerInfoOperation.h"
-
+#import "SVPluginContributionLoader.h"
 
 @interface SVAppDelegate (Private)
 -(void)taskTerminated:(NSNotification *)note;
@@ -45,16 +45,25 @@ int LOCAL_PORT = 5984;
 - (void) performFetchServerInfoOperation {
     SVDebug(@"Queue'ing up a fetch operation"); 
     SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer];
-
+    
+    SVPluginContributionLoader *contributionLoader = [[SVPluginContributionLoader alloc] init];
+    
+    
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
                         options:0
                         context:nil];
     
     [queue addOperation:fetchOperation];
+        
+    [contributionLoader start];
+    
+    SVDebug(@"Contribution loader %@", contributionLoader.instances );
+    
     [fetchOperation release];
-
+    [contributionLoader release];
 }
+
 -(void) loadMainWindow{
     SVDebug(@"loading MainWindow nib.");
     

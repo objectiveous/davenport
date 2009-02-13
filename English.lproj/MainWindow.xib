@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="1" id="9"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -59,6 +59,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>672EC1D9-F4D4-4D04-8298-E8832BDA865D</string>
 							<string>Admin</string>
 							<string>BC32F91C-8B7B-4B62-B392-7F37BBE50E2C</string>
 							<string>C2186FFD-A9ED-4462-B8A1-DE954E219586</string>
@@ -69,6 +70,28 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="NSToolbarItem" id="26259049">
+								<object class="NSMutableString" key="NSToolbarItemIdentifier">
+									<characters key="NS.bytes">672EC1D9-F4D4-4D04-8298-E8832BDA865D</characters>
+								</object>
+								<string key="NSToolbarItemLabel">Create Document</string>
+								<string key="NSToolbarItemPaletteLabel">Create Document</string>
+								<string key="NSToolbarItemToolTip"/>
+								<nil key="NSToolbarItemView"/>
+								<object class="NSCustomResource" key="NSToolbarItemImage" id="540360871">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">documents</string>
+								</object>
+								<nil key="NSToolbarItemTarget"/>
+								<nil key="NSToolbarItemAction"/>
+								<string key="NSToolbarItemMinSize">{0, 0}</string>
+								<string key="NSToolbarItemMaxSize">{0, 0}</string>
+								<bool key="NSToolbarItemEnabled">YES</bool>
+								<bool key="NSToolbarItemAutovalidates">YES</bool>
+								<int key="NSToolbarItemTag">-1</int>
+								<bool key="NSToolbarIsUserRemovable">YES</bool>
+								<int key="NSToolbarItemVisibilityPriority">0</int>
+							</object>
 							<object class="BWToolbarItem" id="110377998">
 								<string key="NSToolbarItemIdentifier">Admin</string>
 								<string key="NSToolbarItemLabel">Admin</string>
@@ -93,14 +116,11 @@
 								<object class="NSMutableString" key="NSToolbarItemIdentifier">
 									<characters key="NS.bytes">BC32F91C-8B7B-4B62-B392-7F37BBE50E2C</characters>
 								</object>
-								<string key="NSToolbarItemLabel">Create Document</string>
-								<string key="NSToolbarItemPaletteLabel">Create Document</string>
+								<string key="NSToolbarItemLabel">New View</string>
+								<string key="NSToolbarItemPaletteLabel">New View</string>
 								<string key="NSToolbarItemToolTip"/>
 								<nil key="NSToolbarItemView"/>
-								<object class="NSCustomResource" key="NSToolbarItemImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">documents</string>
-								</object>
+								<reference key="NSToolbarItemImage" ref="540360871"/>
 								<nil key="NSToolbarItemTarget"/>
 								<nil key="NSToolbarItemAction"/>
 								<string key="NSToolbarItemMinSize">{0, 0}</string>
@@ -251,6 +271,7 @@
 						<reference ref="919223316"/>
 						<reference ref="130670380"/>
 						<reference ref="33536053"/>
+						<reference ref="26259049"/>
 					</object>
 					<object class="NSMutableArray" key="NSToolbarIBDefaultItems">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -259,6 +280,8 @@
 						<reference ref="144024805"/>
 						<reference ref="91031305"/>
 						<reference ref="919223316"/>
+						<reference ref="26259049"/>
+						<reference ref="144024805"/>
 						<reference ref="130670380"/>
 						<reference ref="144024805"/>
 						<reference ref="33536053"/>
@@ -516,7 +539,7 @@
 												<bool key="EncodedWithXMLCoder">YES</bool>
 												<object class="NSTextField" id="347436654">
 													<reference key="NSNextResponder" ref="144025078"/>
-													<int key="NSvFlags">268</int>
+													<int key="NSvFlags">289</int>
 													<string key="NSFrame">{{829, 8}, {202, 68}}</string>
 													<reference key="NSSuperview" ref="144025078"/>
 													<bool key="NSEnabled">YES</bool>
@@ -20883,7 +20906,7 @@ LS0tLS0tLQoKIA</bytes>
 														<int key="NSColorSpace">1</int>
 														<bytes key="NSRGB">MCAwIDEAA</bytes>
 													</object>
-													<integer value="1" id="9"/>
+													<reference ref="9"/>
 												</object>
 											</object>
 											<nil key="NSDefaultParagraphStyle"/>
@@ -21451,6 +21474,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 							<reference ref="110377998"/>
 							<reference ref="130670380"/>
 							<reference ref="33536053"/>
+							<reference ref="26259049"/>
 						</object>
 						<reference key="parent" ref="404275301"/>
 					</object>
@@ -21719,6 +21743,11 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 						<reference key="object" ref="91894905"/>
 						<reference key="parent" ref="347436654"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">247</int>
+						<reference key="object" ref="26259049"/>
+						<reference key="parent" ref="808340149"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -21780,6 +21809,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>237.IBPluginDependency</string>
 					<string>240.IBPluginDependency</string>
 					<string>241.IBPluginDependency</string>
+					<string>247.IBPluginDependency</string>
 					<string>32.IBPluginDependency</string>
 					<string>68.CustomClassName</string>
 					<string>68.IBPluginDependency</string>
@@ -21798,7 +21828,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<boolean value="YES" id="5"/>
 					<reference ref="5"/>
 					<string>{1024, 768}</string>
-					<string>{{295, 1071}, {617, 0}}</string>
+					<string>{{355, 1100}, {617, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -21843,6 +21873,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>SVPathControl</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -21868,7 +21899,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">246</int>
+			<int key="maxID">247</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -21889,9 +21920,9 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="72656265">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/SVSourceListView.h</string>
+						<string key="minorKey">Classes/SVSourceView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -22009,10 +22040,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 				<object class="IBPartialClassDescription">
 					<string key="className">SVSourceView</string>
 					<string key="superclassName">NSOutlineView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/SVSourceView.h</string>
-					</object>
+					<reference key="sourceIdentifier" ref="72656265"/>
 				</object>
 			</object>
 		</object>

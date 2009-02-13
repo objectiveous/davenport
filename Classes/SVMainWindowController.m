@@ -125,17 +125,14 @@
     if(item == nil){
         NSInteger count =  [[(NSTreeNode *)rootNode childNodes] count];
         return count;
-    }else{
-        
+    }else{        
         // Let's lazy load the design documents. 
         if([item isKindOfClass:[SBCouchDesignDocument class]]){
             // Create an operation and fetch the missing queries. We might consider 
             // doing this once the databases have been displayed. That way the user is not waiting 
             // to see stuff in the left-hand nav. 
         }
-            
-        
-        
+                    
         return  [[item childNodes] count];
     }        
 }
@@ -180,10 +177,16 @@
 
     // XXX THIS IS A GROSS HACK. 
     if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
-        // ChildNode at this point is a a design document. We perfectly capable to
-        // displaying it at this point be ought to load up its actual views. 
         // XXX This works but not for option + cliking on the root node to expand all items. 
         // might be better to load the views sooner. 
+        
+        // If the design documentent node has already been populated, 
+        // don't bother doing it again. It's possible that this could cause propblems 
+        // when we begin to support the creation of design docs in Davenport but until 
+        // that actually hapens, this should suffice. 
+        if([[childNode childNodes] count] > 0)
+            return childNode;
+        
         [self fetchViews:childNode];
     }    
     return childNode;            
@@ -212,10 +215,8 @@
 - (void)outlineViewItemDidExpand:(NSNotification *)notification{
     NSTreeNode *item = (NSTreeNode*) [notification object];
     //SVAbstractDescriptor *desc = [item representedObject];
-    
-}
 
- 
+}
 #pragma mark -
 -(void)fetchViews:(NSTreeNode*)designNode{
     if(operationQueue == nil){
@@ -229,8 +230,7 @@
     SBCouchDatabase *couchDatabase = [server database:parentDescriptor.label];
     SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] 
                                                  initWithCouchDatabase:couchDatabase                                                 designDocTreeNode:designNode];
-    
-    
+        
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
                         options:0
@@ -253,7 +253,6 @@
 
 #pragma mark -
 #pragma mark - NSOutlineView delegate  (Left Hand Nav)
-
 
 -(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{          
     if ([self isSpecialGroup:[item representedObject]]){
@@ -296,8 +295,7 @@
 // -------------------------------------------------------------------------------
 - (void)outlineView:(NSOutlineView *)olv willDisplayCell:(NSCell*)cell 
      forTableColumn:(NSTableColumn *)tableColumn item:(id)item{
-        
-    
+            
         if ([self isSpecialGroup:[item representedObject]]){
             NSMutableAttributedString *newTitle = [[cell attributedStringValue] mutableCopy];
             [newTitle replaceCharactersInRange:NSMakeRange(0,[newTitle length]) withString:[[newTitle string] uppercaseString]];
@@ -309,8 +307,6 @@
             [(SVSourceListCell*)cell setImage:urlImage];
         } 
          */
-    
-    
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
@@ -436,7 +432,7 @@
 
 - (void)showEmptyInspectorView{
     
-    // Only show the davenport name once. This only needs to be preformed once. 
+    // Only show the davenport logo/name once. This only needs to be preformed once. 
     // XXX This could be made faster. 
     for (NSView *view in [self.emptyInspectorView subviews]) {
         [view removeFromSuperview];
@@ -445,6 +441,14 @@
     for (NSView *view in [self.inspectorView subviews]) {
         [view removeFromSuperview];
     }
+
+    /*
+    NSRect frame = [self.emptyInspectorView frame];
+    NSRect superFrame = [bodyView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [self.emptyInspectorView setFrame:frame];
+     */
     [self.inspectorView addSubview:self.emptyInspectorView];
 }
 
@@ -495,19 +499,15 @@
     id pathLabel = [notification object];
     
     NSArray *currentPath = [pathControl pathComponentCells];
-    
-    // The idea here is that there will always be a subject area path that consists of two 
-    // elements. i.e. Database > dbName 
-    // 
-    SVDebug(@"count of breadcrumb items [%i]", [currentPath count]);
-    if([currentPath count] >= 3){
+        
+    if ( [[currentPath lastObject] isContent] ){
         [self removeBreadCrumb:nil];
     }
-    
-    
+
     NSMutableArray *newPath = [NSMutableArray arrayWithArray:currentPath];
     
     SVBreadCrumbCell *newNode = [[[SVBreadCrumbCell alloc] initWithPathLabel:[pathLabel description]] autorelease];
+    newNode.isContent = YES;
     [newPath addObject:newNode];
     [pathControl setPathComponentCells:newPath];
 }

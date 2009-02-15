@@ -68,7 +68,11 @@
 		543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
 		543F9D020F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */; };
 		543F9D030F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */; };
-		543F9F180F46114400E1559C /* TNavContribution.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9F170F46114400E1559C /* TNavContribution.m */; };
+		543F9F180F46114400E1559C /* TPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9F170F46114400E1559C /* TPPlugin.m */; };
+		543FA0450F471E6900E1559C /* TPBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0440F471E6900E1559C /* TPBucket.m */; };
+		543FA0480F471E8000E1559C /* TPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0470F471E8000E1559C /* TPTask.m */; };
+		543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */; };
+		543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */; };
 		5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */; };
 		5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
@@ -181,7 +185,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 543F9EFE0F4610C100E1559C /* SVTestPlugin */;
+			remoteGlobalIDString = 543F9EFE0F4610C100E1559C;
 			remoteInfo = SVTestPlugin;
 		};
 		549F37490F3331480033A0C9 /* PBXContainerItemProxy */ = {
@@ -320,8 +324,17 @@
 		543F9EA30F46022000E1559C /* TestPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestPlugin-Info.plist"; sourceTree = "<group>"; };
 		543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVTestPlugin.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		543F9F000F4610C100E1559C /* SVTestPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVTestPlugin-Info.plist"; sourceTree = "<group>"; };
-		543F9F160F46114400E1559C /* TNavContribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNavContribution.h; sourceTree = "<group>"; };
-		543F9F170F46114400E1559C /* TNavContribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNavContribution.m; sourceTree = "<group>"; };
+		543F9F160F46114400E1559C /* TPPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPlugin.h; sourceTree = "<group>"; };
+		543F9F170F46114400E1559C /* TPPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPlugin.m; sourceTree = "<group>"; };
+		543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContributionNavigationDescriptor.h; sourceTree = "<group>"; };
+		543FA0430F471E6900E1559C /* TPBucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBucket.h; sourceTree = "<group>"; };
+		543FA0440F471E6900E1559C /* TPBucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBucket.m; sourceTree = "<group>"; };
+		543FA0460F471E8000E1559C /* TPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTask.h; sourceTree = "<group>"; };
+		543FA0470F471E8000E1559C /* TPTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTask.m; sourceTree = "<group>"; };
+		543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseDescriptor.h; sourceTree = "<group>"; };
+		543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseDescriptor.m; sourceTree = "<group>"; };
+		543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTreeNode+TP.h"; sourceTree = "<group>"; };
+		543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTreeNode+TP.m"; sourceTree = "<group>"; };
 		544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAbstractIntegrationTest.h; sourceTree = "<group>"; };
 		544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAbstractIntegrationTest.m; sourceTree = "<group>"; };
 		544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDocumentTreeNodeTest.m; sourceTree = "<group>"; };
@@ -400,7 +413,7 @@
 		54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vendorTests-Info.plist"; path = "Resources/vendorTests-Info.plist"; sourceTree = "<group>"; };
 		54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RBSplitView.framework; sourceTree = "<group>"; };
 		54F9F3330F0080B100EE414E /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		54FEC8D00F458D3100652DEE /* SVContributionNav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVContributionNav.h; sourceTree = "<group>"; };
+		54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContributionPlugin.h; sourceTree = "<group>"; };
 		54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLoadNavigationContributionsFromPluginsTest.m; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -553,14 +566,14 @@
 		5400899C0F30C040002D56A4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				543F9F300F4613A100E1559C /* Test Plugin */,
 				540089B50F30C040002D56A4 /* SVDavenport.h */,
-				543F9CFF0F45B7C200E1559C /* Operations */,
+				543F9F300F4613A100E1559C /* Test Plugin */,
 				54FEC8A40F45885D00652DEE /* Plugin API */,
+				543F9CFF0F45B7C200E1559C /* Operations */,
 				540089F10F30C203002D56A4 /* Additions */,
+				540089EE0F30C128002D56A4 /* Model */,
 				540089F00F30C13F002D56A4 /* Views, Cells and Controls */,
 				540089EF0F30C12D002D56A4 /* Controllers and Delegates */,
-				540089EE0F30C128002D56A4 /* Model */,
 				540089EB0F30C11E002D56A4 /* Tests */,
 			);
 			path = Classes;
@@ -584,9 +597,9 @@
 			isa = PBXGroup;
 			children = (
 				549942C60F3BCDFB00E9C328 /* headers */,
+				540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */,
 				540089C50F30C040002D56A4 /* SVSectionDescriptor.m */,
 				540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */,
-				540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */,
 				548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */,
 				549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */,
 				5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */,
@@ -735,10 +748,26 @@
 		543F9F300F4613A100E1559C /* Test Plugin */ = {
 			isa = PBXGroup;
 			children = (
-				543F9F160F46114400E1559C /* TNavContribution.h */,
-				543F9F170F46114400E1559C /* TNavContribution.m */,
+				543FA0490F471E8900E1559C /* headers */,
+				543F9F170F46114400E1559C /* TPPlugin.m */,
+				543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */,
+				543FA0440F471E6900E1559C /* TPBucket.m */,
+				543FA0470F471E8000E1559C /* TPTask.m */,
+				543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */,
+				543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */,
 			);
 			name = "Test Plugin";
+			sourceTree = "<group>";
+		};
+		543FA0490F471E8900E1559C /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */,
+				543F9F160F46114400E1559C /* TPPlugin.h */,
+				543FA0430F471E6900E1559C /* TPBucket.h */,
+				543FA0460F471E8000E1559C /* TPTask.h */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 		544466530F38657A0098BD0E /* headers */ = {
@@ -795,7 +824,8 @@
 		54FEC8A40F45885D00652DEE /* Plugin API */ = {
 			isa = PBXGroup;
 			children = (
-				54FEC8D00F458D3100652DEE /* SVContributionNav.h */,
+				54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */,
+				543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */,
 			);
 			name = "Plugin API";
 			sourceTree = "<group>";
@@ -923,8 +953,8 @@
 				543F9EFE0F4610C100E1559C /* SVTestPlugin */,
 				540C88C80F31D51700E02727 /* Davenport with Embedded CouchDB */,
 				8D15AC270486D014006FF6A4 /* Davenport */,
-				54F9F2230F006DE900EE414E /* Unit Tests */,
 				54B7DE7E0F097BF00081F3A3 /* Integration Tests */,
+				54F9F2230F006DE900EE414E /* Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1163,7 +1193,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				543F9F180F46114400E1559C /* TNavContribution.m in Sources */,
+				543F9F180F46114400E1559C /* TPPlugin.m in Sources */,
+				543FA0450F471E6900E1559C /* TPBucket.m in Sources */,
+				543FA0480F471E8000E1559C /* TPTask.m in Sources */,
+				543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */,
+				543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

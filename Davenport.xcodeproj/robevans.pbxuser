@@ -1,0 +1,121 @@
+// !$*UTF8*$!
+{
+	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 543B92A70F489FE600C5515B /* Davenport with Embedded CouchDB */;
+		activeTarget = 8D15AC270486D014006FF6A4 /* Davenport */;
+		codeSenseManager = 543B92D60F48A01500C5515B /* Code sense */;
+		executables = (
+			543B92A70F489FE600C5515B /* Davenport with Embedded CouchDB */,
+			543B92A80F489FE600C5515B /* Davenport */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					730,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 256417767;
+			PBXWorkspaceStateSaveDate = 256417767;
+		};
+		sourceControlManager = 543B92D50F48A01500C5515B /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	540C88C80F31D51700E02727 /* Davenport with Embedded CouchDB */ = {
+		activeExec = 0;
+		executables = (
+			543B92A70F489FE600C5515B /* Davenport with Embedded CouchDB */,
+		);
+	};
+	543B92A70F489FE600C5515B /* Davenport with Embedded CouchDB */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Davenport with Embedded CouchDB";
+		sourceDirectories = (
+		);
+	};
+	543B92A80F489FE600C5515B /* Davenport */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Davenport;
+		sourceDirectories = (
+		);
+	};
+	543B92D50F48A01500C5515B /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	543B92D60F48A01500C5515B /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	543F9EFE0F4610C100E1559C /* SVTestPlugin */ = {
+		activeExec = 0;
+	};
+	54B7DE7E0F097BF00081F3A3 /* Integration Tests */ = {
+		activeExec = 0;
+	};
+	54F9F2230F006DE900EE414E /* Unit Tests */ = {
+		activeExec = 0;
+	};
+	8D15AC270486D014006FF6A4 /* Davenport */ = {
+		activeExec = 0;
+		executables = (
+			543B92A80F489FE600C5515B /* Davenport */,
+		);
+	};
+}

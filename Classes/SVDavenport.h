@@ -9,6 +9,9 @@
 #include <asl.h>
 
 extern int LOCAL_PORT;
+
+#define SV_NOTIFICATION_RUN_SLOW_VIEW        @"_slow_view"
+
 /*
 Send logging information to syslog and use the console to filter out what you need. 
 Be sure to adjust the filters if you want DEBUG and INFO

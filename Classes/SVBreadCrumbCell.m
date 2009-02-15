@@ -9,12 +9,14 @@
 @implementation SVBreadCrumbCell
 
 @synthesize pathControl;
+@synthesize isContent;
 
 #pragma mark -
 - (id) init{
 	self = [super init];
 	if (self != nil) {				
 		pathSeparatorImage = [NSImage imageNamed:@"arrow-25.jpg"];
+        isContent = NO;
     }
 	return self;
 }

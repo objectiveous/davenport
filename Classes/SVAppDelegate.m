@@ -9,7 +9,8 @@
 #import "SVAppDelegate.h"
 #import "SVMainWindowController.h"
 #import "SVFetchServerInfoOperation.h"
-
+#import "SVPluginContributionLoader.h"
+#import "DPContributionPlugin.h"
 
 @interface SVAppDelegate (Private)
 -(void)taskTerminated:(NSNotification *)note;
@@ -24,14 +25,17 @@
 int LOCAL_PORT = 5984;
 @synthesize mainWindowController;
 @synthesize couchServer;
+@synthesize pluginRegistry;
 
 - (id)init{
     // This is used to control how verbose logging is. 
     asl_set_filter(NULL, ASL_FILTER_MASK_UPTO(ASL_LEVEL_DEBUG) );
     
     if (![super init]) return nil;
+    
     queue = [[NSOperationQueue alloc] init];
     lock = [[NSLock alloc] init];
+    self.pluginRegistry = [[NSMutableDictionary alloc] init];
     [self setCouchServer:[[SBCouchServer alloc] initWithHost:@"localhost" port:LOCAL_PORT]];
     return self;
 }
@@ -39,21 +43,30 @@ int LOCAL_PORT = 5984;
     [queue release], queue = nil;
     [lock release], lock = nil;
     [couchServer release], couchServer = nil;
+    [pluginRegistry release], pluginRegistry = nil;
     [super dealloc];
 }
 
 - (void) performFetchServerInfoOperation {
     SVDebug(@"Queue'ing up a fetch operation"); 
     SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer];
+    
+   
+    
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
                         options:0
                         context:nil];
     
     [queue addOperation:fetchOperation];
-    [fetchOperation release];
 
+    
+    
+        
+    [fetchOperation release];
+   
 }
+
 -(void) loadMainWindow{
     SVDebug(@"loading MainWindow nib.");
     
@@ -84,9 +97,32 @@ int LOCAL_PORT = 5984;
         if(sourceViewModelRootNode == nil){
             [self performFetchServerInfoOperation];            
         }else{
+            // This logic should not exist here. The navigation loading operations should be chained such 
+            // that once davenport loads the database(s) navigation information, plugin loading operations 
+            // kick off. 
+            SVPluginContributionLoader *contributionLoader = [[SVPluginContributionLoader alloc] init];
+            [contributionLoader start];            
+            SVDebug(@"Contribution loader %@", contributionLoader.instances );
+                         
+            for( id plugin in contributionLoader.instances){
+                // Register the plugin for future lookup. We assume that all instanaces 
+                // have been fully vetted and that by the time we start interacting with 
+                // them here, they are what they claim to be. That is to say, they fully 
+                // implement the plugin protocol. 
+                
+                //Might want to include version number in the key at some point. 
+                            
+                NSString *uid = [plugin pluginID];                                                                       
+                [self.pluginRegistry setObject:plugin forKey:uid];
+                
+                NSTreeNode *contributionRootNode = [plugin navigationContribution];
+                [[sourceViewModelRootNode mutableChildNodes] addObjectsFromArray:[contributionRootNode childNodes]];
+            }
+            
+            [contributionLoader release];                                                
             [lock lock];
             [mainWindowController setRootNode:sourceViewModelRootNode];
-            [[mainWindowController sourceView] reloadData];
+            //[[mainWindowController sourceView] reloadData];
             [lock unlock];
         }
     } 
@@ -156,5 +192,9 @@ int LOCAL_PORT = 5984;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
+#pragma mark - 
+#pragma mark Plugin Support 
+- (id) lookupPlugin:(NSString*)pluginID{
+    return [self.pluginRegistry objectForKey:pluginID];
+}
 @end

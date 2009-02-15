@@ -13,21 +13,15 @@
 		540089D00F30C040002D56A4 /* SVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AA0F30C040002D56A4 /* SVAppDelegate.m */; };
 		540089D10F30C040002D56A4 /* SVBreadCrumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */; };
 		540089D20F30C040002D56A4 /* SVControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AE0F30C040002D56A4 /* SVControlBarView.m */; };
-		540089D40F30C040002D56A4 /* SVCouchDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */; };
 		540089D60F30C040002D56A4 /* SVDatabaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */; };
 		540089D70F30C040002D56A4 /* SVDocumentKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */; };
 		540089D80F30C040002D56A4 /* SVFetchServerInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */; };
-		540089D90F30C040002D56A4 /* SVFunctionEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */; };
+		540089D90F30C040002D56A4 /* SVInspectorFunctionDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */; };
 		540089DC0F30C040002D56A4 /* SVMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BF0F30C040002D56A4 /* SVMainWindowController.m */; };
 		540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
 		540089DF0F30C040002D56A4 /* SVSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C50F30C040002D56A4 /* SVSectionDescriptor.m */; };
 		540089E00F30C040002D56A4 /* SVSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C70F30C040002D56A4 /* SVSourceListCell.m */; };
-		540089E10F30C040002D56A4 /* SVSourceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C90F30C040002D56A4 /* SVSourceListView.m */; };
-		540089F30F30C2A3002D56A4 /* GTMNSObject+UnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5400899F0F30C040002D56A4 /* GTMNSObject+UnitTesting.m */; };
-		540089F40F30C2A3002D56A4 /* GTMSenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A10F30C040002D56A4 /* GTMSenTestCase.m */; };
-		540089F50F30C2A3002D56A4 /* GTMSystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A30F30C040002D56A4 /* GTMSystemVersion.m */; };
-		540089F60F30C2BD002D56A4 /* SVJsonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */; };
 		540089FD0F30C36F002D56A4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54008A150F30C458002D56A4 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BD0F1DA33D002AC9E5 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
@@ -57,39 +51,100 @@
 		540C88E40F31D51700E02727 /* SVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AA0F30C040002D56A4 /* SVAppDelegate.m */; };
 		540C88E50F31D51700E02727 /* SVBreadCrumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */; };
 		540C88E60F31D51700E02727 /* SVControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AE0F30C040002D56A4 /* SVControlBarView.m */; };
-		540C88E70F31D51700E02727 /* SVCouchDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */; };
 		540C88E80F31D51700E02727 /* SVDatabaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */; };
 		540C88E90F31D51700E02727 /* SVDocumentKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */; };
 		540C88EA0F31D51700E02727 /* SVFetchServerInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */; };
-		540C88EB0F31D51700E02727 /* SVFunctionEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */; };
+		540C88EB0F31D51700E02727 /* SVInspectorFunctionDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */; };
 		540C88EC0F31D51700E02727 /* SVMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BF0F30C040002D56A4 /* SVMainWindowController.m */; };
 		540C88ED0F31D51700E02727 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540C88EE0F31D51700E02727 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
 		540C88EF0F31D51700E02727 /* SVSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C50F30C040002D56A4 /* SVSectionDescriptor.m */; };
 		540C88F00F31D51700E02727 /* SVSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C70F30C040002D56A4 /* SVSourceListCell.m */; };
-		540C88F10F31D51700E02727 /* SVSourceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C90F30C040002D56A4 /* SVSourceListView.m */; };
 		540C88F30F31D51700E02727 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		540C89200F31D61D00E02727 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		540C89210F31D61F00E02727 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		540C892E0F31D63300E02727 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		540C89340F31D63B00E02727 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
-		5466040B0F24D15F000C77E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		5466040C0F24D162000C77E7 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
-		5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
-		546604150F24D282000C77E7 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
-		546604160F24D285000C77E7 /* CouchObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		543F9D020F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */; };
+		543F9D030F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */; };
+		543F9F180F46114400E1559C /* TPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9F170F46114400E1559C /* TPPlugin.m */; };
+		543FA0450F471E6900E1559C /* TPBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0440F471E6900E1559C /* TPBucket.m */; };
+		543FA0480F471E8000E1559C /* TPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0470F471E8000E1559C /* TPTask.m */; };
+		543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */; };
+		543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */; };
+		5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
+		544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */; };
+		5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
+		5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
+		544466820F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
+		544466830F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
+		544466DA0F3885490098BD0E /* button-plus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544466D90F3885490098BD0E /* button-plus.pdf */; };
+		544466DB0F3885490098BD0E /* button-plus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544466D90F3885490098BD0E /* button-plus.pdf */; };
+		544467CF0F38BB570098BD0E /* button-delete-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C30F38BB570098BD0E /* button-delete-on.pdf */; };
+		544467D00F38BB570098BD0E /* button-edit-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C40F38BB570098BD0E /* button-edit-on.pdf */; };
+		544467D10F38BB570098BD0E /* button-edit.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C50F38BB570098BD0E /* button-edit.pdf */; };
+		544467D20F38BB570098BD0E /* button-functions-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C60F38BB570098BD0E /* button-functions-on.pdf */; };
+		544467D30F38BB570098BD0E /* button-functions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C70F38BB570098BD0E /* button-functions.pdf */; };
+		544467D40F38BB570098BD0E /* button-minus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C80F38BB570098BD0E /* button-minus.pdf */; };
+		544467D50F38BB570098BD0E /* button-plus-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C90F38BB570098BD0E /* button-plus-on.pdf */; };
+		544467D60F38BB570098BD0E /* button-plus-template.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CA0F38BB570098BD0E /* button-plus-template.pdf */; };
+		544467D70F38BB570098BD0E /* css-close-normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CB0F38BB570098BD0E /* css-close-normal.pdf */; };
+		544467D80F38BB570098BD0E /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467CC0F38BB570098BD0E /* divider.png */; };
+		544467D90F38BB570098BD0E /* button-back.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CD0F38BB570098BD0E /* button-back.pdf */; };
+		544467DA0F38BB570098BD0E /* button-forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CE0F38BB570098BD0E /* button-forward.pdf */; };
+		544467DB0F38BB570098BD0E /* button-delete-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C30F38BB570098BD0E /* button-delete-on.pdf */; };
+		544467DC0F38BB570098BD0E /* button-edit-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C40F38BB570098BD0E /* button-edit-on.pdf */; };
+		544467DD0F38BB570098BD0E /* button-edit.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C50F38BB570098BD0E /* button-edit.pdf */; };
+		544467DE0F38BB570098BD0E /* button-functions-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C60F38BB570098BD0E /* button-functions-on.pdf */; };
+		544467DF0F38BB570098BD0E /* button-functions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C70F38BB570098BD0E /* button-functions.pdf */; };
+		544467E00F38BB570098BD0E /* button-minus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C80F38BB570098BD0E /* button-minus.pdf */; };
+		544467E10F38BB570098BD0E /* button-plus-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467C90F38BB570098BD0E /* button-plus-on.pdf */; };
+		544467E20F38BB570098BD0E /* button-plus-template.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CA0F38BB570098BD0E /* button-plus-template.pdf */; };
+		544467E30F38BB570098BD0E /* css-close-normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CB0F38BB570098BD0E /* css-close-normal.pdf */; };
+		544467E40F38BB570098BD0E /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467CC0F38BB570098BD0E /* divider.png */; };
+		544467E50F38BB570098BD0E /* button-back.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CD0F38BB570098BD0E /* button-back.pdf */; };
+		544467E60F38BB570098BD0E /* button-forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CE0F38BB570098BD0E /* button-forward.pdf */; };
+		544467F40F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
+		544467F50F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
+		544528F60F42801C00AB1845 /* SVSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544528F50F42801C00AB1845 /* SVSourceView.m */; };
+		544528F70F42801C00AB1845 /* SVSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544528F50F42801C00AB1845 /* SVSourceView.m */; };
 		546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */; };
 		546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */; };
 		546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
 		546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
 		546769BD0F2538A9006F6114 /* CouchDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546769BB0F2538A9006F6114 /* CouchDocument.xib */; };
+		54790A220F3A004100461FEB /* button-reload-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A1E0F3A004100461FEB /* button-reload-on.pdf */; };
+		54790A230F3A004100461FEB /* button-reload.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A1F0F3A004100461FEB /* button-reload.pdf */; };
+		54790A240F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A200F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf */; };
+		54790A250F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A210F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf */; };
+		54790A260F3A004100461FEB /* button-reload-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A1E0F3A004100461FEB /* button-reload-on.pdf */; };
+		54790A270F3A004100461FEB /* button-reload.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A1F0F3A004100461FEB /* button-reload.pdf */; };
+		54790A280F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A200F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf */; };
+		54790A290F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A210F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf */; };
+		54790A960F3A0D1300461FEB /* SVInspectorDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */; };
+		54790A970F3A0D1300461FEB /* SVInspectorDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */; };
+		54790B040F3A1AD200461FEB /* button-edit-dirty.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B030F3A1AD200461FEB /* button-edit-dirty.pdf */; };
+		54790B050F3A1AD200461FEB /* button-edit-dirty.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B030F3A1AD200461FEB /* button-edit-dirty.pdf */; };
+		54790B390F3A234900461FEB /* button-back-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B370F3A234900461FEB /* button-back-on.pdf */; };
+		54790B3A0F3A234900461FEB /* button-forward-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B380F3A234900461FEB /* button-forward-on.pdf */; };
+		54790B3B0F3A234900461FEB /* button-back-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B370F3A234900461FEB /* button-back-on.pdf */; };
+		54790B3C0F3A234900461FEB /* button-forward-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B380F3A234900461FEB /* button-forward-on.pdf */; };
+		54790B570F3A2F2700461FEB /* run.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B560F3A2F2700461FEB /* run.pdf */; };
+		54790B580F3A2F2700461FEB /* run.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B560F3A2F2700461FEB /* run.pdf */; };
 		547B283F0F23821200580370 /* FunctionEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* FunctionEditor.xib */; };
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
 		548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
 		548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
 		548BB1BC0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */; };
 		548BB1BD0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */; };
+		549942C40F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */; };
+		549942C50F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */; };
+		549946BD0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */; };
+		549946BE0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */; };
+		5499475C0F3CAFD200E9C328 /* SVFetchQueryInfoOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */; };
+		5499480F0F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */; };
+		549948100F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */; };
 		549BC6B00EFDC106002DFF80 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		549BC6C60EFDC6A6002DFF80 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		549F374F0F3331700033A0C9 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -103,10 +158,17 @@
 		54B546180F31D006004E675B /* divan.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460F0F31D006004E675B /* divan.icns */; };
 		54B546190F31D006004E675B /* documents.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 54B546100F31D006004E675B /* documents.tiff */; };
 		54B5461A0F31D006004E675B /* segment.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B546110F31D006004E675B /* segment.jpg */; };
+		54BC49F80F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */; };
+		54BC49F90F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */; };
+		54BC49FB0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
+		54BC49FC0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
+		54C1E26E0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */; };
+		54C1E26F0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */; };
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		54F73B570F1CDC3E00B7B9F4 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
+		54FECB1A0F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +180,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CouchObjC;
+		};
+		543FA00D0F4626B300E1559C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 543F9EFE0F4610C100E1559C;
+			remoteInfo = SVTestPlugin;
 		};
 		549F37490F3331480033A0C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -170,15 +239,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		546604190F24D2A4000C77E7 /* CopyFiles */ = {
+		543F9E950F46011F00E1559C /* Copy Plugins */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 7;
 			files = (
-				546604160F24D285000C77E7 /* CouchObjC.framework in CopyFiles */,
-				546604150F24D282000C77E7 /* JSON.framework in CopyFiles */,
 			);
+			name = "Copy Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		549BC6C50EFDC662002DFF80 /* CopyFiles */ = {
@@ -222,8 +290,7 @@
 		540089AD0F30C040002D56A4 /* SVControlBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVControlBarView.h; sourceTree = "<group>"; };
 		540089AE0F30C040002D56A4 /* SVControlBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVControlBarView.m; sourceTree = "<group>"; };
 		540089AF0F30C040002D56A4 /* SVCouchDbFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDbFrameworkTest.m; sourceTree = "<group>"; };
-		540089B00F30C040002D56A4 /* SVCouchDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCouchDocumentController.h; sourceTree = "<group>"; };
-		540089B10F30C040002D56A4 /* SVCouchDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDocumentController.m; sourceTree = "<group>"; };
+		540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVInspectorDocumentController.h; sourceTree = "<group>"; };
 		540089B20F30C040002D56A4 /* SVCreateAndLoadSampleDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCreateAndLoadSampleDatabaseTest.m; sourceTree = "<group>"; };
 		540089B30F30C040002D56A4 /* SVDatabaseDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseDescriptor.h; sourceTree = "<group>"; };
 		540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDatabaseDescriptor.m; sourceTree = "<group>"; };
@@ -232,8 +299,8 @@
 		540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentKeyCell.m; sourceTree = "<group>"; };
 		540089B80F30C040002D56A4 /* SVFetchServerInfoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVFetchServerInfoOperation.h; sourceTree = "<group>"; };
 		540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchServerInfoOperation.m; sourceTree = "<group>"; };
-		540089BA0F30C040002D56A4 /* SVFunctionEditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVFunctionEditorController.h; sourceTree = "<group>"; };
-		540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFunctionEditorController.m; sourceTree = "<group>"; };
+		540089BA0F30C040002D56A4 /* SVInspectorFunctionDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVInspectorFunctionDocumentController.h; sourceTree = "<group>"; };
+		540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVInspectorFunctionDocumentController.m; sourceTree = "<group>"; };
 		540089BC0F30C040002D56A4 /* SVJsonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJsonTest.m; sourceTree = "<group>"; };
 		540089BD0F30C040002D56A4 /* SVLoadDataAtStartupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLoadDataAtStartupTest.m; sourceTree = "<group>"; };
 		540089BE0F30C040002D56A4 /* SVMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMainWindowController.h; sourceTree = "<group>"; };
@@ -246,25 +313,78 @@
 		540089C50F30C040002D56A4 /* SVSectionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSectionDescriptor.m; sourceTree = "<group>"; };
 		540089C60F30C040002D56A4 /* SVSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListCell.h; sourceTree = "<group>"; };
 		540089C70F30C040002D56A4 /* SVSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListCell.m; sourceTree = "<group>"; };
-		540089C80F30C040002D56A4 /* SVSourceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListView.h; sourceTree = "<group>"; };
-		540089C90F30C040002D56A4 /* SVSourceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListView.m; sourceTree = "<group>"; };
 		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = SOURCE_ROOT; };
 		5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = Classes/Davenport_Prefix.pch; sourceTree = "<group>"; };
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
-		540C893E0F31D66E00E02727 /* PLAN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PLAN; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		543D2A870F09650D00AAA9A5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		546603EB0F24CF75000C77E7 /* vendorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vendorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		543F9D000F45B85F00E1559C /* SVPluginContributionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPluginContributionLoader.h; sourceTree = "<group>"; };
+		543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPluginContributionLoader.m; sourceTree = "<group>"; };
+		543F9E220F45F72000E1559C /* SVTodoPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVTodoPlugin-Info.plist"; sourceTree = "<group>"; };
+		543F9EA30F46022000E1559C /* TestPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestPlugin-Info.plist"; sourceTree = "<group>"; };
+		543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVTestPlugin.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		543F9F000F4610C100E1559C /* SVTestPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVTestPlugin-Info.plist"; sourceTree = "<group>"; };
+		543F9F160F46114400E1559C /* TPPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPlugin.h; sourceTree = "<group>"; };
+		543F9F170F46114400E1559C /* TPPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPlugin.m; sourceTree = "<group>"; };
+		543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContributionNavigationDescriptor.h; sourceTree = "<group>"; };
+		543FA0430F471E6900E1559C /* TPBucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBucket.h; sourceTree = "<group>"; };
+		543FA0440F471E6900E1559C /* TPBucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBucket.m; sourceTree = "<group>"; };
+		543FA0460F471E8000E1559C /* TPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTask.h; sourceTree = "<group>"; };
+		543FA0470F471E8000E1559C /* TPTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTask.m; sourceTree = "<group>"; };
+		543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseDescriptor.h; sourceTree = "<group>"; };
+		543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseDescriptor.m; sourceTree = "<group>"; };
+		543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTreeNode+TP.h"; sourceTree = "<group>"; };
+		543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTreeNode+TP.m"; sourceTree = "<group>"; };
+		544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAbstractIntegrationTest.h; sourceTree = "<group>"; };
+		544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAbstractIntegrationTest.m; sourceTree = "<group>"; };
+		544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDocumentTreeNodeTest.m; sourceTree = "<group>"; };
+		544466580F3865D00098BD0E /* SVDocumentControlBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDocumentControlBarView.h; sourceTree = "<group>"; };
+		544466590F3865D00098BD0E /* SVDocumentControlBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentControlBarView.m; sourceTree = "<group>"; };
+		544466810F3869AC0098BD0E /* segment1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = segment1.png; path = Images/segment1.png; sourceTree = "<group>"; };
+		544466D90F3885490098BD0E /* button-plus.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-plus.pdf"; path = "Images/button-plus.pdf"; sourceTree = "<group>"; };
+		544467C30F38BB570098BD0E /* button-delete-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-delete-on.pdf"; path = "Images/button-delete-on.pdf"; sourceTree = "<group>"; };
+		544467C40F38BB570098BD0E /* button-edit-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-edit-on.pdf"; path = "Images/button-edit-on.pdf"; sourceTree = "<group>"; };
+		544467C50F38BB570098BD0E /* button-edit.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-edit.pdf"; path = "Images/button-edit.pdf"; sourceTree = "<group>"; };
+		544467C60F38BB570098BD0E /* button-functions-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-functions-on.pdf"; path = "Images/button-functions-on.pdf"; sourceTree = "<group>"; };
+		544467C70F38BB570098BD0E /* button-functions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-functions.pdf"; path = "Images/button-functions.pdf"; sourceTree = "<group>"; };
+		544467C80F38BB570098BD0E /* button-minus.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-minus.pdf"; path = "Images/button-minus.pdf"; sourceTree = "<group>"; };
+		544467C90F38BB570098BD0E /* button-plus-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-plus-on.pdf"; path = "Images/button-plus-on.pdf"; sourceTree = "<group>"; };
+		544467CA0F38BB570098BD0E /* button-plus-template.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-plus-template.pdf"; path = "Images/button-plus-template.pdf"; sourceTree = "<group>"; };
+		544467CB0F38BB570098BD0E /* css-close-normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "css-close-normal.pdf"; path = "Images/css-close-normal.pdf"; sourceTree = "<group>"; };
+		544467CC0F38BB570098BD0E /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = divider.png; path = Images/divider.png; sourceTree = "<group>"; };
+		544467CD0F38BB570098BD0E /* button-back.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-back.pdf"; path = "Images/button-back.pdf"; sourceTree = "<group>"; };
+		544467CE0F38BB570098BD0E /* button-forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-forward.pdf"; path = "Images/button-forward.pdf"; sourceTree = "<group>"; };
+		544467F30F38C1570098BD0E /* blank-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blank-back.png"; path = "Images/blank-back.png"; sourceTree = "<group>"; };
+		544528F40F42801C00AB1845 /* SVSourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceView.h; sourceTree = "<group>"; };
+		544528F50F42801C00AB1845 /* SVSourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceView.m; sourceTree = "<group>"; };
 		546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDatabasePanel.xib; sourceTree = "<group>"; };
 		546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseCreateSheetController.h; sourceTree = "<group>"; };
 		546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDatabaseCreateSheetController.m; sourceTree = "<group>"; };
 		546769BC0F2538A9006F6114 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CouchDocument.xib; sourceTree = "<group>"; };
+		54790A1E0F3A004100461FEB /* button-reload-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-reload-on.pdf"; path = "Images/button-reload-on.pdf"; sourceTree = "<group>"; };
+		54790A1F0F3A004100461FEB /* button-reload.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-reload.pdf"; path = "Images/button-reload.pdf"; sourceTree = "<group>"; };
+		54790A200F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "TB_Btn-Glyph-Run-Norm.pdf"; path = "Images/TB_Btn-Glyph-Run-Norm.pdf"; sourceTree = "<group>"; };
+		54790A210F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "TB_Btn-Glyph-Run-Pressed.pdf"; path = "Images/TB_Btn-Glyph-Run-Pressed.pdf"; sourceTree = "<group>"; };
+		54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVInspectorDocumentController.m; sourceTree = "<group>"; };
+		54790B030F3A1AD200461FEB /* button-edit-dirty.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-edit-dirty.pdf"; path = "Images/button-edit-dirty.pdf"; sourceTree = "<group>"; };
+		54790B370F3A234900461FEB /* button-back-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-back-on.pdf"; path = "Images/button-back-on.pdf"; sourceTree = "<group>"; };
+		54790B380F3A234900461FEB /* button-forward-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-forward-on.pdf"; path = "Images/button-forward-on.pdf"; sourceTree = "<group>"; };
+		54790B560F3A2F2700461FEB /* run.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = run.pdf; path = Images/run.pdf; sourceTree = "<group>"; };
 		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FunctionEditor.xib; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		548BB1840F3654AC00DB4DCB /* NSDictionary+SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SVDavenport.h"; sourceTree = "<group>"; };
 		548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SVDavenport.m"; sourceTree = "<group>"; };
 		548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJSONDescriptor.h; sourceTree = "<group>"; };
 		548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJSONDescriptor.m; sourceTree = "<group>"; };
+		549942C20F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDesignDocumentDescriptor.h; sourceTree = "<group>"; };
+		549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDesignDocumentDescriptor.m; sourceTree = "<group>"; };
+		549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchServerInfoOperationTest.m; sourceTree = "<group>"; };
+		549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchQueryInfoOperationTest.m; sourceTree = "<group>"; };
+		549946BB0F3CA55200E9C328 /* SVFetchQueryInfoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVFetchQueryInfoOperation.h; sourceTree = "<group>"; };
+		549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchQueryInfoOperation.m; sourceTree = "<group>"; };
+		549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEnsureThatTheIntegrationTestBaseClassWorksTest.m; sourceTree = "<group>"; };
+		5499480D0F3CBA9E00E9C328 /* SVViewDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVViewDescriptor.h; sourceTree = "<group>"; };
+		5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVViewDescriptor.m; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
 		549F36EA0F332DD50033A0C9 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
@@ -279,6 +399,11 @@
 		54B546100F31D006004E675B /* documents.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = documents.tiff; path = Images/documents.tiff; sourceTree = "<group>"; };
 		54B546110F31D006004E675B /* segment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = segment.jpg; path = Images/segment.jpg; sourceTree = "<group>"; };
 		54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54BC49F60F39D6EF002B4874 /* SVEmptyInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVEmptyInspectorView.h; sourceTree = "<group>"; };
+		54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEmptyInspectorView.m; sourceTree = "<group>"; };
+		54BC49FA0F39D915002B4874 /* background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = background.pdf; path = Images/background.pdf; sourceTree = "<group>"; };
+		54C1E26C0F426BB0001EA3FA /* SVCouchServerDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCouchServerDescriptor.h; sourceTree = "<group>"; };
+		54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchServerDescriptor.m; sourceTree = "<group>"; };
 		54C53FED0F06527300C337BC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		54DF2F7E0F30C59000A720D9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		54DF2F7F0F30C59000A720D9 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "IntegrationTests-Info.plist"; path = "Resources/IntegrationTests-Info.plist"; sourceTree = "<group>"; };
@@ -288,6 +413,8 @@
 		54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vendorTests-Info.plist"; path = "Resources/vendorTests-Info.plist"; sourceTree = "<group>"; };
 		54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RBSplitView.framework; sourceTree = "<group>"; };
 		54F9F3330F0080B100EE414E /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContributionPlugin.h; sourceTree = "<group>"; };
+		54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLoadNavigationContributionsFromPluginsTest.m; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -304,13 +431,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		546603E80F24CF75000C77E7 /* Frameworks */ = {
+		543F9EFD0F4610C100E1559C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5466040F0F24D165000C77E7 /* CouchObjC.framework in Frameworks */,
-				5466040C0F24D162000C77E7 /* JSON.framework in Frameworks */,
-				5466040B0F24D15F000C77E7 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */,
 				54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,8 +499,8 @@
 				8D15AC370486D014006FF6A4 /* Davenport.app */,
 				54F9F3330F0080B100EE414E /* Unit Tests.octest */,
 				54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */,
-				546603EB0F24CF75000C77E7 /* vendorTests.octest */,
 				549F36EA0F332DD50033A0C9 /* Davenport.app */,
+				543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -383,14 +508,16 @@
 		2A37F4AAFDCFA73011CA2CEA /* stigmergic */ = {
 			isa = PBXGroup;
 			children = (
-				540C893E0F31D66E00E02727 /* PLAN */,
-				540C893F0F31D66E00E02727 /* README.markdown */,
 				54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */,
 				5400899C0F30C040002D56A4 /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
+				543F9E220F45F72000E1559C /* SVTodoPlugin-Info.plist */,
+				540C893F0F31D66E00E02727 /* README.markdown */,
+				543F9EA30F46022000E1559C /* TestPlugin-Info.plist */,
+				543F9F000F4610C100E1559C /* SVTestPlugin-Info.plist */,
 			);
 			name = stigmergic;
 			sourceTree = "<group>";
@@ -440,12 +567,13 @@
 			isa = PBXGroup;
 			children = (
 				540089B50F30C040002D56A4 /* SVDavenport.h */,
-				540089B80F30C040002D56A4 /* SVFetchServerInfoOperation.h */,
-				540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */,
+				543F9F300F4613A100E1559C /* Test Plugin */,
+				54FEC8A40F45885D00652DEE /* Plugin API */,
+				543F9CFF0F45B7C200E1559C /* Operations */,
 				540089F10F30C203002D56A4 /* Additions */,
+				540089EE0F30C128002D56A4 /* Model */,
 				540089F00F30C13F002D56A4 /* Views, Cells and Controls */,
 				540089EF0F30C12D002D56A4 /* Controllers and Delegates */,
-				540089EE0F30C128002D56A4 /* Model */,
 				540089EB0F30C11E002D56A4 /* Tests */,
 			);
 			path = Classes;
@@ -468,14 +596,14 @@
 		540089EE0F30C128002D56A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				540089C40F30C040002D56A4 /* SVSectionDescriptor.h */,
-				540089C50F30C040002D56A4 /* SVSectionDescriptor.m */,
-				540089B30F30C040002D56A4 /* SVDatabaseDescriptor.h */,
-				540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */,
-				540089A70F30C040002D56A4 /* SVAbstractDescriptor.h */,
+				549942C60F3BCDFB00E9C328 /* headers */,
 				540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */,
-				548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */,
+				540089C50F30C040002D56A4 /* SVSectionDescriptor.m */,
+				540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */,
 				548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */,
+				549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */,
+				5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */,
+				54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -485,11 +613,11 @@
 			children = (
 				5456930B0F3256F400100237 /* headers */,
 				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
-				540089B10F30C040002D56A4 /* SVCouchDocumentController.m */,
-				540089BB0F30C040002D56A4 /* SVFunctionEditorController.m */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
-				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
 				546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */,
+				54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */,
+				540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */,
+				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
 			);
 			name = "Controllers and Delegates";
 			sourceTree = "<group>";
@@ -497,18 +625,15 @@
 		540089F00F30C13F002D56A4 /* Views, Cells and Controls */ = {
 			isa = PBXGroup;
 			children = (
-				540089C00F30C040002D56A4 /* SVPathControl.h */,
+				544466530F38657A0098BD0E /* headers */,
 				540089C10F30C040002D56A4 /* SVPathControl.m */,
-				540089AB0F30C040002D56A4 /* SVBreadCrumbCell.h */,
 				540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */,
-				540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */,
 				540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */,
-				540089C60F30C040002D56A4 /* SVSourceListCell.h */,
 				540089C70F30C040002D56A4 /* SVSourceListCell.m */,
-				540089AD0F30C040002D56A4 /* SVControlBarView.h */,
 				540089AE0F30C040002D56A4 /* SVControlBarView.m */,
-				540089C80F30C040002D56A4 /* SVSourceListView.h */,
-				540089C90F30C040002D56A4 /* SVSourceListView.m */,
+				544466590F3865D00098BD0E /* SVDocumentControlBarView.m */,
+				54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */,
+				544528F50F42801C00AB1845 /* SVSourceView.m */,
 			);
 			name = "Views, Cells and Controls";
 			sourceTree = "<group>";
@@ -548,6 +673,13 @@
 		54008A1D0F30C4A3002D56A4 /* Integration */ = {
 			isa = PBXGroup;
 			children = (
+				544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */,
+				544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */,
+				544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */,
+				549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */,
+				549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */,
+				549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */,
+				54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */,
 			);
 			name = Integration;
 			sourceTree = "<group>";
@@ -555,6 +687,29 @@
 		5405B42F0F1450B2000EF28E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				54790B560F3A2F2700461FEB /* run.pdf */,
+				54790B370F3A234900461FEB /* button-back-on.pdf */,
+				54790B380F3A234900461FEB /* button-forward-on.pdf */,
+				54790B030F3A1AD200461FEB /* button-edit-dirty.pdf */,
+				54790A1E0F3A004100461FEB /* button-reload-on.pdf */,
+				54790A1F0F3A004100461FEB /* button-reload.pdf */,
+				54790A200F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf */,
+				54790A210F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf */,
+				54BC49FA0F39D915002B4874 /* background.pdf */,
+				544467F30F38C1570098BD0E /* blank-back.png */,
+				544467C30F38BB570098BD0E /* button-delete-on.pdf */,
+				544467C40F38BB570098BD0E /* button-edit-on.pdf */,
+				544467C50F38BB570098BD0E /* button-edit.pdf */,
+				544467C60F38BB570098BD0E /* button-functions-on.pdf */,
+				544467C70F38BB570098BD0E /* button-functions.pdf */,
+				544467C80F38BB570098BD0E /* button-minus.pdf */,
+				544467C90F38BB570098BD0E /* button-plus-on.pdf */,
+				544467CA0F38BB570098BD0E /* button-plus-template.pdf */,
+				544467CB0F38BB570098BD0E /* css-close-normal.pdf */,
+				544467CC0F38BB570098BD0E /* divider.png */,
+				544467CD0F38BB570098BD0E /* button-back.pdf */,
+				544467CE0F38BB570098BD0E /* button-forward.pdf */,
+				544466D90F3885490098BD0E /* button-plus.pdf */,
 				54B546090F31D006004E675B /* arrow-25.jpg */,
 				54B5460A0F31D006004E675B /* arrow.jpg */,
 				54B5460B0F31D006004E675B /* divan-2.icns */,
@@ -564,8 +719,70 @@
 				54B5460F0F31D006004E675B /* divan.icns */,
 				54B546100F31D006004E675B /* documents.tiff */,
 				54B546110F31D006004E675B /* segment.jpg */,
+				544466810F3869AC0098BD0E /* segment1.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		543F9CFF0F45B7C200E1559C /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				543F9D040F45B88D00E1559C /* headers */,
+				549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */,
+				540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */,
+				543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		543F9D040F45B88D00E1559C /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				543F9D000F45B85F00E1559C /* SVPluginContributionLoader.h */,
+				540089B80F30C040002D56A4 /* SVFetchServerInfoOperation.h */,
+				549946BB0F3CA55200E9C328 /* SVFetchQueryInfoOperation.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		543F9F300F4613A100E1559C /* Test Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				543FA0490F471E8900E1559C /* headers */,
+				543F9F170F46114400E1559C /* TPPlugin.m */,
+				543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */,
+				543FA0440F471E6900E1559C /* TPBucket.m */,
+				543FA0470F471E8000E1559C /* TPTask.m */,
+				543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */,
+				543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */,
+			);
+			name = "Test Plugin";
+			sourceTree = "<group>";
+		};
+		543FA0490F471E8900E1559C /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */,
+				543F9F160F46114400E1559C /* TPPlugin.h */,
+				543FA0430F471E6900E1559C /* TPBucket.h */,
+				543FA0460F471E8000E1559C /* TPTask.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		544466530F38657A0098BD0E /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				544528F40F42801C00AB1845 /* SVSourceView.h */,
+				54BC49F60F39D6EF002B4874 /* SVEmptyInspectorView.h */,
+				544466580F3865D00098BD0E /* SVDocumentControlBarView.h */,
+				540089C00F30C040002D56A4 /* SVPathControl.h */,
+				540089AB0F30C040002D56A4 /* SVBreadCrumbCell.h */,
+				540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */,
+				540089C60F30C040002D56A4 /* SVSourceListCell.h */,
+				540089AD0F30C040002D56A4 /* SVControlBarView.h */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 		5456930B0F3256F400100237 /* headers */ = {
@@ -574,9 +791,23 @@
 				546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */,
 				540089C20F30C040002D56A4 /* SVQueryResultController.h */,
 				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
-				540089BA0F30C040002D56A4 /* SVFunctionEditorController.h */,
-				540089B00F30C040002D56A4 /* SVCouchDocumentController.h */,
 				540089A90F30C040002D56A4 /* SVAppDelegate.h */,
+				540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */,
+				540089BA0F30C040002D56A4 /* SVInspectorFunctionDocumentController.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		549942C60F3BCDFB00E9C328 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				540089C40F30C040002D56A4 /* SVSectionDescriptor.h */,
+				540089B30F30C040002D56A4 /* SVDatabaseDescriptor.h */,
+				540089A70F30C040002D56A4 /* SVAbstractDescriptor.h */,
+				548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */,
+				549942C20F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.h */,
+				5499480D0F3CBA9E00E9C328 /* SVViewDescriptor.h */,
+				54C1E26C0F426BB0001EA3FA /* SVCouchServerDescriptor.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -588,6 +819,15 @@
 				54B09E8F0F195834005D3E2F /* Tests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		54FEC8A40F45885D00652DEE /* Plugin API */ = {
+			isa = PBXGroup;
+			children = (
+				54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */,
+				543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */,
+			);
+			name = "Plugin API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -602,6 +842,7 @@
 				540C88E00F31D51700E02727 /* Sources */,
 				540C88F20F31D51700E02727 /* Frameworks */,
 				540C88F80F31D51700E02727 /* ShellScript */,
+				543F9E950F46011F00E1559C /* Copy Plugins */,
 			);
 			buildRules = (
 			);
@@ -614,23 +855,21 @@
 			productReference = 549F36EA0F332DD50033A0C9 /* Davenport.app */;
 			productType = "com.apple.product-type.application";
 		};
-		546603EA0F24CF75000C77E7 /* vendorTests */ = {
+		543F9EFE0F4610C100E1559C /* SVTestPlugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 546603F20F24CF76000C77E7 /* Build configuration list for PBXNativeTarget "vendorTests" */;
+			buildConfigurationList = 543F9F070F4610C200E1559C /* Build configuration list for PBXNativeTarget "SVTestPlugin" */;
 			buildPhases = (
-				546604190F24D2A4000C77E7 /* CopyFiles */,
-				546603E60F24CF75000C77E7 /* Resources */,
-				546603E70F24CF75000C77E7 /* Sources */,
-				546603E80F24CF75000C77E7 /* Frameworks */,
-				546603E90F24CF75000C77E7 /* ShellScript */,
+				543F9EFB0F4610C100E1559C /* Resources */,
+				543F9EFC0F4610C100E1559C /* Sources */,
+				543F9EFD0F4610C100E1559C /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = vendorTests;
-			productName = vendorTests;
-			productReference = 546603EB0F24CF75000C77E7 /* vendorTests.octest */;
+			name = SVTestPlugin;
+			productName = SVTestPlugin;
+			productReference = 543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 		54B7DE7E0F097BF00081F3A3 /* Integration Tests */ = {
@@ -640,7 +879,7 @@
 				54B7DE810F097BF00081F3A3 /* Resources */,
 				54B7DE820F097BF00081F3A3 /* Sources */,
 				54B7DE870F097BF00081F3A3 /* Frameworks */,
-				54B7DE890F097BF00081F3A3 /* ShellScript */,
+				54B7DE890F097BF00081F3A3 /* Run Tests */,
 			);
 			buildRules = (
 			);
@@ -679,10 +918,12 @@
 				549BC6C50EFDC662002DFF80 /* CopyFiles */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
+				543FA00C0F46264300E1559C /* Copy Test Plugin */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				543FA00E0F4626B300E1559C /* PBXTargetDependency */,
 				549F374A0F3331480033A0C9 /* PBXTargetDependency */,
 			);
 			name = Davenport;
@@ -709,11 +950,11 @@
 			);
 			projectRoot = "";
 			targets = (
+				543F9EFE0F4610C100E1559C /* SVTestPlugin */,
 				540C88C80F31D51700E02727 /* Davenport with Embedded CouchDB */,
 				8D15AC270486D014006FF6A4 /* Davenport */,
-				54F9F2230F006DE900EE414E /* Unit Tests */,
 				54B7DE7E0F097BF00081F3A3 /* Integration Tests */,
-				546603EA0F24CF75000C77E7 /* vendorTests */,
+				54F9F2230F006DE900EE414E /* Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -756,10 +997,34 @@
 				540C88D90F31D51700E02727 /* documents.tiff in Resources */,
 				540C88DA0F31D51700E02727 /* segment.jpg in Resources */,
 				546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
+				544466830F3869AC0098BD0E /* segment1.png in Resources */,
+				544466DB0F3885490098BD0E /* button-plus.pdf in Resources */,
+				544467DB0F38BB570098BD0E /* button-delete-on.pdf in Resources */,
+				544467DC0F38BB570098BD0E /* button-edit-on.pdf in Resources */,
+				544467DD0F38BB570098BD0E /* button-edit.pdf in Resources */,
+				544467DE0F38BB570098BD0E /* button-functions-on.pdf in Resources */,
+				544467DF0F38BB570098BD0E /* button-functions.pdf in Resources */,
+				544467E00F38BB570098BD0E /* button-minus.pdf in Resources */,
+				544467E10F38BB570098BD0E /* button-plus-on.pdf in Resources */,
+				544467E20F38BB570098BD0E /* button-plus-template.pdf in Resources */,
+				544467E30F38BB570098BD0E /* css-close-normal.pdf in Resources */,
+				544467E40F38BB570098BD0E /* divider.png in Resources */,
+				544467E50F38BB570098BD0E /* button-back.pdf in Resources */,
+				544467E60F38BB570098BD0E /* button-forward.pdf in Resources */,
+				544467F50F38C1570098BD0E /* blank-back.png in Resources */,
+				54BC49FB0F39D915002B4874 /* background.pdf in Resources */,
+				54790A220F3A004100461FEB /* button-reload-on.pdf in Resources */,
+				54790A230F3A004100461FEB /* button-reload.pdf in Resources */,
+				54790A240F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf in Resources */,
+				54790A250F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf in Resources */,
+				54790B040F3A1AD200461FEB /* button-edit-dirty.pdf in Resources */,
+				54790B390F3A234900461FEB /* button-back-on.pdf in Resources */,
+				54790B3A0F3A234900461FEB /* button-forward-on.pdf in Resources */,
+				54790B570F3A2F2700461FEB /* run.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		546603E60F24CF75000C77E7 /* Resources */ = {
+		543F9EFB0F4610C100E1559C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -800,6 +1065,30 @@
 				54B546190F31D006004E675B /* documents.tiff in Resources */,
 				54B5461A0F31D006004E675B /* segment.jpg in Resources */,
 				546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */,
+				544466820F3869AC0098BD0E /* segment1.png in Resources */,
+				544466DA0F3885490098BD0E /* button-plus.pdf in Resources */,
+				544467CF0F38BB570098BD0E /* button-delete-on.pdf in Resources */,
+				544467D00F38BB570098BD0E /* button-edit-on.pdf in Resources */,
+				544467D10F38BB570098BD0E /* button-edit.pdf in Resources */,
+				544467D20F38BB570098BD0E /* button-functions-on.pdf in Resources */,
+				544467D30F38BB570098BD0E /* button-functions.pdf in Resources */,
+				544467D40F38BB570098BD0E /* button-minus.pdf in Resources */,
+				544467D50F38BB570098BD0E /* button-plus-on.pdf in Resources */,
+				544467D60F38BB570098BD0E /* button-plus-template.pdf in Resources */,
+				544467D70F38BB570098BD0E /* css-close-normal.pdf in Resources */,
+				544467D80F38BB570098BD0E /* divider.png in Resources */,
+				544467D90F38BB570098BD0E /* button-back.pdf in Resources */,
+				544467DA0F38BB570098BD0E /* button-forward.pdf in Resources */,
+				544467F40F38C1570098BD0E /* blank-back.png in Resources */,
+				54BC49FC0F39D915002B4874 /* background.pdf in Resources */,
+				54790A260F3A004100461FEB /* button-reload-on.pdf in Resources */,
+				54790A270F3A004100461FEB /* button-reload.pdf in Resources */,
+				54790A280F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf in Resources */,
+				54790A290F3A004100461FEB /* TB_Btn-Glyph-Run-Pressed.pdf in Resources */,
+				54790B050F3A1AD200461FEB /* button-edit-dirty.pdf in Resources */,
+				54790B3B0F3A234900461FEB /* button-back-on.pdf in Resources */,
+				54790B3C0F3A234900461FEB /* button-forward-on.pdf in Resources */,
+				54790B580F3A2F2700461FEB /* run.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,26 +1109,28 @@
 			shellScript = "echo \"---------------------------------------------- CUSTOM COPY SCRIPT\"\ncp -r /Users/robevans/Projects/cocoa/CouchDb $CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\n";
 			showEnvVarsInLog = 0;
 		};
-		546603E90F24CF75000C77E7 /* ShellScript */ = {
+		543FA00C0F46264300E1559C /* Copy Test Plugin */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Copy Test Plugin";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "mkdir -p \"$USER_LIBRARY_DIR/Application Support/Davenport/Plugins\"\nrm -rf \"$USER_LIBRARY_DIR/Application Support/Davenport/Plugins/SVTestPlugin.plugin\"\ncp -rf \"$BUILT_PRODUCTS_DIR/SVTestPlugin.plugin\" \"$USER_LIBRARY_DIR/Application Support/Davenport/Plugins\"";
 		};
-		54B7DE890F097BF00081F3A3 /* ShellScript */ = {
+		54B7DE890F097BF00081F3A3 /* Run Tests */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Tests";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,27 +1165,39 @@
 				540C88E40F31D51700E02727 /* SVAppDelegate.m in Sources */,
 				540C88E50F31D51700E02727 /* SVBreadCrumbCell.m in Sources */,
 				540C88E60F31D51700E02727 /* SVControlBarView.m in Sources */,
-				540C88E70F31D51700E02727 /* SVCouchDocumentController.m in Sources */,
 				540C88E80F31D51700E02727 /* SVDatabaseDescriptor.m in Sources */,
 				540C88E90F31D51700E02727 /* SVDocumentKeyCell.m in Sources */,
 				540C88EA0F31D51700E02727 /* SVFetchServerInfoOperation.m in Sources */,
-				540C88EB0F31D51700E02727 /* SVFunctionEditorController.m in Sources */,
+				540C88EB0F31D51700E02727 /* SVInspectorFunctionDocumentController.m in Sources */,
 				540C88EC0F31D51700E02727 /* SVMainWindowController.m in Sources */,
 				540C88ED0F31D51700E02727 /* SVPathControl.m in Sources */,
 				540C88EE0F31D51700E02727 /* SVQueryResultController.m in Sources */,
 				540C88EF0F31D51700E02727 /* SVSectionDescriptor.m in Sources */,
 				540C88F00F31D51700E02727 /* SVSourceListCell.m in Sources */,
-				540C88F10F31D51700E02727 /* SVSourceListView.m in Sources */,
 				546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 				548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */,
 				548BB1BC0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */,
+				5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */,
+				54BC49F80F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */,
+				54790A960F3A0D1300461FEB /* SVInspectorDocumentController.m in Sources */,
+				549942C50F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */,
+				549946BE0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */,
+				549948100F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */,
+				54C1E26E0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */,
+				544528F60F42801C00AB1845 /* SVSourceView.m in Sources */,
+				543F9D030F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		546603E70F24CF75000C77E7 /* Sources */ = {
+		543F9EFC0F4610C100E1559C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				543F9F180F46114400E1559C /* TPPlugin.m in Sources */,
+				543FA0450F471E6900E1559C /* TPBucket.m in Sources */,
+				543FA0480F471E8000E1559C /* TPTask.m in Sources */,
+				543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */,
+				543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +1205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */,
+				5499475C0F3CAFD200E9C328 /* SVFetchQueryInfoOperationTest.m in Sources */,
+				54FECB1A0F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,10 +1215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				540089F60F30C2BD002D56A4 /* SVJsonTest.m in Sources */,
-				540089F30F30C2A3002D56A4 /* GTMNSObject+UnitTesting.m in Sources */,
-				540089F40F30C2A3002D56A4 /* GTMSenTestCase.m in Sources */,
-				540089F50F30C2A3002D56A4 /* GTMSystemVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,20 +1228,27 @@
 				540089D00F30C040002D56A4 /* SVAppDelegate.m in Sources */,
 				540089D10F30C040002D56A4 /* SVBreadCrumbCell.m in Sources */,
 				540089D20F30C040002D56A4 /* SVControlBarView.m in Sources */,
-				540089D40F30C040002D56A4 /* SVCouchDocumentController.m in Sources */,
 				540089D60F30C040002D56A4 /* SVDatabaseDescriptor.m in Sources */,
 				540089D70F30C040002D56A4 /* SVDocumentKeyCell.m in Sources */,
 				540089D80F30C040002D56A4 /* SVFetchServerInfoOperation.m in Sources */,
-				540089D90F30C040002D56A4 /* SVFunctionEditorController.m in Sources */,
+				540089D90F30C040002D56A4 /* SVInspectorFunctionDocumentController.m in Sources */,
 				540089DC0F30C040002D56A4 /* SVMainWindowController.m in Sources */,
 				540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */,
 				540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */,
 				540089DF0F30C040002D56A4 /* SVSectionDescriptor.m in Sources */,
 				540089E00F30C040002D56A4 /* SVSourceListCell.m in Sources */,
-				540089E10F30C040002D56A4 /* SVSourceListView.m in Sources */,
 				546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 				548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */,
 				548BB1BD0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */,
+				5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */,
+				54BC49F90F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */,
+				54790A970F3A0D1300461FEB /* SVInspectorDocumentController.m in Sources */,
+				549942C40F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */,
+				549946BD0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */,
+				5499480F0F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */,
+				54C1E26F0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */,
+				544528F70F42801C00AB1845 /* SVSourceView.m in Sources */,
+				543F9D020F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +1259,11 @@
 			isa = PBXTargetDependency;
 			name = CouchObjC;
 			targetProxy = 540C88CA0F31D51700E02727 /* PBXContainerItemProxy */;
+		};
+		543FA00E0F4626B300E1559C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 543F9EFE0F4610C100E1559C /* SVTestPlugin */;
+			targetProxy = 543FA00D0F4626B300E1559C /* PBXContainerItemProxy */;
 		};
 		549F374A0F3331480033A0C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1096,66 +1410,52 @@
 			};
 			name = Release;
 		};
-		546603ED0F24CF76000C77E7 /* Debug */ = {
+		543F9F010F4610C200E1559C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
-					"\"$(SRCROOT)/../couchobj/build/Release\"",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "vendorTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/ @loader_path/../Frameworks";
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "SVTestPlugin-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
-					Cocoa,
+					Foundation,
 					"-framework",
-					SenTestingKit,
+					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = vendorTests;
-				WRAPPER_EXTENSION = octest;
+				PRODUCT_NAME = SVTestPlugin;
+				WRAPPER_EXTENSION = plugin;
 			};
 			name = Debug;
 		};
-		546603EE0F24CF76000C77E7 /* Release */ = {
+		543F9F020F4610C200E1559C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
-					"\"$(SRCROOT)/../couchobj/build/Release\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "vendorTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "SVTestPlugin-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
-					Cocoa,
+					Foundation,
 					"-framework",
-					SenTestingKit,
+					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = vendorTests;
-				WRAPPER_EXTENSION = octest;
+				PRODUCT_NAME = SVTestPlugin;
+				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1165,12 +1465,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(NATIVE_ARCH)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/stigmergic.app/Contents/MacOS/stigmergic";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Davenport.app/Contents/MacOS/Davenport";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\\\"$(SRCROOT)\\\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1180,12 +1481,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/UnitTesting",
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/Foundation",
 					"/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/DebugUtils",
 				);
-				INFOPLIST_FILE = "IntegrationTests-Info.plist";
+				INFOPLIST_FILE = "Resources/IntegrationTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1211,13 +1513,14 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\\\"$(SRCROOT)\\\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "IntegrationTests-Info.plist";
+				INFOPLIST_FILE = "Resources/IntegrationTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1412,11 +1715,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		546603F20F24CF76000C77E7 /* Build configuration list for PBXNativeTarget "vendorTests" */ = {
+		543F9F070F4610C200E1559C /* Build configuration list for PBXNativeTarget "SVTestPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				546603ED0F24CF76000C77E7 /* Debug */,
-				546603EE0F24CF76000C77E7 /* Release */,
+				543F9F010F4610C200E1559C /* Debug */,
+				543F9F020F4610C200E1559C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,15 +1,15 @@
 //
-//  SVSourceListView.h
-//  
+//  SVSourceView.h
+//  Davenport
 //
-//  Created by Robert Evans on 12/28/08.
-//  Copyright 2008 South And Valley. All rights reserved.
+//  Created by Robert Evans on 2/11/09.
+//  Copyright 2009 South And Valley. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
 
-@interface SVSourceListView : NSOutlineView {
+@interface SVSourceView : NSOutlineView {
 
 }
 

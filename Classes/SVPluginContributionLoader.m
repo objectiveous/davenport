@@ -7,7 +7,7 @@
 //
 
 #import "SVPluginContributionLoader.h"
-#import "SVContributionNav.h"
+#import "DPContributionPlugin.h"
 
 @implementation SVPluginContributionLoader
 
@@ -96,7 +96,7 @@
 }
 
 - (BOOL)plugInClassIsValid:(Class)plugInClass{    
-    if([plugInClass conformsToProtocol:@protocol(SVContributionNav)]){        
+    if([plugInClass conformsToProtocol:@protocol(DPContributionPlugin)]){        
         // The following check is nice and all but it slows down development by 
         // requiring us to update both the protocol header and this method whenenver 
         // we change a signature. Once the protocol starts firming up, these 

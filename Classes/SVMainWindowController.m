@@ -24,6 +24,7 @@
 #import "SVViewDescriptor.h"
 #import "SVDavenport.h"
 #import "SVCouchServerDescriptor.h"
+#import "DPContributionNavigationDescriptor.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -173,7 +174,7 @@
         
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
         
-    SVAbstractDescriptor *desc = [childNode representedObject];
+    id desc = [childNode representedObject];
 
     // XXX THIS IS A GROSS HACK. 
     if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
@@ -192,19 +193,27 @@
     return childNode;            
 }
 
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn 
-           byItem:(id)item {
-
-    if ([[tableColumn identifier] isEqualToString:COLUMNID_LABEL])
-        return [[(NSTreeNode*) item representedObject] label];
+- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
     
+    if ([[tableColumn identifier] isEqualToString:COLUMNID_LABEL]){
+        id navDescriptor = [(NSTreeNode*) item representedObject];
+        if([navDescriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]);        
+            return [navDescriptor label];
+    }            
     return nil;
 }
 
-- (BOOL)isSpecialGroup:(SVAbstractDescriptor *)groupNode{ 
+// groupNode will need be an object conforming to our Navigation Descriptor protocol. 
+- (BOOL)isSpecialGroup:(id)groupNode{ 
+    
+    if([groupNode conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        return [groupNode isGroupItem];
+    }
+    /*
 	if([groupNode isKindOfClass:[SVCouchServerDescriptor class]] || [groupNode isKindOfClass:[SVSectionDescriptor class]]){
         return YES;
-    }                
+    } 
+     */
     return NO;
     
 }
@@ -213,7 +222,7 @@
 
 
 - (void)outlineViewItemDidExpand:(NSNotification *)notification{
-    NSTreeNode *item = (NSTreeNode*) [notification object];
+    //NSTreeNode *item = (NSTreeNode*) [notification object];
     //SVAbstractDescriptor *desc = [item representedObject];
 
 }
@@ -293,8 +302,7 @@
 // -------------------------------------------------------------------------------
 //	outlineView:willDisplayCell
 // -------------------------------------------------------------------------------
-- (void)outlineView:(NSOutlineView *)olv willDisplayCell:(NSCell*)cell 
-     forTableColumn:(NSTableColumn *)tableColumn item:(id)item{
+- (void)outlineView:(NSOutlineView *)olv willDisplayCell:(NSCell*)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item{
             
         if ([self isSpecialGroup:[item representedObject]]){
             NSMutableAttributedString *newTitle = [[cell attributedStringValue] mutableCopy];
@@ -302,11 +310,6 @@
             [cell setAttributedStringValue:newTitle];
             [newTitle release];
         }
-        /*
-        else{
-            [(SVSourceListCell*)cell setImage:urlImage];
-        } 
-         */
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
@@ -325,10 +328,15 @@
         return;
             
     NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
-    SVAbstractDescriptor *descriptor = [item representedObject];
-    SVDebug(@"Selection changed [%@]", descriptor.identity);
-    [self updateBreadCrumbs:item];
+    id descriptor = [item representedObject];
     
+    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        SVDebug(@"item does not conform to Contribution protocol");
+        return;
+    }
+    
+    [self updateBreadCrumbs:item];
+    // BUILT INS
     // Show database results (_all_docs) in the main window and design document views as well. 
     if([descriptor isKindOfClass:[SVDatabaseDescriptor class]]){        
         [self showItemInMainView:item];
@@ -336,14 +344,34 @@
         [self showDesignView:item];
     }else if([descriptor isKindOfClass:[SVViewDescriptor class]]){
         [self showViewInMainView:item];
+    }else{
+        [self delagateSelectionDidChange:item];
     }    
 }
+
+- (void) delagateSelectionDidChange:(NSTreeNode*)item{
+    if(item == NULL)
+        return;
+    
+    // As per usual, the represented object ought to be a DPContributionNavigationDescriptor
+    id descriptor = [item representedObject];    
+    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        SVDebug(@"item does not conform to Contribution protocol");
+        return;
+    }
+    NSString *pluginID = [descriptor getPluginID];
+    id plugin = [[NSApp delegate] lookupPlugin:pluginID];
+    [plugin selectionDidChange:item];
+    
+    SVDebug(@"TODO - lookup the plugin that supplied the selected navigation item %@", [descriptor getPluginID]);
+}
+
+
 
 - (void)showDesignView:(NSTreeNode*)item{
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
-    }
-    
+    }    
     [self showEmptyInspectorView];        
 }
 
@@ -671,11 +699,19 @@
     // We'd like to hide the disclosure triangle but we need to ensure that 
     // the CouchServer node is expanded first. 
     
-    SVAbstractDescriptor *desc = [item representedObject];       
-    if([desc isKindOfClass:[SVCouchServerDescriptor class]])
-        return NO;
+    // If the descriptor is a to be shown as a group item, then don't show the 
+    // discolsure triangle. 
+    id navigationDescriptor = [item representedObject];       
     
-    return YES;
+    if([navigationDescriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        if( [navigationDescriptor isGroupItem])
+            return NO;
+    } 
+    
+    if( [[item childNodes] count] > 0)
+        return YES;
+    
+    return NO;
 }
 
 

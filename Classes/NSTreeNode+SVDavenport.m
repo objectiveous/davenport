@@ -26,6 +26,7 @@
 
 -(NSTreeNode *) addCouchServerSection:(NSString *)sectionName{
     SVCouchServerDescriptor *section = [[[SVCouchServerDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
+    [section setGroupItem:YES];
     return [self addChildNodeWithObject:section]; 
 }
 

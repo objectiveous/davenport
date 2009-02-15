@@ -77,7 +77,9 @@
 - (void)appendData:(NSData *)data;
 
 // Notification handlers
--(void) removeBreadCrumb:(NSNotification*)notification;
--(void) appendBreadCrumb:(NSNotification*)notification;
+- (void) removeBreadCrumb:(NSNotification*)notification;
+- (void) appendBreadCrumb:(NSNotification*)notification;
+
+- (void) delagateSelectionDidChange:(NSTreeNode*)item;
 
 @end

@@ -50,8 +50,9 @@
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVPluginContributionLoader class]]){
         SVPluginContributionLoader *loader = (SVPluginContributionLoader*)object;
         //itWorked = TRUE;    
-        for(id cont in loader.instances){
-            //[cont navigationContribution];
+        for(id plugin in loader.instances){
+            NSTreeNode *contributionRootNode = [plugin navigationContribution];
+            STAssertNotNULL(contributionRootNode,@"Contribution returned a null tree node");
             itWorked = TRUE;            
         }
          

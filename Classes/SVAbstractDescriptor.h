@@ -7,23 +7,24 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DPContributionNavigationDescriptor.h"
 
-
-@interface SVAbstractDescriptor : NSObject {
+@interface SVAbstractDescriptor : NSObject <DPContributionNavigationDescriptor>{
     // A label is the text show to the user. For example, in an outline view we might 
     // display a design document named _design/numberOfJazzBands as Number Of Jazz Bands
     NSString *label;
     // Identity is the actual resource name that a Descriptor represents. For example 
     //  _design/numberOfJazzBands
-    NSString *identity; 
-        
+    NSString *identity;         
     NSImage	 *nodeIcon;
+    BOOL      groupItem;
 }
-
--(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)identity;
 
 @property (retain) NSString *label;
 @property (retain) NSImage  *nodeIcon;
 @property (retain) NSString *identity;
+@property BOOL groupItem;
 
+-(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)identity;
+-(BOOL)isGroupItem;
 @end

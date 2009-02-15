@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ActivePerspectiveName</key>
-	<string>Project</string>
+	<string>Debug</string>
 	<key>AllowedModules</key>
 	<array>
 		<dict>
@@ -333,8 +333,6 @@
 									<string>MainColumn</string>
 									<real>286</real>
 								</array>
-								<key>RubberWindowFrame</key>
-								<string>67 37 1745 1141 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -342,8 +340,6 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBottomSmartGroupGIDs</key>
@@ -391,7 +387,11 @@
 										<string>1C37FAAC04509CD000000102</string>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
-									<array/>
+									<array>
+										<array>
+											<integer>0</integer>
+										</array>
+									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
 									<string>{{0, 0}, {308, 1056}}</string>
 								</dict>
@@ -411,8 +411,6 @@
 									<string>MainColumn</string>
 									<real>286</real>
 								</array>
-								<key>RubberWindowFrame</key>
-								<string>67 37 1745 1141 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
@@ -444,25 +442,21 @@
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>548BB4F30F3789FA00DB4DCB</string>
+										<string>5486133B0F489EA90011A621</string>
 										<key>history</key>
 										<array>
 											<string>548BB4C70F3779FF00DB4DCB</string>
 											<string>548BB34E0F37525500DB4DCB</string>
 											<string>548BB4EC0F377AF000DB4DCB</string>
 											<string>548BB4F00F3789FA00DB4DCB</string>
-											<string>548BB4F10F3789FA00DB4DCB</string>
+											<string>548BB4F30F3789FA00DB4DCB</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>548BB4AD0F3778A600DB4DCB</string>
-											<string>548BB4AF0F3778A600DB4DCB</string>
-											<string>548BB4CA0F3779FF00DB4DCB</string>
 											<string>548BB4CB0F3779FF00DB4DCB</string>
 											<string>548BB4CC0F3779FF00DB4DCB</string>
 											<string>548BB18F0F3654CA00DB4DCB</string>
-											<string>548BB4ED0F377AF000DB4DCB</string>
-											<string>548BB4F20F3789FA00DB4DCB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -476,14 +470,12 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1415, 831}}</string>
-								<key>RubberWindowFrame</key>
-								<string>67 37 1745 1141 0 0 1920 1178 </string>
+								<string>{{0, 0}, {1415, 830}}</string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>831pt</string>
+							<string>830pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
@@ -501,7 +493,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1415, 137}}</string>
+										<string>{{10, 27}, {1415, 217}}</string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -556,8 +548,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1415, 217}}</string>
-										<key>RubberWindowFrame</key>
-										<string>67 37 1745 1141 0 0 1920 1178 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -587,13 +577,13 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>548BB0A50F35D98D00DB4DCB</string>
-				<string>548BB0A60F35D98D00DB4DCB</string>
+				<string>5486132E0F489E860011A621</string>
+				<string>5486132F0F489E860011A621</string>
 				<string>1CA23ED40692098700951B8B</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>548BB0A70F35D98D00DB4DCB</string>
+				<string>548613300F489E860011A621</string>
 				<string>5442DFA20EFD625500CC67FC</string>
-				<string>548BB0A80F35D98D00DB4DCB</string>
+				<string>548613310F489E860011A621</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -635,6 +625,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
@@ -646,6 +638,8 @@
 					<dict>
 						<key>Frame</key>
 						<string>{{0, 0}, {1745, 354}}</string>
+						<key>RubberWindowFrame</key>
+						<string>67 37 1745 1141 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXDebugCLIModule</string>
@@ -712,17 +706,19 @@
 							<key>DebugVariablesTableConfiguration</key>
 							<array>
 								<string>Name</string>
-								<real>322</real>
-								<string>Type</string>
-								<real>84</real>
+								<real>351</real>
 								<string>Value</string>
-								<real>247</real>
+								<real>276</real>
 								<string>Summary</string>
-								<real>422</real>
+								<real>451</real>
 							</array>
 							<key>Frame</key>
 							<string>{{642, 0}, {1103, 236}}</string>
+							<key>RubberWindowFrame</key>
+							<string>67 37 1745 1141 0 0 1920 1178 </string>
 						</dict>
+						<key>RubberWindowFrame</key>
+						<string>67 37 1745 1141 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXDebugSessionModule</string>
@@ -745,14 +741,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>548BB0A90F35D98D00DB4DCB</string>
+				<string>548613320F489E860011A621</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>548BB0AA0F35D98D00DB4DCB</string>
-				<string>548BB0AB0F35D98D00DB4DCB</string>
-				<string>548BB0AC0F35D98D00DB4DCB</string>
-				<string>548BB0AD0F35D98D00DB4DCB</string>
-				<string>548BB09D0F35D98700DB4DCB</string>
+				<string>548613330F489E860011A621</string>
+				<string>548613340F489E860011A621</string>
+				<string>548613350F489E860011A621</string>
+				<string>548613360F489E860011A621</string>
+				<string>5442DFA20EFD625500CC67FC</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -767,7 +763,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>255298042.10961199</real>
+	<real>256417449.75580999</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>2</integer>
 	<key>ToolbarIsVisible</key>
@@ -782,10 +778,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>54E74EE80F065BE900DDE6AD</string>
-		<string>544B3F9A0F13DB5E00F8E540</string>
-		<string>548BB1030F35DC2700DB4DCB</string>
-		<string>548BB1040F35DC2700DB4DCB</string>
+		<string>548613380F489E860011A621</string>
+		<string>548613390F489E860011A621</string>
 		<string>/Users/robevans/Projects/cocoa/davenport/Davenport.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

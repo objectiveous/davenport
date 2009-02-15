@@ -11,7 +11,7 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 5442DF950EFD624800CC67FC /* Davenport */;
 		activeSDKPreference = macosx10.5;
-		activeTarget = 54F9F2230F006DE900EE414E /* Unit Tests */;
+		activeTarget = 8D15AC270486D014006FF6A4 /* Davenport */;
 		addToTargets = (
 			540C88C80F31D51700E02727 /* Davenport with Embedded CouchDB */,
 			8D15AC270486D014006FF6A4 /* Davenport */,
@@ -239,23 +239,19 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 255187330;
-			PBXWorkspaceStateSaveDate = 255187330;
+			PBXPerProjectTemplateStateSaveDate = 256417380;
+			PBXWorkspaceStateSaveDate = 256417380;
 		};
 		perUserProjectItems = {
+			5486133B0F489EA90011A621 /* PBXTextBookmark */ = 5486133B0F489EA90011A621 /* PBXTextBookmark */;
 			548BB18F0F3654CA00DB4DCB /* PBXTextBookmark */ = 548BB18F0F3654CA00DB4DCB /* PBXTextBookmark */;
 			548BB34E0F37525500DB4DCB /* PBXTextBookmark */ = 548BB34E0F37525500DB4DCB /* PBXTextBookmark */;
 			548BB4AD0F3778A600DB4DCB /* PBXTextBookmark */ = 548BB4AD0F3778A600DB4DCB /* PBXTextBookmark */;
-			548BB4AF0F3778A600DB4DCB /* PBXTextBookmark */ = 548BB4AF0F3778A600DB4DCB /* PBXTextBookmark */;
 			548BB4C70F3779FF00DB4DCB /* PBXTextBookmark */ = 548BB4C70F3779FF00DB4DCB /* PBXTextBookmark */;
-			548BB4CA0F3779FF00DB4DCB /* PBXTextBookmark */ = 548BB4CA0F3779FF00DB4DCB /* PBXTextBookmark */;
 			548BB4CB0F3779FF00DB4DCB /* PBXTextBookmark */ = 548BB4CB0F3779FF00DB4DCB /* PBXTextBookmark */;
 			548BB4CC0F3779FF00DB4DCB /* PBXTextBookmark */ = 548BB4CC0F3779FF00DB4DCB /* PBXTextBookmark */;
 			548BB4EC0F377AF000DB4DCB /* PBXTextBookmark */ = 548BB4EC0F377AF000DB4DCB /* PBXTextBookmark */;
-			548BB4ED0F377AF000DB4DCB /* PBXTextBookmark */ = 548BB4ED0F377AF000DB4DCB /* PBXTextBookmark */;
 			548BB4F00F3789FA00DB4DCB /* PBXTextBookmark */ = 548BB4F00F3789FA00DB4DCB /* PBXTextBookmark */;
-			548BB4F10F3789FA00DB4DCB /* PBXTextBookmark */ = 548BB4F10F3789FA00DB4DCB /* PBXTextBookmark */;
-			548BB4F20F3789FA00DB4DCB /* PBXTextBookmark */ = 548BB4F20F3789FA00DB4DCB /* PBXTextBookmark */;
 			548BB4F30F3789FA00DB4DCB /* PBXTextBookmark */ = 548BB4F30F3789FA00DB4DCB /* PBXTextBookmark */;
 		};
 		sourceControlManager = 5442DFAE0EFD625500CC67FC /* Source Control */;
@@ -390,7 +386,7 @@
 	};
 	540089B10F30C040002D56A4 /* SVCouchDocumentController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1354, 4047}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1354, 4066}}";
 			sepNavSelRange = "{4783, 0}";
 			sepNavVisRange = "{3881, 1479}";
 		};
@@ -724,7 +720,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = libobjc.A.dylib;
-		modificationTime = 255294029.749927;
+		modificationTime = 256417409.870608;
 		state = 1;
 		symbolName = objc_exception_throw;
 	};
@@ -749,7 +745,7 @@
 		ignoreCount = 0;
 		lineNumber = 162;
 		location = Davenport;
-		modificationTime = 255294029.744799;
+		modificationTime = 256417409.865353;
 		state = 2;
 	};
 	54664BFF0F35D29B00A8A709 /* SVCouchDocumentController.m */ = {
@@ -773,8 +769,18 @@
 		ignoreCount = 0;
 		lineNumber = 178;
 		location = Davenport;
-		modificationTime = 255294029.745202;
+		modificationTime = 256417409.866547;
 		state = 2;
+	};
+	5486133B0F489EA90011A621 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */;
+		name = "SVCouchDocumentController.m: 131";
+		rLen = 0;
+		rLoc = 4783;
+		rType = 0;
+		vrLen = 1479;
+		vrLoc = 3881;
 	};
 	548BB1070F35F7C900DB4DCB /* SVCouchDocumentController.m */ = {
 		isa = PBXFileReference;
@@ -782,6 +788,11 @@
 		name = SVCouchDocumentController.m;
 		path = /Users/robevans/Projects/cocoa/davenport/Classes/SVCouchDocumentController.m;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1354, 4066}}";
+			sepNavSelRange = "{4783, 0}";
+			sepNavVisRange = "{3881, 1479}";
+		};
 	};
 	548BB1090F35F7C900DB4DCB /* SVCouchDocumentController.m:66 */ = {
 		isa = PBXFileBreakpoint;
@@ -797,7 +808,7 @@
 		ignoreCount = 0;
 		lineNumber = 66;
 		location = Davenport;
-		modificationTime = 255294029.745465;
+		modificationTime = 256417409.867101;
 		state = 2;
 	};
 	548BB1840F3654AC00DB4DCB /* NSDictionary+SVDavenport.h */ = {
@@ -844,11 +855,6 @@
 		name = "NSDictionary+SVDavenport.m";
 		path = "/Users/robevans/Projects/cocoa/davenport/Classes/NSDictionary+SVDavenport.m";
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1354, 1992}}";
-			sepNavSelRange = "{871, 0}";
-			sepNavVisRange = "{51, 1866}";
-		};
 	};
 	548BB2B50F36A3FF00DB4DCB /* NSDictionary+SVDavenport.m:41 */ = {
 		isa = PBXFileBreakpoint;
@@ -864,7 +870,7 @@
 		ignoreCount = 0;
 		lineNumber = 41;
 		location = Davenport;
-		modificationTime = 255294029.745726;
+		modificationTime = 256417409.867431;
 		state = 1;
 	};
 	548BB2E80F36A82800DB4DCB /* NSDictionary+SVDavenport.m:52 */ = {
@@ -881,7 +887,7 @@
 		ignoreCount = 0;
 		lineNumber = 52;
 		location = Davenport;
-		modificationTime = 255294029.746083;
+		modificationTime = 256417409.867657;
 		state = 2;
 	};
 	548BB34E0F37525500DB4DCB /* PBXTextBookmark */ = {
@@ -907,8 +913,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 38;
-		location = "Unit Tests";
-		modificationTime = 255294033.598118;
+		modificationTime = 256417448.549398;
 		state = 1;
 	};
 	548BB3A50F3758B100DB4DCB /* NSDictionary+SVDavenport.m:14 */ = {
@@ -925,7 +930,7 @@
 		ignoreCount = 0;
 		lineNumber = 14;
 		location = Davenport;
-		modificationTime = 255294029.746928;
+		modificationTime = 256417409.868161;
 		state = 2;
 	};
 	548BB3AB0F3758D400DB4DCB /* NSDictionary+SVDavenport.m:19 */ = {
@@ -942,7 +947,7 @@
 		ignoreCount = 0;
 		lineNumber = 19;
 		location = Davenport;
-		modificationTime = 255294029.747655;
+		modificationTime = 256417409.868398;
 		state = 2;
 	};
 	548BB49A0F37773100DB4DCB /* NSDictionary+SVDavenport.m:74 */ = {
@@ -959,7 +964,7 @@
 		ignoreCount = 0;
 		lineNumber = 74;
 		location = Davenport;
-		modificationTime = 255294029.748026;
+		modificationTime = 256417409.868631;
 		state = 1;
 	};
 	548BB4A70F37788E00DB4DCB /* SVJsonTest.m:28 */ = {
@@ -972,11 +977,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
 		functionName = "-testArraySupport";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 28;
 		location = "Unit Tests";
-		modificationTime = 255294040.933114;
+		modificationTime = 256417409.868859;
 		state = 2;
 	};
 	548BB4AD0F3778A600DB4DCB /* PBXTextBookmark */ = {
@@ -989,16 +994,6 @@
 		vrLen = 1615;
 		vrLoc = 360;
 	};
-	548BB4AF0F3778A600DB4DCB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 548BB2B30F36A3FF00DB4DCB /* NSDictionary+SVDavenport.m */;
-		name = "NSDictionary+SVDavenport.m: 80";
-		rLen = 0;
-		rLoc = 3537;
-		rType = 0;
-		vrLen = 1659;
-		vrLoc = 3055;
-	};
 	548BB4B80F37795100DB4DCB /* SVJsonTest.m:109 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
@@ -1009,11 +1004,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
 		functionName = "-setUp";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 109;
 		location = "Unit Tests";
-		modificationTime = 255294037.432231;
+		modificationTime = 256417409.869086;
 		state = 2;
 	};
 	548BB4BD0F37796500DB4DCB /* RunPlatformUnitTests.include */ = {
@@ -1022,11 +1017,6 @@
 		name = RunPlatformUnitTests.include;
 		path = /Developer/Tools/RunPlatformUnitTests.include;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1354, 7619}}";
-			sepNavSelRange = "{9237, 0}";
-			sepNavVisRange = "{9123, 1673}";
-		};
 	};
 	548BB4C30F3779F000DB4DCB /* NSDictionary+SVDavenport.m:26 */ = {
 		isa = PBXFileBreakpoint;
@@ -1038,11 +1028,11 @@
 		delayBeforeContinue = 0;
 		fileReference = 548BB2B30F36A3FF00DB4DCB /* NSDictionary+SVDavenport.m */;
 		functionName = "-asNSTreeNode";
-		hitCount = 1;
+		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 26;
 		location = Davenport;
-		modificationTime = 255294042.370563;
+		modificationTime = 256417409.869507;
 		state = 1;
 	};
 	548BB4C70F3779FF00DB4DCB /* PBXTextBookmark */ = {
@@ -1054,16 +1044,6 @@
 		rType = 0;
 		vrLen = 1673;
 		vrLoc = 9082;
-	};
-	548BB4CA0F3779FF00DB4DCB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 548BB2B30F36A3FF00DB4DCB /* NSDictionary+SVDavenport.m */;
-		name = "NSDictionary+SVDavenport.m: 97";
-		rLen = 0;
-		rLoc = 4530;
-		rType = 0;
-		vrLen = 2292;
-		vrLoc = 857;
 	};
 	548BB4CB0F3779FF00DB4DCB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1091,11 +1071,6 @@
 		name = "NSDictionary+SVDavenport.m";
 		path = "/Users/robevans/Projects/cocoa/davenport/Classes/NSDictionary+SVDavenport.m";
 		sourceTree = "<group>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1684, 2030}}";
-			sepNavSelRange = "{4016, 0}";
-			sepNavVisRange = "{3298, 1443}";
-		};
 	};
 	548BB4D90F377A2200DB4DCB /* NSDictionary+SVDavenport.m:25 */ = {
 		isa = PBXFileBreakpoint;
@@ -1111,7 +1086,7 @@
 		ignoreCount = 0;
 		lineNumber = 25;
 		location = Davenport;
-		modificationTime = 255294029.749286;
+		modificationTime = 256417409.869748;
 		state = 2;
 	};
 	548BB4EC0F377AF000DB4DCB /* PBXTextBookmark */ = {
@@ -1124,37 +1099,7 @@
 		vrLen = 1974;
 		vrLoc = 2775;
 	};
-	548BB4ED0F377AF000DB4DCB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 548BB4D70F377A2200DB4DCB /* NSDictionary+SVDavenport.m */;
-		name = "NSDictionary+SVDavenport.m: 70";
-		rLen = 0;
-		rLoc = 3065;
-		rType = 0;
-		vrLen = 1974;
-		vrLoc = 2775;
-	};
 	548BB4F00F3789FA00DB4DCB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
-		name = "SVJsonTest.m: 85";
-		rLen = 0;
-		rLoc = 3298;
-		rType = 0;
-		vrLen = 1759;
-		vrLoc = 1947;
-	};
-	548BB4F10F3789FA00DB4DCB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089B10F30C040002D56A4 /* SVCouchDocumentController.m */;
-		name = "SVCouchDocumentController.m: 131";
-		rLen = 0;
-		rLoc = 4783;
-		rType = 0;
-		vrLen = 1479;
-		vrLoc = 3881;
-	};
-	548BB4F20F3789FA00DB4DCB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 540089BC0F30C040002D56A4 /* SVJsonTest.m */;
 		name = "SVJsonTest.m: 85";

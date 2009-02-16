@@ -61,6 +61,7 @@ Resolving deltas: 100% (185/185), done.
 Unable to load platform at path /Developer/Platforms/Aspen.platform
 === BUILDING NATIVE TARGET JSON OF PROJECT JSON WITH THE DEFAULT CONFIGURATION (Release) ===
 
+
 Checking Dependencies...
 
 ....
@@ -68,13 +69,13 @@ Checking Dependencies...
 Touch /tmp/foo/davenport/build/Release/Davenport.app
     cd /tmp/foo/davenport
     /usr/bin/touch -c /tmp/foo/davenport/build/Release/Davenport.app
-** BUILD SUCCEEDED **
+**BUILD SUCCEEDED**
 
 {% endhighlight %}
 
 Running Davenport
 =================
-Now that we've performed a build, let's run Davenport and see what it looks like. Be sure to have CouchDB running before proceeding. 
+Now that we've performed a build, let's run Davenport and see what it looks like. Be sure to have CouchDB running before proceeding.
 
 {% highlight sh %}
 price:projects robevans$ open ./davenport/build/Release/Davenport.app
@@ -91,16 +92,16 @@ price:projects robevans$ open ./davenport/Davenport.xcodeproj/
 {% endhighlight %}
 
 
-# Targets
-There are two **targets** that are primary interest to the new Davenport hacker: 
+Targets
+========
+There are two targets that are primary interest to the new Davenport hacker: 
 
-1 Davenport 
-2 Davenport with Embedded CouchDB
+1. Davenport
+2. Davenport with Embedded CouchDB
 
-The only difference between these two targets is that **Davenport with Embedded CouchDB** includes a **Run Script** that will copy the contents of CouchDBX into the Davenport build. In other words, it puts a version of CouchDB into build/Release/Davenport.app/Contents/Resources/CouchDb. 
+The only difference between these two targets is that Davenport with Embedded CouchDB includes a Run Script that will copy the contents of CouchDBX into the Davenport build. In other words, it puts a version of CouchDB into build/Release/Davenport.app/Contents/Resources/CouchDb. 
 
 ![img](./images/targets.png)
-
 
 # Running and Writing Tests
 This is probably the most important section and... there's... no... content! 

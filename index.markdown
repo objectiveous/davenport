@@ -5,20 +5,23 @@ section: intro
 ---
 
   
-##Intro
+#Intro
 
-[Davenport](http://github.com/objectiveous/davenport "Davenport") is a Cocoa port of the couchDB administrative front end, [Futon](http://couchdb.apache.org/screenshots.html "Futon").
+Davenport is a Cocoa based hosting container for building **UI demanding** applications on top of **CouchDB**. The operative term here is UI demanding. If current web browsers provide you with a rich enough GUI model, then I would suggest simply looking at CouchDB's approach to [hosted applications](http://books.couchdb.org/relax/hosted-applications). 
 
-##Latest News
 
-#### Feb 13, 2008 
+### The Contribution Model
 
-Work has begun on the Davenport plugin system which will allow developers to extend davenport to suite the needs of their application domains. Not all the kinks have been worked out yet be the very beginning steps have been made. You can learn more about our plans [here](./contributions.html).   
+The host portion of davenport provides common services and standards, while plugins provide domain specific functionality. 
 
-##Screenshots
+<a href="images/plugin-simple.png"><img src="images/plugin-simple.png" border="0" width="50%"/></a> 
 
-<center>
-  <a href="images/screenshot-2.png"><img src="images/screenshot-2-thb.png" border="0" width="20%"/></a> 
-  <a href="images/screenshot-3.png"><img src="images/screenshot-3-thb.png" border="0" width="20%"/></a> 
-</center>
+
+In order to jump start development and learn sorts of services and resources a plugin might require, we started with a port of CouchDB's admin front end (Futon). The process looks some like this: 
+
+1. Port Futon to Cocoa
+2. Implement Simplest possible plugin (Todo List)
+3. Migrate Futon bits into a proper plugin. 
+
+Development as of Feb, 16 is focused on item #2. A formal protocol has been developed and the mechanics of plugin discover and loading are working. 
 

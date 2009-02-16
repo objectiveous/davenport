@@ -102,6 +102,40 @@ html>body #content {
 	margin-top: 0px;
 }
 
+
+#sidebar {
+	margin: 0;
+	padding: 0;
+	top: 0px;
+	left: 480px;
+	width: 270px;
+	background-color: #e8eaea;
+	position: absolute;
+}
+#sidebar .item {
+	color: #5b5b5b;
+	border-bottom: 2px solid #fff;
+	padding: 20px;
+	min-height: 64px;
+}
+#sidebar .item * {
+	margin: 0px;
+}
+#sidebar .item h4 {
+	margin-bottom: 1em;
+	font-size: 120%;
+}
+#sidebar .item p {
+	font-size: 90%;
+}
+#sidebar .item a {
+	text-decoration: none;
+}		  
+#sidebar .item a:hover {
+	text-decoration: underline;
+}
+
+
 #footer {
 	position: relative;
 	margin: 0;

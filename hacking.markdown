@@ -18,4 +18,6 @@ Describes our plans for Davenport extensions. It's a little premature but hey, t
 Putting Console.app and Apple System Log facility to work.
 
 
+# 3. [Build Davenport.](./building.html)
 
+Creating davenport releases, DMGs, etc..  

@@ -10,13 +10,21 @@ Click on images to zoom in and get a closer look.
 ## Control Bar
 
 <center>
-<a href="images/sccreenshots/controlbar-navigation.png"><img src="images/sccreenshots/controlbar-navigation.png" border="0" width="20%"/></a>
+<a href="images/sccreenshots/controlbar-navigation.png"><img src="images/sccreenshots/controlbar-navigation.png" border="0" width="20%" align="top"/></a>
 
 
 <a href="images/sccreenshots/controlbar-new-database.png"><img src="images/sccreenshots/controlbar-new-database.png" border="0" width="20%"/></a>
 
 </center>
 </hr>
+## Installer
+
+<center>
+<a href="images/builds/installer.png"><img src="images/builds/installer.png" border="0" width="20%"/></a>
+
+</center>
+</hr>
+
 ## Plugins
 
 <center>

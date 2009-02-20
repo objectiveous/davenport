@@ -38,7 +38,7 @@ An example plugin can be found in the [source code](http://github.com/objectiveo
 
 # How to Get Involved
 
-Grab the source from gitub and start talking. I more than happy to incorporate [feedback](http://objectiveous.lighthouseapp.com/projects/24460-davenport/tickets?q=all).
+Grab the source from gitub and start talking. I'm more than happy to incorporate [feedback](http://objectiveous.lighthouseapp.com/projects/24460-davenport/tickets?q=all).
 
 Davenport is being developed by a single developer... Err, wait. I'm married, although my wife does call Davenport **The Mistress**. Note to self: Get some help before you end up single. 
 

@@ -26,6 +26,11 @@
 		54008A150F30C458002D56A4 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BD0F1DA33D002AC9E5 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BF0F1DA343002AC9E5 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
+		5405DFA30F50F8C1004DFCCA /* TPLoadNavigationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */; };
+		5405DFA40F50F8C1004DFCCA /* TPLoadNavigationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */; };
+		5405DFE30F50FEEA004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
+		5405DFE40F50FEEA004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
+		5405E0DB0F510B4E004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
 		540C88CC0F31D51700E02727 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		540C88CD0F31D51700E02727 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		540C88CE0F31D51700E02727 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
@@ -66,11 +71,9 @@
 		540C892E0F31D63300E02727 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		540C89340F31D63B00E02727 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
-		543F9D020F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */; };
-		543F9D030F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */; };
+		543F9D020F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */; };
+		543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */; };
 		543F9F180F46114400E1559C /* TPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9F170F46114400E1559C /* TPPlugin.m */; };
-		543FA0450F471E6900E1559C /* TPBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0440F471E6900E1559C /* TPBucket.m */; };
-		543FA0480F471E8000E1559C /* TPTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0470F471E8000E1559C /* TPTask.m */; };
 		543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */; };
 		543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */; };
 		5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
@@ -107,8 +110,16 @@
 		544467E60F38BB570098BD0E /* button-forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CE0F38BB570098BD0E /* button-forward.pdf */; };
 		544467F40F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
 		544467F50F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
+		54447F160F4CB93C0051AA83 /* TPTaskItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54447F150F4CB93C0051AA83 /* TPTaskItem.xib */; };
+		5444801E0F4CC63D0051AA83 /* TPMilestone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5444801D0F4CC63D0051AA83 /* TPMilestone.xib */; };
+		544480BC0F4DA0AD0051AA83 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		544480C30F4DA0D20051AA83 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		544481440F4DC9870051AA83 /* TPDatabaseInstallerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 544481430F4DC9870051AA83 /* TPDatabaseInstallerOperation.m */; };
+		544481600F4DCC340051AA83 /* TPDatabaseInstallerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */; };
+		5444825D0F4E109B0051AA83 /* TPPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 543F9F160F46114400E1559C /* TPPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		544528F60F42801C00AB1845 /* SVSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544528F50F42801C00AB1845 /* SVSourceView.m */; };
 		544528F70F42801C00AB1845 /* SVSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544528F50F42801C00AB1845 /* SVSourceView.m */; };
+		545AC1FA0F48F68000312877 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 545AC1F90F48F68000312877 /* Info.plist */; };
 		546647A90F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */; };
 		546647AA0F349C7000A8A709 /* CreateDatabasePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */; };
 		546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
@@ -142,7 +153,6 @@
 		549942C50F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */; };
 		549946BD0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */; };
 		549946BE0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */; };
-		5499475C0F3CAFD200E9C328 /* SVFetchQueryInfoOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */; };
 		5499480F0F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */; };
 		549948100F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */; };
 		549BC6B00EFDC106002DFF80 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
@@ -158,6 +168,12 @@
 		54B546180F31D006004E675B /* divan.icns in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460F0F31D006004E675B /* divan.icns */; };
 		54B546190F31D006004E675B /* documents.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 54B546100F31D006004E675B /* documents.tiff */; };
 		54B5461A0F31D006004E675B /* segment.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B546110F31D006004E675B /* segment.jpg */; };
+		54B98F990F4F333800F52859 /* SVAbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */; };
+		54B98F9A0F4F333800F52859 /* TPDatabaseInstallerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */; };
+		54B98FAC0F4F334500F52859 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
+		54B98FAD0F4F334500F52859 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		54B990CA0F4F4F2F00F52859 /* TPBaseDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		54B990CB0F4F4F3200F52859 /* TPDatabaseInstallerOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 544481420F4DC9870051AA83 /* TPDatabaseInstallerOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54BC49F80F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */; };
 		54BC49F90F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */; };
 		54BC49FB0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
@@ -168,7 +184,6 @@
 		54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		54F73B570F1CDC3E00B7B9F4 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
-		54FECB1A0F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -215,6 +230,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8D15AC270486D014006FF6A4;
 			remoteInfo = stigmergic;
+		};
+		54B991AB0F4F5C2400F52859 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D15AC270486D014006FF6A4;
+			remoteInfo = Davenport;
 		};
 		54F9F2270F006DF000EE414E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -314,23 +336,21 @@
 		540089C60F30C040002D56A4 /* SVSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListCell.h; sourceTree = "<group>"; };
 		540089C70F30C040002D56A4 /* SVSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListCell.m; sourceTree = "<group>"; };
 		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = SOURCE_ROOT; };
+		5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLoadNavigationOperation.h; sourceTree = "<group>"; };
+		5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoadNavigationOperation.m; sourceTree = "<group>"; };
+		5405DFE10F50FEEA004DFCCA /* SVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVConstants.h; sourceTree = "<group>"; };
+		5405DFE20F50FEEA004DFCCA /* SVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVConstants.m; sourceTree = "<group>"; };
 		5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = Classes/Davenport_Prefix.pch; sourceTree = "<group>"; };
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		5428768C0F4E620E000BA663 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		543D2A870F09650D00AAA9A5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		543F9D000F45B85F00E1559C /* SVPluginContributionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPluginContributionLoader.h; sourceTree = "<group>"; };
-		543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPluginContributionLoader.m; sourceTree = "<group>"; };
-		543F9E220F45F72000E1559C /* SVTodoPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVTodoPlugin-Info.plist"; sourceTree = "<group>"; };
-		543F9EA30F46022000E1559C /* TestPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestPlugin-Info.plist"; sourceTree = "<group>"; };
+		543F9D000F45B85F00E1559C /* SVPluginContributionLoaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPluginContributionLoaderOperation.h; sourceTree = "<group>"; };
+		543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPluginContributionLoaderOperation.m; sourceTree = "<group>"; };
 		543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVTestPlugin.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		543F9F000F4610C100E1559C /* SVTestPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVTestPlugin-Info.plist"; sourceTree = "<group>"; };
 		543F9F160F46114400E1559C /* TPPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPlugin.h; sourceTree = "<group>"; };
 		543F9F170F46114400E1559C /* TPPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPlugin.m; sourceTree = "<group>"; };
 		543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContributionNavigationDescriptor.h; sourceTree = "<group>"; };
-		543FA0430F471E6900E1559C /* TPBucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBucket.h; sourceTree = "<group>"; };
-		543FA0440F471E6900E1559C /* TPBucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBucket.m; sourceTree = "<group>"; };
-		543FA0460F471E8000E1559C /* TPTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTask.h; sourceTree = "<group>"; };
-		543FA0470F471E8000E1559C /* TPTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTask.m; sourceTree = "<group>"; };
 		543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBaseDescriptor.h; sourceTree = "<group>"; };
 		543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBaseDescriptor.m; sourceTree = "<group>"; };
 		543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTreeNode+TP.h"; sourceTree = "<group>"; };
@@ -355,8 +375,15 @@
 		544467CD0F38BB570098BD0E /* button-back.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-back.pdf"; path = "Images/button-back.pdf"; sourceTree = "<group>"; };
 		544467CE0F38BB570098BD0E /* button-forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-forward.pdf"; path = "Images/button-forward.pdf"; sourceTree = "<group>"; };
 		544467F30F38C1570098BD0E /* blank-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blank-back.png"; path = "Images/blank-back.png"; sourceTree = "<group>"; };
+		54447F150F4CB93C0051AA83 /* TPTaskItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TPTaskItem.xib; sourceTree = "<group>"; };
+		5444801D0F4CC63D0051AA83 /* TPMilestone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TPMilestone.xib; sourceTree = "<group>"; };
+		544481420F4DC9870051AA83 /* TPDatabaseInstallerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPDatabaseInstallerOperation.h; sourceTree = "<group>"; };
+		544481430F4DC9870051AA83 /* TPDatabaseInstallerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPDatabaseInstallerOperation.m; sourceTree = "<group>"; };
+		5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPDatabaseInstallerTest.m; sourceTree = "<group>"; };
 		544528F40F42801C00AB1845 /* SVSourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceView.h; sourceTree = "<group>"; };
 		544528F50F42801C00AB1845 /* SVSourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceView.m; sourceTree = "<group>"; };
+		545AC1D90F48C7E700312877 /* SVTestPlugin-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SVTestPlugin-Info.plist"; path = "Resources/SVTestPlugin-Info.plist"; sourceTree = "<group>"; };
+		545AC1F90F48F68000312877 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDatabasePanel.xib; sourceTree = "<group>"; };
 		546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseCreateSheetController.h; sourceTree = "<group>"; };
 		546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDatabaseCreateSheetController.m; sourceTree = "<group>"; };
@@ -386,7 +413,6 @@
 		5499480D0F3CBA9E00E9C328 /* SVViewDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVViewDescriptor.h; sourceTree = "<group>"; };
 		5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVViewDescriptor.m; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
-		549F36EA0F332DD50033A0C9 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
 		54B546090F31D006004E675B /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "Images/arrow-25.jpg"; sourceTree = "<group>"; };
@@ -399,13 +425,14 @@
 		54B546100F31D006004E675B /* documents.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = documents.tiff; path = Images/documents.tiff; sourceTree = "<group>"; };
 		54B546110F31D006004E675B /* segment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = segment.jpg; path = Images/segment.jpg; sourceTree = "<group>"; };
 		54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B98F910F4F323200F52859 /* SlowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B98F920F4F323200F52859 /* Plugin Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Plugin Tests-Info.plist"; sourceTree = "<group>"; };
 		54BC49F60F39D6EF002B4874 /* SVEmptyInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVEmptyInspectorView.h; sourceTree = "<group>"; };
 		54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEmptyInspectorView.m; sourceTree = "<group>"; };
 		54BC49FA0F39D915002B4874 /* background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = background.pdf; path = Images/background.pdf; sourceTree = "<group>"; };
 		54C1E26C0F426BB0001EA3FA /* SVCouchServerDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCouchServerDescriptor.h; sourceTree = "<group>"; };
 		54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchServerDescriptor.m; sourceTree = "<group>"; };
 		54C53FED0F06527300C337BC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		54DF2F7E0F30C59000A720D9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		54DF2F7F0F30C59000A720D9 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "IntegrationTests-Info.plist"; path = "Resources/IntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F800F30C59000A720D9 /* Test Bundle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Test Bundle-Info.plist"; path = "Resources/Test Bundle-Info.plist"; sourceTree = "<group>"; };
 		54DF2F810F30C59000A720D9 /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-Info.plist"; path = "Resources/Tests-Info.plist"; sourceTree = "<group>"; };
@@ -435,6 +462,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				544480C30F4DA0D20051AA83 /* JSON.framework in Frameworks */,
+				544480BC0F4DA0AD0051AA83 /* CouchObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +473,15 @@
 			files = (
 				5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */,
 				54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54B98F8E0F4F323200F52859 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54B98FAC0F4F334500F52859 /* JSON.framework in Frameworks */,
+				54B98FAD0F4F334500F52859 /* CouchObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,8 +537,9 @@
 				8D15AC370486D014006FF6A4 /* Davenport.app */,
 				54F9F3330F0080B100EE414E /* Unit Tests.octest */,
 				54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */,
-				549F36EA0F332DD50033A0C9 /* Davenport.app */,
 				543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */,
+				5428768C0F4E620E000BA663 /* Davenport.app */,
+				54B98F910F4F323200F52859 /* SlowTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -514,10 +553,8 @@
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
 				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
-				543F9E220F45F72000E1559C /* SVTodoPlugin-Info.plist */,
 				540C893F0F31D66E00E02727 /* README.markdown */,
-				543F9EA30F46022000E1559C /* TestPlugin-Info.plist */,
-				543F9F000F4610C100E1559C /* SVTestPlugin-Info.plist */,
+				54B98F920F4F323200F52859 /* Plugin Tests-Info.plist */,
 			);
 			name = stigmergic;
 			sourceTree = "<group>";
@@ -534,7 +571,10 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				54DF2F7E0F30C59000A720D9 /* Info.plist */,
+				54447F140F4CB27F0051AA83 /* TPPlugin XIBs */,
+				545AC1F90F48F68000312877 /* Info.plist */,
+				540C88FE0F31D51700E02727 /* Info copy.plist */,
+				545AC1D90F48C7E700312877 /* SVTestPlugin-Info.plist */,
 				54DF2F7F0F30C59000A720D9 /* IntegrationTests-Info.plist */,
 				54DF2F800F30C59000A720D9 /* Test Bundle-Info.plist */,
 				54DF2F810F30C59000A720D9 /* Tests-Info.plist */,
@@ -549,7 +589,6 @@
 				54C53FEC0F06527300C337BC /* MainMenu.xib */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
-				540C88FE0F31D51700E02727 /* Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -730,7 +769,7 @@
 				543F9D040F45B88D00E1559C /* headers */,
 				549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */,
 				540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */,
-				543F9D010F45B85F00E1559C /* SVPluginContributionLoader.m */,
+				543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -738,7 +777,7 @@
 		543F9D040F45B88D00E1559C /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				543F9D000F45B85F00E1559C /* SVPluginContributionLoader.h */,
+				543F9D000F45B85F00E1559C /* SVPluginContributionLoaderOperation.h */,
 				540089B80F30C040002D56A4 /* SVFetchServerInfoOperation.h */,
 				549946BB0F3CA55200E9C328 /* SVFetchQueryInfoOperation.h */,
 			);
@@ -748,13 +787,13 @@
 		543F9F300F4613A100E1559C /* Test Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				5444815E0F4DCBF10051AA83 /* Integration Tests */,
 				543FA0490F471E8900E1559C /* headers */,
 				543F9F170F46114400E1559C /* TPPlugin.m */,
 				543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */,
-				543FA0440F471E6900E1559C /* TPBucket.m */,
-				543FA0470F471E8000E1559C /* TPTask.m */,
-				543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */,
 				543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */,
+				544481430F4DC9870051AA83 /* TPDatabaseInstallerOperation.m */,
+				5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */,
 			);
 			name = "Test Plugin";
 			sourceTree = "<group>";
@@ -762,10 +801,11 @@
 		543FA0490F471E8900E1559C /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */,
+				5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */,
+				544481420F4DC9870051AA83 /* TPDatabaseInstallerOperation.h */,
 				543FA0580F471FAD00E1559C /* TPBaseDescriptor.h */,
 				543F9F160F46114400E1559C /* TPPlugin.h */,
-				543FA0430F471E6900E1559C /* TPBucket.h */,
-				543FA0460F471E8000E1559C /* TPTask.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -783,6 +823,23 @@
 				540089AD0F30C040002D56A4 /* SVControlBarView.h */,
 			);
 			name = headers;
+			sourceTree = "<group>";
+		};
+		54447F140F4CB27F0051AA83 /* TPPlugin XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				54447F150F4CB93C0051AA83 /* TPTaskItem.xib */,
+				5444801D0F4CC63D0051AA83 /* TPMilestone.xib */,
+			);
+			name = "TPPlugin XIBs";
+			sourceTree = "<group>";
+		};
+		5444815E0F4DCBF10051AA83 /* Integration Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */,
+			);
+			name = "Integration Tests";
 			sourceTree = "<group>";
 		};
 		5456930B0F3256F400100237 /* headers */ = {
@@ -824,6 +881,8 @@
 		54FEC8A40F45885D00652DEE /* Plugin API */ = {
 			isa = PBXGroup;
 			children = (
+				5405DFE20F50FEEA004DFCCA /* SVConstants.m */,
+				5405DFE10F50FEEA004DFCCA /* SVConstants.h */,
 				54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */,
 				543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */,
 			);
@@ -831,6 +890,20 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5444825F0F4E10C00051AA83 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54B990CB0F4F4F3200F52859 /* TPDatabaseInstallerOperation.h in Headers */,
+				54B990CA0F4F4F2F00F52859 /* TPBaseDescriptor.h in Headers */,
+				5444825D0F4E109B0051AA83 /* TPPlugin.h in Headers */,
+				5405DFA30F50F8C1004DFCCA /* TPLoadNavigationOperation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		540C88C80F31D51700E02727 /* Davenport with Embedded CouchDB */ = {
@@ -852,7 +925,7 @@
 			name = "Davenport with Embedded CouchDB";
 			productInstallPath = "$(HOME)/Applications";
 			productName = stigmergic;
-			productReference = 549F36EA0F332DD50033A0C9 /* Davenport.app */;
+			productReference = 5428768C0F4E620E000BA663 /* Davenport.app */;
 			productType = "com.apple.product-type.application";
 		};
 		543F9EFE0F4610C100E1559C /* SVTestPlugin */ = {
@@ -860,6 +933,7 @@
 			buildConfigurationList = 543F9F070F4610C200E1559C /* Build configuration list for PBXNativeTarget "SVTestPlugin" */;
 			buildPhases = (
 				543F9EFB0F4610C100E1559C /* Resources */,
+				5444825F0F4E10C00051AA83 /* Headers */,
 				543F9EFC0F4610C100E1559C /* Sources */,
 				543F9EFD0F4610C100E1559C /* Frameworks */,
 			);
@@ -891,6 +965,24 @@
 			productReference = 54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		54B98F900F4F323200F52859 /* Plugin Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54B98F950F4F323300F52859 /* Build configuration list for PBXNativeTarget "Plugin Tests" */;
+			buildPhases = (
+				54B98F8D0F4F323200F52859 /* Sources */,
+				54B98F8E0F4F323200F52859 /* Frameworks */,
+				54B98F8F0F4F323200F52859 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54B991AC0F4F5C2400F52859 /* PBXTargetDependency */,
+			);
+			name = "Plugin Tests";
+			productName = SlowTests;
+			productReference = 54B98F910F4F323200F52859 /* SlowTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		54F9F2230F006DE900EE414E /* Unit Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54F9F2290F006E0E00EE414E /* Build configuration list for PBXNativeTarget "Unit Tests" */;
@@ -918,7 +1010,7 @@
 				549BC6C50EFDC662002DFF80 /* CopyFiles */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
-				543FA00C0F46264300E1559C /* Copy Test Plugin */,
+				543FA00C0F46264300E1559C /* Copy Plugin to Destination */,
 			);
 			buildRules = (
 			);
@@ -955,6 +1047,7 @@
 				8D15AC270486D014006FF6A4 /* Davenport */,
 				54B7DE7E0F097BF00081F3A3 /* Integration Tests */,
 				54F9F2230F006DE900EE414E /* Unit Tests */,
+				54B98F900F4F323200F52859 /* Plugin Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1021,6 +1114,7 @@
 				54790B390F3A234900461FEB /* button-back-on.pdf in Resources */,
 				54790B3A0F3A234900461FEB /* button-forward-on.pdf in Resources */,
 				54790B570F3A2F2700461FEB /* run.pdf in Resources */,
+				545AC1FA0F48F68000312877 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +1122,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54447F160F4CB93C0051AA83 /* TPTaskItem.xib in Resources */,
+				5444801E0F4CC63D0051AA83 /* TPMilestone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1109,19 +1205,19 @@
 			shellScript = "echo \"---------------------------------------------- CUSTOM COPY SCRIPT\"\ncp -r /Users/robevans/Projects/cocoa/CouchDb $CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\n";
 			showEnvVarsInLog = 0;
 		};
-		543FA00C0F46264300E1559C /* Copy Test Plugin */ = {
+		543FA00C0F46264300E1559C /* Copy Plugin to Destination */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Test Plugin";
+			name = "Copy Plugin to Destination";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p \"$USER_LIBRARY_DIR/Application Support/Davenport/Plugins\"\nrm -rf \"$USER_LIBRARY_DIR/Application Support/Davenport/Plugins/SVTestPlugin.plugin\"\ncp -rf \"$BUILT_PRODUCTS_DIR/SVTestPlugin.plugin\" \"$USER_LIBRARY_DIR/Application Support/Davenport/Plugins\"";
+			shellScript = "mkdir -p \"$USER_LIBRARY_DIR/Application Support/Davenport/PlugIns\"\nrm -rf \"$USER_LIBRARY_DIR/Application Support/Davenport/PlugIns/SVTestPlugin.plugin\"\ncp -rf \"$BUILT_PRODUCTS_DIR/SVTestPlugin.plugin\" \"$USER_LIBRARY_DIR/Application Support/Davenport/PlugIns\"";
 		};
 		54B7DE890F097BF00081F3A3 /* Run Tests */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1137,6 +1233,19 @@
 			shellPath = /bin/sh;
 			shellScript = "/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/UnitTesting/RunMacOSUnitTests.sh\n#\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
 			showEnvVarsInLog = 0;
+		};
+		54B98F8F0F4F323200F52859 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		54F9F2220F006DE900EE414E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1159,6 +1268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5405DFE30F50FEEA004DFCCA /* SVConstants.m in Sources */,
 				540C88E10F31D51700E02727 /* main.m in Sources */,
 				540C88E20F31D51700E02727 /* NSTreeNode+SVDavenport.m in Sources */,
 				540C88E30F31D51700E02727 /* SVAbstractDescriptor.m in Sources */,
@@ -1185,7 +1295,7 @@
 				549948100F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */,
 				54C1E26E0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */,
 				544528F60F42801C00AB1845 /* SVSourceView.m in Sources */,
-				543F9D030F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */,
+				543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1193,11 +1303,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5405E0DB0F510B4E004DFCCA /* SVConstants.m in Sources */,
 				543F9F180F46114400E1559C /* TPPlugin.m in Sources */,
-				543FA0450F471E6900E1559C /* TPBucket.m in Sources */,
-				543FA0480F471E8000E1559C /* TPTask.m in Sources */,
 				543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */,
 				543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */,
+				544481440F4DC9870051AA83 /* TPDatabaseInstallerOperation.m in Sources */,
+				5405DFA40F50F8C1004DFCCA /* TPLoadNavigationOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,8 +1317,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */,
-				5499475C0F3CAFD200E9C328 /* SVFetchQueryInfoOperationTest.m in Sources */,
-				54FECB1A0F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */,
+				544481600F4DCC340051AA83 /* TPDatabaseInstallerTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54B98F8D0F4F323200F52859 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54B98F990F4F333800F52859 /* SVAbstractIntegrationTest.m in Sources */,
+				54B98F9A0F4F333800F52859 /* TPDatabaseInstallerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1222,6 +1341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5405DFE40F50FEEA004DFCCA /* SVConstants.m in Sources */,
 				540089CD0F30C040002D56A4 /* main.m in Sources */,
 				540089CE0F30C040002D56A4 /* NSTreeNode+SVDavenport.m in Sources */,
 				540089CF0F30C040002D56A4 /* SVAbstractDescriptor.m in Sources */,
@@ -1248,7 +1368,7 @@
 				5499480F0F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */,
 				54C1E26F0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */,
 				544528F70F42801C00AB1845 /* SVSourceView.m in Sources */,
-				543F9D020F45B85F00E1559C /* SVPluginContributionLoader.m in Sources */,
+				543F9D020F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1274,6 +1394,11 @@
 			isa = PBXTargetDependency;
 			target = 8D15AC270486D014006FF6A4 /* Davenport */;
 			targetProxy = 54B7DE800F097BF00081F3A3 /* PBXContainerItemProxy */;
+		};
+		54B991AC0F4F5C2400F52859 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D15AC270486D014006FF6A4 /* Davenport */;
+			targetProxy = 54B991AB0F4F5C2400F52859 /* PBXContainerItemProxy */;
 		};
 		54F9F2280F006DF000EE414E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1414,14 +1539,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SVTestPlugin-Info.plist";
+				INFOPLIST_FILE = "Resources/SVTestPlugin-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1441,12 +1572,18 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SVTestPlugin-Info.plist";
+				INFOPLIST_FILE = "Resources/SVTestPlugin-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1455,7 +1592,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SVTestPlugin;
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = plugin;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1530,6 +1667,70 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "Unit Tests";
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		54B98F930F4F323200F52859 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Davenport.app/Contents/MacOS/Davenport";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Plugin Tests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = SlowTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		54B98F940F4F323200F52859 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Plugin Tests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = SlowTests;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -1629,9 +1830,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Classes/Davenport_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@loader_path";
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/ @loader_path/../Frameworks /Users/robevans/Projects/cocoa/stig.trunk.2/build/Debug/stigmergic.app/Contents/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks/ @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../CouchDb/lib/erlang/erts-5.6.3/lib/internal\"",
@@ -1659,7 +1860,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Classes/Davenport_Prefix.pch;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks/";
 				LIBRARY_SEARCH_PATHS = (
@@ -1729,6 +1930,15 @@
 			buildConfigurations = (
 				54B7DE8B0F097BF00081F3A3 /* Debug */,
 				54B7DE8C0F097BF00081F3A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54B98F950F4F323300F52859 /* Build configuration list for PBXNativeTarget "Plugin Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54B98F930F4F323200F52859 /* Debug */,
+				54B98F940F4F323200F52859 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

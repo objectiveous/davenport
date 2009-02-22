@@ -37,35 +37,17 @@
                                                  initWithCouchDatabase:self.couchDatabase
                                                  designDocTreeNode:nodeWithViewDescriptor];
 
-    [fetchOperation addObserver:self
-                     forKeyPath:@"isFinished" 
-                        options:0
-                        context:nil];
-    
-    [queue addOperation:fetchOperation];        
-    [fetchOperation release];    
+
+    [queue addOperation:fetchOperation];    
     [queue waitUntilAllOperationsAreFinished];    
-    
-}
 
-
-- (void)observeValueForKeyPath:(NSString*)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary*)change 
-                       context:(void*)context{
+    NSTreeNode *root = [fetchOperation designDocTreeNode];
+    STAssertNotNULL(root, @"Root node is is null %@", root);
     
-    if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){
-        SVDebug(@"Made it here");
-        
-        id root = [(SVFetchQueryInfoOperation*)object designDocTreeNode];
-        STAssertNotNULL(root, @"Root node is is null %@", root);
-        
-        NSInteger count = [[root childNodes] count];
-        
-        STAssertTrue(count == 3, @"Child count is %i", count);
-        itWorked = TRUE;
-         
-    } 
+    NSInteger count = [[root childNodes] count];    
+    STAssertTrue(count == 3, @"Child count is %i", count);
+    [queue release];
+
 }
 
 

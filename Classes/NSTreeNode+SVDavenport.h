@@ -24,4 +24,6 @@
 -(NSString*) deriveDesignDocumentPath;
 //-(NSSTring*) viewDocumentPath;
 
+-(NSString*) prettyPrint;
+-(void)logTree;
 @end

@@ -32,6 +32,7 @@
 
 -(NSTreeNode *) addSection:(NSString *)sectionName{
     SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
+    [section setGroupItem:YES];
     return [self addChildNodeWithObject:section];    
 }
 
@@ -123,7 +124,7 @@
 -(NSString*) deriveDesignDocumentPath{
     SVAbstractDescriptor *desc = [self representedObject];
     if([desc isKindOfClass:[SVViewDescriptor class]]){
-        NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
+        //NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
         SVDesignDocumentDescriptor *designDesc = [[self parentNode] representedObject];
         NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_design/%@",designDesc.label];
         return urlPath;
@@ -152,6 +153,34 @@
         //[self theNodesDatabase:[node parentNode]];
     }
     
+}
+
+
+-(void)logTree{
+    NSLog(@"%@", [self prettyPrint]);
+    
+    for(NSTreeNode *node in [self childNodes]){
+        [node prettyPrint];
+        [node logTree];
+    }
+    
+}
+
+-(NSString*) prettyPrint{    
+    id object = [self representedObject];
+    if(object == NULL){
+        NSString *plainDescription = [super description];
+        return [NSString stringWithFormat:@"No represented Object (root) : %@", plainDescription];
+    }
+        
+    
+    if([object conformsToProtocol:@protocol(DPContributionNavigationDescriptor)])
+        return [object label];
+    
+    if([object isKindOfClass:[SVAbstractDescriptor class]])
+        return [object label];
+    
+    return @"No idea what this tree node is";
 }
 
 @end

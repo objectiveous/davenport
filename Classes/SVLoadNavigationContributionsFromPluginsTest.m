@@ -3,7 +3,7 @@
 #import "SVDavenport.h"
 #import "SVViewDescriptor.h"
 #import "SVPluginContributionLoader.h"
-#import "SVContributionNav.h"
+#import "DPContributionPlugin.h"
 
 
 @interface SVLoadNavigationContributionsFromPluginsTest : SVAbstractIntegrationTest{
@@ -29,34 +29,21 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];    
     SVPluginContributionLoader *pluginLoader = [[SVPluginContributionLoader alloc] init];
         
-    [pluginLoader addObserver:self
-                   forKeyPath:@"isFinished"
-                      options:0
-                      context:nil];
-    
     [queue addOperation:pluginLoader];
-    [pluginLoader release];
+   
     [queue waitUntilAllOperationsAreFinished];
     
-    STAssertTrue(itWorked,@"failed to find conforming plugin in ~/Library/Application Support/Davenport/Plugins");
     
-}
-
-- (void)observeValueForKeyPath:(NSString*)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary*)change 
-                       context:(void*)context{
+    for(id <DPContributionPlugin> plugin in pluginLoader.instances){
+        NSTreeNode *contributionRootNode = [plugin navigationContribution];
+        STAssertNotNULL(contributionRootNode,@"Contribution returned a null tree node");
+        itWorked = TRUE;            
+    }      
     
-    if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVPluginContributionLoader class]]){
-        SVPluginContributionLoader *loader = (SVPluginContributionLoader*)object;
-        //itWorked = TRUE;    
-        for(id plugin in loader.instances){
-            NSTreeNode *contributionRootNode = [plugin navigationContribution];
-            STAssertNotNULL(contributionRootNode,@"Contribution returned a null tree node");
-            itWorked = TRUE;            
-        }
-         
-    } 
+    STAssertTrue(itWorked,@"failed to find conforming plugin in ~/Library/Application Support/Davenport/Plugins");    
+    
+    [pluginLoader release];
+    [queue release];
 }
 
 

@@ -8,13 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DPContributionPlugin.h"
-
+#import "SVConstants.h"
 @interface TPPlugin : NSObject <DPContributionPlugin>{
-
-
+    NSTreeNode *currentItem;
 }
 
+@property (retain) NSTreeNode *currentItem;
+
++(NSString*)databaseName;
 +(NSString*)pluginID;
 -(NSString*)pluginID;
 
+-(void)start;
 @end

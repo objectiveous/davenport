@@ -12,20 +12,22 @@
 
 @implementation NSTreeNode(TP)
 
-+(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity group:(BOOL)isGroup{
++(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType group:(BOOL)isGroup{
     TPBaseDescriptor *descriptor = [[[TPBaseDescriptor alloc] initWithPluginID:[TPPlugin pluginID]
                                                                          label:alabel 
                                                                       identity:anIdentity
+                                                                descriptorType:aType
                                                                          group:isGroup] autorelease];
     
      return [NSTreeNode treeNodeWithRepresentedObject:descriptor];
 }
 
 
--(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity group:(BOOL)isGroup{
+-(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType group:(BOOL)isGroup{
     TPBaseDescriptor *descriptor = [[[TPBaseDescriptor alloc] initWithPluginID:[TPPlugin pluginID]
                                                                          label:alabel 
                                                                       identity:anIdentity
+                                                                descriptorType:aType                                    
                                                                          group:isGroup] autorelease];
         
     
@@ -35,8 +37,8 @@
     return node;
 }
 
--(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity{
-    return [self addChildWithLabel:alabel identity:anIdentity group:NO];
+-(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType{
+    return [self addChildWithLabel:alabel identity:anIdentity descriptorType:aType group:NO];
 }
 
 

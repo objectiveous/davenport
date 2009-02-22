@@ -6,7 +6,15 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#pragma mark -
+#pragma mark Notifications
 
+//#define DPLocalDatabaseNeedsRefreshNotification @"SVLocalDatabaseNeedsRefreshNotification"
+
+//= @"DPContributionPluginDidLoadNavigationItemsNotification";
+
+
+#pragma mark -
 /*!
  This is the entry point into the contribution model. All contributions are 
  made by providing a class that conforms to this protocol. 
@@ -39,6 +47,9 @@
 /// Is called whenever a user selects a navigation item that has been contributed by this plugin. 
 -(void)selectionDidChange:(NSTreeNode*)item;
 
+/// This is called after selectionDidChange. 
+-(NSViewController*)mainSectionContribution;
+
 // 
 // @optional 
 
@@ -47,6 +58,7 @@
 // Plugin Version 
 
 // start (DVPluginContext*)
+- (void)start;
 // stop (DVPluginContext*)
 
 @end

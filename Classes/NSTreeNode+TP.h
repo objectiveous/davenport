@@ -11,9 +11,9 @@
 
 @interface NSTreeNode(TP) 
 
-+(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity group:(BOOL)isGroup;
++(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType group:(BOOL)isGroup;
 
--(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity group:(BOOL)isGroup;
--(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity;
+-(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType group:(BOOL)isGroup;
+-(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType;
 
 @end

@@ -25,6 +25,9 @@
 #import "SVDavenport.h"
 #import "SVCouchServerDescriptor.h"
 #import "DPContributionNavigationDescriptor.h"
+#import "DPContributionPlugin.h"
+#import "SVFetchServerInfoOperation.h"
+#import "SVPluginContributionLoaderOperation.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -41,15 +44,21 @@
 
 - (void)updateBreadCrumbs:(NSTreeNode*)descriptor;
 - (void)showEmptyInspectorView;
+- (void)showEmptyBodyView;
 - (void)fetchViews:(NSTreeNode*)designNode;
 - (void)showItemInMainView:(NSTreeNode*)item;
 - (void)showViewInMainView:(NSTreeNode*)item;
 - (void)showDesignView:(NSTreeNode*)item;
+- (void)refreshLocalDatabaseList:(NSNotification*)notification;
+- (NSTreeNode*)locateCouchServerDescriptionWithinTree:(NSTreeNode*)aRootNode;
+- (void)registerNotificationListeners;
+- (void)loadPlugins;
+- (void)autoExpandGroupItems;
 @end 
 
 @implementation SVMainWindowController
 
-@synthesize rootNode;
+//@synthesize rootNode;
 @synthesize urlImage;
 @synthesize sourceView;
 @synthesize dataViewController;
@@ -64,77 +73,120 @@
 @synthesize createDocumentToolBarItem;
 @synthesize horizontalSplitView;
 @synthesize emptyInspectorView;
+@synthesize emptyBodyView;
 
 
-- (void)awakeFromNib{     
+- (void)awakeFromNib{
+    // XXX This should live in the init. 
+    lock = [[NSLock alloc] init];
+    
+    // The root node gets created early and callers are only allowed to append child nodes to it. 
+    // This helps to support concurrency, e.g. each loaded plugin can asynchronously load navigation 
+    // items into the rootNode and never worry it the root node has been created yet. Seems sorta obvious
+    // but this is not how things worked at first and it caused some problems. 
+    rootNode = [[NSTreeNode alloc] init];
+    
   	createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
     inspectorShowing = YES;
     [[self inspectorView] setHidden:NO];
    
+    [self registerNotificationListeners];
+           
+    [self setUrlImage:[[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericURLIcon)] retain]];
+    [[self urlImage] setSize:NSMakeSize(16,16)];
+	[pathControl setFrameSize: NSMakeSize([pathControl bounds].size.width,27)];
+    
+    [self loadPlugins];
+}
+
+- (void)loadPlugins{
+    SVPluginContributionLoaderOperation *contributionLoader = [[SVPluginContributionLoaderOperation alloc] init];
+    [contributionLoader start];            
+    SVDebug(@"Contribution loader %@", contributionLoader.instances );
+    
+    for( id <DPContributionPlugin> plugin in contributionLoader.instances){
+        NSString *uid = [plugin pluginID];
+      
+        [[[NSApp delegate] pluginRegistry] setObject:plugin forKey:uid];
+        // This is likely to kick of NSOperations.                                 
+        [plugin start];
+        // And the call to navigationContribution might not be ready or would have to block. 
+        // In other words, we have no idea WTF a plugin author might be doing when it starts....
+        // So that rational thing to do is have a call back (i.e. a NSNotification) that says, 
+        // Hey! you can load my nav now....
+        
+        //NSTreeNode *contributionRootNode = [plugin navigationContribution];
+        //[[sourceViewModelRootNode mutableChildNodes] addObjectsFromArray:[contributionRootNode childNodes]];
+    }            
+    [contributionLoader release];
+}
+
+-(void) registerNotificationListeners{    
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        
+    [notificationCenter addObserver:self
+                           selector:@selector(loadPluginsNavigationContributions:)
+                               name:DPContributionPluginDidLoadNavigationItemsNotification
+                             object:nil]; 
     
     [notificationCenter addObserver:self
                            selector:@selector(removeBreadCrumb:)
                                name:@"removeBreadCrumb"
                              object:nil];    
-            
+    
     [notificationCenter addObserver:self
                            selector:@selector(appendBreadCrumb:)
                                name:@"appendBreadCrumb"
                              object:nil];    
     
     [notificationCenter addObserver:self
-                           selector:@selector(runAndDisplaySlowView:)
+                           selector:@selector(refreshLocalDatabaseList:)
                                name:SV_NOTIFICATION_RUN_SLOW_VIEW
                              object:nil];    
     
+    [notificationCenter addObserver:self
+                           selector:@selector(refreshLocalDatabaseList:)
+                               name:DPLocalDatabaseNeedsRefreshNotification
+                             object:nil];
     
-    
-    [self setUrlImage:[[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericURLIcon)] retain]];
-    [[self urlImage] setSize:NSMakeSize(16,16)];
-    
-	[pathControl setFrameSize: NSMakeSize([pathControl bounds].size.width,27)];     
 }
+
+
+// XXX This really ought to call an operation that just gets a list of databases. 
+- (void) refreshLocalDatabaseList:(NSNotification*)notification{
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:[[NSApp delegate] couchServer]];
+    
+    [fetchOperation addObserver:self
+                     forKeyPath:@"isFinished" 
+                        options:0
+                        context:nil];
+    [queue addOperation:fetchOperation];                
+    [fetchOperation release];
+    
+}
+
+
 
 -(void) dealloc{
     [urlImage release];
     [rootNode release];
     [operationQueue release];
+    [lock release];
+    [rootNode release];
     [super dealloc];
 }
-
-/*
-- (void)performUpdateRoot:(NSTreeNode *)inObject{
-    [self setRootNode:inObject];
-    
-    
-    for(NSTreeNode *node in [rootNode childNodes]){
-        [self.sourceView expandItem:node expandChildren:YES];        
-    }
-    
-    // TODO we might consider loading the views now. 
-}
-*/
 
 #pragma mark -
 #pragma mark NSOutlineViewDataSource delegate ( Left Hand Nav. )
 
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {    
-  
-    
-    //[(SVSourceView*)sourceView testFoo];
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {          
     if(item == nil){
         NSInteger count =  [[(NSTreeNode *)rootNode childNodes] count];
         return count;
     }else{        
-        // Let's lazy load the design documents. 
-        if([item isKindOfClass:[SBCouchDesignDocument class]]){
-            // Create an operation and fetch the missing queries. We might consider 
-            // doing this once the databases have been displayed. That way the user is not waiting 
-            // to see stuff in the left-hand nav. 
-        }
-                    
-        return  [[item childNodes] count];
+        NSInteger childCount = [[item childNodes] count];            
+        return  childCount;        
     }        
 }
 
@@ -142,22 +194,7 @@
     if (item == nil)
         return NO;
     
-    SVAbstractDescriptor *desc = [item representedObject];
-    /*
-    if([desc isKindOfClass:[SVCouchServerDescriptor class]])
-        return YES;
-    
-    if([desc isKindOfClass:[SVSectionDescriptor class]])
-        return YES;
-    
-    if([desc isKindOfClass:[SVDatabaseDescriptor class]])
-        return YES;
-    
-    if([desc isKindOfClass:[SVDesignDocumentDescriptor class]])
-        return YES;
-    
-    return NO;
-     */
+    id <DPContributionNavigationDescriptor, NSObject> desc = [item representedObject];
     
     if([desc isKindOfClass:[SVSectionDescriptor class]])
         return NO;
@@ -174,7 +211,7 @@
         
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
         
-    id desc = [childNode representedObject];
+    id <DPContributionNavigationDescriptor, NSObject> desc = [childNode representedObject];
 
     // XXX THIS IS A GROSS HACK. 
     if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
@@ -189,81 +226,111 @@
             return childNode;
         
         [self fetchViews:childNode];
-    }    
-    return childNode;            
+    }
+    return childNode;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    
     if ([[tableColumn identifier] isEqualToString:COLUMNID_LABEL]){
         id navDescriptor = [(NSTreeNode*) item representedObject];
         if([navDescriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]);        
             return [navDescriptor label];
+
+        return @"WTF";
     }            
     return nil;
 }
 
 // groupNode will need be an object conforming to our Navigation Descriptor protocol. 
-- (BOOL)isSpecialGroup:(id)groupNode{ 
-    
+- (BOOL)isSpecialGroup:(id)groupNode{     
     if([groupNode conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
         return [groupNode isGroupItem];
     }
-    /*
-	if([groupNode isKindOfClass:[SVCouchServerDescriptor class]] || [groupNode isKindOfClass:[SVSectionDescriptor class]]){
-        return YES;
-    } 
-     */
     return NO;
-    
 }
 
 #pragma mark -
+#pragma mark KVO
+- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
+    
+    if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){        
+        /*
+        id root = [(SVFetchQueryInfoOperation*)object designDocTreeNode];
+        self.rootNode = root;
+        [self.sourceView reloadData];
+         */
+    } 
+    if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){        
+        NSTreeNode *root = (NSTreeNode*) [(SVFetchServerInfoOperation*)object rootNode];
 
+        NSTreeNode *oldServerDesc = [self locateCouchServerDescriptionWithinTree:rootNode];
+        NSTreeNode *newServerDesc = [self locateCouchServerDescriptionWithinTree:root];
+        
+        NSMutableArray *oldDatabaseList = [oldServerDesc mutableChildNodes];
+        NSArray *newDatabaseList = [newServerDesc childNodes];
+        [oldDatabaseList removeAllObjects];
+        [oldDatabaseList addObjectsFromArray:newDatabaseList];
+        NSLog(@"database list count %i", [oldDatabaseList count]);
+        
+        //XXX This works but I have to wonder if it's the proper way to be doing these sorts of things. 
+        //NSLock *lock = [[NSLock alloc] init];
+        [lock lock];
+        [self.sourceView reloadData];
+        [lock unlock];
+        
 
+    } 
+}
+
+#pragma mark -
 - (void)outlineViewItemDidExpand:(NSNotification *)notification{
     //NSTreeNode *item = (NSTreeNode*) [notification object];
     //SVAbstractDescriptor *desc = [item representedObject];
-
+    
 }
-#pragma mark -
 -(void)fetchViews:(NSTreeNode*)designNode{
     if(operationQueue == nil){
         operationQueue = [[NSOperationQueue alloc] init];
     }
-
+    
     SVAbstractDescriptor *parentDescriptor =  [[designNode parentNode] representedObject];
-        
+    
     // XXX If we had the actuall SBCouchDatabase, we could simplify this signature. 
     SBCouchServer *server = [[NSApp delegate] couchServer];
     SBCouchDatabase *couchDatabase = [server database:parentDescriptor.label];
     SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] 
                                                  initWithCouchDatabase:couchDatabase                                                 designDocTreeNode:designNode];
-        
+    
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
                         options:0
                         context:nil];
-    NSLog(@"   queuing up fetchOperation ");
+    
     [operationQueue addOperation:fetchOperation];
     [fetchOperation release];
     
 }
-- (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
-    
-    if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){
-        
-        id root = [(SVFetchQueryInfoOperation*)object designDocTreeNode];
-        // XXX Might want to do something if we failed to get the views we were expecting. 
-        // perhapse check the fetchReturnedData property. 
-    } 
-}
 
+-(NSTreeNode*)locateCouchServerDescriptionWithinTree:(NSTreeNode*)aRootNode{
+    if([aRootNode isKindOfClass:[SVCouchServerDescriptor class]])
+        return aRootNode;
+    
+    for(NSTreeNode *node in [aRootNode mutableChildNodes]){        
+        SVAbstractDescriptor *descriptor = (SVAbstractDescriptor*) [node representedObject];
+        if([descriptor isKindOfClass:[SVCouchServerDescriptor class]]){
+            return node;
+        }
+    }    
+    return nil;
+}
 
 #pragma mark -
 #pragma mark - NSOutlineView delegate  (Left Hand Nav)
 
--(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{          
+-(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item{      
+    if(item == nil)
+        return NO;
+    
     if ([self isSpecialGroup:[item representedObject]]){
 		return YES;
 	}else{
@@ -323,56 +390,9 @@
 #pragma mark -
 #pragma mark SourceView Selection Handlers and Supporting Methods
 
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification{
-    if([sourceView selectedRow] == -1)
-        return;
-            
-    NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
-    id descriptor = [item representedObject];
-    
-    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
-        SVDebug(@"item does not conform to Contribution protocol");
-        return;
-    }
-    
-    [self updateBreadCrumbs:item];
-    // BUILT INS
-    // Show database results (_all_docs) in the main window and design document views as well. 
-    if([descriptor isKindOfClass:[SVDatabaseDescriptor class]]){        
-        [self showItemInMainView:item];
-    }else if([descriptor isKindOfClass:[SVDesignDocumentDescriptor class]]){
-        [self showDesignView:item];
-    }else if([descriptor isKindOfClass:[SVViewDescriptor class]]){
-        [self showViewInMainView:item];
-    }else{
-        [self delagateSelectionDidChange:item];
-    }    
-}
-
-- (void) delagateSelectionDidChange:(NSTreeNode*)item{
-    if(item == NULL)
-        return;
-    
-    // As per usual, the represented object ought to be a DPContributionNavigationDescriptor
-    id descriptor = [item representedObject];    
-    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
-        SVDebug(@"item does not conform to Contribution protocol");
-        return;
-    }
-    NSString *pluginID = [descriptor getPluginID];
-    id plugin = [[NSApp delegate] lookupPlugin:pluginID];
-    [plugin selectionDidChange:item];
-    
-    SVDebug(@"TODO - lookup the plugin that supplied the selected navigation item %@", [descriptor getPluginID]);
-}
-
-
-
 - (void)showDesignView:(NSTreeNode*)item{
-    for (NSView *view in [bodyView subviews]) {
-        [view removeFromSuperview];
-    }    
-    [self showEmptyInspectorView];        
+    [self showEmptyInspectorView]; 
+    [self showEmptyBodyView];     
 }
 
 -(void)showViewInMainView:(NSTreeNode*)item{
@@ -480,12 +500,114 @@
     [self.inspectorView addSubview:self.emptyInspectorView];
 }
 
-#pragma mark - 
+- (void)showEmptyBodyView{
+    // Guard clause so we don't waste our time. 
+    if([ [self.bodyView subviews] containsObject:self.emptyBodyView]){
+        SVDebug(@"Already showing empty view");
+        // We're already showing the emptybody view;
+        return;
+    }
+    
+    
+    for (NSView *view in [self.bodyView subviews]) {
+
+        if([view isKindOfClass:[SVEmptyInspectorView class]])
+            continue;
+        
+        [view removeFromSuperview];
+    }
+    
+    //NSView *v = [[[SVEmptyInspectorView alloc] initWithFrame:[bodyView frame]] autorelease];
+
+    /*
+    NSRect frame = [v frame];
+    NSRect superFrame = [bodyView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [v setFrame:frame];
+    */    
+    [self.bodyView addSubview:self.emptyBodyView];
+    // Trying to adjust the frame or maybe the bounds. 
+    //[self.bodyView setNeedsDisplay:YES];
+}
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification{
+    if([sourceView selectedRow] == -1)
+        return;
+    
+    NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
+    id descriptor = [item representedObject];
+    
+    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        SVDebug(@"item does not conform to Contribution protocol");
+        return;
+    }
+    
+    [self updateBreadCrumbs:item];
+    // BUILT INS
+    // Show database results (_all_docs) in the main window and design document views as well. 
+    if([descriptor isKindOfClass:[SVDatabaseDescriptor class]]){        
+        [self showItemInMainView:item];
+    }else if([descriptor isKindOfClass:[SVDesignDocumentDescriptor class]]){
+        [self showDesignView:item];
+    }else if([descriptor isKindOfClass:[SVViewDescriptor class]]){
+        [self showViewInMainView:item];
+    }else{
+        [self delagateSelectionDidChange:item];
+    }    
+}
+
+
+#pragma mark -
+#pragma mark Plugin Delegate Invocations
+- (void) delagateSelectionDidChange:(NSTreeNode*)item{
+    if(item == NULL)
+        return;
+    
+    // As per usual, the represented object ought to be a DPContributionNavigationDescriptor
+    id descriptor = [item representedObject];    
+    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        SVDebug(@"item does not conform to Contribution protocol");
+        return;
+    }
+    NSString *pluginID = [descriptor getPluginID];
+    id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:pluginID];
+    [plugin selectionDidChange:item];
+    NSViewController *mainViewController = [plugin mainSectionContribution];
+    NSLog(@" Not sure what I'm seeing %@", mainViewController);
+    if(mainViewController == Nil){
+        [self showEmptyInspectorView];
+        [self showEmptyBodyView];
+    }else{
+        for (NSView *view in [bodyView subviews]) {
+            [view removeFromSuperview];
+        }        
+        NSView *view = [mainViewController view];
+        NSLog(@"Here the view : %@", view);
+        
+        [self.bodyView addSubview:view];            
+
+        NSRect frame = [view frame];
+        NSRect superFrame = [bodyView frame];
+        frame.size.width = superFrame.size.width;
+        frame.size.height = superFrame.size.height;
+        [[mainViewController  view] setFrame:frame];                
+        
+    }
+        
+    
+    SVDebug(@"TODO - lookup the plugin that supplied the selected navigation item %@", [descriptor getPluginID]);
+}
+
+
+#pragma mark -
 #pragma mark Breadcrumb Management
 
 // TODO This is only partially completed and will break when we add Tool 
 // support. It's okay for now because we don't really understand where the 
 // design is headed. 
+
+// TODO I bet there's a naming convention for methods like these. 
 -(void)updateBreadCrumbs:(NSTreeNode*)item{    
     // Hard coding the root element name. Temporary. 
 
@@ -625,7 +747,9 @@
             [i setHidden:TRUE];
         }
     }else{
-        NSMenuItem *menuItem = [menu itemAtIndex:0];
+        //NSMenuItem *menuItem = [menu itemAtIndex:0];
+        NSMenuItem *menuItem = [menu itemWithTitle:@"Delete"];
+        
         [menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
         [menuItem setRepresentedObject:item];    
         // Ensure the menu items are visible. 
@@ -666,36 +790,71 @@
 	}
 }
 
-#pragma mark -
-#pragma mark Notification Handlers
-- (void)runAndDisplaySlowView:(NSNotification *)notification{
-    SBCouchView *view = [notification object];
-
-    [self showSlowViewInMainView:view];    
+- (IBAction)refreshDatabaseAction:(id)sender{
+    
 }
 
-#pragma mark - Property GET/SET Overrides
-- (void)setRootNode:(NSTreeNode *)treeNode {
+#pragma mark -
+#pragma mark Notification Handlers
+- (void) loadPluginsNavigationContributions:(NSNotification*)notification{
+    NSString *pluginID = [notification object];
+    id <DPContributionPlugin> plugin = [[[NSApp delegate] pluginRegistry] objectForKey:pluginID];
+
+    NSTreeNode *contributionRootNode = [plugin navigationContribution];    
+    NSMutableArray *contributionChildNodes = [contributionRootNode mutableChildNodes];
     
-    if (treeNode != rootNode) {        
-        rootNode = [treeNode retain];        
-    }
+    [lock lock];
+    [[rootNode mutableChildNodes] addObjectsFromArray:contributionChildNodes];    
     [self.sourceView reloadData];
-    //[self.sourceView expandItem:rootNode expandChildren:YES];        
+    [lock unlock];    
+    
+    [self autoExpandGroupItems];
+}
+
+
+
+- (void)runAndDisplaySlowView:(NSNotification *)notification{
+    SBCouchView *view = [notification object];
+    [self showSlowViewInMainView:view];
+}
+
+#pragma mark - 
+- (void)autoExpandGroupItems{
+    for(NSTreeNode *contributionNode in [rootNode childNodes]){
+        id representedObject = [contributionNode representedObject];
+        if([representedObject conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+            if([representedObject isGroupItem])
+                [self.sourceView expandItem:contributionNode];
+        }            
+    }    
+}
+
+#pragma mark -
+#pragma marrk Property GET/SET Overrides
+
+// We require a root node with no represented object. All children of this 
+// tree node will be added to the navigation tree's root. 
+- (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend{
+    
+    
+    [[rootNode mutableChildNodes] addObjectsFromArray:[treeToAppend childNodes]];
+    
+    [lock lock];
+    [self.sourceView reloadData];
+    [lock unlock];
     
     for(NSTreeNode *node in [rootNode childNodes]){
         [self.sourceView expandItem:node];  
     }
-    
 }
 
 @end
 
 #pragma mark -
-#pragma mark - DisclosureTriangleAdditions delegate
+#pragma mark DisclosureTriangleAdditions delegate
 
 @implementation NSObject(DisclosureTriangleAdditions)
--(BOOL)outlineView:(NSOutlineView*)outlineView shouldShowDisclosureTriangleForItem:(id)item{
+-(BOOL)outlineView:(NSOutlineView*)outlineView shouldShowDisclosureTriangleForItem:(id)item{    
     // We'd like to hide the disclosure triangle but we need to ensure that 
     // the CouchServer node is expanded first. 
     

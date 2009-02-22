@@ -18,6 +18,7 @@
 @interface SVMainWindowController : NSWindowController {
     IBOutlet NSOutlineView	         *sourceView;    
     IBOutlet SVEmptyInspectorView    *emptyInspectorView;
+    IBOutlet SVEmptyInspectorView    *emptyBodyView;
 
     
     // The three primary views of Davenport. 
@@ -44,9 +45,10 @@
     SVDatabaseCreateSheetController  *createDatabaseSheet;
     @private
     NSOperationQueue                  *operationQueue;
+    NSLock                            *lock;
 }
 
-@property (retain)  NSTreeNode                     *rootNode;
+//@property (retain)  NSTreeNode                     *rootNode;
 @property (retain)  NSImage                        *urlImage;
 @property (nonatomic, retain) NSOutlineView        *sourceView;
 @property (nonatomic, retain) NSViewController     *dataViewController;
@@ -62,7 +64,13 @@
 @property (nonatomic, retain) RBSplitSubview       *inspectorView;
 @property (nonatomic, retain) RBSplitView          *horizontalSplitView; 
 @property (nonatomic, retain) SVEmptyInspectorView *emptyInspectorView;
+@property (nonatomic, retain) SVEmptyInspectorView *emptyBodyView;
 
+
+- (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend;
+
+#pragma mark -
+#pragma mark Actions
 // TOOLBAR HANDLERS
 - (IBAction)showLogView:(id)sender;
 - (IBAction)showAdminView:(id)sender;
@@ -72,14 +80,21 @@
 // CONTEXT MENU HANDLERS
 - (IBAction)deleteDatabaseAction:(id)sender;
 - (IBAction)createDatabaseAction:(id)sender;
+- (IBAction)refreshDatabaseAction:(id)sender;
 
+#pragma mark -
 - (BOOL)validateToolbarItem:(NSToolbarItem *)theItem;
 - (void)appendData:(NSData *)data;
+- (void)delagateSelectionDidChange:(NSTreeNode*)item;
 
-// Notification handlers
+#pragma mark -
+#pragma mark Notification Handlers
+// Notification handlers. 
+// XXX This should be private methods, no? 
 - (void) removeBreadCrumb:(NSNotification*)notification;
 - (void) appendBreadCrumb:(NSNotification*)notification;
+- (void) loadPluginsNavigationContributions:(NSNotification*)notification;
 
-- (void) delagateSelectionDidChange:(NSTreeNode*)item;
+
 
 @end

@@ -730,7 +730,7 @@
 #pragma mark ContextMenu Handlers and Delegate Methods
 
 /*
- Controls what menu items are shown for a given NSOutlineView selection. 
+ Controls what Conext Menu items are shown for a given NSOutlineView selection. 
  */
 - (void)menuNeedsUpdate:(NSMenu *)menu {
     NSInteger clickedRow = [sourceView clickedRow];
@@ -747,10 +747,11 @@
             [i setHidden:TRUE];
         }
     }else{
-        //NSMenuItem *menuItem = [menu itemAtIndex:0];
+        //XXX Is there a better way to do this than by name?
         NSMenuItem *menuItem = [menu itemWithTitle:@"Delete"];
+        assert(menuItem);
         
-        [menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
+        //[menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
         [menuItem setRepresentedObject:item];    
         // Ensure the menu items are visible. 
         for(NSMenuItem *i in [menu itemArray]){
@@ -774,7 +775,9 @@
     
     if(didDelete){
         [[[item parentNode] mutableChildNodes] removeObject:item];
+        [lock lock];
         [self.sourceView reloadData];
+        [lock unlock];
     }
 }
 
@@ -791,7 +794,7 @@
 }
 
 - (IBAction)refreshDatabaseAction:(id)sender{
-    
+        
 }
 
 #pragma mark -
@@ -810,8 +813,6 @@
     
     [self autoExpandGroupItems];
 }
-
-
 
 - (void)runAndDisplaySlowView:(NSNotification *)notification{
     SBCouchView *view = [notification object];

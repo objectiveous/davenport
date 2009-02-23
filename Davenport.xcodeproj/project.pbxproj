@@ -26,11 +26,12 @@
 		54008A150F30C458002D56A4 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BD0F1DA33D002AC9E5 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BF0F1DA343002AC9E5 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
-		5405DFA30F50F8C1004DFCCA /* TPLoadNavigationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */; };
+		5405DFA30F50F8C1004DFCCA /* TPLoadNavigationOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5405DFA40F50F8C1004DFCCA /* TPLoadNavigationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */; };
 		5405DFE30F50FEEA004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
 		5405DFE40F50FEEA004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
 		5405E0DB0F510B4E004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
+		5405E71B0F530272004DFCCA /* TPLoadNavigationOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405E71A0F530272004DFCCA /* TPLoadNavigationOperationTest.m */; };
 		540C88CC0F31D51700E02727 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		540C88CD0F31D51700E02727 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		540C88CE0F31D51700E02727 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
@@ -340,6 +341,7 @@
 		5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoadNavigationOperation.m; sourceTree = "<group>"; };
 		5405DFE10F50FEEA004DFCCA /* SVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVConstants.h; sourceTree = "<group>"; };
 		5405DFE20F50FEEA004DFCCA /* SVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVConstants.m; sourceTree = "<group>"; };
+		5405E71A0F530272004DFCCA /* TPLoadNavigationOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoadNavigationOperationTest.m; sourceTree = "<group>"; };
 		5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = Classes/Davenport_Prefix.pch; sourceTree = "<group>"; };
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
@@ -425,7 +427,7 @@
 		54B546100F31D006004E675B /* documents.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = documents.tiff; path = Images/documents.tiff; sourceTree = "<group>"; };
 		54B546110F31D006004E675B /* segment.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = segment.jpg; path = Images/segment.jpg; sourceTree = "<group>"; };
 		54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		54B98F910F4F323200F52859 /* SlowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B98F910F4F323200F52859 /* PluginTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PluginTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B98F920F4F323200F52859 /* Plugin Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Plugin Tests-Info.plist"; sourceTree = "<group>"; };
 		54BC49F60F39D6EF002B4874 /* SVEmptyInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVEmptyInspectorView.h; sourceTree = "<group>"; };
 		54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEmptyInspectorView.m; sourceTree = "<group>"; };
@@ -539,7 +541,7 @@
 				54B7DE8D0F097BF00081F3A3 /* IntegrationTests.octest */,
 				543F9EFF0F4610C100E1559C /* SVTestPlugin.plugin */,
 				5428768C0F4E620E000BA663 /* Davenport.app */,
-				54B98F910F4F323200F52859 /* SlowTests.octest */,
+				54B98F910F4F323200F52859 /* PluginTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -838,6 +840,7 @@
 			isa = PBXGroup;
 			children = (
 				5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */,
+				5405E71A0F530272004DFCCA /* TPLoadNavigationOperationTest.m */,
 			);
 			name = "Integration Tests";
 			sourceTree = "<group>";
@@ -980,7 +983,7 @@
 			);
 			name = "Plugin Tests";
 			productName = SlowTests;
-			productReference = 54B98F910F4F323200F52859 /* SlowTests.octest */;
+			productReference = 54B98F910F4F323200F52859 /* PluginTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		54F9F2230F006DE900EE414E /* Unit Tests */ = {
@@ -1327,6 +1330,7 @@
 			files = (
 				54B98F990F4F333800F52859 /* SVAbstractIntegrationTest.m in Sources */,
 				54B98F9A0F4F333800F52859 /* TPDatabaseInstallerTest.m in Sources */,
+				5405E71B0F530272004DFCCA /* TPLoadNavigationOperationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1699,7 +1703,7 @@
 					SenTestingKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = SlowTests;
+				PRODUCT_NAME = PluginTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};

@@ -25,7 +25,7 @@
 }
 
 
--(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType group:(BOOL)isGroup{
+-(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType group:(BOOL)isGroup{
     self = [self initWithLabel:alabel identity:anIdentity descriptorType:aType group:isGroup];
     if(self){
         self.pluginID = pluginId;
@@ -33,7 +33,7 @@
     return self;
 }
 
--(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType  group:(BOOL)isGroup{    
+-(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType  group:(BOOL)isGroup{    
     self = [super init];
     if(self){
         self.label = alabel;

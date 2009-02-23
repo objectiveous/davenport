@@ -9,25 +9,26 @@
 #import <Cocoa/Cocoa.h>
 #import "TPBaseDescriptor.h"
 #import "DPContributionNavigationDescriptor.h"
+#import "TPPlugin.h"
 
 @interface TPBaseDescriptor : NSObject <DPContributionNavigationDescriptor>{
     NSString *label;
     NSString *pluginID;
     NSString *identity; 
-    NSString *descriptorType;
-    BOOL      groupItem;    
+    TPNavigationDescriptorType descriptorType;
+    BOOL      groupItem;
     
 }
 
 @property (retain) NSString *label;
 @property (retain) NSString *pluginID;
 @property (retain) NSString *identity;
-@property (retain) NSString *descriptorType;
+@property TPNavigationDescriptorType descriptorType;
 @property BOOL groupItem;
 
 
--(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)aType group:(BOOL)isGroup;
--(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(NSString*)type group:(BOOL)isGroup;
+-(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType group:(BOOL)isGroup;
+-(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType group:(BOOL)isGroup;
 -(BOOL)isGroupItem;
 
 @end

@@ -9,8 +9,20 @@
 #import <Cocoa/Cocoa.h>
 #import "DPContributionPlugin.h"
 #import "SVConstants.h"
+
+typedef enum descriptorType{
+    TPNavigationDescriptorDesignDoc  = 1,
+    TPNavigationDescriptorView       = 2,
+    TPNavigationDescriptorMilestone  = 3,
+    TPNavigationDescriptorAppName    = 4,
+    TPNavigationDescriptorTicketBin  = 5,
+    
+} TPNavigationDescriptorType;
+
 @interface TPPlugin : NSObject <DPContributionPlugin>{
     NSTreeNode *currentItem;
+    NSTreeNode *navContribution;
+    NSOperationQueue *queue;
 }
 
 @property (retain) NSTreeNode *currentItem;

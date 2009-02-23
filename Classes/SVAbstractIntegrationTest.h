@@ -10,15 +10,18 @@
 #import <CouchObjC/CouchObjC.h>
 
 @interface SVAbstractIntegrationTest : SenTestCase {
-    SBCouchServer *couchServer;
-    SBCouchDatabase *couchDatabase;
-    BOOL leaveDatabase;    
+    SBCouchServer       *couchServer;
+    SBCouchDatabase     *couchDatabase;
+    BOOL                 leaveDatabase;    
+    NSMutableDictionary *loadedPlugins;
 }
 
-@property (retain) SBCouchServer *couchServer;
-@property (retain) SBCouchDatabase *couchDatabase;
+@property (retain) SBCouchServer       *couchServer;
+@property (retain) SBCouchDatabase     *couchDatabase;
+@property (retain) NSMutableDictionary *loadedPlugins;
 @property BOOL leaveDatabase; 
 
--(SBCouchResponse*)provisionViews;
--(NSString*)designDocName;
+- (SBCouchResponse*)provisionViews;
+- (NSString*)designDocName;
+- (void)loadDavenportPlugins;
 @end

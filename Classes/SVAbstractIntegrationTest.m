@@ -7,6 +7,8 @@
 //
 
 #import "SVAbstractIntegrationTest.h"
+#import "SVPluginContributionLoaderOperation.h"
+#import "DPContributionPlugin.h"
 
 static NSString *MAP_FUNCTION     = @"function(doc) { if(doc.name == 'Frank'){ emit('Number of Franks', 1);}}";
 static NSString *REDUCE_FUNCTION  = @"function(k, v, rereduce) { return sum(v);}";
@@ -21,6 +23,7 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
 @synthesize couchServer;
 @synthesize couchDatabase;
 @synthesize leaveDatabase;
+@synthesize loadedPlugins;
 
 #pragma mark -
 - (void)setUp {
@@ -64,4 +67,18 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
     return DAVENPORT_TEST_DESIGN_NAME;
 }
 
+- (void)loadDavenportPlugins{
+    loadedPlugins = [[NSMutableDictionary alloc] init];
+    SVPluginContributionLoaderOperation *pluginLoader = [[SVPluginContributionLoaderOperation alloc] init];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:pluginLoader];
+    [queue waitUntilAllOperationsAreFinished];
+    
+    for(id <DPContributionPlugin, NSObject> plugin in pluginLoader.instances){
+        NSBundle *bundle = [NSBundle bundleForClass:[plugin class] ];
+        [self.loadedPlugins setObject:bundle forKey:[plugin pluginID]]; 
+    }        
+    [queue release];     
+}
 @end

@@ -10,7 +10,10 @@
 
 
 @interface TPLoadNavigationOperation : NSOperation{
-
+    NSTreeNode *rootContributionNode;
 }
 
+@property (retain) NSTreeNode* rootContributionNode;
+
+-(NSString*)what;
 @end

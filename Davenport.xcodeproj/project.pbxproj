@@ -9,18 +9,16 @@
 /* Begin PBXBuildFile section */
 		540089CD0F30C040002D56A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A40F30C040002D56A4 /* main.m */; };
 		540089CE0F30C040002D56A4 /* NSTreeNode+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A50F30C040002D56A4 /* NSTreeNode+SVDavenport.m */; };
-		540089CF0F30C040002D56A4 /* SVAbstractDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */; };
+		540089CF0F30C040002D56A4 /* SVBaseNavigationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A80F30C040002D56A4 /* SVBaseNavigationDescriptor.m */; };
 		540089D00F30C040002D56A4 /* SVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AA0F30C040002D56A4 /* SVAppDelegate.m */; };
 		540089D10F30C040002D56A4 /* SVBreadCrumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */; };
 		540089D20F30C040002D56A4 /* SVControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AE0F30C040002D56A4 /* SVControlBarView.m */; };
-		540089D60F30C040002D56A4 /* SVDatabaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */; };
 		540089D70F30C040002D56A4 /* SVDocumentKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */; };
 		540089D80F30C040002D56A4 /* SVFetchServerInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */; };
 		540089D90F30C040002D56A4 /* SVInspectorFunctionDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */; };
 		540089DC0F30C040002D56A4 /* SVMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BF0F30C040002D56A4 /* SVMainWindowController.m */; };
 		540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
-		540089DF0F30C040002D56A4 /* SVSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C50F30C040002D56A4 /* SVSectionDescriptor.m */; };
 		540089E00F30C040002D56A4 /* SVSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C70F30C040002D56A4 /* SVSourceListCell.m */; };
 		540089FD0F30C36F002D56A4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54008A150F30C458002D56A4 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
@@ -32,6 +30,8 @@
 		5405DFE40F50FEEA004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
 		5405E0DB0F510B4E004DFCCA /* SVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405DFE20F50FEEA004DFCCA /* SVConstants.m */; };
 		5405E71B0F530272004DFCCA /* TPLoadNavigationOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405E71A0F530272004DFCCA /* TPLoadNavigationOperationTest.m */; };
+		5405EA060F545CF5004DFCCA /* TPPluginTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405EA050F545CF5004DFCCA /* TPPluginTest.m */; };
+		5405EA670F54690B004DFCCA /* DPResourceFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5405EA640F54690B004DFCCA /* DPResourceFactory.h */; };
 		540C88CC0F31D51700E02727 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		540C88CD0F31D51700E02727 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		540C88CE0F31D51700E02727 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
@@ -53,18 +53,16 @@
 		540C88DF0F31D51700E02727 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		540C88E10F31D51700E02727 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A40F30C040002D56A4 /* main.m */; };
 		540C88E20F31D51700E02727 /* NSTreeNode+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A50F30C040002D56A4 /* NSTreeNode+SVDavenport.m */; };
-		540C88E30F31D51700E02727 /* SVAbstractDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */; };
+		540C88E30F31D51700E02727 /* SVBaseNavigationDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089A80F30C040002D56A4 /* SVBaseNavigationDescriptor.m */; };
 		540C88E40F31D51700E02727 /* SVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AA0F30C040002D56A4 /* SVAppDelegate.m */; };
 		540C88E50F31D51700E02727 /* SVBreadCrumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */; };
 		540C88E60F31D51700E02727 /* SVControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AE0F30C040002D56A4 /* SVControlBarView.m */; };
-		540C88E80F31D51700E02727 /* SVDatabaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */; };
 		540C88E90F31D51700E02727 /* SVDocumentKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */; };
 		540C88EA0F31D51700E02727 /* SVFetchServerInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */; };
 		540C88EB0F31D51700E02727 /* SVInspectorFunctionDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */; };
 		540C88EC0F31D51700E02727 /* SVMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BF0F30C040002D56A4 /* SVMainWindowController.m */; };
 		540C88ED0F31D51700E02727 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540C88EE0F31D51700E02727 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
-		540C88EF0F31D51700E02727 /* SVSectionDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C50F30C040002D56A4 /* SVSectionDescriptor.m */; };
 		540C88F00F31D51700E02727 /* SVSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C70F30C040002D56A4 /* SVSourceListCell.m */; };
 		540C88F30F31D51700E02727 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		540C89200F31D61D00E02727 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
@@ -150,12 +148,8 @@
 		548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
 		548BB1BC0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */; };
 		548BB1BD0F365B5A00DB4DCB /* SVJSONDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */; };
-		549942C40F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */; };
-		549942C50F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */; };
 		549946BD0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */; };
 		549946BE0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */; };
-		5499480F0F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */; };
-		549948100F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */; };
 		549BC6B00EFDC106002DFF80 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		549BC6C60EFDC6A6002DFF80 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		549F374F0F3331700033A0C9 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -179,8 +173,6 @@
 		54BC49F90F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */; };
 		54BC49FB0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
 		54BC49FC0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
-		54C1E26E0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */; };
-		54C1E26F0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */; };
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
@@ -304,8 +296,8 @@
 		540089A40F30C040002D56A4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		540089A50F30C040002D56A4 /* NSTreeNode+SVDavenport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTreeNode+SVDavenport.m"; sourceTree = "<group>"; };
 		540089A60F30C040002D56A4 /* NSTreeNode+SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTreeNode+SVDavenport.h"; sourceTree = "<group>"; };
-		540089A70F30C040002D56A4 /* SVAbstractDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAbstractDescriptor.h; sourceTree = "<group>"; };
-		540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAbstractDescriptor.m; sourceTree = "<group>"; };
+		540089A70F30C040002D56A4 /* SVBaseNavigationDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBaseNavigationDescriptor.h; sourceTree = "<group>"; };
+		540089A80F30C040002D56A4 /* SVBaseNavigationDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBaseNavigationDescriptor.m; sourceTree = "<group>"; };
 		540089A90F30C040002D56A4 /* SVAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAppDelegate.h; sourceTree = "<group>"; };
 		540089AA0F30C040002D56A4 /* SVAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAppDelegate.m; sourceTree = "<group>"; };
 		540089AB0F30C040002D56A4 /* SVBreadCrumbCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBreadCrumbCell.h; sourceTree = "<group>"; };
@@ -315,8 +307,6 @@
 		540089AF0F30C040002D56A4 /* SVCouchDbFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDbFrameworkTest.m; sourceTree = "<group>"; };
 		540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVInspectorDocumentController.h; sourceTree = "<group>"; };
 		540089B20F30C040002D56A4 /* SVCreateAndLoadSampleDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCreateAndLoadSampleDatabaseTest.m; sourceTree = "<group>"; };
-		540089B30F30C040002D56A4 /* SVDatabaseDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDatabaseDescriptor.h; sourceTree = "<group>"; };
-		540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDatabaseDescriptor.m; sourceTree = "<group>"; };
 		540089B50F30C040002D56A4 /* SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDavenport.h; sourceTree = "<group>"; };
 		540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDocumentKeyCell.h; sourceTree = "<group>"; };
 		540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentKeyCell.m; sourceTree = "<group>"; };
@@ -332,8 +322,6 @@
 		540089C10F30C040002D56A4 /* SVPathControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPathControl.m; sourceTree = "<group>"; };
 		540089C20F30C040002D56A4 /* SVQueryResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVQueryResultController.h; sourceTree = "<group>"; };
 		540089C30F30C040002D56A4 /* SVQueryResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVQueryResultController.m; sourceTree = "<group>"; };
-		540089C40F30C040002D56A4 /* SVSectionDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSectionDescriptor.h; sourceTree = "<group>"; };
-		540089C50F30C040002D56A4 /* SVSectionDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSectionDescriptor.m; sourceTree = "<group>"; };
 		540089C60F30C040002D56A4 /* SVSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListCell.h; sourceTree = "<group>"; };
 		540089C70F30C040002D56A4 /* SVSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListCell.m; sourceTree = "<group>"; };
 		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = SOURCE_ROOT; };
@@ -342,6 +330,8 @@
 		5405DFE10F50FEEA004DFCCA /* SVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVConstants.h; sourceTree = "<group>"; };
 		5405DFE20F50FEEA004DFCCA /* SVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVConstants.m; sourceTree = "<group>"; };
 		5405E71A0F530272004DFCCA /* TPLoadNavigationOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoadNavigationOperationTest.m; sourceTree = "<group>"; };
+		5405EA050F545CF5004DFCCA /* TPPluginTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPluginTest.m; sourceTree = "<group>"; };
+		5405EA640F54690B004DFCCA /* DPResourceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPResourceFactory.h; sourceTree = "<group>"; };
 		5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Davenport_Prefix.pch; path = Classes/Davenport_Prefix.pch; sourceTree = "<group>"; };
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
@@ -405,15 +395,11 @@
 		548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SVDavenport.m"; sourceTree = "<group>"; };
 		548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJSONDescriptor.h; sourceTree = "<group>"; };
 		548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJSONDescriptor.m; sourceTree = "<group>"; };
-		549942C20F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDesignDocumentDescriptor.h; sourceTree = "<group>"; };
-		549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDesignDocumentDescriptor.m; sourceTree = "<group>"; };
 		549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchServerInfoOperationTest.m; sourceTree = "<group>"; };
 		549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchQueryInfoOperationTest.m; sourceTree = "<group>"; };
 		549946BB0F3CA55200E9C328 /* SVFetchQueryInfoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVFetchQueryInfoOperation.h; sourceTree = "<group>"; };
 		549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchQueryInfoOperation.m; sourceTree = "<group>"; };
 		549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEnsureThatTheIntegrationTestBaseClassWorksTest.m; sourceTree = "<group>"; };
-		5499480D0F3CBA9E00E9C328 /* SVViewDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVViewDescriptor.h; sourceTree = "<group>"; };
-		5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVViewDescriptor.m; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
 		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -432,8 +418,6 @@
 		54BC49F60F39D6EF002B4874 /* SVEmptyInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVEmptyInspectorView.h; sourceTree = "<group>"; };
 		54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEmptyInspectorView.m; sourceTree = "<group>"; };
 		54BC49FA0F39D915002B4874 /* background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = background.pdf; path = Images/background.pdf; sourceTree = "<group>"; };
-		54C1E26C0F426BB0001EA3FA /* SVCouchServerDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVCouchServerDescriptor.h; sourceTree = "<group>"; };
-		54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchServerDescriptor.m; sourceTree = "<group>"; };
 		54C53FED0F06527300C337BC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		54DF2F7F0F30C59000A720D9 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "IntegrationTests-Info.plist"; path = "Resources/IntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F800F30C59000A720D9 /* Test Bundle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Test Bundle-Info.plist"; path = "Resources/Test Bundle-Info.plist"; sourceTree = "<group>"; };
@@ -638,13 +622,8 @@
 			isa = PBXGroup;
 			children = (
 				549942C60F3BCDFB00E9C328 /* headers */,
-				540089A80F30C040002D56A4 /* SVAbstractDescriptor.m */,
-				540089C50F30C040002D56A4 /* SVSectionDescriptor.m */,
-				540089B40F30C040002D56A4 /* SVDatabaseDescriptor.m */,
+				540089A80F30C040002D56A4 /* SVBaseNavigationDescriptor.m */,
 				548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */,
-				549942C30F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m */,
-				5499480E0F3CBA9E00E9C328 /* SVViewDescriptor.m */,
-				54C1E26D0F426BB0001EA3FA /* SVCouchServerDescriptor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -839,6 +818,7 @@
 		5444815E0F4DCBF10051AA83 /* Integration Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5405EA050F545CF5004DFCCA /* TPPluginTest.m */,
 				5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */,
 				5405E71A0F530272004DFCCA /* TPLoadNavigationOperationTest.m */,
 			);
@@ -861,13 +841,8 @@
 		549942C60F3BCDFB00E9C328 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				540089C40F30C040002D56A4 /* SVSectionDescriptor.h */,
-				540089B30F30C040002D56A4 /* SVDatabaseDescriptor.h */,
-				540089A70F30C040002D56A4 /* SVAbstractDescriptor.h */,
+				540089A70F30C040002D56A4 /* SVBaseNavigationDescriptor.h */,
 				548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */,
-				549942C20F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.h */,
-				5499480D0F3CBA9E00E9C328 /* SVViewDescriptor.h */,
-				54C1E26C0F426BB0001EA3FA /* SVCouchServerDescriptor.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -888,6 +863,7 @@
 				5405DFE10F50FEEA004DFCCA /* SVConstants.h */,
 				54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */,
 				543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */,
+				5405EA640F54690B004DFCCA /* DPResourceFactory.h */,
 			);
 			name = "Plugin API";
 			sourceTree = "<group>";
@@ -903,6 +879,7 @@
 				54B990CA0F4F4F2F00F52859 /* TPBaseDescriptor.h in Headers */,
 				5444825D0F4E109B0051AA83 /* TPPlugin.h in Headers */,
 				5405DFA30F50F8C1004DFCCA /* TPLoadNavigationOperation.h in Headers */,
+				5405EA670F54690B004DFCCA /* DPResourceFactory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1274,18 +1251,16 @@
 				5405DFE30F50FEEA004DFCCA /* SVConstants.m in Sources */,
 				540C88E10F31D51700E02727 /* main.m in Sources */,
 				540C88E20F31D51700E02727 /* NSTreeNode+SVDavenport.m in Sources */,
-				540C88E30F31D51700E02727 /* SVAbstractDescriptor.m in Sources */,
+				540C88E30F31D51700E02727 /* SVBaseNavigationDescriptor.m in Sources */,
 				540C88E40F31D51700E02727 /* SVAppDelegate.m in Sources */,
 				540C88E50F31D51700E02727 /* SVBreadCrumbCell.m in Sources */,
 				540C88E60F31D51700E02727 /* SVControlBarView.m in Sources */,
-				540C88E80F31D51700E02727 /* SVDatabaseDescriptor.m in Sources */,
 				540C88E90F31D51700E02727 /* SVDocumentKeyCell.m in Sources */,
 				540C88EA0F31D51700E02727 /* SVFetchServerInfoOperation.m in Sources */,
 				540C88EB0F31D51700E02727 /* SVInspectorFunctionDocumentController.m in Sources */,
 				540C88EC0F31D51700E02727 /* SVMainWindowController.m in Sources */,
 				540C88ED0F31D51700E02727 /* SVPathControl.m in Sources */,
 				540C88EE0F31D51700E02727 /* SVQueryResultController.m in Sources */,
-				540C88EF0F31D51700E02727 /* SVSectionDescriptor.m in Sources */,
 				540C88F00F31D51700E02727 /* SVSourceListCell.m in Sources */,
 				546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 				548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */,
@@ -1293,10 +1268,7 @@
 				5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */,
 				54BC49F80F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */,
 				54790A960F3A0D1300461FEB /* SVInspectorDocumentController.m in Sources */,
-				549942C50F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */,
 				549946BE0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */,
-				549948100F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */,
-				54C1E26E0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */,
 				544528F60F42801C00AB1845 /* SVSourceView.m in Sources */,
 				543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 			);
@@ -1328,6 +1300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5405EA060F545CF5004DFCCA /* TPPluginTest.m in Sources */,
 				54B98F990F4F333800F52859 /* SVAbstractIntegrationTest.m in Sources */,
 				54B98F9A0F4F333800F52859 /* TPDatabaseInstallerTest.m in Sources */,
 				5405E71B0F530272004DFCCA /* TPLoadNavigationOperationTest.m in Sources */,
@@ -1348,18 +1321,16 @@
 				5405DFE40F50FEEA004DFCCA /* SVConstants.m in Sources */,
 				540089CD0F30C040002D56A4 /* main.m in Sources */,
 				540089CE0F30C040002D56A4 /* NSTreeNode+SVDavenport.m in Sources */,
-				540089CF0F30C040002D56A4 /* SVAbstractDescriptor.m in Sources */,
+				540089CF0F30C040002D56A4 /* SVBaseNavigationDescriptor.m in Sources */,
 				540089D00F30C040002D56A4 /* SVAppDelegate.m in Sources */,
 				540089D10F30C040002D56A4 /* SVBreadCrumbCell.m in Sources */,
 				540089D20F30C040002D56A4 /* SVControlBarView.m in Sources */,
-				540089D60F30C040002D56A4 /* SVDatabaseDescriptor.m in Sources */,
 				540089D70F30C040002D56A4 /* SVDocumentKeyCell.m in Sources */,
 				540089D80F30C040002D56A4 /* SVFetchServerInfoOperation.m in Sources */,
 				540089D90F30C040002D56A4 /* SVInspectorFunctionDocumentController.m in Sources */,
 				540089DC0F30C040002D56A4 /* SVMainWindowController.m in Sources */,
 				540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */,
 				540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */,
-				540089DF0F30C040002D56A4 /* SVSectionDescriptor.m in Sources */,
 				540089E00F30C040002D56A4 /* SVSourceListCell.m in Sources */,
 				546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */,
 				548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */,
@@ -1367,10 +1338,7 @@
 				5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */,
 				54BC49F90F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */,
 				54790A970F3A0D1300461FEB /* SVInspectorDocumentController.m in Sources */,
-				549942C40F3BCDEF00E9C328 /* SVDesignDocumentDescriptor.m in Sources */,
 				549946BD0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */,
-				5499480F0F3CBA9E00E9C328 /* SVViewDescriptor.m in Sources */,
-				54C1E26F0F426BB0001EA3FA /* SVCouchServerDescriptor.m in Sources */,
 				544528F70F42801C00AB1845 /* SVSourceView.m in Sources */,
 				543F9D020F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 			);

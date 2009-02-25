@@ -6,6 +6,8 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import "DPResourceFactory.h"
+
 #pragma mark -
 #pragma mark Notifications
 
@@ -20,6 +22,8 @@
  made by providing a class that conforms to this protocol. 
  */
 @protocol DPContributionPlugin
+
+-(id)initWithResourceFactory:(<DPResourceFactory>)factory;
 
 // Return an empty root who's children will be added to the NSOutlineView that makes 
 // up the left-hand nav of davenport. The root node is said to be "empty" when it has 

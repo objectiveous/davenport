@@ -32,4 +32,7 @@
 - (void) performFetchServerInfoOperation;
 /// Returns an object that conforms to the DPContributionPlugin protocol. 
 - (id) lookupPlugin:(NSString*)pluginID;
+
+-(NSViewController*)lookupShareableController:(DPSharedViewContollers)namedController;
+
 @end

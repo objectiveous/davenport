@@ -13,9 +13,10 @@
 #import <BWToolkitFramework/BWSplitView.h>
 #import "SVEmptyInspectorView.h"
 #import "SVSourceView.h"
+#import "DPResourceFactory.h"
 @class SVDatabaseCreateSheetController;
 
-@interface SVMainWindowController : NSWindowController {
+@interface SVMainWindowController : NSWindowController <DPResourceFactory>{
     IBOutlet NSOutlineView	         *sourceView;    
     IBOutlet SVEmptyInspectorView    *emptyInspectorView;
     IBOutlet SVEmptyInspectorView    *emptyBodyView;

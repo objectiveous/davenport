@@ -24,5 +24,6 @@
 @property (nonatomic, retain) SBCouchDesignDocument *designDocument;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node;
+
 - (IBAction)runFunction:(id)sender;
 @end

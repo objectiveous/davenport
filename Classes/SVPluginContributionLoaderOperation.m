@@ -8,6 +8,8 @@
 
 #import "SVPluginContributionLoaderOperation.h"
 #import "DPContributionPlugin.h"
+#import "DPResourceFactory.h"
+#import "SVAppDelegate.h"
 
 @implementation SVPluginContributionLoaderOperation
 
@@ -35,8 +37,8 @@
     
     //NSMutableArray *instances;
  
-    Class currPrincipalClass;
-    id currInstance;
+    Class currPrincipalClassForPlugin;
+    id currPluginInstance;
     
     NSMutableArray *bundlePaths = [NSMutableArray array];
             
@@ -45,15 +47,19 @@
 
     NSBundle *currBundle;
     NSString *currPath;
+    //XXX Seems like this could be done better. 
+    id <DPResourceFactory> factory = [(SVAppDelegate*) [NSApp delegate] mainWindowController];
+    
     while(currPath = [pathEnum nextObject]){        
         currBundle = [NSBundle bundleWithPath:currPath];
         
         if(currBundle){
-            currPrincipalClass = [currBundle principalClass];
-            if(currPrincipalClass && [self plugInClassIsValid:currPrincipalClass]){
-                currInstance = [[currPrincipalClass alloc] init];
-                if(currInstance){
-                    [self.instances addObject:[currInstance autorelease]];
+            currPrincipalClassForPlugin = [currBundle principalClass];
+            if(currPrincipalClassForPlugin && [self plugInClassIsValid:currPrincipalClassForPlugin]){
+
+                currPluginInstance = [[currPrincipalClassForPlugin alloc] initWithResourceFactory:factory];
+                if(currPluginInstance){
+                    [self.instances addObject:[currPluginInstance autorelease]];
                 }
             }
         }

@@ -12,6 +12,7 @@
 #import "TPLoadNavigationOperation.h"
 #import "NSTreeNode+TP.h"
 #import <CouchObjC/CouchObjC.h>
+#import "DPResourceFactory.h"
 
 static NSString *PLUGIN_NAME           = @"TPPlugin";
 static NSString *DATABASE_NAME         = @"cushion-tickets";
@@ -23,6 +24,7 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
 @implementation TPPlugin
 
 @synthesize currentItem;
+@synthesize resourceFactory;
 
 #pragma mark -
 #pragma mark CLass Methods
@@ -36,6 +38,15 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
 }
 
 #pragma mark -
+
+-(id)initWithResourceFactory:(id <DPResourceFactory>)factory{
+    self = [super init];
+    if(self){
+        self.resourceFactory = factory;
+    }
+    return self;
+}
+
 - (void)dealloc{
     [queue release];
     [super dealloc];
@@ -71,30 +82,29 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
     
 }
 
-
-
 -(NSTreeNode*)navigationContribution{
     return navContribution;
 }
 
 -(NSViewController*)mainSectionContribution{
+         
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSLog(@"Bundle info : %@", bundle);
     NSViewController *controller;
     TPBaseDescriptor *selectedDescriptor = (TPBaseDescriptor*) [currentItem representedObject];
-    TPNavigationDescriptorType descType = [selectedDescriptor descriptorType];
+    DPNavigationDescriptorTypes descType = [selectedDescriptor type];
     
 
-    if(descType == TPNavigationDescriptorMilestone){
+   if(descType == DPDescriptorCouchDesign){                
+        controller = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor withItem:self.currentItem];
+
+        // XXX This is magic. Users will have no idea that this is possible. This needs to be part of the contract. 
+        //[controller setTreeNode:self.currentItem];
+    }else{
         controller = [[[NSViewController alloc] initWithNibName:@"TPMilestone" bundle:bundle] autorelease];
         NSLog(@"Trying to load the nib thingy %@", controller);
         NSLog(@" ** view  %@", [controller view]);
-    }else{
-        controller = [[[NSViewController alloc] initWithNibName:@"TPTaskItem" bundle:bundle] autorelease];
-        NSLog(@"Trying to load the nib thingy %@", controller);
-        NSLog(@" ** view  %@", [controller view]);
     }
-    
     return controller;
 }
 

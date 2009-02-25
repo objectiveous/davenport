@@ -159,4 +159,10 @@ int LOCAL_PORT = 5984;
 - (id) lookupPlugin:(NSString*)pluginID{
     return [self.pluginRegistry objectForKey:pluginID];
 }
+
+-(NSViewController*)lookupShareableController:(DPSharedViewContollers)namedController{
+    NSLog(@"adsfadf");
+    return nil;
+}
+
 @end

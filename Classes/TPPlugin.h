@@ -9,7 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "DPContributionPlugin.h"
 #import "SVConstants.h"
+#import "DPResourceFactory.h"
 
+/*
 typedef enum descriptorType{
     TPNavigationDescriptorDesignDoc  = 1,
     TPNavigationDescriptorView       = 2,
@@ -19,17 +21,20 @@ typedef enum descriptorType{
     
 } TPNavigationDescriptorType;
 
+ */
 @interface TPPlugin : NSObject <DPContributionPlugin>{
     NSTreeNode *currentItem;
     NSTreeNode *navContribution;
     NSOperationQueue *queue;
+    id <DPResourceFactory> resourceFactory;
 }
 
 @property (retain) NSTreeNode *currentItem;
+@property (retain) <DPResourceFactory> resourceFactory;
 
-+(NSString*)databaseName;
-+(NSString*)pluginID;
--(NSString*)pluginID;
++ (NSString*)databaseName;
++ (NSString*)pluginID;
+- (NSString*)pluginID;
 
--(void)start;
+- (void)start;
 @end

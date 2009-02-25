@@ -15,7 +15,7 @@
     NSString *label;
     NSString *pluginID;
     NSString *identity; 
-    TPNavigationDescriptorType descriptorType;
+    DPNavigationDescriptorTypes type;
     BOOL      groupItem;
     
 }
@@ -23,12 +23,12 @@
 @property (retain) NSString *label;
 @property (retain) NSString *pluginID;
 @property (retain) NSString *identity;
-@property TPNavigationDescriptorType descriptorType;
+@property DPNavigationDescriptorTypes type;
 @property BOOL groupItem;
 
 
--(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType group:(BOOL)isGroup;
--(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType group:(BOOL)isGroup;
+-(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup;
+-(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup;
 -(BOOL)isGroupItem;
 
 @end

@@ -1,5 +1,4 @@
 #import "SVSourceListCell.h"
-#import "SVAbstractDescriptor.h"
 
 @implementation SVSourceListCell
 

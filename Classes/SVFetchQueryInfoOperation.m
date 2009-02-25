@@ -8,8 +8,10 @@
 
 #import "SVFetchQueryInfoOperation.h"
 #import <CouchObjC/CouchObjC.h>
-#import "SVViewDescriptor.h" 
 #import "NSTreeNode+SVDavenport.h"
+#import "DPContributionPlugin.h"
+#import "SVBaseNavigationDescriptor.h"
+
 
 @implementation SVFetchQueryInfoOperation;
 @synthesize couchDatabase;
@@ -31,7 +33,7 @@
 }
 
 - (void)main {
-    SVAbstractDescriptor *desc = [designDocTreeNode representedObject];
+    SVBaseNavigationDescriptor *desc = [designDocTreeNode representedObject];
     SBCouchDesignDocument *designDoc = [self.couchDatabase getDesignDocument:desc.identity];
   
     for(NSString *key in [[designDoc views] allKeys]){
@@ -39,7 +41,7 @@
         self.fetchReturnedData = YES;
 
         
-        SVViewDescriptor *desc = [[[SVViewDescriptor alloc] initWithLabel:key andIdentity:key] autorelease];    
+        SVBaseNavigationDescriptor *desc = [[[SVBaseNavigationDescriptor alloc] initWithLabel:key andIdentity:key type:DPDescriptorCouchView] autorelease];    
         NSTreeNode *viewNode = [NSTreeNode treeNodeWithRepresentedObject:desc];        
         [[self.designDocTreeNode mutableChildNodes] addObject:viewNode];        
     }

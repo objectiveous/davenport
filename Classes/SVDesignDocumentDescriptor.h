@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SVAbstractDescriptor.h"
+#import "SVBaseNavigationDescriptor.h"
 
-@interface SVDesignDocumentDescriptor : SVAbstractDescriptor {
+@interface SVDesignDocumentDescriptor : SVBaseNavigationDescriptor {
 
 }
 

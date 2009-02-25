@@ -14,7 +14,7 @@
 @synthesize identity;
 @synthesize groupItem;
 @synthesize pluginID;
-@synthesize descriptorType;
+@synthesize type;
 
 -(id)init{    
     self = [super init];
@@ -25,7 +25,7 @@
 }
 
 
--(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType group:(BOOL)isGroup{
+-(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup{
     self = [self initWithLabel:alabel identity:anIdentity descriptorType:aType group:isGroup];
     if(self){
         self.pluginID = pluginId;
@@ -33,13 +33,13 @@
     return self;
 }
 
--(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(TPNavigationDescriptorType)aType  group:(BOOL)isGroup{    
+-(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType  group:(BOOL)isGroup{    
     self = [super init];
     if(self){
         self.label = alabel;
         self.identity = anIdentity;
         self.groupItem = isGroup;
-        self.descriptorType = aType;
+        self.type = aType;
     }
     return self;
 }
@@ -48,18 +48,6 @@
 
 -(BOOL)isGroupItem{
     return self.groupItem;
-}
-
--(NSString*)getPluginID{
-    return pluginID;
-}
-
--(NSString*)getLabel{
-    return self.label;
-}
-
--(NSString*)getIdentity{
-    return self.identity;
 }
 
 @end

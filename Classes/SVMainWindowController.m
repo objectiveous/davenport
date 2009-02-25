@@ -7,7 +7,7 @@
 //
 
 #import "SVMainWindowController.h"
-#import "SVAbstractDescriptor.h"
+#import "SVBaseNavigationDescriptor.h"
 #import "SVSourceListCell.h"
 #import "NSTreeNode+SVDavenport.h"
 #import "SVBreadCrumbCell.h"
@@ -15,19 +15,16 @@
 #import "SVInspectorFunctionDocumentController.h"
 #import "SVInspectorDocumentController.h"
 #import <CouchObjC/CouchObjC.h>
-#import "SVDatabaseDescriptor.h"
 #import "SVAppDelegate.h"
 #import "SVDatabaseCreateSheetController.h"
-#import "SVSectionDescriptor.h"
-#import "SVDesignDocumentDescriptor.h"
+
 #import "SVFetchQueryInfoOperation.h"
-#import "SVViewDescriptor.h"
 #import "SVDavenport.h"
-#import "SVCouchServerDescriptor.h"
 #import "DPContributionNavigationDescriptor.h"
 #import "DPContributionPlugin.h"
 #import "SVFetchServerInfoOperation.h"
 #import "SVPluginContributionLoaderOperation.h"
+#import "DPContributionNavigationDescriptor.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -191,15 +188,19 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {    
+    
+    return YES;
+    
+    
     if (item == nil)
         return NO;
     
     id <DPContributionNavigationDescriptor, NSObject> desc = [item representedObject];
     
-    if([desc isKindOfClass:[SVSectionDescriptor class]])
+    if([desc type] == DPDescriptorSection)
         return NO;
 
-    if([desc isKindOfClass:[SVViewDescriptor class]])
+    if([desc type] == DPDescriptorCouchView)
         return NO;
 
     return YES;
@@ -214,7 +215,8 @@
     id <DPContributionNavigationDescriptor, NSObject> desc = [childNode representedObject];
 
     // XXX THIS IS A GROSS HACK. 
-    if([desc isKindOfClass:[SVDesignDocumentDescriptor class]]){
+ 
+    if([desc type] == DPDescriptorCouchDesign){
         // XXX This works but not for option + cliking on the root node to expand all items. 
         // might be better to load the views sooner. 
         
@@ -293,7 +295,7 @@
         operationQueue = [[NSOperationQueue alloc] init];
     }
     
-    SVAbstractDescriptor *parentDescriptor =  [[designNode parentNode] representedObject];
+    SVBaseNavigationDescriptor *parentDescriptor =  [[designNode parentNode] representedObject];
     
     // XXX If we had the actuall SBCouchDatabase, we could simplify this signature. 
     SBCouchServer *server = [[NSApp delegate] couchServer];
@@ -312,12 +314,15 @@
 }
 
 -(NSTreeNode*)locateCouchServerDescriptionWithinTree:(NSTreeNode*)aRootNode{
+    /*
     if([aRootNode isKindOfClass:[SVCouchServerDescriptor class]])
         return aRootNode;
+    */
     
     for(NSTreeNode *node in [aRootNode mutableChildNodes]){        
-        SVAbstractDescriptor *descriptor = (SVAbstractDescriptor*) [node representedObject];
-        if([descriptor isKindOfClass:[SVCouchServerDescriptor class]]){
+        id <DPContributionNavigationDescriptor> descriptor = [node representedObject];
+     
+        if([descriptor type] == DPDescriptorCouchServer){
             return node;
         }
     }    
@@ -339,8 +344,8 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item{
-    SVAbstractDescriptor *desc = [item representedObject];
-    if([desc isKindOfClass:[SVViewDescriptor class]]){
+    SVBaseNavigationDescriptor *desc = [item representedObject];
+    if([desc type] == DPDescriptorCouchView){
         return NO;
     }
     return YES;
@@ -362,7 +367,7 @@
 // -------------------------------------------------------------------------------
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item;{
 	// don't allow special group nodes (Devices and Places) to be selected
-    SVAbstractDescriptor *node = [item representedObject];
+    SVBaseNavigationDescriptor *node = [item representedObject];
 	return (![self isSpecialGroup:node]);
 }
 
@@ -391,10 +396,11 @@
 #pragma mark SourceView Selection Handlers and Supporting Methods
 
 - (void)showDesignView:(NSTreeNode*)item{
-    [self showEmptyInspectorView]; 
+    //[self showEmptyInspectorView]; 
+    [self showViewInMainView:item];
     [self showEmptyBodyView];     
 }
-
+/// XXX This is the worst method name ever. 
 -(void)showViewInMainView:(NSTreeNode*)item{
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
@@ -536,7 +542,7 @@
         return;
     
     NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
-    id descriptor = [item representedObject];
+    id <DPContributionNavigationDescriptor, NSObject> descriptor = [item representedObject];
     
     if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
         SVDebug(@"item does not conform to Contribution protocol");
@@ -546,12 +552,14 @@
     [self updateBreadCrumbs:item];
     // BUILT INS
     // Show database results (_all_docs) in the main window and design document views as well. 
-    if([descriptor isKindOfClass:[SVDatabaseDescriptor class]]){        
+    if([descriptor type] == DPDescriptorCouchDatabase){        
         [self showItemInMainView:item];
-    }else if([descriptor isKindOfClass:[SVDesignDocumentDescriptor class]]){
+    }else if([descriptor type] == DPDescriptorCouchDesign){
         [self showDesignView:item];
-    }else if([descriptor isKindOfClass:[SVViewDescriptor class]]){
+    }else if([descriptor type] == DPDescriptorCouchView){
         [self showViewInMainView:item];
+    }else if([descriptor type] == DPDescriptorPluginProvided){
+        [self delagateSelectionDidChange:item];
     }else{
         [self delagateSelectionDidChange:item];
     }    
@@ -570,9 +578,10 @@
         SVDebug(@"item does not conform to Contribution protocol");
         return;
     }
-    NSString *pluginID = [descriptor getPluginID];
+    NSString *pluginID = [descriptor pluginID];
     id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:pluginID];
     [plugin selectionDidChange:item];
+
     NSViewController *mainViewController = [plugin mainSectionContribution];
     NSLog(@" Not sure what I'm seeing %@", mainViewController);
     if(mainViewController == Nil){
@@ -591,12 +600,9 @@
         NSRect superFrame = [bodyView frame];
         frame.size.width = superFrame.size.width;
         frame.size.height = superFrame.size.height;
-        [[mainViewController  view] setFrame:frame];                
-        
-    }
-        
-    
-    SVDebug(@"TODO - lookup the plugin that supplied the selected navigation item %@", [descriptor getPluginID]);
+        [[mainViewController  view] setFrame:frame];                    
+    }            
+    SVDebug(@"TODO - lookup the plugin that supplied the selected navigation item %@", [descriptor pluginID]);
 }
 
 
@@ -739,9 +745,9 @@
         return;
         
     NSTreeNode *item = [sourceView itemAtRow:clickedRow];
-    SVAbstractDescriptor *descriptor = [item representedObject];
-            
-    if(! [descriptor isKindOfClass:[SVDatabaseDescriptor class]]){
+    SVBaseNavigationDescriptor *descriptor = [item representedObject];
+
+    if(descriptor.type != DPDescriptorCouchDatabase){
         // hide all the menu items. This will prevent any context menu from appearing. 
         for(NSMenuItem *i in [menu itemArray]){
             [i setHidden:TRUE];
@@ -766,7 +772,7 @@
         return;
 
     NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];        
-    SVDatabaseDescriptor *descriptor = [item representedObject];
+    SVBaseNavigationDescriptor *descriptor = [item representedObject];
     
     SVDebug(@"Going to delete database [%@]", [descriptor label]);
 
@@ -849,6 +855,16 @@
     }
 }
 
+-(id)namedResource:(DPSharedResources)resourceName withItem:(id)itemOrNil{
+    if(resourceName == DPSharedViewContollerNamedFunctionEditor){
+        return [[SVInspectorFunctionDocumentController alloc] initWithNibName:@"FunctionEditor" 
+                                                                       bundle:[NSBundle 
+                                                                bundleForClass:[self class]]
+                                                                     treeNode:itemOrNil];
+        
+    }
+    return nil;
+}
 @end
 
 #pragma mark -

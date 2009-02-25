@@ -10,7 +10,8 @@
 #import "SVAppDelegate.h"
 #import "NSTreeNode+SVDavenport.h"
 #import <CouchObjC/CouchObjC.h>
-#import "SVDesignDocumentDescriptor.h"
+#import "SVBaseNavigationDescriptor.h"
+#import "DPContributionNavigationDescriptor.h"
 
 #define QUERIES                 @"QUERIES"
 #define DATABASES               @"DATABASES"
@@ -44,20 +45,7 @@
     }
     fetchReturnedData = YES;
 
-    NSTreeNode *root = [[[NSTreeNode alloc] init] autorelease];
-    // EXPERIMENT
-    /*
-
-    [root addSection:@"section one"];
-    [root addDatabase:@"fake"];
-    
-    NSTreeNode *hostSection = [root addCouchServerSection:@"hostsection"];
-    [hostSection addDatabase:@"fakeDB 1"];
-    [hostSection addDatabase:@"fakeDB 2"];
-    [hostSection addDatabase:@"fakeDB 3"];
-    */
-    
-    
+    NSTreeNode *root = [[[NSTreeNode alloc] init] autorelease];        
     NSString *hostAndPort = [NSString stringWithFormat:@"%@:%i",self.couchServer.host, self.couchServer.port];
     NSTreeNode *couchServerNode = [root addCouchServerSection:hostAndPort];
 
@@ -70,23 +58,15 @@
         // TODO Maybe this ought to return actual design documents. 
         SBCouchDocument *designDoc;
         while((designDoc = [designDocs nextObject])){
-            
-            
-           SVDesignDocumentDescriptor *designDesc = [[[SVDesignDocumentDescriptor alloc] 
-                                                      initWithLabel:[designDoc.identity lastPathComponent]
-                                                        andIdentity:designDoc.identity] autorelease];
-
-           //designDesc.label = @"asdf";
+                        
+           SVBaseNavigationDescriptor *designDesc = [[[SVBaseNavigationDescriptor alloc] initWithLabel:[designDoc.identity lastPathComponent]
+                                                                                           andIdentity:designDoc.identity
+                                                                                                  type:DPDescriptorCouchDesign] autorelease];
             
            [databaseInstance addChildNodeWithObject:designDesc];
         }
-    }
-        
-    //[root addSection:QUERIES];
-    //[root addSection:TOOLS];
-    
-     [self setRootNode:root];
-
+    }        
+    [self setRootNode:root];
 }
 
 -(BOOL)fetchReturnedData{

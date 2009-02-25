@@ -31,17 +31,19 @@
     SBCouchServer *server = [SBCouchServer new];
     SBCouchDatabase *database = [server database:[TPPlugin databaseName]];
     NSEnumerator *designDocs = [database getDesignDocuments];
-    SBCouchDesignDocument *designDoc;
+ 
 
     // XXX The child node label should be discovered, not hardcoded. 
     NSTreeNode *pluginSectionNode = [rootContributionNode addChildWithLabel:@"Cushion Tickets" identity:@"cushion-tickets"
-                             descriptorType:TPNavigationDescriptorAppName  group:YES];
+                             descriptorType:DPDescriptorSection group:YES];
     
-    
+    SBCouchDesignDocument *designDoc;
     while(designDoc = [designDocs nextObject]){        
         //XXX descriptor type needs to come from an enum
-        [pluginSectionNode addChildWithLabel:[designDoc.identity lastPathComponent] identity:designDoc.identity 
-                                 descriptorType:TPNavigationDescriptorMilestone group:NO];
+        [pluginSectionNode addChildWithLabel:[designDoc.identity lastPathComponent] 
+                                    identity:designDoc.identity 
+                              descriptorType:DPDescriptorPluginProvided
+                                       group:NO];
         }    
 }
 

@@ -16,3 +16,8 @@
 NSString * const DPContributionPluginDidLoadNavigationItemsNotification = @"DPContributionPluginDidLoadNavigationItemsNotification";
 NSString * const SV_NOTIFICATION_RUN_SLOW_VIEW = @"SV_NOTIFICATION_RUN_SLOW_VIEW";
 NSString * const DPLocalDatabaseNeedsRefreshNotification = @"DPLocalDatabaseNeedsRefreshNotification";
+
+
+#pragma mark - 
+
+NSString * const DPNamedControllerFunctionEditor = @"DPNamedControllerFunctionEditor";

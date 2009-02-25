@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SVAbstractDescriptor.h"
+#import "SVBaseNavigationDescriptor.h"
 
 #define JSON_TYPE_OBJECT 1
 #define JSON_TYPE_SCALAR 2
 #define JSON_TYPE_ARRAY  3
 
-@interface SVJSONDescriptor : SVAbstractDescriptor {
-    NSString *value;
-    NSInteger     jsonType;
+@interface SVJSONDescriptor : SVBaseNavigationDescriptor {
+    NSString  *value;
+    NSInteger jsonType;
 }
 
 @property (retain) NSString *value;

@@ -2,7 +2,7 @@
 #import "SVFetchQueryInfoOperation.h"
 #import "SVAbstractIntegrationTest.h"
 #import "SVDavenport.h"
-#import "SVViewDescriptor.h"
+
 
 @interface SVFetchQueryInfoOperationTest : SVAbstractIntegrationTest{
     BOOL itWorked;
@@ -28,7 +28,7 @@
 
                                                                                                     
     NSString *designDocId = [NSString stringWithFormat:@"_design/%@",[self designDocName]];
-    SVViewDescriptor *desc = [[SVViewDescriptor alloc] initWithLabel:[self designDocName] andIdentity:designDocId];
+    SVBaseNavigationDescriptor *desc = [[SVBaseNavigationDescriptor alloc] initWithLabel:[self designDocName] andIdentity:designDocId type:DPCouchTypeDesignDoc];
     NSTreeNode *nodeWithViewDescriptor = [NSTreeNode treeNodeWithRepresentedObject:desc];
     
  

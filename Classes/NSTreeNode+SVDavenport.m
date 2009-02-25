@@ -7,13 +7,10 @@
 //
 
 #import "NSTreeNode+SVDavenport.h"
-#import "SVSectionDescriptor.h"
-#import "SVDatabaseDescriptor.h"
 #import "SVJSONDescriptor.h"
-#import "SVAbstractDescriptor.h"
-#import "SVViewDescriptor.h"
-#import "SVDesignDocumentDescriptor.h"
-#import "SVCouchServerDescriptor.h"
+#import "SVBaseNavigationDescriptor.h"
+#import "DPContributionNavigationDescriptor.h"
+
 @interface  NSTreeNode (Private)
 
 -(NSDictionary*)convertJSONObjectToDictionary:(NSTreeNode*)treeNode;
@@ -25,19 +22,19 @@
 @implementation NSTreeNode (SVDavenport)
 
 -(NSTreeNode *) addCouchServerSection:(NSString *)sectionName{
-    SVCouchServerDescriptor *section = [[[SVCouchServerDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
+    SVBaseNavigationDescriptor *section = [[[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName type:DPDescriptorCouchServer] autorelease];
     [section setGroupItem:YES];
     return [self addChildNodeWithObject:section]; 
 }
 
 -(NSTreeNode *) addSection:(NSString *)sectionName{
-    SVSectionDescriptor *section = [[[SVSectionDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName] autorelease];
+    SVBaseNavigationDescriptor *section = [[[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName type:DPDescriptorSection] autorelease];
     [section setGroupItem:YES];
     return [self addChildNodeWithObject:section];    
 }
 
 -(NSTreeNode *) addDatabase:(NSString *)databaseName{
-    SVDatabaseDescriptor *database = [[[SVDatabaseDescriptor alloc] initWithLabel:databaseName andIdentity:databaseName] autorelease];
+    SVBaseNavigationDescriptor *database = [[[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName andIdentity:databaseName type:DPDescriptorCouchDatabase] autorelease];
     return [self addChildNodeWithObject:database];
 }
 
@@ -108,24 +105,21 @@
 #pragma mark - 
 #pragma mark Descriptor Magic
 
--(NSString*) deriveDatabaseName{
-    
-    SVAbstractDescriptor *desc = [self representedObject];
-    if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
-        return desc.identity;
+-(NSString*) deriveDatabaseName{    
+    id <DPContributionNavigationDescriptor> desc = [self representedObject];
+    if([desc type] == DPDescriptorCouchDatabase){
+        return [desc identity];    
     }else{
         return [[self parentNode] deriveDatabaseName];
     }
 }
 
-// Will derive a path structure like the following _design/docId if given an instance 
-// of SVViewDescriptor. 
-
+ 
 -(NSString*) deriveDesignDocumentPath{
-    SVAbstractDescriptor *desc = [self representedObject];
-    if([desc isKindOfClass:[SVViewDescriptor class]]){
+    SVBaseNavigationDescriptor *desc = [self representedObject];
+    if(desc.type == DPDescriptorCouchView){
         //NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
-        SVDesignDocumentDescriptor *designDesc = [[self parentNode] representedObject];
+        SVBaseNavigationDescriptor *designDesc = [[self parentNode] representedObject];
         NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_design/%@",designDesc.label];
         return urlPath;
     }    
@@ -134,23 +128,20 @@
 }
 
 -(NSString*) deriveDocumentIdentity{
-    SVAbstractDescriptor *desc = [self representedObject];
-    if([desc isKindOfClass:[SVViewDescriptor class]]){ 
-        NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
-        // The parent of a view is a esign doc. 
-        SVDesignDocumentDescriptor *designDesc = [[self parentNode] representedObject];
+    id <DPContributionNavigationDescriptor> desc = [self representedObject];
+    if([desc type] == DPDescriptorCouchView){ 
+        NSMutableString *viewPathPart = [NSMutableString stringWithString:[desc identity]];
+        // The parent of a view is a design doc. 
+        id <DPContributionNavigationDescriptor> designDesc = [[self parentNode] representedObject];
         
         // sofa-blog/_view/datacenter/hardware
         // database/_view/domain/view
-        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_view/%@/%@",designDesc.label,viewPathPart];
-        
-        return urlPath;
-    }else if([desc isKindOfClass:[SVDatabaseDescriptor class]]){
-        //NSMutableString *viewPathPart = [NSMutableString stringWithFormat:@"/%@/_all_docs",desc.identity];
+        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_view/%@/%@",[designDesc label],viewPathPart];        
+        return urlPath;       
+    }else if([desc type] == DPDescriptorCouchDatabase){
         return @"_all_docs";
     }else{        
-        return desc.identity;
-        //[self theNodesDatabase:[node parentNode]];
+        return [desc identity];
     }
     
 }
@@ -177,7 +168,7 @@
     if([object conformsToProtocol:@protocol(DPContributionNavigationDescriptor)])
         return [object label];
     
-    if([object isKindOfClass:[SVAbstractDescriptor class]])
+    if([object isKindOfClass:[SVBaseNavigationDescriptor class]])
         return [object label];
     
     return @"No idea what this tree node is";

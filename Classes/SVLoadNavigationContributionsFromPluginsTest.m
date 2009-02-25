@@ -1,7 +1,6 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SVAbstractIntegrationTest.h"
 #import "SVDavenport.h"
-#import "SVViewDescriptor.h"
 #import "SVPluginContributionLoader.h"
 #import "DPContributionPlugin.h"
 

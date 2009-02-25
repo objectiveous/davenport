@@ -12,10 +12,6 @@
 #import <JSON/JSON.h>
 #import "SVInspectorFunctionDocumentController.h"
 #import "SVInspectorDocumentController.h"
-#import "SVAbstractDescriptor.h"
-#import "SVDatabaseDescriptor.h"
-#import "SVViewDescriptor.h"
-#import "SVDesignDocumentDescriptor.h"
 #import "NSTreeNode+SVDavenport.h"
 
 @interface  SVQueryResultController (Private)
@@ -228,10 +224,6 @@
         frame.size.width = superFrame.size.width;
         frame.size.height = superFrame.size.height;
         [documentView setFrame:frame];
-    
- 
-    
-        
 }
 
 

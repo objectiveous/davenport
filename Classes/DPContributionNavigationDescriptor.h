@@ -7,6 +7,9 @@
 //
 
 /// XXX Normalize these names. 
+
+#import <CouchObjC/CouchObjC.h>
+
 typedef enum documentTypes{
     DPDescriptorCouchDesign    = 1,
     DPDescriptorCouchView      = 2,
@@ -22,7 +25,10 @@ typedef enum documentTypes{
 - (NSString*)label;
 - (NSString*)identity;
 - (NSString*)pluginID;
-- (DPNavigationDescriptorTypes)type;            
+- (SBCouchDatabase*)couchDatabase;
+- (DPNavigationDescriptorTypes)type;           
+- (NSViewController*) contributionInspectorViewController;
+- (NSViewController*) contributionMainViewController;
 
 // If set to true, the NSOutlineView row will be drawn in the “group row” style
 // See NSOutlineView outlineView:isGroupItem: for more information

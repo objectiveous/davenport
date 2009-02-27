@@ -15,6 +15,7 @@
 @synthesize identity;
 @synthesize groupItem;
 @synthesize type;
+@synthesize couchDatabase;
 
 -(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType{
     self = [super init];
@@ -29,4 +30,15 @@
 -(BOOL)isGroupItem{
     return self.groupItem;
 }
+- (NSViewController*) contributionInspectorViewController{
+    return nil;
+}
+- (NSViewController*) contributionMainViewController{
+    return nil;
+}
+
+- (NSString*)pluginID{
+    return nil;
+}
+
 @end

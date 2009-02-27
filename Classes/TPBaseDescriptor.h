@@ -9,26 +9,44 @@
 #import <Cocoa/Cocoa.h>
 #import "TPBaseDescriptor.h"
 #import "DPContributionNavigationDescriptor.h"
+#import "DPResourceFactory.h"
 #import "TPPlugin.h"
+#import <CouchObjC/CouchObjC.h>
 
 @interface TPBaseDescriptor : NSObject <DPContributionNavigationDescriptor>{
-    NSString *label;
-    NSString *pluginID;
-    NSString *identity; 
+    SBCouchDatabase            *couchDatabase;
+    SBCouchDocument            *couchDocument;
+    NSString                   *label;
+    NSString                   *pluginID;
+    NSString                   *identity; 
+
+    // XXX All this type crap needs to go away. 
     DPNavigationDescriptorTypes type;
-    BOOL      groupItem;
-    
+    DPNavigationDescriptorTypes privateType;    
+    id <DPResourceFactory>      resourceFactory;
+    BOOL                        groupItem;    
 }
 
-@property (retain) NSString *label;
-@property (retain) NSString *pluginID;
-@property (retain) NSString *identity;
-@property DPNavigationDescriptorTypes type;
+@property (retain) SBCouchDatabase     *couchDatabase;
+@property (retain) SBCouchDocument     *couchDocument;
+@property (retain) NSString            *label;
+@property (retain) NSString            *identity;
+@property (retain) NSString            *pluginID;
+@property DPNavigationDescriptorTypes  type;
+@property DPNavigationDescriptorTypes  privateType;
+@property (retain) <DPResourceFactory> resourceFactory;
+
 @property BOOL groupItem;
 
 
--(id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup;
--(id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup;
--(BOOL)isGroupItem;
+- (id)initWithPluginID:(NSString*)pluginId label:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory group:(BOOL)isGroup;
+
+- (id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory group:(BOOL)isGroup;
+- (BOOL)isGroupItem;
+//- (NSViewController*)mainController:(NSTreeNode*)item;
+//- (NSViewController*)inspectorController:(NSTreeNode*)item;
+
+- (NSViewController*) contributionInspectorViewController;
+- (NSViewController*) contributionMainViewController;
 
 @end

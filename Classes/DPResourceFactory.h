@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DPContributionNavigationDescriptor.h"
 
 typedef enum sharedResources{
     DPSharedViewContollerNamedFunctionEditor  = 1,
+    DPSharedViewContollerNamedViewResults     = 2,
     
 } DPSharedResources;
 
@@ -19,7 +21,6 @@ typedef enum sharedResources{
 // standard FuntionEditor during a call to [plugin mainSectionContribution]
 //
 @protocol DPResourceFactory 
-
--(id)namedResource:(DPSharedResources)resourceName withItem:(id)itemOrNil;
+-(id)namedResource:(DPSharedResources)resourceName navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
 
 @end

@@ -7,13 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "DPResourceFactory.h"
 
 @interface TPLoadNavigationOperation : NSOperation{
     NSTreeNode *rootContributionNode;
+    id <DPResourceFactory> resourceFactory;
 }
 
 @property (retain) NSTreeNode* rootContributionNode;
+@property (retain) <DPResourceFactory> resourceFactory;
 
--(NSString*)what;
+-(id)initWithResourceFactory:(id <DPResourceFactory>)resourceFactory;
 @end

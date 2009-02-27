@@ -12,22 +12,24 @@
 
 @implementation NSTreeNode(TP)
 
-+(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup{
++(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory group:(BOOL)isGroup{
     TPBaseDescriptor *descriptor = [[[TPBaseDescriptor alloc] initWithPluginID:[TPPlugin pluginID]
                                                                          label:alabel 
                                                                       identity:anIdentity
                                                                 descriptorType:aType
+                                                               resourceFactory:rezFactory
                                                                          group:isGroup] autorelease];
     
      return [NSTreeNode treeNodeWithRepresentedObject:descriptor];
 }
 
 
--(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType group:(BOOL)isGroup{
+-(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory group:(BOOL)isGroup{
     TPBaseDescriptor *descriptor = [[[TPBaseDescriptor alloc] initWithPluginID:[TPPlugin pluginID]
                                                                          label:alabel 
                                                                       identity:anIdentity
-                                                                descriptorType:aType                                    
+                                                                descriptorType:aType
+                                                               resourceFactory:rezFactory
                                                                          group:isGroup] autorelease];
         
     
@@ -37,8 +39,8 @@
     return node;
 }
 
--(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType{
-    return [self addChildWithLabel:alabel identity:anIdentity descriptorType:aType group:NO];
+-(NSTreeNode*)addChildWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory{
+    return [self addChildWithLabel:alabel identity:anIdentity descriptorType:aType resourceFactory:rezFactory group:NO];
 }
 
 

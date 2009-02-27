@@ -58,7 +58,7 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
     
     queue = [[NSOperationQueue alloc] init];
     TPDatabaseInstallerOperation *installOperation = [[TPDatabaseInstallerOperation alloc] init];
-    TPLoadNavigationOperation *loadNavOperation = [[TPLoadNavigationOperation alloc] init];
+    TPLoadNavigationOperation *loadNavOperation = [[TPLoadNavigationOperation alloc] initWithResourceFactory:self.resourceFactory];
     [loadNavOperation addDependency:installOperation];
     
     // Would it make sense to use a queue held by the app delegate. Something like this: 
@@ -95,9 +95,15 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
     DPNavigationDescriptorTypes descType = [selectedDescriptor type];
     
 
-   if(descType == DPDescriptorCouchDesign){                
-        controller = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor withItem:self.currentItem];
+   if(descType == DPDescriptorPluginProvided){                
+        // controller = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor withItem:self.currentItem];
 
+       // XX Way convoluted but we'll get this fixed. 
+       id <DPContributionNavigationDescriptor> navDescriptor = [self.currentItem representedObject];
+       NSViewController *theMagicController = [ navDescriptor contributionMainViewController];
+
+       return theMagicController;
+       
         // XXX This is magic. Users will have no idea that this is possible. This needs to be part of the contract. 
         //[controller setTreeNode:self.currentItem];
     }else{

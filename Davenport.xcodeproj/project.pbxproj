@@ -15,7 +15,7 @@
 		540089D20F30C040002D56A4 /* SVControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AE0F30C040002D56A4 /* SVControlBarView.m */; };
 		540089D70F30C040002D56A4 /* SVDocumentKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */; };
 		540089D80F30C040002D56A4 /* SVFetchServerInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */; };
-		540089D90F30C040002D56A4 /* SVInspectorFunctionDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */; };
+		540089D90F30C040002D56A4 /* SVDesignDocumentEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */; };
 		540089DC0F30C040002D56A4 /* SVMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BF0F30C040002D56A4 /* SVMainWindowController.m */; };
 		540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
@@ -36,7 +36,7 @@
 		540C88CD0F31D51700E02727 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		540C88CE0F31D51700E02727 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
 		540C88CF0F31D51700E02727 /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
-		540C88D00F31D51700E02727 /* FunctionEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* FunctionEditor.xib */; };
+		540C88D00F31D51700E02727 /* DesignDocumentEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* DesignDocumentEditor.xib */; };
 		540C88D10F31D51700E02727 /* CouchDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546769BB0F2538A9006F6114 /* CouchDocument.xib */; };
 		540C88D20F31D51700E02727 /* arrow-25.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B546090F31D006004E675B /* arrow-25.jpg */; };
 		540C88D30F31D51700E02727 /* arrow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 54B5460A0F31D006004E675B /* arrow.jpg */; };
@@ -59,7 +59,7 @@
 		540C88E60F31D51700E02727 /* SVControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089AE0F30C040002D56A4 /* SVControlBarView.m */; };
 		540C88E90F31D51700E02727 /* SVDocumentKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */; };
 		540C88EA0F31D51700E02727 /* SVFetchServerInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */; };
-		540C88EB0F31D51700E02727 /* SVInspectorFunctionDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */; };
+		540C88EB0F31D51700E02727 /* SVDesignDocumentEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */; };
 		540C88EC0F31D51700E02727 /* SVMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089BF0F30C040002D56A4 /* SVMainWindowController.m */; };
 		540C88ED0F31D51700E02727 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540C88EE0F31D51700E02727 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
@@ -142,7 +142,7 @@
 		54790B3C0F3A234900461FEB /* button-forward-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B380F3A234900461FEB /* button-forward-on.pdf */; };
 		54790B570F3A2F2700461FEB /* run.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B560F3A2F2700461FEB /* run.pdf */; };
 		54790B580F3A2F2700461FEB /* run.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B560F3A2F2700461FEB /* run.pdf */; };
-		547B283F0F23821200580370 /* FunctionEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* FunctionEditor.xib */; };
+		547B283F0F23821200580370 /* DesignDocumentEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* DesignDocumentEditor.xib */; };
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
 		548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
 		548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
@@ -312,8 +312,8 @@
 		540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentKeyCell.m; sourceTree = "<group>"; };
 		540089B80F30C040002D56A4 /* SVFetchServerInfoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVFetchServerInfoOperation.h; sourceTree = "<group>"; };
 		540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchServerInfoOperation.m; sourceTree = "<group>"; };
-		540089BA0F30C040002D56A4 /* SVInspectorFunctionDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVInspectorFunctionDocumentController.h; sourceTree = "<group>"; };
-		540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVInspectorFunctionDocumentController.m; sourceTree = "<group>"; };
+		540089BA0F30C040002D56A4 /* SVDesignDocumentEditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDesignDocumentEditorController.h; sourceTree = "<group>"; };
+		540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDesignDocumentEditorController.m; sourceTree = "<group>"; };
 		540089BC0F30C040002D56A4 /* SVJsonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJsonTest.m; sourceTree = "<group>"; };
 		540089BD0F30C040002D56A4 /* SVLoadDataAtStartupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLoadDataAtStartupTest.m; sourceTree = "<group>"; };
 		540089BE0F30C040002D56A4 /* SVMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMainWindowController.h; sourceTree = "<group>"; };
@@ -389,7 +389,7 @@
 		54790B370F3A234900461FEB /* button-back-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-back-on.pdf"; path = "Images/button-back-on.pdf"; sourceTree = "<group>"; };
 		54790B380F3A234900461FEB /* button-forward-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-forward-on.pdf"; path = "Images/button-forward-on.pdf"; sourceTree = "<group>"; };
 		54790B560F3A2F2700461FEB /* run.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = run.pdf; path = Images/run.pdf; sourceTree = "<group>"; };
-		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FunctionEditor.xib; sourceTree = "<group>"; };
+		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DesignDocumentEditor.xib; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		548BB1840F3654AC00DB4DCB /* NSDictionary+SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SVDavenport.h"; sourceTree = "<group>"; };
 		548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SVDavenport.m"; sourceTree = "<group>"; };
@@ -568,7 +568,7 @@
 				54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */,
 				5405B42F0F1450B2000EF28E /* images */,
 				546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */,
-				547B283B0F23821200580370 /* FunctionEditor.xib */,
+				547B283B0F23821200580370 /* DesignDocumentEditor.xib */,
 				546769BB0F2538A9006F6114 /* CouchDocument.xib */,
 				548AACAA0F0AD50C009A49AD /* QueryResultView.xib */,
 				543D2A860F09650D00AAA9A5 /* MainWindow.xib */,
@@ -636,7 +636,7 @@
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
 				546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */,
 				54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */,
-				540089BB0F30C040002D56A4 /* SVInspectorFunctionDocumentController.m */,
+				540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */,
 				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
 			);
 			name = "Controllers and Delegates";
@@ -833,7 +833,7 @@
 				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
 				540089A90F30C040002D56A4 /* SVAppDelegate.h */,
 				540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */,
-				540089BA0F30C040002D56A4 /* SVInspectorFunctionDocumentController.h */,
+				540089BA0F30C040002D56A4 /* SVDesignDocumentEditorController.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -1058,7 +1058,7 @@
 				540C88CD0F31D51700E02727 /* MainMenu.xib in Resources */,
 				540C88CE0F31D51700E02727 /* MainWindow.xib in Resources */,
 				540C88CF0F31D51700E02727 /* QueryResultView.xib in Resources */,
-				540C88D00F31D51700E02727 /* FunctionEditor.xib in Resources */,
+				540C88D00F31D51700E02727 /* DesignDocumentEditor.xib in Resources */,
 				540C88D10F31D51700E02727 /* CouchDocument.xib in Resources */,
 				540C88D20F31D51700E02727 /* arrow-25.jpg in Resources */,
 				540C88D30F31D51700E02727 /* arrow.jpg in Resources */,
@@ -1129,7 +1129,7 @@
 				54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */,
 				543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */,
 				548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */,
-				547B283F0F23821200580370 /* FunctionEditor.xib in Resources */,
+				547B283F0F23821200580370 /* DesignDocumentEditor.xib in Resources */,
 				546769BD0F2538A9006F6114 /* CouchDocument.xib in Resources */,
 				54B546120F31D006004E675B /* arrow-25.jpg in Resources */,
 				54B546130F31D006004E675B /* arrow.jpg in Resources */,
@@ -1257,7 +1257,7 @@
 				540C88E60F31D51700E02727 /* SVControlBarView.m in Sources */,
 				540C88E90F31D51700E02727 /* SVDocumentKeyCell.m in Sources */,
 				540C88EA0F31D51700E02727 /* SVFetchServerInfoOperation.m in Sources */,
-				540C88EB0F31D51700E02727 /* SVInspectorFunctionDocumentController.m in Sources */,
+				540C88EB0F31D51700E02727 /* SVDesignDocumentEditorController.m in Sources */,
 				540C88EC0F31D51700E02727 /* SVMainWindowController.m in Sources */,
 				540C88ED0F31D51700E02727 /* SVPathControl.m in Sources */,
 				540C88EE0F31D51700E02727 /* SVQueryResultController.m in Sources */,
@@ -1327,7 +1327,7 @@
 				540089D20F30C040002D56A4 /* SVControlBarView.m in Sources */,
 				540089D70F30C040002D56A4 /* SVDocumentKeyCell.m in Sources */,
 				540089D80F30C040002D56A4 /* SVFetchServerInfoOperation.m in Sources */,
-				540089D90F30C040002D56A4 /* SVInspectorFunctionDocumentController.m in Sources */,
+				540089D90F30C040002D56A4 /* SVDesignDocumentEditorController.m in Sources */,
 				540089DC0F30C040002D56A4 /* SVMainWindowController.m in Sources */,
 				540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */,
 				540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */,
@@ -1412,12 +1412,12 @@
 			name = CouchDocument.xib;
 			sourceTree = "<group>";
 		};
-		547B283B0F23821200580370 /* FunctionEditor.xib */ = {
+		547B283B0F23821200580370 /* DesignDocumentEditor.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				547B283C0F23821200580370 /* English */,
 			);
-			name = FunctionEditor.xib;
+			name = DesignDocumentEditor.xib;
 			sourceTree = "<group>";
 		};
 		548AACAA0F0AD50C009A49AD /* QueryResultView.xib */ = {

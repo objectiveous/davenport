@@ -12,7 +12,7 @@
 #import "NSTreeNode+SVDavenport.h"
 #import "SVBreadCrumbCell.h"
 #import "SVQueryResultController.h"
-#import "SVInspectorFunctionDocumentController.h"
+#import "SVDesignDocumentEditorController.h"
 #import "SVInspectorDocumentController.h"
 #import <CouchObjC/CouchObjC.h>
 #import "SVAppDelegate.h"
@@ -35,22 +35,27 @@
 // Source List column names used in IB. 
 #define COLUMNID_LABEL			@"LabelColumn"	
 #define COLUMNID_INFO			@"InfoColumn"
+// XXX Where do people typically put the names of their nibs? 
+static NSString *NIB_DesignDocumentEditor = @"DesignDocumentEditor";
+static NSString *NIB_QueryResultView = @"QueryResultView";
 
 // PRIVATE INTERFACE
 @interface SVMainWindowController (Private)
 
 - (void)updateBreadCrumbs:(NSTreeNode*)descriptor;
-- (void)showEmptyInspectorView;
-- (void)showEmptyBodyView;
+
 - (void)fetchViews:(NSTreeNode*)designNode;
-- (void)showItemInMainView:(NSTreeNode*)item;
-- (void)showViewInMainView:(NSTreeNode*)item;
-- (void)showDesignView:(NSTreeNode*)item;
 - (void)refreshLocalDatabaseList:(NSNotification*)notification;
 - (NSTreeNode*)locateCouchServerDescriptionWithinTree:(NSTreeNode*)aRootNode;
 - (void)registerNotificationListeners;
 - (void)loadPlugins;
 - (void)autoExpandGroupItems;
+// Methods used for adding Views into the Body or Inspector areas of the Davenport host. 
+- (void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor;
+- (void)showDesignEditorInMainView:(id<DPContributionNavigationDescriptor>)navDescriptor;
+- (void)showDesignView:(id<DPContributionNavigationDescriptor>)navDescriptor;
+- (void)showEmptyInspectorView;
+- (void)showEmptyBodyView;
 @end 
 
 @implementation SVMainWindowController
@@ -395,40 +400,40 @@
 #pragma mark -
 #pragma mark SourceView Selection Handlers and Supporting Methods
 
-- (void)showDesignView:(NSTreeNode*)item{
+- (void)showDesignView:(id<DPContributionNavigationDescriptor>)navDescriptor{
     //[self showEmptyInspectorView]; 
-    [self showViewInMainView:item];
-    [self showEmptyBodyView];     
+    [self showDesignEditorInMainView:navDescriptor];
+    //[self showEmptyBodyView];     
 }
-/// XXX This is the worst method name ever. 
--(void)showViewInMainView:(NSTreeNode*)item{
+
+-(void)showDesignEditorInMainView:(id<DPContributionNavigationDescriptor>)navDescriptor{
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
     }
     
     // SHOW FUNTION EDITOR IN THE MAIN VIEW
-    SVInspectorFunctionDocumentController *functionController = [[SVInspectorFunctionDocumentController alloc]                                                                 
-                                                                    initWithNibName:@"FunctionEditor" 
+    SVDesignDocumentEditorController *functionController = [[SVDesignDocumentEditorController alloc]                                                                 
+                                                                    initWithNibName:NIB_DesignDocumentEditor 
                                                                              bundle:nil
-                                                                           treeNode:item];
+                                                                    navContribution:navDescriptor];
     
-    [bodyView addSubview:[functionController view]];    
-    NSRect frame = [[functionController  view] frame];
+    NSView *designEditorView = [functionController view];
+    [bodyView addSubview:designEditorView];    
+    NSRect frame = [designEditorView frame];
     NSRect superFrame = [bodyView frame];
     frame.size.width = superFrame.size.width;
     frame.size.height = superFrame.size.height;
-    [[functionController  view] setFrame:frame];
+    [designEditorView setFrame:frame];
     
-    //[self showEmptyInspectorView];
-    
+
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];
     }
     
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                                                                bundle:nil 
-                                                                                             treeNode:item];
+                                                                                      navContribution:navDescriptor];
 
     [inspectorView addSubview:[queryResultController view]];
     
@@ -439,14 +444,13 @@
     [[queryResultController view] setFrame:frame];
 }
 
--(void)showSlowViewInMainView:(SBCouchView*)couchView{
+-(void)showSlowViewInMainView:(id<DPContributionNavigationDescriptor>)navContribution{
 
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                                                                bundle:nil 
-                                                                                            couchView:couchView];
+                                                                                              navContribution:navContribution];
     
-
     
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];
@@ -462,10 +466,10 @@
 }
 
 
--(void)showItemInMainView:(NSTreeNode*)item{
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:@"QueryResultView" 
+-(void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor{
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                                                                bundle:nil 
-                                                                                             treeNode:item];
+                                                                                      navContribution:navDescriptor];
     
     // brutal
     for (NSView *view in [bodyView subviews]) {
@@ -552,12 +556,21 @@
     [self updateBreadCrumbs:item];
     // BUILT INS
     // Show database results (_all_docs) in the main window and design document views as well. 
+    
+    /// XXX This could look more like the following
+    /*
+     [self emptyAllNonNavViews]
+     [self.bodyView      addSubview:[descriptor mainView] ];
+     [self.inspectorView addSubview:[descriptor inspectorView] ];
+          
+     */
     if([descriptor type] == DPDescriptorCouchDatabase){        
-        [self showItemInMainView:item];
+        [self showCouchViewInBody:descriptor];
     }else if([descriptor type] == DPDescriptorCouchDesign){
-        [self showDesignView:item];
+        [self showDesignView:descriptor];
     }else if([descriptor type] == DPDescriptorCouchView){
-        [self showViewInMainView:item];
+        //[self showDesignEditorInMainView:descriptor];
+        [self showCouchViewInBody:descriptor];
     }else if([descriptor type] == DPDescriptorPluginProvided){
         [self delagateSelectionDidChange:item];
     }else{
@@ -583,6 +596,8 @@
     [plugin selectionDidChange:item];
 
     NSViewController *mainViewController = [plugin mainSectionContribution];
+    
+    
     NSLog(@" Not sure what I'm seeing %@", mainViewController);
     if(mainViewController == Nil){
         [self showEmptyInspectorView];
@@ -855,13 +870,22 @@
     }
 }
 
--(id)namedResource:(DPSharedResources)resourceName withItem:(id)itemOrNil{
+#pragma mark -
+#pragma mark DPResourceFactory Protocol 
+-(id)namedResource:(DPSharedResources)resourceName navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+
     if(resourceName == DPSharedViewContollerNamedFunctionEditor){
-        return [[SVInspectorFunctionDocumentController alloc] initWithNibName:@"FunctionEditor" 
-                                                                       bundle:[NSBundle 
-                                                                bundleForClass:[self class]]
-                                                                     treeNode:itemOrNil];
+
+        return [[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor
+                                                                       bundle:bundle
+                                                                     navContribution:aNavContribution];
         
+    }else if(resourceName == DPSharedViewContollerNamedViewResults){
+        
+        return [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
+                                                         bundle:bundle
+                                                navContribution:aNavContribution];
     }
     return nil;
 }

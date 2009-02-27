@@ -11,13 +11,16 @@
 #import "NSTreeNode+TP.h"
 #import "NSTreeNode+SVDavenport.h"
 #import <CouchObjC/CouchObjC.h>
+#import "TPBaseDescriptor.h"
 
 @implementation TPLoadNavigationOperation
 @synthesize rootContributionNode;
+@synthesize resourceFactory;
 
--(id)init{
+-(id)initWithResourceFactory:(id <DPResourceFactory>)rezFactory{
     if (![super init]) return nil;    
     rootContributionNode = [[NSTreeNode alloc] init];
+    self.resourceFactory = rezFactory;
     return self;
 }
 
@@ -34,20 +37,39 @@
  
 
     // XXX The child node label should be discovered, not hardcoded. 
-    NSTreeNode *pluginSectionNode = [rootContributionNode addChildWithLabel:@"Cushion Tickets" identity:@"cushion-tickets"
-                             descriptorType:DPDescriptorSection group:YES];
+    NSTreeNode *pluginSectionNode = [rootContributionNode addChildWithLabel:@"Cushion Tickets" 
+                                                                   identity:@"cushion-tickets"
+                                                             descriptorType:DPDescriptorSection 
+                                                            resourceFactory:self.resourceFactory
+                                                                      group:YES];
     
-    SBCouchDesignDocument *designDoc;
-    while(designDoc = [designDocs nextObject]){        
+    
+    
+    SBCouchDocument *designDoc;
+    while(designDoc =  [designDocs nextObject]){        
         //XXX descriptor type needs to come from an enum
-        [pluginSectionNode addChildWithLabel:[designDoc.identity lastPathComponent] 
-                                    identity:designDoc.identity 
-                              descriptorType:DPDescriptorPluginProvided
-                                       group:NO];
-        }    
+        NSTreeNode *designDocNode = [pluginSectionNode addChildWithLabel:[designDoc.identity lastPathComponent] 
+                                                                identity:designDoc.identity 
+                                                          descriptorType:DPDescriptorPluginProvided
+                                                         resourceFactory:self.resourceFactory
+                                                                   group:NO];
+        
+        [(TPBaseDescriptor*)[designDocNode representedObject] setCouchDatabase:database];
+        [(TPBaseDescriptor*)[designDocNode representedObject] setPrivateType:DPDescriptorCouchDesign];
+
+        
+        //NSLog(@"XXXXX %@", test);
+
+        SBCouchDesignDocument *designDocWithViews = [database getDesignDocument:[designDoc identity]];
+        // VIEWS
+        for(NSString *viewName in [[designDocWithViews views] allKeys]){
+            NSTreeNode *childNode = [designDocNode addChildWithLabel:viewName identity:viewName descriptorType:DPDescriptorPluginProvided  
+                                                     resourceFactory:self.resourceFactory group:NO];        
+
+            [(TPBaseDescriptor*)[childNode representedObject] setCouchDatabase:database];
+            [(TPBaseDescriptor*)[childNode representedObject] setPrivateType:DPDescriptorCouchView];
+        }         
+    }
 }
 
--(NSString*)what{
-    return @"xxxxxxxxx";
-}
 @end

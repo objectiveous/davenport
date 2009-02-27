@@ -56,14 +56,14 @@
         
         NSEnumerator *designDocs = [database getDesignDocuments];
         // TODO Maybe this ought to return actual design documents. 
-        SBCouchDocument *designDoc;
-        while((designDoc = [designDocs nextObject])){
+        SBCouchDocument *couchDesignDocument;
+        while((couchDesignDocument = [designDocs nextObject])){
                         
-           SVBaseNavigationDescriptor *designDesc = [[[SVBaseNavigationDescriptor alloc] initWithLabel:[designDoc.identity lastPathComponent]
-                                                                                           andIdentity:designDoc.identity
+           SVBaseNavigationDescriptor *navDescriptor = [[[SVBaseNavigationDescriptor alloc] initWithLabel:[couchDesignDocument.identity lastPathComponent]
+                                                                                           andIdentity:couchDesignDocument.identity
                                                                                                   type:DPDescriptorCouchDesign] autorelease];
-            
-           [databaseInstance addChildNodeWithObject:designDesc];
+            navDescriptor.couchDatabase = database;
+           [databaseInstance addChildNodeWithObject:navDescriptor];
         }
     }        
     [self setRootNode:root];

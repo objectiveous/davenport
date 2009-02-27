@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/CouchObjC.h>
-
+#import "DPContributionNavigationDescriptor.h"
 
 @interface SVQueryResultController : NSViewController {
     NSString          *databaseName;
@@ -20,7 +20,7 @@
 @property (retain) SBCouchEnumerator *queryResult;
 @property (retain) SBCouchDatabase   *couchDatabase;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName; 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchView:(SBCouchView*)couchView;
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName; 
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
 @end

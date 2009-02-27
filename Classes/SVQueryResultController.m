@@ -10,7 +10,6 @@
 #import <CouchObjC/CouchObjC.h>
 #import "SVAppDelegate.h"
 #import <JSON/JSON.h>
-#import "SVInspectorFunctionDocumentController.h"
 #import "SVInspectorDocumentController.h"
 #import "NSTreeNode+SVDavenport.h"
 
@@ -32,9 +31,10 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchView:(SBCouchView*)couchView{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
+        /*
         SBCouchServer *server = [[NSApp delegate] couchServer];
         SBCouchDatabase *database = [server database:couchView.couchDatabase];
         
@@ -44,6 +44,7 @@
         //[couchEnumerator totalRows:[[couchEnumerator rows] count]];
         [self setQueryResult:couchEnumerator];
         [self setCouchDatabase:database];
+         */
     } 
     return self;
 }

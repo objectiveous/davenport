@@ -16,8 +16,6 @@
 @interface  SVQueryResultController (Private)
 - (NSString*)stripNewLines:(NSString*)string;
 - (void) handleCouchDocumentSelected:(NSDictionary*)couchDocument;
-//- (NSString*)theNodesDatabase:(NSTreeNode*)node;
-//- (NSString*)theNodesDocumentIdentity:(NSTreeNode*)node;
 @end
 
 
@@ -26,25 +24,22 @@
 @synthesize databaseName;
 @synthesize queryResult;
 @synthesize couchDatabase;
+@synthesize viewResultOutlineView;
 
 #pragma mark -
 
-
-
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchEnumeration:(NSEnumerator*)anNSEnumerator{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        self.queryResult = anNSEnumerator;
+    }
+    return self;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
-        /*
-        SBCouchServer *server = [[NSApp delegate] couchServer];
-        SBCouchDatabase *database = [server database:couchView.couchDatabase];
-        
-        SBCouchEnumerator *couchEnumerator = (SBCouchEnumerator*) [database slowViewEnumerator:couchView];
-        // TODO We do this becuase here because I'm clueless as to where this should 
-        // really happen. 
-        //[couchEnumerator totalRows:[[couchEnumerator rows] count]];
-        [self setQueryResult:couchEnumerator];
-        [self setCouchDatabase:database];
-         */
+        //[self.viewResultOutlineView setDataSource:navContribution];
+        //self.queryResult = anNSEnumerator;
     } 
     return self;
 }
@@ -227,5 +222,9 @@
         [documentView setFrame:frame];
 }
 
+- (void)showViewResults:(SBCouchEnumerator*)viewResults{
+    self.queryResult = viewResults;
+    [self.viewResultOutlineView reloadData];
+}
 
 @end

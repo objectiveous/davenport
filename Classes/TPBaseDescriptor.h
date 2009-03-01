@@ -23,8 +23,15 @@
     // XXX All this type crap needs to go away. 
     DPNavigationDescriptorTypes type;
     DPNavigationDescriptorTypes privateType;    
+
+    // Since we have a shared resource factory, we can provide do that fancy stuff like returning 
+    // body and inspector controllers for ourselves.
     id <DPResourceFactory>      resourceFactory;
-    BOOL                        groupItem;    
+    BOOL                        groupItem;
+    
+    NSViewController               *bodyController;
+    NSViewController               *inspectorController;
+    
 }
 
 @property (retain) SBCouchDatabase     *couchDatabase;
@@ -35,6 +42,9 @@
 @property DPNavigationDescriptorTypes  type;
 @property DPNavigationDescriptorTypes  privateType;
 @property (retain) <DPResourceFactory> resourceFactory;
+@property (retain) NSViewController    *bodyController;
+@property (retain) NSViewController    *inspectorController;
+
 
 @property BOOL groupItem;
 
@@ -43,8 +53,7 @@
 
 - (id)initWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory group:(BOOL)isGroup;
 - (BOOL)isGroupItem;
-//- (NSViewController*)mainController:(NSTreeNode*)item;
-//- (NSViewController*)inspectorController:(NSTreeNode*)item;
+
 
 - (NSViewController*) contributionInspectorViewController;
 - (NSViewController*) contributionMainViewController;

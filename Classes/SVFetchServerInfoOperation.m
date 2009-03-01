@@ -35,7 +35,8 @@
 - (void)main {
     SVDebug(@"Trying to fetch server information from localhot:5983");
     fetchReturnedData = NO;
-
+    id <DPResourceFactory> factory = [(SVAppDelegate*) [NSApp delegate] mainWindowController];
+    
     assert(couchServer);
     NSArray *databases = [couchServer listDatabases];
     
@@ -50,20 +51,27 @@
     NSTreeNode *couchServerNode = [root addCouchServerSection:hostAndPort];
 
     for(NSString *databaseName in databases){
-        NSTreeNode *databaseInstance = [couchServerNode addDatabase:databaseName];
-        SBCouchDatabase *database = [self.couchServer database:databaseName];
-
+        SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];
+            
+        SVBaseNavigationDescriptor *databaseDescriptor = [[[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName
+                                                                                              andIdentity:databaseName
+                                                                                                     type:DPDescriptorCouchDatabase] autorelease];
         
-        NSEnumerator *designDocs = [database getDesignDocuments];
-        // TODO Maybe this ought to return actual design documents. 
-        SBCouchDocument *couchDesignDocument;
-        while((couchDesignDocument = [designDocs nextObject])){
-                        
-           SVBaseNavigationDescriptor *navDescriptor = [[[SVBaseNavigationDescriptor alloc] initWithLabel:[couchDesignDocument.identity lastPathComponent]
-                                                                                           andIdentity:couchDesignDocument.identity
-                                                                                                  type:DPDescriptorCouchDesign] autorelease];
-            navDescriptor.couchDatabase = database;
-           [databaseInstance addChildNodeWithObject:navDescriptor];
+        databaseDescriptor.couchDatabase = couchDatabase;
+        databaseDescriptor.resourceFactory = factory;
+        
+        NSTreeNode *databaseTreeNode = [couchServerNode addChildNodeWithObject:databaseDescriptor];
+                
+        NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
+        SBCouchDocument *couchDesignDocument;        
+        while((couchDesignDocument = [designDocs nextObject])){                        
+           NSString *label = [couchDesignDocument.identity lastPathComponent];
+           SVBaseNavigationDescriptor *designDescriptor = [[[SVBaseNavigationDescriptor alloc] initWithLabel:label
+                                                                                              andIdentity:couchDesignDocument.identity
+                                                                                                     type:DPDescriptorCouchDesign] autorelease];
+           designDescriptor.couchDatabase = couchDatabase;
+           designDescriptor.resourceFactory = factory;
+           [databaseTreeNode addChildNodeWithObject:designDescriptor];
         }
     }        
     [self setRootNode:root];

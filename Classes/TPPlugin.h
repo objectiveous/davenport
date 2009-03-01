@@ -23,14 +23,16 @@ typedef enum descriptorType{
 
  */
 @interface TPPlugin : NSObject <DPContributionPlugin>{
-    NSTreeNode *currentItem;
-    NSTreeNode *navContribution;
-    NSOperationQueue *queue;
+    NSBundle               *bundle;
+    NSTreeNode             *currentItem;
+    NSTreeNode             *navContribution;
+    NSOperationQueue       *queue;
     id <DPResourceFactory> resourceFactory;
 }
 
-@property (retain) NSTreeNode *currentItem;
+@property (retain) NSTreeNode          *currentItem;
 @property (retain) <DPResourceFactory> resourceFactory;
+@property (retain) NSBundle            *bundle;
 
 + (NSString*)databaseName;
 + (NSString*)pluginID;

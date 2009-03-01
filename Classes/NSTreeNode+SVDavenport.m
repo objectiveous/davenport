@@ -34,7 +34,9 @@
 }
 
 -(NSTreeNode *) addDatabase:(NSString *)databaseName{
-    SVBaseNavigationDescriptor *database = [[[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName andIdentity:databaseName type:DPDescriptorCouchDatabase] autorelease];
+    SVBaseNavigationDescriptor *database = [[[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName 
+                                                                                  andIdentity:databaseName 
+                                                                                         type:DPDescriptorCouchDatabase] autorelease];
     return [self addChildNodeWithObject:database];
 }
 
@@ -104,48 +106,6 @@
 
 #pragma mark - 
 #pragma mark Descriptor Magic
-
--(NSString*) deriveDatabaseName{    
-    id <DPContributionNavigationDescriptor> desc = [self representedObject];
-    if([desc type] == DPDescriptorCouchDatabase){
-        return [desc identity];    
-    }else{
-        return [[self parentNode] deriveDatabaseName];
-    }
-}
-
- 
--(NSString*) deriveDesignDocumentPath{
-    SVBaseNavigationDescriptor *desc = [self representedObject];
-    if(desc.type == DPDescriptorCouchView){
-        //NSMutableString *viewPathPart = [NSMutableString stringWithString:desc.identity];
-        SVBaseNavigationDescriptor *designDesc = [[self parentNode] representedObject];
-        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_design/%@",designDesc.label];
-        return urlPath;
-    }    
-        
-    return nil;    
-}
-
--(NSString*) deriveDocumentIdentity{
-    id <DPContributionNavigationDescriptor> desc = [self representedObject];
-    if([desc type] == DPDescriptorCouchView){ 
-        NSMutableString *viewPathPart = [NSMutableString stringWithString:[desc identity]];
-        // The parent of a view is a design doc. 
-        id <DPContributionNavigationDescriptor> designDesc = [[self parentNode] representedObject];
-        
-        // sofa-blog/_view/datacenter/hardware
-        // database/_view/domain/view
-        NSMutableString *urlPath = [NSMutableString stringWithFormat:@"_view/%@/%@",[designDesc label],viewPathPart];        
-        return urlPath;       
-    }else if([desc type] == DPDescriptorCouchDatabase){
-        return @"_all_docs";
-    }else{        
-        return [desc identity];
-    }
-    
-}
-
 
 -(void)logTree{
     NSLog(@"%@", [self prettyPrint]);

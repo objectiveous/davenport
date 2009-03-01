@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DPContributionNavigationDescriptor.h"
+#import "DPResourceFactory.h"
 #import <CouchObjC/CouchObjC.h>
 
 @interface SVBaseNavigationDescriptor : NSObject <DPContributionNavigationDescriptor>{
@@ -18,6 +19,7 @@
     BOOL                         groupItem;
     DPNavigationDescriptorTypes  type;    
     SBCouchDatabase             *couchDatabase;
+    id <DPResourceFactory>       resourceFactory;
 }
 
 @property (retain) NSString           *label;
@@ -26,6 +28,7 @@
 @property          BOOL                groupItem;
 @property DPNavigationDescriptorTypes  type;
 @property (retain) SBCouchDatabase    *couchDatabase;
+@property (retain) id <DPResourceFactory> resourceFactory;
 
 -(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType;
 -(BOOL)isGroupItem;

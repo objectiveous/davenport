@@ -19,6 +19,8 @@
 @synthesize couchDatabase;
 @synthesize privateType;
 @synthesize couchDocument;
+@synthesize bodyController;
+@synthesize inspectorController;
 
 -(id)init{    
     self = [super init];
@@ -59,32 +61,27 @@
 // representing an instance of this class. I suspect that if you 
 // look at the call path up to this point, it will become obvious
 // how to remove the need for item. 
-- (NSViewController*) contributionMainViewController{
-    
-    /*
-    DPDescriptorCouchDesign    = 1,
-    DPDescriptorCouchView      = 2,
-    DPDescriptorCouchDatabase  = 3,
-    DPDescriptorCouchServer    = 4,    
-    DPDescriptorSection        = 5,
-    
-    
-    DPSharedViewContollerNamedFunctionEditor
-    DPSharedViewContollerNamedViewResults     
-     */
-    if(self.privateType == DPDescriptorCouchDesign) 
-        return [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor navContribution:self];  
-    
-    if(self.privateType == DPDescriptorCouchView) 
-        return [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults navContribution:self];  
-        
-    return nil;
-}
 
+- (NSViewController*) contributionMainViewController{
+    if(self.privateType == DPDescriptorCouchDesign){
+        self.bodyController = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor navContribution:self];
+    }
+    if(self.privateType == DPDescriptorCouchView) {
+        self.bodyController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults navContribution:self];
+    }
+    return self.bodyController;
+}
 
 - (NSViewController*) contributionInspectorViewController{
-    return nil;
+    self.inspectorController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults navContribution:self];
+    // Now how do you say something like the following in a generic way: 
+    // [self.bodyController setDelegate:self.inspectorController];
+    // 
+    // Would this be an informal protocol? How does one document these things properly?
+    if ( [self.bodyController respondsToSelector:@selector(setDelegate:)] ) {
+        [self.bodyController setDelegate:self.inspectorController];
+    }
+       
+    return self.inspectorController;
 }
-
-
 @end

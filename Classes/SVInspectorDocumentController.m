@@ -80,6 +80,7 @@
     
     assert(self.couchDocument);
     [self setRootNode:[self.couchDocument asNSTreeNode]];
+    
     [self.documentOutlineView reloadData];
     [self initControllerSettingsWithDocumentInformation];
     [self updateRevisionInformationLabelAndNavigation];

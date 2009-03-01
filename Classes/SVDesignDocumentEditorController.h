@@ -17,15 +17,23 @@
     IBOutlet NSTextView            *reduceTextView;
     IBOutlet NSComboBox            *viewComboBox;
     
-   SBCouchDesignDocument           *designDocument;
+    SBCouchDesignDocument          *designDocument;
     id <DPContributionNavigationDescriptor> navContribution;
+    // Might want to make this a weak reference using the __weak type modifier.
+    id delegate;
 }
 @property (nonatomic, retain) NSTextView                   *mapTextView;
 @property (nonatomic, retain) NSTextView                   *reduceTextView;
 @property (nonatomic, retain) NSComboBox                   *viewComboBox;
 @property (nonatomic, retain) SBCouchDesignDocument        *designDocument;
 @property (retain) id <DPContributionNavigationDescriptor> navContribution;
+//@property (copy) id delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
-- (IBAction)runFunction:(id)sender;
+
+- (IBAction)runCouchViewAction:(id)sender;
+
+- (id)delegate;
+- (void)setDelegate:(id)newDelegate;
+
 @end

@@ -56,6 +56,9 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 - (void)showDesignView:(id<DPContributionNavigationDescriptor>)navDescriptor;
 - (void)showEmptyInspectorView;
 - (void)showEmptyBodyView;
+- (void)loadViewNodes:(NSTreeNode*)treeNode;
+- (void)sizeViewToBody:(NSView*)aView;
+- (void)sizeViewToInspector:(NSView*)aView;
 @end 
 
 @implementation SVMainWindowController
@@ -76,7 +79,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 @synthesize horizontalSplitView;
 @synthesize emptyInspectorView;
 @synthesize emptyBodyView;
-
+@synthesize bundle;
 
 - (void)awakeFromNib{
     // XXX This should live in the init. 
@@ -193,18 +196,11 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {    
-    
-    return YES;
-    
-    
     if (item == nil)
         return NO;
     
     id <DPContributionNavigationDescriptor, NSObject> desc = [item representedObject];
     
-    if([desc type] == DPDescriptorSection)
-        return NO;
-
     if([desc type] == DPDescriptorCouchView)
         return NO;
 
@@ -217,11 +213,12 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
         
-    id <DPContributionNavigationDescriptor, NSObject> desc = [childNode representedObject];
+    //id <DPContributionNavigationDescriptor, NSObject> desc = [childNode representedObject];
 
-    // XXX THIS IS A GROSS HACK. 
- 
-    if([desc type] == DPDescriptorCouchDesign){
+    // XXX THIS IS A GROSS HACK AND THE WORST POSSIBLE PLACE TO DO SUCH 
+    //     A THING AS ITS CALLED A LOT!!!
+    //int childNodeCount = [[childNode childNodes] count];
+    //if([desc type] == DPDescriptorCouchDesign && childNodeCount <= 0){
         // XXX This works but not for option + cliking on the root node to expand all items. 
         // might be better to load the views sooner. 
         
@@ -229,11 +226,11 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         // don't bother doing it again. It's possible that this could cause propblems 
         // when we begin to support the creation of design docs in Davenport but until 
         // that actually hapens, this should suffice. 
-        if([[childNode childNodes] count] > 0)
-            return childNode;
+        //if([[childNode childNodes] count] > 0)
+        //    return childNode;
         
-        [self fetchViews:childNode];
-    }
+      //  [self fetchViews:childNode];
+    //}
     return childNode;
 }
 
@@ -258,14 +255,16 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 #pragma mark -
 #pragma mark KVO
+
+
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
     
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){        
-        /*
-        id root = [(SVFetchQueryInfoOperation*)object designDocTreeNode];
-        self.rootNode = root;
+        // We've added view descriptors to a design document descriptor and its time to refresh 
+        // the source list. 
+        [lock lock];
         [self.sourceView reloadData];
-         */
+        [lock unlock];
     } 
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){        
         NSTreeNode *root = (NSTreeNode*) [(SVFetchServerInfoOperation*)object rootNode];
@@ -285,11 +284,29 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         [self.sourceView reloadData];
         [lock unlock];
         
-
+        // Now that we've got the top level elements, populate the design doc nodes. 
+        // This might even be a good thing to put into an operation.        
+        [self loadViewNodes:rootNode];
     } 
 }
 
+
 #pragma mark -
+
+- (void)loadViewNodes:(NSTreeNode*)treeNode{
+    if(treeNode == nil)
+        return;
+    
+    for(NSTreeNode *node in [treeNode childNodes]){
+       id <DPContributionNavigationDescriptor> descriptor = [node representedObject];
+        if([descriptor type] == DPDescriptorCouchDesign){
+            [self fetchViews:node];
+        }else{
+            [self loadViewNodes:node];
+        }
+    }
+}
+
 - (void)outlineViewItemDidExpand:(NSNotification *)notification{
     //NSTreeNode *item = (NSTreeNode*) [notification object];
     //SVAbstractDescriptor *desc = [item representedObject];
@@ -299,14 +316,20 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     if(operationQueue == nil){
         operationQueue = [[NSOperationQueue alloc] init];
     }
+   
+    //SVBaseNavigationDescriptor *parentDescriptor =  [[designNode parentNode] representedObject];
     
-    SVBaseNavigationDescriptor *parentDescriptor =  [[designNode parentNode] representedObject];
+    id <DPContributionNavigationDescriptor> viewDesc = [designNode representedObject];
     
+  
     // XXX If we had the actuall SBCouchDatabase, we could simplify this signature. 
-    SBCouchServer *server = [[NSApp delegate] couchServer];
-    SBCouchDatabase *couchDatabase = [server database:parentDescriptor.label];
-    SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] 
-                                                 initWithCouchDatabase:couchDatabase                                                 designDocTreeNode:designNode];
+    //SBCouchServer *server = [[NSApp delegate] couchServer];
+    //SBCouchDatabase *couchDatabase = [server database:parentDescriptor.label];
+    
+    SBCouchDatabase *couchDatabase = [viewDesc couchDatabase];
+    
+    SVFetchQueryInfoOperation *fetchOperation = [[SVFetchQueryInfoOperation alloc] initWithCouchDatabase:couchDatabase                                            
+                                                                                       designDocTreeNode:designNode];
     
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
@@ -415,17 +438,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     SVDesignDocumentEditorController *functionController = [[SVDesignDocumentEditorController alloc]                                                                 
                                                                     initWithNibName:NIB_DesignDocumentEditor 
                                                                              bundle:nil
-                                                                    navContribution:navDescriptor];
-    
-    NSView *designEditorView = [functionController view];
-    [bodyView addSubview:designEditorView];    
-    NSRect frame = [designEditorView frame];
-    NSRect superFrame = [bodyView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [designEditorView setFrame:frame];
-    
-
+                                                                    navContribution:navDescriptor];    
+    [self sizeViewToBody:[functionController view]];
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];
     }
@@ -436,13 +450,27 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
                                                                                       navContribution:navDescriptor];
 
     [inspectorView addSubview:[queryResultController view]];
+    [self sizeViewToInspector:[queryResultController view]];
     
-    frame = [[queryResultController view] frame];
-    superFrame = [inspectorView frame];
+
+}
+
+- (void)sizeViewToBody:(NSView*)aView{
+    NSRect frame = [aView frame];
+    NSRect superFrame = [bodyView frame];
     frame.size.width = superFrame.size.width;
     frame.size.height = superFrame.size.height;
-    [[queryResultController view] setFrame:frame];
+    [aView setFrame:frame];    
 }
+
+- (void)sizeViewToInspector:(NSView*)aView{
+    NSRect frame = [aView frame];
+    NSRect superFrame = [inspectorView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [aView setFrame:frame];    
+}
+
 
 -(void)showSlowViewInMainView:(id<DPContributionNavigationDescriptor>)navContribution{
 
@@ -455,35 +483,31 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];
     }
-    [inspectorView addSubview:[queryResultController view]];
-    
-    NSRect frame = [[queryResultController view] frame];
-    NSRect superFrame = [inspectorView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [[queryResultController view] setFrame:frame];
+    [inspectorView addSubview:[queryResultController view]];           
+    [self sizeViewToInspector:[queryResultController view]];
     
 }
 
 
 -(void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor{
+    
+    NSViewController *queryResultController = [navDescriptor contributionMainViewController];
+
+    /*
+    SBCouchDatabase *couchDatabase = [navDescriptor couchDatabase];
+    NSEnumerator *couchResults = [couchDatabase allDocsInBatchesOf:100];
+    
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                                                                bundle:nil 
-                                                                                      navContribution:navDescriptor];
-    
-    // brutal
+                                                                                     couchEnumeration:couchResults];
+    */
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
     }
     
     [bodyView addSubview:[queryResultController view]];
-    
-    NSRect frame = [[queryResultController view] frame];
-    NSRect superFrame = [bodyView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [[queryResultController view] setFrame:frame];
-    
+    [self sizeViewToBody:[queryResultController view]];
+        
     [self showEmptyInspectorView];
     
 }
@@ -499,14 +523,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     for (NSView *view in [self.inspectorView subviews]) {
         [view removeFromSuperview];
     }
-
-    /*
-    NSRect frame = [self.emptyInspectorView frame];
-    NSRect superFrame = [bodyView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [self.emptyInspectorView setFrame:frame];
-     */
+    
     [self.inspectorView addSubview:self.emptyInspectorView];
 }
 
@@ -517,28 +534,15 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         // We're already showing the emptybody view;
         return;
     }
-    
-    
+        
     for (NSView *view in [self.bodyView subviews]) {
-
         if([view isKindOfClass:[SVEmptyInspectorView class]])
             continue;
         
         [view removeFromSuperview];
     }
-    
-    //NSView *v = [[[SVEmptyInspectorView alloc] initWithFrame:[bodyView frame]] autorelease];
 
-    /*
-    NSRect frame = [v frame];
-    NSRect superFrame = [bodyView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [v setFrame:frame];
-    */    
     [self.bodyView addSubview:self.emptyBodyView];
-    // Trying to adjust the frame or maybe the bounds. 
-    //[self.bodyView setNeedsDisplay:YES];
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification{
@@ -554,17 +558,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     }
     
     [self updateBreadCrumbs:item];
-    // BUILT INS
-    // Show database results (_all_docs) in the main window and design document views as well. 
-    
-    /// XXX This could look more like the following
-    /*
-     [self emptyAllNonNavViews]
-     [self.bodyView      addSubview:[descriptor mainView] ];
-     [self.inspectorView addSubview:[descriptor inspectorView] ];
-          
-     */
-    if([descriptor type] == DPDescriptorCouchDatabase){        
+
+    if([descriptor type] == DPDescriptorCouchDatabase){
         [self showCouchViewInBody:descriptor];
     }else if([descriptor type] == DPDescriptorCouchDesign){
         [self showDesignView:descriptor];
@@ -595,29 +590,21 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:pluginID];
     [plugin selectionDidChange:item];
 
-    NSViewController *mainViewController = [plugin mainSectionContribution];
-    
-    
-    NSLog(@" Not sure what I'm seeing %@", mainViewController);
-    if(mainViewController == Nil){
-        [self showEmptyInspectorView];
-        [self showEmptyBodyView];
-    }else{
-        for (NSView *view in [bodyView subviews]) {
-            [view removeFromSuperview];
-        }        
-        NSView *view = [mainViewController view];
-        NSLog(@"Here the view : %@", view);
+    NSViewController *mainViewController = [plugin contributionMainViewController];
+    NSViewController *inspectorViewController = [plugin contributionInspectorViewController];        
+    for (NSView *view in [bodyView subviews]) {
+        [view removeFromSuperview];
+    }
         
-        [self.bodyView addSubview:view];            
-
-        NSRect frame = [view frame];
-        NSRect superFrame = [bodyView frame];
-        frame.size.width = superFrame.size.width;
-        frame.size.height = superFrame.size.height;
-        [[mainViewController  view] setFrame:frame];                    
-    }            
-    SVDebug(@"TODO - lookup the plugin that supplied the selected navigation item %@", [descriptor pluginID]);
+    for (NSView *view in [inspectorView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    [self.bodyView addSubview:[mainViewController view]];
+    [self sizeViewToBody:[mainViewController view]];
+    
+    [self.inspectorView addSubview:[inspectorViewController view]];
+    [self sizeViewToInspector:[inspectorViewController view]];
 }
 
 
@@ -764,22 +751,21 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
     if(descriptor.type != DPDescriptorCouchDatabase){
         // hide all the menu items. This will prevent any context menu from appearing. 
-        for(NSMenuItem *i in [menu itemArray]){
-            [i setHidden:TRUE];
+        for(NSMenuItem *menuItem in [menu itemArray]){
+            [menuItem setHidden:TRUE];
         }
     }else{
         //XXX Is there a better way to do this than by name?
-        NSMenuItem *menuItem = [menu itemWithTitle:@"Delete"];
-        assert(menuItem);
+        NSMenuItem *deleteMenuItem = [menu itemWithTitle:@"Delete"];
+        assert(deleteMenuItem);
         
         //[menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
-        [menuItem setRepresentedObject:item];    
+        [deleteMenuItem setRepresentedObject:item];    
         // Ensure the menu items are visible. 
-        for(NSMenuItem *i in [menu itemArray]){
-            [i setHidden:FALSE];
+        for(NSMenuItem *menuItem in [menu itemArray]){
+            [menuItem setHidden:FALSE];
         }
     }
-
 }
 
 - (IBAction)deleteDatabaseAction:(id)sender{
@@ -856,14 +842,15 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 // We require a root node with no represented object. All children of this 
 // tree node will be added to the navigation tree's root. 
-- (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend{
-    
+- (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend{    
     
     [[rootNode mutableChildNodes] addObjectsFromArray:[treeToAppend childNodes]];
     
     [lock lock];
-    [self.sourceView reloadData];
+    [self.sourceView reloadData];        
     [lock unlock];
+    
+    [self loadViewNodes:rootNode];
     
     for(NSTreeNode *node in [rootNode childNodes]){
         [self.sourceView expandItem:node];  
@@ -873,20 +860,17 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 #pragma mark -
 #pragma mark DPResourceFactory Protocol 
 -(id)namedResource:(DPSharedResources)resourceName navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-
+    // XXX Switch statement....please. 
     if(resourceName == DPSharedViewContollerNamedFunctionEditor){
-
         return [[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor
-                                                                       bundle:bundle
+                                                                       bundle:self.bundle
                                                                      navContribution:aNavContribution];
         
     }else if(resourceName == DPSharedViewContollerNamedViewResults){
-        
         return [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
-                                                         bundle:bundle
+                                                         bundle:self.bundle
                                                 navContribution:aNavContribution];
-    }
+    } 
     return nil;
 }
 @end

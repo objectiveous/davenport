@@ -35,7 +35,7 @@ int LOCAL_PORT = 5984;
     queue = [[NSOperationQueue alloc] init];
     lock = [[NSLock alloc] init];
     self.pluginRegistry = [[NSMutableDictionary alloc] init];
-    [self setCouchServer:[[SBCouchServer alloc] initWithHost:@"localhost" port:LOCAL_PORT]];
+    self.couchServer = [SBCouchServer new];
     return self;
 }
 - (void)dealloc{
@@ -49,20 +49,13 @@ int LOCAL_PORT = 5984;
 - (void) loadMainWindow{
     SVDebug(@"loading MainWindow nib.");
     
-    mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
-   	[mainWindowController showWindow:self];
     if(LOCAL_PORT == 5983)
         [self launchCouchDB];
     else
         [self performFetchServerInfoOperation];     
-}
-
-- (void)applicationDidFinishLaunching:(NSNotification*)notification{
-    [self loadMainWindow];        
-}
-
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender{
-	return YES;
+    
+    mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+   	[mainWindowController showWindow:self];
 }
 
 - (void) performFetchServerInfoOperation {
@@ -73,9 +66,17 @@ int LOCAL_PORT = 5984;
                      forKeyPath:@"isFinished" 
                         options:0
                         context:nil];
-    [queue addOperation:fetchOperation];                
+    [queue addOperation:fetchOperation];              
     [fetchOperation release];
     
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender{
+	return YES;
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification*)notification{
+    [self loadMainWindow];        
 }
 
 #pragma mark -

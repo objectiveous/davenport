@@ -11,16 +11,18 @@
 #import "DPContributionNavigationDescriptor.h"
 
 @interface SVQueryResultController : NSViewController {
-    NSString          *databaseName;
-    SBCouchEnumerator *queryResult;
-    SBCouchDatabase   *couchDatabase;
+    NSString               *databaseName;
+    NSEnumerator           *queryResult;
+    SBCouchDatabase        *couchDatabase;
+    IBOutlet NSOutlineView *viewResultOutlineView;
 }
 
 @property (copy) NSString            *databaseName;
-@property (retain) SBCouchEnumerator *queryResult;
+@property (retain) NSEnumerator      *queryResult;
 @property (retain) SBCouchDatabase   *couchDatabase;
+@property (retain) NSOutlineView     *viewResultOutlineView;
 
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName; 
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchEnumeration:(NSEnumerator*)anSBCouchEnumerator;
+- (void)showViewResults:(SBCouchEnumerator*)viewResults;
 @end

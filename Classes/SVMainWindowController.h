@@ -47,6 +47,7 @@
     @private
     NSOperationQueue                  *operationQueue;
     NSLock                            *lock;
+    NSBundle                          *bundle;
 }
 
 //@property (retain)  NSTreeNode                     *rootNode;
@@ -66,7 +67,7 @@
 @property (nonatomic, retain) RBSplitView          *horizontalSplitView; 
 @property (nonatomic, retain) SVEmptyInspectorView *emptyInspectorView;
 @property (nonatomic, retain) SVEmptyInspectorView *emptyBodyView;
-
+@property (retain)            NSBundle             *bundle;
 
 - (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend;
 

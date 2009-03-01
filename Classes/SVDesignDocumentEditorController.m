@@ -18,6 +18,7 @@
 @synthesize reduceTextView;
 @synthesize viewComboBox;
 @synthesize designDocument;
+//@synthesize delegate;
 
 #pragma mark -
 
@@ -54,24 +55,21 @@
     //[[self.reduceTextView textStorage] setFont:font];      
 }
 #pragma mark - Actions
-- (IBAction)runFunction:(id)sender{
+- (IBAction)runCouchViewAction:(id)sender{
+    
+    NSString *menueItemViewName = [self.viewComboBox objectValueOfSelectedItem];
+    NSLog(@"selected menu item name: %@", menueItemViewName);
+    
+    SBCouchView *view  = [self.designDocument view:menueItemViewName];
 
-    /*
-    NSString *viewIdentity = [[self.treeNode representedObject] label];
-    SBCouchView *view = [self.designDocument view:viewIdentity];
+    // 404 /cushion-tickets/sprint?limit=30&group=true
+    // 200 /cushion-tickets/_view/More%20Stuff/sprint
     
-    NSString *databaseName = [self.treeNode deriveDatabaseName];
-    view.couchDatabase = databaseName;
+    NSEnumerator *viewResults = [view getEnumerator];
     
-    [view setMap:[[self.mapTextView textStorage] string]];
-
-    // TODO Need much smarter parsing of function code. 
-    NSString *reduceString = [[self.reduceTextView textStorage] string]; 
-    if(reduceString != nil && [reduceString hasPrefix:@"function"])
-        [view setReduce:reduceString];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:SV_NOTIFICATION_RUN_SLOW_VIEW object:view];
-     */
+    if ( [[self delegate] respondsToSelector:@selector(showViewResults:)] ) {
+        [[self delegate] showViewResults:viewResults]; 
+    }    
 }
 
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification{
@@ -103,6 +101,14 @@
     [[self.mapTextView textStorage] setAttributedString:mapString];
     [[self.reduceTextView textStorage] setAttributedString:reduceString];
     
+}
+
+- (id)delegate {
+    return delegate;
+}
+
+- (void)setDelegate:(id)newDelegate {
+    delegate = newDelegate;
 }
 
 @end

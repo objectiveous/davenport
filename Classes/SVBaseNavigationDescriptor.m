@@ -7,6 +7,7 @@
 //
 
 #import "SVBaseNavigationDescriptor.h"
+#import "DPResourceFactory.h"
 
 @implementation SVBaseNavigationDescriptor
 
@@ -16,6 +17,7 @@
 @synthesize groupItem;
 @synthesize type;
 @synthesize couchDatabase;
+@synthesize resourceFactory;
 
 -(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType{
     self = [super init];
@@ -33,7 +35,16 @@
 - (NSViewController*) contributionInspectorViewController{
     return nil;
 }
-- (NSViewController*) contributionMainViewController{
+- (NSViewController*) contributionMainViewController{    
+    if(self.type == DPDescriptorCouchDatabase){
+        // XXX WTF do we do here?
+        //SBCouchDatabase *couchDatabase = [navDescriptor couchDatabase];
+        //NSEnumerator *couchResults = [couchDatabase allDocsInBatchesOf:100];
+        // This call will set self as the data source to the NSOutlineView. This may or may not be 
+        // a good approach. 
+        return [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults navContribution:self];
+    }
+        
     return nil;
 }
 

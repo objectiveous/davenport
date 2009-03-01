@@ -17,12 +17,6 @@
 -(NSTreeNode *) addChildNodeWithObject:(id)object;
 -(NSDictionary *)asDictionary;
 #pragma mark -
-// TODO These should have better names
--(NSString*) deriveDocumentIdentity;
--(NSString*) deriveDatabaseName;
-//-(NSString*) theNodesDesignDocument;
--(NSString*) deriveDesignDocumentPath;
-//-(NSSTring*) viewDocumentPath;
 
 -(NSString*) prettyPrint;
 -(void)logTree;

@@ -23,6 +23,7 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
 
 @implementation TPPlugin
 
+@synthesize bundle;
 @synthesize currentItem;
 @synthesize resourceFactory;
 
@@ -55,7 +56,7 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
 #pragma mark -
 #pragma mark DPContributionPlugin Protocol 
 -(void)start{
-    
+    self.bundle = [NSBundle bundleForClass:[self class]];
     queue = [[NSOperationQueue alloc] init];
     TPDatabaseInstallerOperation *installOperation = [[TPDatabaseInstallerOperation alloc] init];
     TPLoadNavigationOperation *loadNavOperation = [[TPLoadNavigationOperation alloc] initWithResourceFactory:self.resourceFactory];
@@ -63,8 +64,7 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
     
     // Would it make sense to use a queue held by the app delegate. Something like this: 
     //NSOperationQueue* myQueue = [[[NSApplication sharedApplication] delegate] myOperationQueue];
-    
-    
+        
     // XXX What do we do if this fails?
     [queue addOperation:loadNavOperation];
     [queue addOperation:installOperation];
@@ -73,28 +73,24 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
     [installOperation release];
     [loadNavOperation release];
     [queue release];
-    
-    // SVMainWindowController will recieve this notification and call the navigationContribution: selector on self and then 
-    // add this plugins lefthand navigation contributions to the Davenport shell. 
-     NSLog(@"---> %@", DPContributionPluginDidLoadNavigationItemsNotification);
-    
-   
-    
+        
 }
 
 -(NSTreeNode*)navigationContribution{
     return navContribution;
 }
 
--(NSViewController*)mainSectionContribution{
-         
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSLog(@"Bundle info : %@", bundle);
-    NSViewController *controller;
+-(DPNavigationDescriptorTypes)descriptorTypeForCurrentItem{    
     TPBaseDescriptor *selectedDescriptor = (TPBaseDescriptor*) [currentItem representedObject];
     DPNavigationDescriptorTypes descType = [selectedDescriptor type];
-    
+    return descType;
+}
 
+
+-(NSViewController*)contributionMainViewController{        
+    DPNavigationDescriptorTypes descType = [self descriptorTypeForCurrentItem];    
+    NSViewController *controller;
+    
    if(descType == DPDescriptorPluginProvided){                
         // controller = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor withItem:self.currentItem];
 
@@ -114,6 +110,12 @@ static NSString *PLUGIN_NODE_TASK      = @"task";
     return controller;
 }
 
+-(NSViewController*)contributionInspectorViewController{
+    id <DPContributionNavigationDescriptor> navDescriptor = [self.currentItem representedObject];
+    NSViewController *theMagicController = [ navDescriptor contributionInspectorViewController];
+    
+    return theMagicController;        
+}
 #pragma mark -
 
 

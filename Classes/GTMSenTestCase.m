@@ -196,7 +196,6 @@ NSString * const SenTestFailureException = @"SenTestFailureException";
 
 @implementation GTMTestCase : SenTestCase
 - (void) invokeTest {
-  NSLog(@"XXXXXXXXXXXXXXXXXX");
   Class devLogClass = NSClassFromString(@"GTMUnitTestDevLog");
   if (devLogClass) {
     [devLogClass performSelector:@selector(enableTracking)];

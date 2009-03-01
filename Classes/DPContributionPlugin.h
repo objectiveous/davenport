@@ -51,8 +51,16 @@
 /// Is called whenever a user selects a navigation item that has been contributed by this plugin. 
 -(void)selectionDidChange:(NSTreeNode*)item;
 
-/// This is called after selectionDidChange. 
--(NSViewController*)mainSectionContribution;
+/// This is called after selectionDidChange.
+/// XXX These two calls are to be moved into the NavDescriptor protocol 
+/// so that the main controller can simply ask the NavDescriptors what 
+/// view controllers they should be using. 
+//-(NSViewController*)bodyControllerContribution;
+//-(NSViewController*)inspectorControllerContribution;
+
+- (NSViewController*) contributionInspectorViewController;
+- (NSViewController*) contributionMainViewController;
+
 
 // 
 // @optional 

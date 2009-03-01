@@ -20,7 +20,6 @@
 		540089DD0F30C040002D56A4 /* SVPathControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C10F30C040002D56A4 /* SVPathControl.m */; };
 		540089DE0F30C040002D56A4 /* SVQueryResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */; };
 		540089E00F30C040002D56A4 /* SVSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 540089C70F30C040002D56A4 /* SVSourceListCell.m */; };
-		540089FD0F30C36F002D56A4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54008A150F30C458002D56A4 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BD0F1DA33D002AC9E5 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
 		540108BF0F1DA343002AC9E5 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
@@ -114,7 +113,6 @@
 		544480BC0F4DA0AD0051AA83 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		544480C30F4DA0D20051AA83 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		544481440F4DC9870051AA83 /* TPDatabaseInstallerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 544481430F4DC9870051AA83 /* TPDatabaseInstallerOperation.m */; };
-		544481600F4DCC340051AA83 /* TPDatabaseInstallerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444815F0F4DCC340051AA83 /* TPDatabaseInstallerTest.m */; };
 		5444825D0F4E109B0051AA83 /* TPPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 543F9F160F46114400E1559C /* TPPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		544528F60F42801C00AB1845 /* SVSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544528F50F42801C00AB1845 /* SVSourceView.m */; };
 		544528F70F42801C00AB1845 /* SVSourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544528F50F42801C00AB1845 /* SVSourceView.m */; };
@@ -174,7 +172,13 @@
 		54BC49FB0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
 		54BC49FC0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
-		54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		54DA6F670F590201009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		54DA6F6A0F590273009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
+		54DA70090F590A8C009C3D91 /* SVFetchQueryInfoOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */; };
+		54DA70390F590DB5009C3D91 /* SVCouchDocumentTreeNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */; };
+		54DA703B0F590DE3009C3D91 /* SVFetchServerInfoOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */; };
+		54DA70430F590F09009C3D91 /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */; };
+		54DA70490F591031009C3D91 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */; };
 		54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		54F73B570F1CDC3E00B7B9F4 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
@@ -304,9 +308,7 @@
 		540089AC0F30C040002D56A4 /* SVBreadCrumbCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBreadCrumbCell.m; sourceTree = "<group>"; };
 		540089AD0F30C040002D56A4 /* SVControlBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVControlBarView.h; sourceTree = "<group>"; };
 		540089AE0F30C040002D56A4 /* SVControlBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVControlBarView.m; sourceTree = "<group>"; };
-		540089AF0F30C040002D56A4 /* SVCouchDbFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCouchDbFrameworkTest.m; sourceTree = "<group>"; };
 		540089B00F30C040002D56A4 /* SVInspectorDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVInspectorDocumentController.h; sourceTree = "<group>"; };
-		540089B20F30C040002D56A4 /* SVCreateAndLoadSampleDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVCreateAndLoadSampleDatabaseTest.m; sourceTree = "<group>"; };
 		540089B50F30C040002D56A4 /* SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDavenport.h; sourceTree = "<group>"; };
 		540089B60F30C040002D56A4 /* SVDocumentKeyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDocumentKeyCell.h; sourceTree = "<group>"; };
 		540089B70F30C040002D56A4 /* SVDocumentKeyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDocumentKeyCell.m; sourceTree = "<group>"; };
@@ -314,8 +316,6 @@
 		540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchServerInfoOperation.m; sourceTree = "<group>"; };
 		540089BA0F30C040002D56A4 /* SVDesignDocumentEditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVDesignDocumentEditorController.h; sourceTree = "<group>"; };
 		540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVDesignDocumentEditorController.m; sourceTree = "<group>"; };
-		540089BC0F30C040002D56A4 /* SVJsonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJsonTest.m; sourceTree = "<group>"; };
-		540089BD0F30C040002D56A4 /* SVLoadDataAtStartupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVLoadDataAtStartupTest.m; sourceTree = "<group>"; };
 		540089BE0F30C040002D56A4 /* SVMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMainWindowController.h; sourceTree = "<group>"; };
 		540089BF0F30C040002D56A4 /* SVMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVMainWindowController.m; sourceTree = "<group>"; };
 		540089C00F30C040002D56A4 /* SVPathControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPathControl.h; sourceTree = "<group>"; };
@@ -457,8 +457,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DA6F670F590201009C3D91 /* CouchObjC.framework in Frameworks */,
 				5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */,
-				54F739D20F1BEA4C00B7B9F4 /* CouchObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,8 +475,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DA6F6A0F590273009C3D91 /* CouchObjC.framework in Frameworks */,
 				54008A150F30C458002D56A4 /* JSON.framework in Frameworks */,
-				540089FD0F30C36F002D56A4 /* CouchObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,10 +610,6 @@
 				54008A1D0F30C4A3002D56A4 /* Integration */,
 				54008A1C0F30C49D002D56A4 /* Unit */,
 				54008A170F30C482002D56A4 /* GTMN */,
-				540089BD0F30C040002D56A4 /* SVLoadDataAtStartupTest.m */,
-				540089BC0F30C040002D56A4 /* SVJsonTest.m */,
-				540089AF0F30C040002D56A4 /* SVCouchDbFrameworkTest.m */,
-				540089B20F30C040002D56A4 /* SVCreateAndLoadSampleDatabaseTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -695,11 +691,11 @@
 			children = (
 				544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */,
 				544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */,
-				544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */,
 				549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */,
+				544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */,
 				549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */,
-				549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */,
 				54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */,
+				549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */,
 			);
 			name = Integration;
 			sourceTree = "<group>";
@@ -1292,7 +1288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */,
-				544481600F4DCC340051AA83 /* TPDatabaseInstallerTest.m in Sources */,
+				54DA703B0F590DE3009C3D91 /* SVFetchServerInfoOperationTest.m in Sources */,
+				54DA70390F590DB5009C3D91 /* SVCouchDocumentTreeNodeTest.m in Sources */,
+				54DA70090F590A8C009C3D91 /* SVFetchQueryInfoOperationTest.m in Sources */,
+				54DA70430F590F09009C3D91 /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */,
+				54DA70490F591031009C3D91 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1578,14 +1578,15 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-					"\\\"$(SRCROOT)\\\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1623,9 +1624,11 @@
 					"\\\"$(SRCROOT)\\\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
@@ -1720,6 +1723,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1762,6 +1766,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../couchobj/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

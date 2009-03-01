@@ -20,7 +20,6 @@
     STAssertNotNULL(response, @"Missing response");
     STAssertTrue(response.ok, @"Response not okay");
     SVDebug(@"response ", response.name);
-    leaveDatabase = YES;
 }
 
 

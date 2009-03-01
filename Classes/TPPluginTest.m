@@ -31,17 +31,23 @@
     TPPlugin *plugin = [principalClass new];
     STAssertNotNil(plugin, @"could not load TPPlugin");
     
-    id descriptor = [[[[bundle classNamed:@"TPBaseDescriptor"] alloc] initWithPluginID:[plugin pluginID]
-                                                                         label:@"US Collapse"
-                                                                      identity:@"Collapse"
-                                                                descriptorType:TPNavigationDescriptorDesignDoc                                   
-                                                                         group:NO] autorelease];
-        
-    NSTreeNode *treeNode = [NSTreeNode treeNodeWithRepresentedObject:descriptor];
+    Class tpDesc = [bundle classNamed:@"TPBaseDescriptor"];
+    
+    // XXX Not sure what to make of this warning. 
+    id descriptor = [[tpDesc alloc] initWithPluginID:[plugin pluginID] 
+                                               label:@"XXX" 
+                                            identity:@"XXX" 
+                                      descriptorType:DPDescriptorCouchDesign 
+                                     resourceFactory:self 
+                                               group:NO];
+    STAssertNotNil(descriptor, nil);
 
+    NSTreeNode *treeNode = [NSTreeNode treeNodeWithRepresentedObject:descriptor];
     [plugin setCurrentItem:treeNode];
     NSViewController *viewController = [plugin mainSectionContribution];
-    STAssertNotNil(viewController,@"asdf");
+    STAssertNotNil(viewController,nil);
+    [descriptor release];
+    [plugin release];
 }
 
 @end

@@ -30,8 +30,8 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
     leaveDatabase = false;
     // Better safe than sorry
     srandom(time(NULL));
-    couchServer = [[SBCouchServer alloc] initWithHost:@"localhost" port:5984];
-    
+    self.couchServer = [SBCouchServer new];
+    STAssertNotNil(couchServer, @"Could not create couchServer");
     NSString *name = [NSString stringWithFormat:@"it-for-davenport-%u", random()];
     
     if([couchServer createDatabase:name]){
@@ -44,7 +44,7 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
 -(SBCouchResponse*)provisionViews{
     SBCouchView *view = [[SBCouchView alloc] initWithName:@"totals" andMap:MAP_FUNCTION andReduce:REDUCE_FUNCTION];
     
-    SBCouchDesignDocument *designDocument = [[SBCouchDesignDocument alloc] initWithDesignDomain:DAVENPORT_TEST_DESIGN_NAME];
+    SBCouchDesignDocument *designDocument = [[SBCouchDesignDocument alloc] initWithDesignDomain:DAVENPORT_TEST_DESIGN_NAME couchDatabase:self.couchDatabase];
     [designDocument addView:view withName:DAVENPORT_TEST_VIEW_NAME_1];
     [designDocument addView:view withName:DAVENPORT_TEST_VIEW_NAME_2];
     [designDocument addView:view withName:DAVENPORT_TEST_VIEW_NAME_3];
@@ -68,7 +68,7 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
 }
 
 - (void)loadDavenportPlugins{
-    loadedPlugins = [[NSMutableDictionary alloc] init];
+    loadedPlugins = [[[NSMutableDictionary alloc] init] autorelease] ;
     SVPluginContributionLoaderOperation *pluginLoader = [[SVPluginContributionLoaderOperation alloc] init];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -79,6 +79,8 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
         NSBundle *bundle = [NSBundle bundleForClass:[plugin class] ];
         [self.loadedPlugins setObject:bundle forKey:[plugin pluginID]]; 
     }        
+    
+    [pluginLoader release];
     [queue release];     
 }
 @end

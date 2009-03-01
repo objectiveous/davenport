@@ -10,7 +10,7 @@
 #import "TPLoadNavigationOperation.h"
 #import "NSTreeNode+SVDavenport.h"
 
-@interface TPLoadNavigationOperationTest : SVAbstractIntegrationTest{
+@interface TPLoadNavigationOperationTest : SVAbstractIntegrationTest <DPResourceFactory>{
     TPLoadNavigationOperation *loadNavOperation;
 }
 
@@ -23,7 +23,7 @@
     [self loadDavenportPlugins];
     NSBundle *bundle = [self.loadedPlugins objectForKey:@"TPPlugin"];
     Class operation = [bundle classNamed:@"TPLoadNavigationOperation"];
-    loadNavOperation = [[operation alloc] init];
+    loadNavOperation = [[operation alloc] initWithResourceFactory:self];
 }
 
 -(void)tearDown{
@@ -43,6 +43,12 @@
 
     [[loadNavOperation rootContributionNode] logTree];
     [queue release];
+}
+
+#pragma mark -
+#pragma mark DPResourceFactory Protocol 
+-(id)namedResource:(DPSharedResources)resourceName navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
+    return nil;
 }
 
 @end

@@ -17,16 +17,16 @@
     NSLog(@" START WTF WTF");
     SVDebug(@"WTF");
     NSLog(@" END WTF WTF");
-    SBCouchDatabase *couchDatabase = [couchServer database:@"sofa-blog"];
+    //SBCouchDatabase *couchDatabase = [couchServer database:@"sofa-blog"];
 
-    NSEnumerator *resultSet = [couchDatabase allDocsInBatchesOf:10];
+    NSEnumerator *resultSet = [self.couchDatabase allDocsInBatchesOf:10];
     NSDictionary *document;
     while ((document = [resultSet nextObject])) {
         SVDebug(@"--> %@", document);
         
         NSString *documentIdentity = [document objectForKey:@"id"];
         
-       SBCouchDocument *couchDocument = [couchDatabase getDocument:documentIdentity 
+       SBCouchDocument *couchDocument = [self.couchDatabase getDocument:documentIdentity 
                                                  withRevisionCount:YES 
                                                            andInfo:YES 
                                                           revision:nil];

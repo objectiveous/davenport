@@ -111,4 +111,10 @@
     delegate = newDelegate;
 }
 
+#pragma mark -
+#pragma mark DPSharedController Protocol Support
+-(void)provision:(id)configurationData{
+    self.designDocument = configurationData;
+}
+
 @end

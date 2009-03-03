@@ -9,20 +9,22 @@
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/CouchObjC.h>
 #import "DPContributionNavigationDescriptor.h"
+#import "DPSharedController.h"
 
-@interface SVQueryResultController : NSViewController {
+
+@interface SVQueryResultController : NSViewController <DPSharedController>{
     NSString               *databaseName;
-    NSEnumerator           *queryResult;
+    SBCouchEnumerator      *queryResult;
     SBCouchDatabase        *couchDatabase;
     IBOutlet NSOutlineView *viewResultOutlineView;
 }
 
 @property (copy) NSString            *databaseName;
-@property (retain) NSEnumerator      *queryResult;
+@property (retain) SBCouchEnumerator *queryResult;
 @property (retain) SBCouchDatabase   *couchDatabase;
 @property (retain) NSOutlineView     *viewResultOutlineView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchEnumeration:(NSEnumerator*)anSBCouchEnumerator;
-- (void)showViewResults:(SBCouchEnumerator*)viewResults;
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchEnumeration:(NSEnumerator*)anSBCouchEnumerator;
+
 @end

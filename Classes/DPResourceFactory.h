@@ -30,6 +30,5 @@ typedef enum sharedResources{
  
 */
 @protocol DPResourceFactory 
--(id)namedResource:(DPSharedResources)resourceName navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
-
+-(id)namedResource:(DPSharedResources)resourceName;
 @end

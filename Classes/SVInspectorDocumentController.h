@@ -43,7 +43,7 @@
 @property NSInteger currentRevision;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchDocument:(NSDictionary *)couchDBDocument couchDatabase:(SBCouchDatabase*)couchDB;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchDocument:(SBCouchDocument *)couchDBDocument couchDatabase:(SBCouchDatabase*)couchDB;
 
 -(IBAction)showPreviousRevisionAction:(id)sender;
 -(IBAction)showNextRevisionAction:(id)sender;

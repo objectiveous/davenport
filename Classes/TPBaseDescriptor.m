@@ -64,16 +64,19 @@
 
 - (NSViewController*) contributionMainViewController{
     if(self.privateType == DPDescriptorCouchDesign){
-        self.bodyController = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor navContribution:self];
+        self.bodyController = (NSViewController*) [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor];
+        NSString *urlPath = [self identity];
+        id designDoc = [self.couchDatabase getDesignDocument:urlPath];
+        [self.bodyController provision:designDoc];
     }
     if(self.privateType == DPDescriptorCouchView) {
-        self.bodyController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults navContribution:self];
+        self.bodyController = (NSViewController*) [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];
     }
     return self.bodyController;
 }
 
 - (NSViewController*) contributionInspectorViewController{
-    self.inspectorController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults navContribution:self];
+    self.inspectorController = (NSViewController*) [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];
     // Now how do you say something like the following in a generic way: 
     // [self.bodyController setDelegate:self.inspectorController];
     // 

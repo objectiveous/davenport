@@ -57,14 +57,17 @@
     
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchDocument:(NSDictionary *)couchDBDocument couchDatabase:(SBCouchDatabase*)couchDB{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchDocument:(SBCouchDocument *)couchDBDocument couchDatabase:(SBCouchDatabase*)couchDB{
     
+
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){                
-        [self setCouchDocument:[couchDB getDocument:[couchDBDocument objectForKey:@"id"] 
-                                  withRevisionCount:YES 
-                                            andInfo:YES 
-                                           revision:nil]];
+    if(self){  
+        
+        SBCouchDocument *couchDoc = [couchDBDocument getWithRevisionCount:YES 
+                                                                  andInfo:YES 
+                                                                 revision:nil];
+        
+        self.couchDocument = couchDoc;
         [self setRootNode:[self.couchDocument asNSTreeNode]];
         [self setDocumentIdentity:self.couchDocument.identity];
         [self setCouchDatabase:couchDB];

@@ -10,8 +10,9 @@
 #import "SVDesignDocumentEditorController.h"
 #import <CouchObjC/CouchObjC.h>
 #import "DPContributionNavigationDescriptor.h"
+#import "DPSharedController.h"
 
-@interface SVDesignDocumentEditorController : NSViewController {
+@interface SVDesignDocumentEditorController : NSViewController <DPSharedController>{
     
     IBOutlet NSTextView            *mapTextView;
     IBOutlet NSTextView            *reduceTextView;

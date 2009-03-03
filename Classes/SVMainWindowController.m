@@ -489,18 +489,9 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 
--(void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor{
-    
+-(void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor{    
     NSViewController *queryResultController = [navDescriptor contributionMainViewController];
 
-    /*
-    SBCouchDatabase *couchDatabase = [navDescriptor couchDatabase];
-    NSEnumerator *couchResults = [couchDatabase allDocsInBatchesOf:100];
-    
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
-                                                                                               bundle:nil 
-                                                                                     couchEnumeration:couchResults];
-    */
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
     }
@@ -859,17 +850,16 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 #pragma mark -
 #pragma mark DPResourceFactory Protocol 
--(id)namedResource:(DPSharedResources)resourceName navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
+-(id)namedResource:(DPSharedResources)resourceName{
     // XXX Switch statement....please. 
     if(resourceName == DPSharedViewContollerNamedFunctionEditor){
         return [[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor
-                                                                       bundle:self.bundle
-                                                                     navContribution:aNavContribution];
+                                                                       bundle:self.bundle];
         
     }else if(resourceName == DPSharedViewContollerNamedViewResults){
         return [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                          bundle:self.bundle
-                                                navContribution:aNavContribution];
+                                                navContribution:nil];
     } 
     return nil;
 }

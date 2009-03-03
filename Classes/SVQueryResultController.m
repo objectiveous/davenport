@@ -12,10 +12,12 @@
 #import <JSON/JSON.h>
 #import "SVInspectorDocumentController.h"
 #import "NSTreeNode+SVDavenport.h"
+#import "DPSharedController.h"
+
 
 @interface  SVQueryResultController (Private)
 - (NSString*)stripNewLines:(NSString*)string;
-- (void) handleCouchDocumentSelected:(NSDictionary*)couchDocument;
+- (void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument;
 @end
 
 
@@ -28,6 +30,7 @@
 
 #pragma mark -
 
+/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchEnumeration:(NSEnumerator*)anNSEnumerator{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
@@ -35,6 +38,8 @@
     }
     return self;
 }
+*/
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
@@ -46,7 +51,7 @@
 
 // Since our treeNodes get stuffed w/ SVAbstractDescriptors, and because these descriptors have the identity 
 // of the resource, we can build the URL that that any particular TreeNeds represents. 
-
+/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){        
@@ -68,7 +73,7 @@
     } 
     return self;
 }
-
+*/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
@@ -177,7 +182,7 @@
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification{
     NSOutlineView *object = [notification object];
 
-    NSDictionary *couchDocument = [object itemAtRow:[object selectedRow]];
+    SBCouchDocument *couchDocument = [object itemAtRow:[object selectedRow]];
     SVDebug(@"selected document [%@]", [couchDocument objectForKey:@"key"] );
     
     // TODO make notification name a define
@@ -189,7 +194,7 @@
 
 
 // XXX We need to be caching here. 
--(void) handleCouchDocumentSelected:(NSDictionary*)couchDocument{
+-(void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument{
     SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
     NSView *inspectorView = [mainWindowController inspectorView]; 
 
@@ -222,9 +227,13 @@
         [documentView setFrame:frame];
 }
 
-- (void)showViewResults:(SBCouchEnumerator*)viewResults{
-    self.queryResult = viewResults;
+#pragma mark -
+#pragma mark DPSharedController Protocol Support
+-(void)provision:(id)configurationData{
+    if(! [configurationData isKindOfClass:[SBCouchEnumerator class]])
+        return;
+
+    self.queryResult = configurationData;
     [self.viewResultOutlineView reloadData];
 }
-
 @end

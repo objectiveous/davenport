@@ -22,14 +22,14 @@
 @synthesize documentOutlineView;
 @synthesize versionTextField;
 @synthesize couchDocument;
-@synthesize couchDatabase;
+//@synthesize couchDatabase;
 @synthesize previousRevisionButton;
 @synthesize nextRevisionButton;
 @synthesize revisions;
 @synthesize rootNode;
 @synthesize currentRevision;
 @synthesize numberOfRevisions;
-@synthesize documentIdentity;
+//@synthesize documentIdentity;
 @synthesize saveButton;
 
 #pragma mark -
@@ -69,17 +69,14 @@
         
         self.couchDocument = couchDoc;
         [self setRootNode:[self.couchDocument asNSTreeNode]];
-        [self setDocumentIdentity:self.couchDocument.identity];
-        [self setCouchDatabase:couchDB];
+        //[self setDocumentIdentity:[self.couchDocument identity]];
+        //[self setCouchDatabase:couchDB];
     }
     return self;
 }
 
 -(void)reloadDocument{
-    [self setCouchDocument:[self.couchDatabase getDocument:self.documentIdentity
-                            withRevisionCount:YES 
-                            andInfo:YES 
-                            revision:nil]];
+    [self setCouchDocument:[self.couchDocument getWithRevisionCount:YES andInfo:YES revision:nil]];
     
     assert(self.couchDocument);
     [self setRootNode:[self.couchDocument asNSTreeNode]];
@@ -178,64 +175,57 @@
     [self reloadDocument];
 }
 -(IBAction)saveDocumentAction:(id)sender{
-    // XXX Mark this document as needing updates and don't let folks update past revisions. 
-    SBCouchResponse *response = [self.couchDatabase putDocument:[rootNode asDictionary] named:[self.couchDocument identity]];
+    // Seems like we should be able to keep the rootNode and the couchDocument in sync and not have 
+    // to waste cycles creating a new document just to have something to post.
+    SBCouchDocument *synchedDocument = [[SBCouchDocument alloc] initWithNSDictionary:[self.rootNode asDictionary] couchDatabase:[self.couchDocument couchDatabase]];
+    
+    SBCouchResponse *response = [self.couchDocument putDocument:synchedDocument];
        
     if(response.ok){
         [self reloadDocument];
         [self.saveButton setImage:[NSImage imageNamed:@"button-edit.pdf"]];
-    }else{
-        
     }
+    [synchedDocument release];
 }
-
 -(IBAction)showPreviousRevisionAction:(id)sender{
     NSString *previousRevision = [self.couchDocument previousRevision];
     SVDebug(@"need to show revision %@", previousRevision);
     
-    NSString *documentId = [self.couchDocument objectForKey:@"_id"];
-    SBCouchDocument *document = [[self couchDatabase] getDocument:documentId 
-                                                withRevisionCount:YES 
-                                                          andInfo:YES
-                                                         revision:previousRevision];
+    //NSString *documentId = [self.couchDocument objectForKey:@"_id"];
+    SBCouchDocument *previousDoc = [self.couchDocument getWithRevisionCount:YES andInfo:YES revision:previousRevision];
     
     [couchDocument release];    
     couchDocument = nil;
     
-    [self setCouchDocument:document];    
+    self.couchDocument = previousDoc;
     
     currentRevision--;
     [self updateRevisionInformationLabelAndNavigation];           
-    
+    [self setRootNode:[self.couchDocument asNSTreeNode]];
     [self.documentOutlineView reloadData];
+    
+    
     //[self.documentOutlineView setDataSource:self];
-    //[[self view] setNeedsDisplay:YES]; 
+    [[self view] setNeedsDisplay:YES]; 
     
     
 }
 
--(IBAction)showNextRevisionAction:(id)sender{
-    
+-(IBAction)showNextRevisionAction:(id)sender{    
     int realCurrentIndex = numberOfRevisions - currentRevision;    
     id nextRevision = [self.revisions objectAtIndex:realCurrentIndex-1];
+        
+    //NSString *documentId = [self.couchDocument identity];
+    SBCouchDocument *document = [self.couchDocument getWithRevisionCount:YES andInfo:YES revision:nextRevision];
     
-    
-    NSString *documentId = [self.couchDocument identity];
-    SBCouchDocument *document = [[self couchDatabase] getDocument:documentId 
-                                                withRevisionCount:YES 
-                                                          andInfo:YES
-                                                         revision:nextRevision];
-    
-    [couchDocument release];    
-    couchDocument = nil;    
-    [self setCouchDocument:document];        
+    [couchDocument release];
+    couchDocument = nil;
+    [self setCouchDocument:document];
     currentRevision++;
-    [self updateRevisionInformationLabelAndNavigation];           
-    
+    [self updateRevisionInformationLabelAndNavigation];
+    [self setRootNode:[self.couchDocument asNSTreeNode]];
     [self.documentOutlineView reloadData];
     [self.documentOutlineView setDataSource:self];
-    //[[self view] setNeedsDisplay:YES]; 
-    
 }
 
 #pragma mark -

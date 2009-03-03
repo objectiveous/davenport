@@ -15,9 +15,9 @@
     IBOutlet NSButton             *saveButton;
     
     SBCouchDocument               *couchDocument;
-    SBCouchDatabase               *couchDatabase;
+    //SBCouchDatabase               *couchDatabase;
     NSTreeNode                    *rootNode;    
-    NSString                      *documentIdentity;
+    //NSString                      *documentIdentity;
     
     // The number of revisions for the doc we are showing. Note, documents 
     // only know about past revisions, so the next revision of couchDocuemnt 
@@ -31,14 +31,14 @@
 @property (retain) SVControlBarView     *documentControlBar;
 @property (retain) NSOutlineView        *documentOutlineView;
 @property (retain) SBCouchDocument      *couchDocument;
-@property (retain) SBCouchDatabase      *couchDatabase;
+//@property (retain) SBCouchDatabase      *couchDatabase;
 @property (retain) NSTextField          *versionTextField;
 @property (retain) NSButton             *nextRevisionButton;
 @property (retain) NSButton             *previousRevisionButton;
 @property (retain) NSButton             *saveButton;
 @property (retain) NSArray              *revisions;
 @property (retain) NSTreeNode           *rootNode;
-@property (retain) NSString             *documentIdentity;
+//@property (retain) NSString             *documentIdentity;
 @property NSInteger numberOfRevisions;
 @property NSInteger currentRevision;
 

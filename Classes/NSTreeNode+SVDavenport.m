@@ -22,26 +22,31 @@
 @implementation NSTreeNode (SVDavenport)
 
 -(NSTreeNode *) addCouchServerSection:(NSString *)sectionName{
-    SVBaseNavigationDescriptor *section = [[[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName type:DPDescriptorCouchServer] autorelease];
+    SVBaseNavigationDescriptor *section = [[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName
+                                                                                andIdentity:sectionName
+                                                                                       type:DPDescriptorCouchServer];
     [section setGroupItem:YES];
-    return [self addChildNodeWithObject:section]; 
+    return [self addChildNodeWithObject:section];
 }
 
 -(NSTreeNode *) addSection:(NSString *)sectionName{
-    SVBaseNavigationDescriptor *section = [[[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName andIdentity:sectionName type:DPDescriptorSection] autorelease];
+    SVBaseNavigationDescriptor *section = [[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName
+                                                                                andIdentity:sectionName
+                                                                                       type:DPDescriptorSection];
     [section setGroupItem:YES];
-    return [self addChildNodeWithObject:section];    
+    return [self addChildNodeWithObject:section];
 }
 
 -(NSTreeNode *) addDatabase:(NSString *)databaseName{
-    SVBaseNavigationDescriptor *database = [[[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName 
-                                                                                  andIdentity:databaseName 
-                                                                                         type:DPDescriptorCouchDatabase] autorelease];
+    SVBaseNavigationDescriptor *database = [[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName
+                                                                                  andIdentity:databaseName
+                                                                                         type:DPDescriptorCouchDatabase];
     return [self addChildNodeWithObject:database];
 }
 
 -(NSTreeNode *) addChildNodeWithObject:(id)object{
-    NSTreeNode *node = [[[NSTreeNode alloc] initWithRepresentedObject:object] autorelease];
+    [object retain];
+    NSTreeNode *node = [[NSTreeNode alloc] initWithRepresentedObject:object];
     [[self mutableChildNodes] addObject:node];
     return node;
 }

@@ -9,7 +9,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="250"/>
-			<integer value="173"/>
+			<integer value="1" id="9"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -60,6 +60,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>320219C4-4AB4-406E-A93F-F8937958F4B2</string>
 							<string>672EC1D9-F4D4-4D04-8298-E8832BDA865D</string>
 							<string>Admin</string>
 							<string>BC32F91C-8B7B-4B62-B392-7F37BBE50E2C</string>
@@ -71,6 +72,28 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="NSToolbarItem" id="197721755">
+								<object class="NSMutableString" key="NSToolbarItemIdentifier">
+									<characters key="NS.bytes">320219C4-4AB4-406E-A93F-F8937958F4B2</characters>
+								</object>
+								<string key="NSToolbarItemLabel">Refresh View</string>
+								<string key="NSToolbarItemPaletteLabel">Refresh View</string>
+								<string key="NSToolbarItemToolTip"/>
+								<nil key="NSToolbarItemView"/>
+								<object class="NSCustomResource" key="NSToolbarItemImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">NSRefreshFreestandingTemplate</string>
+								</object>
+								<nil key="NSToolbarItemTarget"/>
+								<nil key="NSToolbarItemAction"/>
+								<string key="NSToolbarItemMinSize">{0, 0}</string>
+								<string key="NSToolbarItemMaxSize">{0, 0}</string>
+								<bool key="NSToolbarItemEnabled">YES</bool>
+								<bool key="NSToolbarItemAutovalidates">YES</bool>
+								<int key="NSToolbarItemTag">-1</int>
+								<bool key="NSToolbarIsUserRemovable">YES</bool>
+								<int key="NSToolbarItemVisibilityPriority">0</int>
+							</object>
 							<object class="NSToolbarItem" id="26259049">
 								<object class="NSMutableString" key="NSToolbarItemIdentifier">
 									<characters key="NS.bytes">672EC1D9-F4D4-4D04-8298-E8832BDA865D</characters>
@@ -273,6 +296,7 @@
 						<reference ref="130670380"/>
 						<reference ref="33536053"/>
 						<reference ref="26259049"/>
+						<reference ref="197721755"/>
 					</object>
 					<object class="NSMutableArray" key="NSToolbarIBDefaultItems">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -280,6 +304,7 @@
 						<reference ref="110377998"/>
 						<reference ref="144024805"/>
 						<reference ref="91031305"/>
+						<reference ref="197721755"/>
 						<reference ref="919223316"/>
 						<reference ref="26259049"/>
 						<reference ref="144024805"/>
@@ -518,7 +543,7 @@
 											<int key="tag">0</int>
 											<float key="minDimension">1.000000e+00</float>
 											<float key="maxDimension">1.000000e+06</float>
-											<double key="fraction">5.249023e-03</double>
+											<double key="fraction">3.051758e-04</double>
 											<bool key="canCollapse">NO</bool>
 										</object>
 									</object>
@@ -20917,7 +20942,7 @@ LS0tLS0tLQoKIA</bytes>
 														<int key="NSColorSpace">1</int>
 														<bytes key="NSRGB">MCAwIDEAA</bytes>
 													</object>
-													<integer value="1" id="9"/>
+													<reference ref="9"/>
 												</object>
 											</object>
 											<nil key="NSDefaultParagraphStyle"/>
@@ -21219,6 +21244,14 @@ LS0tLS0tLQoKIA</bytes>
 						<reference key="destination" ref="983586469"/>
 					</object>
 					<int key="connectionID">251</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">refreshDatabaseAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="197721755"/>
+					</object>
+					<int key="connectionID">254</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -21524,6 +21557,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 							<reference ref="130670380"/>
 							<reference ref="33536053"/>
 							<reference ref="26259049"/>
+							<reference ref="197721755"/>
 						</object>
 						<reference key="parent" ref="404275301"/>
 					</object>
@@ -21811,6 +21845,11 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 						<reference key="parent" ref="871216817"/>
 						<string key="objectName">Refresh</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">252</int>
+						<reference key="object" ref="197721755"/>
+						<reference key="parent" ref="808340149"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -21874,6 +21913,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>247.IBPluginDependency</string>
 					<string>248.IBPluginDependency</string>
 					<string>250.IBPluginDependency</string>
+					<string>252.IBPluginDependency</string>
 					<string>32.IBPluginDependency</string>
 					<string>68.CustomClassName</string>
 					<string>68.IBPluginDependency</string>
@@ -21884,15 +21924,15 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{332, 318}, {1024, 768}}</string>
+					<string>{{367, 333}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO" id="6"/>
 					<reference ref="6"/>
-					<string>{{332, 318}, {1024, 768}}</string>
+					<string>{{367, 333}, {1024, 768}}</string>
 					<boolean value="YES" id="5"/>
 					<reference ref="5"/>
 					<string>{1024, 768}</string>
-					<string>{{355, 1100}, {617, 0}}</string>
+					<string>{{378, 1064}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -21939,6 +21979,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>SVPathControl</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -21964,7 +22005,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">251</int>
+			<int key="maxID">254</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

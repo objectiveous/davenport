@@ -24,10 +24,11 @@
 @synthesize rootNode;
 @synthesize couchServer;
 
--(id) initWithCouchServer:(SBCouchServer *)server{
+-(id) initWithCouchServer:(SBCouchServer *)server rootTreeNode:(NSTreeNode*)rootTreeNode{
     self = [super init];
     if(self){
-        [self setCouchServer:server];
+        self.couchServer = server;
+        self.rootNode = rootTreeNode;
     }
     return self;
 }
@@ -46,16 +47,16 @@
     }
     fetchReturnedData = YES;
 
-    NSTreeNode *root = [[[NSTreeNode alloc] init] autorelease];        
+
     NSString *hostAndPort = [NSString stringWithFormat:@"%@:%i",self.couchServer.host, self.couchServer.port];
-    NSTreeNode *couchServerNode = [root addCouchServerSection:hostAndPort];
+    NSTreeNode *couchServerNode = [self.rootNode addCouchServerSection:hostAndPort];
 
     for(NSString *databaseName in databases){
         SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];
             
-        SVBaseNavigationDescriptor *databaseDescriptor = [[[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName
+        SVBaseNavigationDescriptor *databaseDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName
                                                                                               andIdentity:databaseName
-                                                                                                     type:DPDescriptorCouchDatabase] autorelease];
+                                                                                                     type:DPDescriptorCouchDatabase];
         
         databaseDescriptor.couchDatabase = couchDatabase;
         databaseDescriptor.resourceFactory = factory;
@@ -63,18 +64,21 @@
         NSTreeNode *databaseTreeNode = [couchServerNode addChildNodeWithObject:databaseDescriptor];
                 
         NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
-        SBCouchDocument *couchDesignDocument;        
+
+        /// XXX Here we should be storing the document in the descriptor. After all, we've already fetched the 
+        //      darn thing. Later we can use HTTP STATUS CODE 304 to determin if the doc has changed in order 
+        //      to keep things snappy. 
+        SBCouchDocument *couchDesignDocument;
         while((couchDesignDocument = [designDocs nextObject])){                        
            NSString *label = [couchDesignDocument.identity lastPathComponent];
-           SVBaseNavigationDescriptor *designDescriptor = [[[SVBaseNavigationDescriptor alloc] initWithLabel:label
-                                                                                              andIdentity:couchDesignDocument.identity
-                                                                                                     type:DPDescriptorCouchDesign] autorelease];
+           SVBaseNavigationDescriptor *designDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:label
+                                                                                                 andIdentity:couchDesignDocument.identity
+                                                                                                        type:DPDescriptorCouchDesign];
            designDescriptor.couchDatabase = couchDatabase;
            designDescriptor.resourceFactory = factory;
            [databaseTreeNode addChildNodeWithObject:designDescriptor];
         }
     }        
-    [self setRootNode:root];
 }
 
 -(BOOL)fetchReturnedData{

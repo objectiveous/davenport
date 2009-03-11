@@ -63,7 +63,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 @implementation SVMainWindowController
 
-//@synthesize rootNode;
+@synthesize rootNode;
 @synthesize urlImage;
 @synthesize sourceView;
 @synthesize dataViewController;
@@ -175,7 +175,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 -(void) dealloc{
     [urlImage release];
-    [rootNode release];
     [operationQueue release];
     [lock release];
     [rootNode release];
@@ -195,7 +194,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     }        
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {    
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
     if (item == nil)
         return NO;
     
@@ -212,25 +211,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
         
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
-        
-    //id <DPContributionNavigationDescriptor, NSObject> desc = [childNode representedObject];
 
-    // XXX THIS IS A GROSS HACK AND THE WORST POSSIBLE PLACE TO DO SUCH 
-    //     A THING AS ITS CALLED A LOT!!!
-    //int childNodeCount = [[childNode childNodes] count];
-    //if([desc type] == DPDescriptorCouchDesign && childNodeCount <= 0){
-        // XXX This works but not for option + cliking on the root node to expand all items. 
-        // might be better to load the views sooner. 
-        
-        // If the design documentent node has already been populated, 
-        // don't bother doing it again. It's possible that this could cause propblems 
-        // when we begin to support the creation of design docs in Davenport but until 
-        // that actually hapens, this should suffice. 
-        //if([[childNode childNodes] count] > 0)
-        //    return childNode;
-        
-      //  [self fetchViews:childNode];
-    //}
     return childNode;
 }
 
@@ -286,7 +267,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         
         // Now that we've got the top level elements, populate the design doc nodes. 
         // This might even be a good thing to put into an operation.        
-        [self loadViewNodes:rootNode];
+        //[self loadViewNodes:rootNode];
     } 
 }
 
@@ -372,6 +353,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item{
+    return YES;
     SVBaseNavigationDescriptor *desc = [item representedObject];
     if([desc type] == DPDescriptorCouchView){
         return NO;
@@ -792,7 +774,9 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 - (IBAction)refreshDatabaseAction:(id)sender{
-        
+    [lock lock];
+    [self.sourceView reloadData];
+    [lock unlock];
 }
 
 #pragma mark -
@@ -819,7 +803,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 #pragma mark - 
 - (void)autoExpandGroupItems{
-    for(NSTreeNode *contributionNode in [rootNode childNodes]){
+    for(NSTreeNode *contributionNode in [self.rootNode childNodes]){
         id representedObject = [contributionNode representedObject];
         if([representedObject conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
             if([representedObject isGroupItem])
@@ -833,19 +817,15 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 // We require a root node with no represented object. All children of this 
 // tree node will be added to the navigation tree's root. 
-- (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend{    
-    
-    [[rootNode mutableChildNodes] addObjectsFromArray:[treeToAppend childNodes]];
-    
+- (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend{
+    //[treeToAppend retain];
+    //        [[rootNode mutableChildNodes] addObjectsFromArray:[treeToAppend childNodes]];
     [lock lock];
-    [self.sourceView reloadData];        
+    [self.sourceView reloadData];
+    [self autoExpandGroupItems];
     [lock unlock];
-    
-    [self loadViewNodes:rootNode];
-    
-    for(NSTreeNode *node in [rootNode childNodes]){
-        [self.sourceView expandItem:node];  
-    }
+    //[self loadViewNodes:rootNode];
+    //[treeToAppend release];
 }
 
 #pragma mark -

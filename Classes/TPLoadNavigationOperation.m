@@ -65,8 +65,7 @@
         // VIEWS
         for(NSString *viewName in [[designDocWithViews views] allKeys]){
             NSString *viewIdentity = [NSString stringWithFormat:@"_view/%@/%@", [designDocIdentity lastPathComponent], viewName];
-            NSLog(@"==> %@ <===", viewIdentity);
-
+           
             // http://localhost:5984/cushion-tickets/_view/More%20Stuff/sprint?limit=30&group=true
             NSTreeNode *childNode = [designDocNode addChildWithLabel:viewName 
                                                             identity:viewIdentity

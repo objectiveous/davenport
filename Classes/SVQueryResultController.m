@@ -30,16 +30,6 @@
 
 #pragma mark -
 
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil couchEnumeration:(NSEnumerator*)anNSEnumerator{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-        self.queryResult = anNSEnumerator;
-    }
-    return self;
-}
-*/
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
@@ -49,31 +39,6 @@
     return self;
 }
 
-// Since our treeNodes get stuffed w/ SVAbstractDescriptors, and because these descriptors have the identity 
-// of the resource, we can build the URL that that any particular TreeNeds represents. 
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil treeNode:(NSTreeNode *)node{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){        
-        //[self setDatabaseName:[self theNodesDatabase:node]];
-        [self setDatabaseName:[node deriveDatabaseName]];
-        
-        //[self setDatabaseName:[self theNodesDatabase:node]];
-        //NSString *docId = [self theNodesDocumentIdentity:node];
-        NSString *docId = [node deriveDocumentIdentity];
-        
-        SBCouchServer *server = [[NSApp delegate] couchServer];  
-        SBCouchDatabase *database = [server database:self.databaseName];
-        
-        [self setQueryResult:(SBCouchEnumerator*) [database getViewEnumerator:docId]];
-        [self setCouchDatabase:database];
-        
-        //NSLog(@"queryResult [%@]", queryResult);
-        //NSLog(@"totalRows [%i]", [queryResult totalRows]);
-    } 
-    return self;
-}
-*/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
@@ -104,7 +69,9 @@
 #pragma mark NSOutlineViewDataSource delegate
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    return [queryResult totalRows];
+    // This isn't exactly correct as a GET could return fewer rows than the limit. 
+    // best way to this value is to actually as the SBCouchEnumerator. 
+    return [self.queryResult count];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {

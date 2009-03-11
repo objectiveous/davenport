@@ -11,6 +11,7 @@
 #import "SVFetchServerInfoOperation.h"
 #import "SVPluginContributionLoaderOperation.h"
 #import "DPContributionPlugin.h"
+#import "NSTreeNode+SVDavenport.h"
 
 @interface SVAppDelegate (Private)
 -(void)taskTerminated:(NSNotification *)note;
@@ -48,19 +49,21 @@ int LOCAL_PORT = 5984;
 
 - (void) loadMainWindow{
     SVDebug(@"loading MainWindow nib.");
+    mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+    [mainWindowController showWindow:self];
     
     if(LOCAL_PORT == 5983)
         [self launchCouchDB];
     else
         [self performFetchServerInfoOperation];     
     
-    mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
-   	[mainWindowController showWindow:self];
+    
+   	
 }
 
 - (void) performFetchServerInfoOperation {
     SVDebug(@"Queue'ing up a fetch operation"); 
-    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer];
+    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer rootTreeNode:mainWindowController.rootNode];
     
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
@@ -85,11 +88,14 @@ int LOCAL_PORT = 5984;
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){     
         NSTreeNode *sourceViewModelRootNode = [(SVFetchServerInfoOperation*)object rootNode];
+        //[sourceViewModelRootNode retain];
         if(sourceViewModelRootNode == nil){
-            [self performFetchServerInfoOperation];            
+            //[self performFetchServerInfoOperation];            
         }else{
+            NSLog(@"%@", [sourceViewModelRootNode prettyPrint]);
             [mainWindowController appendNSTreeNodeToNavigationRootNode:sourceViewModelRootNode];
         }
+        //[sourceViewModelRootNode release];
     } 
 }
 

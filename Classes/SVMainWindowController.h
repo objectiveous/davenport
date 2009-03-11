@@ -50,7 +50,7 @@
     NSBundle                          *bundle;
 }
 
-//@property (retain)  NSTreeNode                     *rootNode;
+@property (retain)  NSTreeNode                     *rootNode;
 @property (retain)  NSImage                        *urlImage;
 @property (nonatomic, retain) NSOutlineView        *sourceView;
 @property (nonatomic, retain) NSViewController     *dataViewController;

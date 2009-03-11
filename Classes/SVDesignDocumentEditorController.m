@@ -67,8 +67,10 @@
     
     NSEnumerator *viewResults = [view getEnumerator];
     
-    if ( [[self delegate] respondsToSelector:@selector(showViewResults:)] ) {
-        [[self delegate] showViewResults:viewResults]; 
+    // XXX We now have a protocol for this but the semantics are still ill defined. For example,
+    // does a call to provision always update a view? How can we be sure this will always work?
+    if ( [[self delegate] respondsToSelector:@selector(provision:)] ) {
+        [[self delegate] provision:viewResults]; 
     }    
 }
 

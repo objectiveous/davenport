@@ -17,10 +17,10 @@
     
 }
 
-@property (assign) NSTreeNode    *rootNode;
+@property (retain) NSTreeNode    *rootNode;
 @property (retain) SBCouchServer *couchServer;
 
--(id) initWithCouchServer:(SBCouchServer *)server;
+-(id) initWithCouchServer:(SBCouchServer *)server rootTreeNode:(NSTreeNode*)rootTreeNode;
 -(BOOL)fetchReturnedData;
 
 @end

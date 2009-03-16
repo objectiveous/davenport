@@ -18,7 +18,8 @@
 @synthesize reduceTextView;
 @synthesize viewComboBox;
 @synthesize designDocument;
-//@synthesize delegate;
+@synthesize saveButton;
+@synthesize saveAsButton;                       
 
 #pragma mark -
 
@@ -27,8 +28,7 @@
     if(self){
         SBCouchDatabase *couchDatabase = [aNavContribution couchDatabase];
         assert(couchDatabase);
-        NSString *urlPath = [aNavContribution identity];
-        self.designDocument = [couchDatabase getDesignDocument:urlPath];
+        self.designDocument = [[aNavContribution userInfo] objectForKey:@"couchobject"];        
     }    
     return self;
 }
@@ -49,10 +49,7 @@
         }        
         [self.viewComboBox selectItemAtIndex:0];
     }
-        
-   
-    //[[self.mapTextView textStorage] setFont:font];
-    //[[self.reduceTextView textStorage] setFont:font];      
+
 }
 #pragma mark - Actions
 - (IBAction)runCouchViewAction:(id)sender{
@@ -65,7 +62,7 @@
     // 404 /cushion-tickets/sprint?limit=30&group=true
     // 200 /cushion-tickets/_view/More%20Stuff/sprint
     
-    NSEnumerator *viewResults = [view getEnumerator];
+    NSEnumerator *viewResults = [view viewEnumerator];
     
     // XXX We now have a protocol for this but the semantics are still ill defined. For example,
     // does a call to provision always update a view? How can we be sure this will always work?
@@ -88,13 +85,12 @@
         if(!reduce)
             reduce = @"";
     } else if([menueItemViewName isEqualToString:SV_MENU_ITEM_NAME_TEMPORARY_VIEW]){
-        map = @"function(){XXXX from a template}";
+        map = @"function(){\n   emit(doc._id, doc);\n}";
     } else{
         map = [NSString stringWithFormat:@"--> %@", menueItemViewName];
     }
-        
+    // XXX Only create this once, please. 
     NSFont *font = [NSFont fontWithName:@"Monaco" size:18];
-    //NSFont *font = [NSFont fontWithName:@"Palatino-Roman" size:14.0];
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
         
     NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];
@@ -102,8 +98,16 @@
     
     [[self.mapTextView textStorage] setAttributedString:mapString];
     [[self.reduceTextView textStorage] setAttributedString:reduceString];
+    [self.saveButton highlight:NO];
     
 }
+
+- (void)textDidChange:(NSNotification *)aNotification{
+    id object = [aNotification object];
+    id userInfo = [aNotification userInfo];
+    [self.saveButton highlight:YES];
+}
+
 
 - (id)delegate {
     return delegate;

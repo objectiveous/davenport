@@ -29,8 +29,9 @@
     id <DPResourceFactory>      resourceFactory;
     BOOL                        groupItem;
     
-    NSViewController               *bodyController;
-    NSViewController               *inspectorController;
+    NSViewController            *bodyController;
+    NSViewController            *inspectorController;
+    NSDictionary                *userInfo;
     
 }
 
@@ -39,12 +40,12 @@
 @property (retain) NSString            *label;
 @property (retain) NSString            *identity;
 @property (retain) NSString            *pluginID;
-@property DPNavigationDescriptorTypes  type;
-@property DPNavigationDescriptorTypes  privateType;
-@property (retain) <DPResourceFactory> resourceFactory;
+@property DPNavigationDescriptorTypes   type;
+@property DPNavigationDescriptorTypes   privateType;
+@property (retain) <DPResourceFactory>  resourceFactory;
 @property (retain) NSViewController    *bodyController;
 @property (retain) NSViewController    *inspectorController;
-
+@property (retain) NSDictionary        *userInfo;
 
 @property BOOL groupItem;
 
@@ -57,5 +58,5 @@
 
 - (NSViewController*) contributionInspectorViewController;
 - (NSViewController*) contributionMainViewController;
-
+- (NSDictionary*)userInfo;
 @end

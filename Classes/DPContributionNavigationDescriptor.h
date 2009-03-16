@@ -26,6 +26,7 @@ typedef enum documentTypes{
 - (NSString*)identity;
 - (NSString*)pluginID;
 - (SBCouchDatabase*)couchDatabase;
+- (NSDictionary*)userInfo; // This is used to extend the descriptor, in the event you want to have extra properties. 
 - (DPNavigationDescriptorTypes)type;           
 - (NSViewController*) contributionInspectorViewController;
 - (NSViewController*) contributionMainViewController;

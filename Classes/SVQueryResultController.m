@@ -30,40 +30,6 @@
 
 #pragma mark -
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-        //[self.viewResultOutlineView setDataSource:navContribution];
-        //self.queryResult = anNSEnumerator;
-    } 
-    return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil databaseName:(NSString *)dbName{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-        [self setDatabaseName:dbName];
-        
-        SVDebug(@"*** dbName [%@]", [self databaseName]);
-        
-        
-        // TODO don't hard code this. Look it up somehow
-        //SBCouchServer *server = [[SBCouchServer alloc] initWithHost:@"localhost" port:LOCAL_PORT];
-        
-        // The delegate will know what database we are talking to. At least for now. 
-        SBCouchServer *server = [[NSApp delegate] couchServer];  
-        SBCouchDatabase *database = [server database:dbName];
-        [self setQueryResult:(SBCouchEnumerator*) [database allDocsInBatchesOf:10]];
-        [self setCouchDatabase:database];
-        
-        NSLog(@"queryResult [%@]", queryResult);
-        NSLog(@"totalRows [%i]", [queryResult totalRows]);
-    } 
-    return self;
-}
-
-
-#pragma mark -
 
 #pragma mark -
 #pragma mark NSOutlineViewDataSource delegate
@@ -167,9 +133,13 @@
 
     SVDebug(@"inspectorView [%@]", inspectorView);
     
+    // XXX Commenting this out as a test to see if we can keep views around and just 
+    //     re-provision them. 
+    /*
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];
     }
+    */
     
     // This should probably check to see if the inspector is showing. If its not, there's really 
     // no need to show the view. I'd fix it now but I need to think about how to how to handle 
@@ -197,10 +167,21 @@
 #pragma mark -
 #pragma mark DPSharedController Protocol Support
 -(void)provision:(id)configurationData{
+    
+    NSView *couchViewResultView = [self view];
+    // We don't have a parent view here because we were removed from. 
+    NSView *parentView = [couchViewResultView superview];
+    [parentView addSubview:couchViewResultView];
+    NSArray *subviews = [parentView subviews];
+    NSLog(@"subview count : %i ", [subviews count]);
+    
     if(! [configurationData isKindOfClass:[SBCouchEnumerator class]])
         return;
 
     self.queryResult = configurationData;
     [self.viewResultOutlineView reloadData];
 }
+
+
+
 @end

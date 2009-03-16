@@ -7,7 +7,7 @@
 //
 
 #import "TPBaseDescriptor.h"
-
+#import "DPSharedController.h"
 
 @implementation TPBaseDescriptor
 @synthesize label; 
@@ -21,6 +21,7 @@
 @synthesize couchDocument;
 @synthesize bodyController;
 @synthesize inspectorController;
+@synthesize userInfo;
 
 -(id)init{    
     self = [super init];
@@ -64,13 +65,21 @@
 
 - (NSViewController*) contributionMainViewController{
     if(self.privateType == DPDescriptorCouchDesign){
-        self.bodyController = (NSViewController*) [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor];
+        id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor];
         NSString *urlPath = [self identity];
         id designDoc = [self.couchDatabase getDesignDocument:urlPath];
-        [self.bodyController provision:designDoc];
+        [sharedController provision:designDoc];
+        self.bodyController = (NSViewController*) sharedController;
     }
     if(self.privateType == DPDescriptorCouchView) {
-        self.bodyController = (NSViewController*) [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];
+        id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];
+               
+        SBCouchQueryOptions *queryOptions = [SBCouchQueryOptions new];
+        SBCouchView *view = [[SBCouchView alloc] initWithName:[self identity] couchDatabase:self.couchDatabase queryOptions:queryOptions ];
+        SBCouchEnumerator *viewEnumerator = (SBCouchEnumerator*) [view viewEnumerator];
+        
+        [sharedController provision:viewEnumerator];
+        self.bodyController = (NSViewController*) sharedController;                
     }
     return self.bodyController;
 }
@@ -86,5 +95,8 @@
     }
        
     return self.inspectorController;
+}
+-(NSDictionary*)userInfo{
+    return userInfo;
 }
 @end

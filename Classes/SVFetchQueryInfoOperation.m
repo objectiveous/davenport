@@ -40,12 +40,13 @@
         // TODO gets called more than once needlessly. 
         self.fetchReturnedData = YES;
 
-        
         SVBaseNavigationDescriptor *desc = [[[SVBaseNavigationDescriptor alloc] initWithLabel:key andIdentity:key type:DPDescriptorCouchView] autorelease];    
-        NSTreeNode *viewNode = [NSTreeNode treeNodeWithRepresentedObject:desc];        
-        [[self.designDocTreeNode mutableChildNodes] addObject:viewNode];        
-    }
+        NSTreeNode *viewNode = [NSTreeNode treeNodeWithRepresentedObject:desc];
 
+        @synchronized(self.designDocTreeNode){
+            [[self.designDocTreeNode mutableChildNodes] addObject:viewNode];
+        }
+    }
 }
 
 -(BOOL)fetchReturnedData{

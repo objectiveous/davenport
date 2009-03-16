@@ -33,6 +33,15 @@
     return self;
 }
 
+// XXX A list of things I don't like with this method: 
+//     - Too long. 
+//     - Seems like SVBaseNavigationDescriptor could have a simpler constructor 
+//     - Seems to do more than one thing - needs some decomposition. 
+//     - I'm a little worried about loading in the view data as I think it impacts 
+//       performance. 
+//     - Return fetched data is obsolete 
+//
+//      Consider using anohter operaton to load Views. 
 - (void)main {
     SVDebug(@"Trying to fetch server information from localhot:5983");
     fetchReturnedData = NO;
@@ -54,29 +63,52 @@
     for(NSString *databaseName in databases){
         SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];
             
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
+        [userInfo setObject:couchDatabase forKey:@"couchobject"];
+        
         SVBaseNavigationDescriptor *databaseDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName
-                                                                                              andIdentity:databaseName
-                                                                                                     type:DPDescriptorCouchDatabase];
+                                                                                               andIdentity:databaseName
+                                                                                                      type:DPDescriptorCouchDatabase
+                                                                                                    userInfo:userInfo];
         
         databaseDescriptor.couchDatabase = couchDatabase;
         databaseDescriptor.resourceFactory = factory;
         
-        NSTreeNode *databaseTreeNode = [couchServerNode addChildNodeWithObject:databaseDescriptor];
-                
+        NSTreeNode *databaseTreeNode = [couchServerNode addChildNodeWithObject:databaseDescriptor];                
         NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
 
-        /// XXX Here we should be storing the document in the descriptor. After all, we've already fetched the 
-        //      darn thing. Later we can use HTTP STATUS CODE 304 to determin if the doc has changed in order 
-        //      to keep things snappy. 
-        SBCouchDocument *couchDesignDocument;
-        while((couchDesignDocument = [designDocs nextObject])){                        
-           NSString *label = [couchDesignDocument.identity lastPathComponent];
+        SBCouchDocument *couchDocument;
+        while((couchDocument = [designDocs nextObject])){                        
+          SBCouchDesignDocument *designDoc = [SBCouchDesignDocument designDocumentFromDocument:couchDocument];
+            
+          NSString *label = [couchDocument.identity lastPathComponent];
+
+          NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
+          [userInfo setObject:designDoc forKey:@"couchobject"];
+
            SVBaseNavigationDescriptor *designDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:label
-                                                                                                 andIdentity:couchDesignDocument.identity
-                                                                                                        type:DPDescriptorCouchDesign];
+                                                                                                andIdentity:couchDocument.identity
+                                                                                                       type:DPDescriptorCouchDesign
+                                                                                                   userInfo:userInfo];
            designDescriptor.couchDatabase = couchDatabase;
            designDescriptor.resourceFactory = factory;
-           [databaseTreeNode addChildNodeWithObject:designDescriptor];
+           NSTreeNode *designNode = [databaseTreeNode addChildNodeWithObject:designDescriptor];
+            
+            NSDictionary *dictionaryOfViews =  [designDoc views];
+            for(SBCouchView *viewName in dictionaryOfViews){
+                SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
+
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
+                [userInfo setObject:couchView forKey:@"couchobject"];
+                
+                SVBaseNavigationDescriptor *viewDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:couchView.name
+                                                                                                   andIdentity:[couchView identity]
+                                                                                                          type:DPDescriptorCouchView
+                                                                                                      userInfo:userInfo];
+                viewDescriptor.resourceFactory = factory;
+                                
+                [designNode addChildNodeWithObject:viewDescriptor];
+            }                        
         }
     }        
 }

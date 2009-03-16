@@ -19,12 +19,10 @@
     IBOutlet NSOutlineView *viewResultOutlineView;
 }
 
-@property (copy) NSString            *databaseName;
+@property (copy)   NSString          *databaseName;
 @property (retain) SBCouchEnumerator *queryResult;
 @property (retain) SBCouchDatabase   *couchDatabase;
 @property (retain) NSOutlineView     *viewResultOutlineView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
 
 
 @end

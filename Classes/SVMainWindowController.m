@@ -160,7 +160,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 // XXX This really ought to call an operation that just gets a list of databases. 
 - (void) refreshLocalDatabaseList:(NSNotification*)notification{
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:[[NSApp delegate] couchServer]];
+    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:[[NSApp delegate] couchServer] rootTreeNode:self.rootNode];
     
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished" 
@@ -243,9 +243,9 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchQueryInfoOperation class]]){        
         // We've added view descriptors to a design document descriptor and its time to refresh 
         // the source list. 
-        [lock lock];
-        [self.sourceView reloadData];
-        [lock unlock];
+        //[lock lock];
+        //[self.sourceView reloadData];
+        //[lock unlock];
     } 
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){        
         NSTreeNode *root = (NSTreeNode*) [(SVFetchServerInfoOperation*)object rootNode];
@@ -278,21 +278,75 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     if(treeNode == nil)
         return;
     
-    for(NSTreeNode *node in [treeNode childNodes]){
+    for(NSTreeNode *node in [self.rootNode childNodes]){
        id <DPContributionNavigationDescriptor> descriptor = [node representedObject];
         if([descriptor type] == DPDescriptorCouchDesign){
-            [self fetchViews:node];
+            //[self fetchViews:node];
+            //return;
         }else{
-            [self loadViewNodes:node];
+            //[self loadViewNodes:node];
         }
     }
+    
+    //[lock lock];
+    //[self.sourceView reloadData];
+    //[lock unlock];
 }
 
+/*
+- (void)outlineViewItemWillExpand:(NSNotification *)notification{ 
+    id treeNode = [[notification userInfo] objectForKey:@"NSObject"];
+    if(treeNode && [treeNode isKindOfClass:[NSTreeNode class]]){
+        SVBaseNavigationDescriptor *desc = [treeNode representedObject];
+        // Hard coding this for now but it could possibly be supported in the protocol. Or we might just want to expand everything. 
+        if([desc isKindOfClass:[SVBaseNavigationDescriptor class]]){
+            //[desc.couchDatabase]
+
+            id couchObject = [[desc userInfo] objectForKey:@"couchobject"];
+            if(couchObject && desc.type == DPDescriptorCouchDatabase){
+                for(NSTreeNode *child in [treeNode childNodes]){
+                    id <DPContributionNavigationDescriptor, NSObject> childDesc = [child representedObject]; 
+                    SBCouchDesignDocument *couchDesignDocument = [[childDesc userInfo] objectForKey:@"couchobject"];
+                    NSLog(@"%@", couchDesignDocument);
+                    NSLog(@"%@", [couchDesignDocument views]);
+                    
+                    NSDictionary *dictionaryOfViews =  [couchDesignDocument views];
+                    for(SBCouchView *viewName in dictionaryOfViews){
+                        SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
+                        SBCouchEnumerator *viewResults = (SBCouchEnumerator*) [couchView getEnumerator];
+                        SVBaseNavigationDescriptor *slug = [[SVBaseNavigationDescriptor alloc] initWithLabel:@"AAAA" andIdentity:@"AAAA" type:DPDescriptorCouchView userInfo:nil];
+
+                        [[treeNode mutableChildNodes] addObject:[NSTreeNode treeNodeWithRepresentedObject:slug]];
+                    }
+                }
+            }
+        }
+        
+    }
+       
+}
+ 
+*/
+ 
+/*
 - (void)outlineViewItemDidExpand:(NSNotification *)notification{
-    //NSTreeNode *item = (NSTreeNode*) [notification object];
-    //SVAbstractDescriptor *desc = [item representedObject];
+    id sv = [notification object];
+    NSDictionary *dict = [notification userInfo];
+    id thing = [[notification userInfo] objectForKey:@"NSObject"];
+    
+    NSLog(@"selectedRow %i", [sv  selectedRow]);   
+    if([sv selectedRow] == -1)
+        return;
+    
+    // Here we could fetch the children... 
+    NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
+    id <DPContributionNavigationDescriptor, NSObject> descriptor = [item representedObject];
+    
+    NSLog(@"--> %@", descriptor);    
     
 }
+*/ 
+ 
 -(void)fetchViews:(NSTreeNode*)designNode{
     if(operationQueue == nil){
         operationQueue = [[NSOperationQueue alloc] init];
@@ -406,7 +460,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 #pragma mark SourceView Selection Handlers and Supporting Methods
 
 - (void)showDesignView:(id<DPContributionNavigationDescriptor>)navDescriptor{
-    //[self showEmptyInspectorView]; 
+    [self showEmptyInspectorView]; 
     [self showDesignEditorInMainView:navDescriptor];
     //[self showEmptyBodyView];     
 }
@@ -422,18 +476,23 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
                                                                              bundle:nil
                                                                     navContribution:navDescriptor];    
     [self sizeViewToBody:[functionController view]];
+    /*
     for (id view in [inspectorView subviews]){
         [view removeFromSuperview];
     }
+    */
+    
+    [self.bodyView addSubview:[functionController view]];
     
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
-                                                                                               bundle:nil 
-                                                                                      navContribution:navDescriptor];
+                                                                                               bundle:nil];
 
     [inspectorView addSubview:[queryResultController view]];
     [self sizeViewToInspector:[queryResultController view]];
-    
+    //XXX Not sure if this will work... and if it does, I'm not sure it will work 
+    //    for plugins. 
+    functionController.delegate = queryResultController;
 
 }
 
@@ -493,9 +552,11 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         [view removeFromSuperview];
     }
     
+    /*
     for (NSView *view in [self.inspectorView subviews]) {
         [view removeFromSuperview];
     }
+    */
     
     [self.inspectorView addSubview:self.emptyInspectorView];
 }
@@ -797,8 +858,10 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 - (void)runAndDisplaySlowView:(NSNotification *)notification{
+    /*
     SBCouchView *view = [notification object];
     [self showSlowViewInMainView:view];
+     */ 
 }
 
 #pragma mark - 
@@ -824,7 +887,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [self.sourceView reloadData];
     [self autoExpandGroupItems];
     [lock unlock];
-    //[self loadViewNodes:rootNode];
+
+    [self loadViewNodes:rootNode];
     //[treeToAppend release];
 }
 
@@ -838,8 +902,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         
     }else if(resourceName == DPSharedViewContollerNamedViewResults){
         return [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
-                                                         bundle:self.bundle
-                                                navContribution:nil];
+                                                         bundle:self.bundle];
     } 
     return nil;
 }

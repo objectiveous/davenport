@@ -20,16 +20,20 @@
     DPNavigationDescriptorTypes  type;    
     SBCouchDatabase             *couchDatabase;
     id <DPResourceFactory>       resourceFactory;
+    NSMutableDictionary         *userInfo;
 }
 
-@property (retain) NSString           *label;
-@property (retain) NSImage            *nodeIcon;
-@property (retain) NSString           *identity;
-@property          BOOL                groupItem;
-@property DPNavigationDescriptorTypes  type;
-@property (retain) SBCouchDatabase    *couchDatabase;
+@property (retain) NSString              *label;
+@property (retain) NSImage               *nodeIcon;
+@property (retain) NSString              *identity;
+@property          BOOL                   groupItem;
+@property DPNavigationDescriptorTypes     type;
+@property (retain) SBCouchDatabase       *couchDatabase;
 @property (retain) id <DPResourceFactory> resourceFactory;
 
+
+-(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType userInfo:(NSMutableDictionary*)userInfo;
 -(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType;
 -(BOOL)isGroupItem;
+-(NSDictionary*)userInfo;
 @end

@@ -11,7 +11,7 @@
 extern int LOCAL_PORT;
 
 //#define SV_NOTIFICATION_RUN_SLOW_VIEW           @"_slow_view"
-#define SV_MENU_ITEM_NAME_TEMPORARY_VIEW          @"Temporary View"
+#define SV_MENU_ITEM_NAME_TEMPORARY_VIEW          @"Slow View"
 
 //#define DPLocalDatabaseNeedsRefreshNotification @"SVLocalDatabaseNeedsRefreshNotification"
 

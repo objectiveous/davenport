@@ -746,8 +746,8 @@
 			isa = PBXGroup;
 			children = (
 				543F9D040F45B88D00E1559C /* headers */,
-				549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */,
 				540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */,
+				549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */,
 				543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */,
 			);
 			name = Operations;

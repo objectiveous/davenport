@@ -46,7 +46,7 @@
     
     SBCouchDocument *designDoc;
     while(designDoc = [designDocs nextObject]){        
-        NSLog(@"----------> %@", designDoc);
+        //NSLog(@"----------> %@", designDoc);
         //XXX descriptor type needs to come from an enum
         NSTreeNode *designDocNode = [pluginSectionNode addChildWithLabel:[designDoc.identity lastPathComponent] 
                                                                 identity:designDoc.identity 
@@ -60,7 +60,7 @@
         
         //NSLog(@"XXXXX %@", test);
         NSString *designDocIdentity = [designDoc identity];
-        NSLog(@"designDoc Identity : %@", designDocIdentity);
+        //NSLog(@"designDoc Identity : %@", designDocIdentity);
         SBCouchDesignDocument *designDocWithViews = [database getDesignDocument:designDocIdentity];
         // VIEWS
         for(NSString *viewName in [[designDocWithViews views] allKeys]){

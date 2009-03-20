@@ -8,6 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="18"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -36,7 +37,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSCustomView" id="1005">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -230,14 +231,13 @@
 									<bool key="NSHasVerticalScroller">YES</bool>
 									<object class="NSMutableArray" key="NSPopUpListData">
 										<bool key="EncodedWithXMLCoder">YES</bool>
-										<string>Temporary View</string>
-										<string>Design Documents</string>
+										<string>Slow View</string>
 									</object>
 									<reference key="NSDelegate" ref="643201796"/>
 									<object class="NSComboTableView" key="NSTableView" id="353666155">
 										<reference key="NSNextResponder"/>
 										<int key="NSvFlags">274</int>
-										<string key="NSFrameSize">{13, 42}</string>
+										<string key="NSFrameSize">{13, 21}</string>
 										<reference key="NSSuperview"/>
 										<reference key="NSWindow"/>
 										<bool key="NSEnabled">YES</bool>
@@ -771,6 +771,7 @@ Z2h0IEFwcGxlLCBJbmMuLCAyMDA5AA</bytes>
 					</object>
 				</object>
 				<string key="NSFrameSize">{1037, 300}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 		</object>
@@ -824,6 +825,54 @@ Z2h0IEFwcGxlLCBJbmMuLCAyMDA5AA</bytes>
 						<reference key="destination" ref="8676592"/>
 					</object>
 					<int key="connectionID">59</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="557050696"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">60</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="185876649"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">61</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">saveButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="459974951"/>
+					</object>
+					<int key="connectionID">63</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">saveAsButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="194068692"/>
+					</object>
+					<int key="connectionID">64</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveDesignDocumentAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="459974951"/>
+					</object>
+					<int key="connectionID">66</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveViewAsAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="194068692"/>
+					</object>
+					<int key="connectionID">67</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1169,7 +1218,7 @@ Z2h0IEFwcGxlLCBJbmMuLCAyMDA5AA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">59</int>
+			<int key="maxID">67</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1199,23 +1248,42 @@ Z2h0IEFwcGxlLCBJbmMuLCAyMDA5AA</bytes>
 					<string key="className">SVDesignDocumentEditorController</string>
 					<string key="superclassName">NSViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">runCouchViewAction:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>runCouchViewAction:</string>
+							<string>saveAsDesignDocumentAction:</string>
+							<string>saveDesignDocumentAction:</string>
+							<string>saveViewAsAction:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>delegate</string>
 							<string>mapTextView</string>
 							<string>navContribution</string>
 							<string>reduceTextView</string>
+							<string>saveAsButton</string>
+							<string>saveButton</string>
 							<string>viewComboBox</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>NSTextView</string>
 							<string>id</string>
 							<string>NSTextView</string>
+							<string>NSButton</string>
+							<string>NSButton</string>
 							<string>NSComboBox</string>
 						</object>
 					</object>

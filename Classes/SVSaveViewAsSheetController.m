@@ -1,17 +1,22 @@
+//
+//  SVSaveViewAsSheetController.m
+//  Davenport
+//
+//  Created by Robert Evans on 3/19/09.
+//  Copyright 2009 South And Valley. All rights reserved.
+//
 
-#import "SVDatabaseCreateSheetController.h"
-#import "SVMainWindowController.h"
+#import "SVSaveViewAsSheetController.h"
+#import "SVAppDelegate.h"
 
-@implementation SVDatabaseCreateSheetController
+@implementation SVSaveViewAsSheetController
 
 - (id)init{
 	self = [super init];
 	return self;
 }
-
-
 - (NSString*)windowNibName{
-	return @"CreateDatabasePanel";
+	return @"SaveViewAsPanel";
 }
 
 - (void)dealloc{
@@ -19,16 +24,22 @@
 	[savedFields release];
 }
 
-- (NSString*)edit:(NSDictionary*)startingValues from:(SVMainWindowController*)sender{
+// XXX Should sender be a more generic type?
+- (NSString*)edit:(NSDictionary*)startingValues from:(NSWindowController*)sender{
 	NSWindow* window = [self window];
 	cancelled = NO;
-
+    
+    // XXX This is a sick hack and should be replaced with something based on a 
+    //     convention. 
+ 
+    
 	[NSApp beginSheet:window modalForWindow:[sender window] modalDelegate:nil didEndSelector:nil contextInfo:nil];
 	[NSApp runModalForWindow:window];
-
+    
 	[NSApp endSheet:window];
 	[window orderOut:self];
-    // Return the value of our one and only form field. 
+
+    // XXX Obviously this will change but first we have to get the panel to display properly. 
 	return [[[editForm cells] objectAtIndex:0] stringValue];
 }
 

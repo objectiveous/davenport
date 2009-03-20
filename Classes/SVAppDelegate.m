@@ -88,14 +88,7 @@ int LOCAL_PORT = 5984;
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){     
         NSTreeNode *sourceViewModelRootNode = [(SVFetchServerInfoOperation*)object rootNode];
-        //[sourceViewModelRootNode retain];
-        if(sourceViewModelRootNode == nil){
-            //[self performFetchServerInfoOperation];            
-        }else{
-            NSLog(@"%@", [sourceViewModelRootNode prettyPrint]);
-            [mainWindowController appendNSTreeNodeToNavigationRootNode:sourceViewModelRootNode];
-        }
-        //[sourceViewModelRootNode release];
+        [mainWindowController appendNSTreeNodeToNavigationRootNode:sourceViewModelRootNode];
     } 
 }
 
@@ -168,7 +161,6 @@ int LOCAL_PORT = 5984;
 }
 
 -(NSViewController*)lookupShareableController:(DPSharedViewContollers)namedController{
-    NSLog(@"adsfadf");
     return nil;
 }
 

@@ -65,6 +65,7 @@
         return (NSViewController*) sharedController; 
     }else if(self.type == DPDescriptorCouchView){
         SBCouchView *view = [userInfo objectForKey:@"couchobject"];
+        NSLog(@"ID %@", view.identity);
         NSEnumerator *couchResults = [view viewEnumerator];
         
         id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];

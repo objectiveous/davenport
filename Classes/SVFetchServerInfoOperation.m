@@ -77,17 +77,17 @@
         NSTreeNode *databaseTreeNode = [couchServerNode addChildNodeWithObject:databaseDescriptor];                
         NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
 
-        SBCouchDocument *couchDocument;
-        while((couchDocument = [designDocs nextObject])){                        
-          SBCouchDesignDocument *designDoc = [SBCouchDesignDocument designDocumentFromDocument:couchDocument];
+        SBCouchDesignDocument *designDoc;
+        while((designDoc = [designDocs nextObject])){                        
+          //SBCouchDesignDocument *designDoc = [SBCouchDesignDocument designDocumentFromDocument:couchDocument];
             
-          NSString *label = [couchDocument.identity lastPathComponent];
+          NSString *label = [designDoc.identity lastPathComponent];
 
           NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
           [userInfo setObject:designDoc forKey:@"couchobject"];
 
            SVBaseNavigationDescriptor *designDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:label
-                                                                                                andIdentity:couchDocument.identity
+                                                                                                andIdentity:designDoc.identity
                                                                                                        type:DPDescriptorCouchDesign
                                                                                                    userInfo:userInfo];
            designDescriptor.couchDatabase = couchDatabase;
@@ -95,7 +95,7 @@
            NSTreeNode *designNode = [databaseTreeNode addChildNodeWithObject:designDescriptor];
             
             NSDictionary *dictionaryOfViews =  [designDoc views];
-            for(SBCouchView *viewName in dictionaryOfViews){
+            for(id viewName in dictionaryOfViews){
                 SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
 
                 NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];

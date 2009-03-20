@@ -113,7 +113,7 @@
 #pragma mark Descriptor Magic
 
 -(void)logTree{
-    NSLog(@"%@", [self prettyPrint]);
+    SVDebug(@"%@", [self prettyPrint]);
     
     for(NSTreeNode *node in [self childNodes]){
         [node prettyPrint];

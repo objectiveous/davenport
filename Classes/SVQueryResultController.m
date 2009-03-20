@@ -4,7 +4,7 @@
 //
 //  Created by Robert Evans on 1/8/09.
 //  Copyright 2009 South And Valley. All rights reserved.
-//
+//  
 
 #import "SVQueryResultController.h"
 #import <CouchObjC/CouchObjC.h>
@@ -66,7 +66,10 @@
         if([value isKindOfClass:[NSString class]])
             return value;
         else
-            return [value JSONRepresentation];
+            return value;
+        
+        //return [value JSONRepresentation];
+        // this can cause problems if the reciever does no respond to JSONRepresentation. 
     }            
     return @"Error: Unknown";
     
@@ -173,7 +176,7 @@
     NSView *parentView = [couchViewResultView superview];
     [parentView addSubview:couchViewResultView];
     NSArray *subviews = [parentView subviews];
-    NSLog(@"subview count : %i ", [subviews count]);
+    SVDebug(@"subview count : %i ", [subviews count]);
     
     if(! [configurationData isKindOfClass:[SBCouchEnumerator class]])
         return;

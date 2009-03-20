@@ -11,6 +11,16 @@
 #import <CouchObjC/CouchObjC.h>;
 #import "SVAppDelegate.h"
 #import "DPContributionNavigationDescriptor.h"
+#import "SVSaveViewAsSheetController.h"
+
+
+@interface SVDesignDocumentEditorController (Private)
+
+-(void)synchChanges:(NSString*)couchViewName;
+-(void)synchChangesOfView:(SBCouchView*)couchView;
+
+@end
+
 
 @implementation SVDesignDocumentEditorController
 
@@ -20,6 +30,8 @@
 @synthesize designDocument;
 @synthesize saveButton;
 @synthesize saveAsButton;                       
+@synthesize isDirty;
+@synthesize saveViewAsController;
 
 #pragma mark -
 
@@ -28,7 +40,8 @@
     if(self){
         SBCouchDatabase *couchDatabase = [aNavContribution couchDatabase];
         assert(couchDatabase);
-        self.designDocument = [[aNavContribution userInfo] objectForKey:@"couchobject"];        
+        self.designDocument = [[aNavContribution userInfo] objectForKey:@"couchobject"];    
+        self.saveViewAsController = [[SVSaveViewAsSheetController alloc] initWithWindowNibName:@"SaveViewAsPanel"];
     }    
     return self;
 }
@@ -37,7 +50,7 @@
 - (void)awakeFromNib{
     
     NSDictionary *views = [self.designDocument views];
-
+  
     if([views count] > 0){
         // If we have views, add a seperator and start adding menuitems in reverse order. 
         // Reversing the order is done to keep the interface consistant with 1] couch's 
@@ -55,14 +68,26 @@
 - (IBAction)runCouchViewAction:(id)sender{
     
     NSString *menueItemViewName = [self.viewComboBox objectValueOfSelectedItem];
-    NSLog(@"selected menu item name: %@", menueItemViewName);
+    SVDebug(@"selected menu item name: %@", menueItemViewName);
     
     SBCouchView *view  = [self.designDocument view:menueItemViewName];
+    if(view.reduce){
+        SBCouchQueryOptions *queryOptions = [[SBCouchQueryOptions new] autorelease];
+        queryOptions.group = YES;        
+        view.queryOptions = queryOptions;
+    }
 
     // 404 /cushion-tickets/sprint?limit=30&group=true
     // 200 /cushion-tickets/_view/More%20Stuff/sprint
-    
-    NSEnumerator *viewResults = [view viewEnumerator];
+    NSEnumerator *viewResults;
+    if(self.isDirty){
+        SBCouchView *copyOfViewForSlowEnumerator = [view copy];
+        [self synchChangesOfView:copyOfViewForSlowEnumerator];
+        viewResults = [copyOfViewForSlowEnumerator slowViewEnumerator];
+    }else{
+        viewResults = [view viewEnumerator];
+    }
+        
     
     // XXX We now have a protocol for this but the semantics are still ill defined. For example,
     // does a call to provision always update a view? How can we be sure this will always work?
@@ -70,6 +95,51 @@
         [[self delegate] provision:viewResults]; 
     }    
 }
+
+- (IBAction)saveDesignDocumentAction:(id)sender{
+    NSString *viewName = [self.viewComboBox objectValueOfSelectedItem];
+    [self synchChanges:viewName];
+    [self.designDocument put];
+    self.isDirty = NO;
+}
+
+- (IBAction)saveAsDesignDocumentAction:(id)sender{
+    NSString *viewName = [self.viewComboBox objectValueOfSelectedItem];
+    [self synchChanges:viewName];
+    SBCouchDesignDocument *designDocumentCopy = [self.designDocument copy];
+    [designDocumentCopy put];
+}
+
+- (IBAction)saveViewAsAction:(id)sender{
+    //edit should be a dictionary. 
+    SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
+    
+	NSString *saveViewAs = [self.saveViewAsController edit:nil from:mainWindowController];
+	if (![saveViewAsController wasCancelled] && saveViewAs){
+        //SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
+        //[couchServer createDatabase:newDatabaseName];
+        // Now reaload all the datafrom the server. 
+        //[(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];    
+	}
+}
+
+
+#pragma mark -
+
+-(void)synchChanges:(NSString*)couchViewName{
+    SBCouchView *view  = [self.designDocument view:couchViewName];
+    [self synchChangesOfView:view];
+}
+-(void)synchChangesOfView:(SBCouchView*)couchView{
+    NSString *currentValueOfMapFunction = [self.mapTextView string];
+    NSString *currentValueOfReduceFunction = [self.reduceTextView string];
+    
+    couchView.map = currentValueOfMapFunction;
+    if(currentValueOfReduceFunction && ! [@"" isEqualToString:currentValueOfReduceFunction]){
+        couchView.reduce = currentValueOfReduceFunction;
+    }        
+}
+
 
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification{
     
@@ -106,6 +176,7 @@
     id object = [aNotification object];
     id userInfo = [aNotification userInfo];
     [self.saveButton highlight:YES];
+    self.isDirty = YES;
 }
 
 

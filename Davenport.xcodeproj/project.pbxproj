@@ -141,6 +141,10 @@
 		54790B570F3A2F2700461FEB /* run.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B560F3A2F2700461FEB /* run.pdf */; };
 		54790B580F3A2F2700461FEB /* run.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790B560F3A2F2700461FEB /* run.pdf */; };
 		547B283F0F23821200580370 /* DesignDocumentEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547B283B0F23821200580370 /* DesignDocumentEditor.xib */; };
+		547CC7DD0F7305820050AF8A /* SaveViewAsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547CC7DB0F7305820050AF8A /* SaveViewAsPanel.xib */; };
+		547CC7DE0F7305820050AF8A /* SaveViewAsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547CC7DB0F7305820050AF8A /* SaveViewAsPanel.xib */; };
+		547CC7F20F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */; };
+		547CC7F30F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */; };
 		5488D7080F5B551C00ECE7D3 /* DPSharedController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5488D7060F5B551C00ECE7D3 /* DPSharedController.h */; };
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
 		548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
@@ -391,6 +395,9 @@
 		54790B380F3A234900461FEB /* button-forward-on.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-forward-on.pdf"; path = "Images/button-forward-on.pdf"; sourceTree = "<group>"; };
 		54790B560F3A2F2700461FEB /* run.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = run.pdf; path = Images/run.pdf; sourceTree = "<group>"; };
 		547B283C0F23821200580370 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/DesignDocumentEditor.xib; sourceTree = "<group>"; };
+		547CC7DC0F7305820050AF8A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SaveViewAsPanel.xib; sourceTree = "<group>"; };
+		547CC7F00F73079C0050AF8A /* SVSaveViewAsSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSaveViewAsSheetController.h; sourceTree = "<group>"; };
+		547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSaveViewAsSheetController.m; sourceTree = "<group>"; };
 		5488D7060F5B551C00ECE7D3 /* DPSharedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSharedController.h; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		548BB1840F3654AC00DB4DCB /* NSDictionary+SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SVDavenport.h"; sourceTree = "<group>"; };
@@ -570,6 +577,7 @@
 				54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */,
 				5405B42F0F1450B2000EF28E /* images */,
 				546647A80F349C7000A8A709 /* CreateDatabasePanel.xib */,
+				547CC7DB0F7305820050AF8A /* SaveViewAsPanel.xib */,
 				547B283B0F23821200580370 /* DesignDocumentEditor.xib */,
 				546769BB0F2538A9006F6114 /* CouchDocument.xib */,
 				548AACAA0F0AD50C009A49AD /* QueryResultView.xib */,
@@ -633,6 +641,7 @@
 				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
 				546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */,
+				547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */,
 				54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */,
 				540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */,
 				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
@@ -826,6 +835,7 @@
 		5456930B0F3256F400100237 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				547CC7F00F73079C0050AF8A /* SVSaveViewAsSheetController.h */,
 				546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */,
 				540089C20F30C040002D56A4 /* SVQueryResultController.h */,
 				540089BE0F30C040002D56A4 /* SVMainWindowController.h */,
@@ -1094,6 +1104,7 @@
 				54790B3A0F3A234900461FEB /* button-forward-on.pdf in Resources */,
 				54790B570F3A2F2700461FEB /* run.pdf in Resources */,
 				545AC1FA0F48F68000312877 /* Info.plist in Resources */,
+				547CC7DE0F7305820050AF8A /* SaveViewAsPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,6 +1175,7 @@
 				54790B3B0F3A234900461FEB /* button-back-on.pdf in Resources */,
 				54790B3C0F3A234900461FEB /* button-forward-on.pdf in Resources */,
 				54790B580F3A2F2700461FEB /* run.pdf in Resources */,
+				547CC7DD0F7305820050AF8A /* SaveViewAsPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1283,7 @@
 				544528F60F42801C00AB1845 /* SVSourceView.m in Sources */,
 				543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 				5488D7080F5B551C00ECE7D3 /* DPSharedController.h in Sources */,
+				547CC7F30F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,6 +1358,7 @@
 				549946BD0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */,
 				544528F70F42801C00AB1845 /* SVSourceView.m in Sources */,
 				543F9D020F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
+				547CC7F20F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1422,6 +1436,14 @@
 				547B283C0F23821200580370 /* English */,
 			);
 			name = DesignDocumentEditor.xib;
+			sourceTree = "<group>";
+		};
+		547CC7DB0F7305820050AF8A /* SaveViewAsPanel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				547CC7DC0F7305820050AF8A /* English */,
+			);
+			name = SaveViewAsPanel.xib;
 			sourceTree = "<group>";
 		};
 		548AACAA0F0AD50C009A49AD /* QueryResultView.xib */ = {

@@ -40,15 +40,15 @@
     if(self){
         SBCouchDatabase *couchDatabase = [aNavContribution couchDatabase];
         assert(couchDatabase);
-        self.designDocument = [[aNavContribution userInfo] objectForKey:@"couchobject"];    
+        id couchDesignDocument = [[aNavContribution userInfo] objectForKey:@"couchobject"];
+        assert(couchDesignDocument);
+        self.designDocument = couchDesignDocument;    
         self.saveViewAsController = [[SVSaveViewAsSheetController alloc] initWithWindowNibName:@"SaveViewAsPanel"];
     }    
     return self;
 }
 
-
-- (void)awakeFromNib{
-    
+- (void)awakeFromNib{    
     NSDictionary *views = [self.designDocument views];
   
     if([views count] > 0){
@@ -111,11 +111,39 @@
 }
 
 - (IBAction)saveViewAsAction:(id)sender{
+
     //edit should be a dictionary. 
     SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
     
-	NSString *saveViewAs = [self.saveViewAsController edit:nil from:mainWindowController];
-	if (![saveViewAsController wasCancelled] && saveViewAs){
+    // Althought it might be possible to pass in a DesignDocument or a CouchView, I think 
+    // it'll be easier to keep the model clean if we just use a dictionary. 
+    NSString *viewName = [self.viewComboBox objectValueOfSelectedItem];
+    NSString *designName = [self.designDocument designDocumentName];
+    NSMutableDictionary *newViewDictionary = [NSMutableDictionary dictionaryWithCapacity:2];
+    [newViewDictionary setObject:viewName forKey:@"viewName"];
+    [newViewDictionary setObject:designName forKey:@"designName"];
+    
+	[self.saveViewAsController edit:newViewDictionary from:mainWindowController];
+	if (![saveViewAsController wasCancelled]){        
+        SBCouchView *view  = [self.designDocument view:viewName];
+        SBCouchView *newView = [view copy];
+        
+        NSLog(@"We are good to go and can create the new copy the view");
+        NSString *newDesignName = [newViewDictionary objectForKey:@"designName"];
+        NSString *newViewName = [newViewDictionary objectForKey:@"viewName"];
+        newView.name = newViewName;
+        
+        SBCouchDesignDocument *designDocumentForSaveAs;
+        if([designName isEqualToString:newDesignName]){
+            designDocumentForSaveAs = self.designDocument;
+        }else{
+            designDocumentForSaveAs = [[SBCouchDesignDocument alloc] initWithName:newDesignName couchDatabase:self.designDocument.couchDatabase];            
+        }
+        
+        [designDocumentForSaveAs addView:newView withName:newViewName];        
+        [designDocumentForSaveAs put];
+        [designDocumentForSaveAs release];
+        
         //SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
         //[couchServer createDatabase:newDatabaseName];
         // Now reaload all the datafrom the server. 
@@ -131,6 +159,8 @@
     [self synchChangesOfView:view];
 }
 -(void)synchChangesOfView:(SBCouchView*)couchView{
+    //[self.reduceTextView textStorage] 
+    
     NSString *currentValueOfMapFunction = [self.mapTextView string];
     NSString *currentValueOfReduceFunction = [self.reduceTextView string];
     
@@ -173,7 +203,11 @@
 }
 
 - (void)textDidChange:(NSNotification *)aNotification{
-    id object = [aNotification object];
+    NSTextView *object = [aNotification object];
+    NSLog(@"%@", [object string]);
+    NSLog(@"-------------------");
+    NSLog(@"%@", [self.reduceTextView string]);
+    
     id userInfo = [aNotification userInfo];
     [self.saveButton highlight:YES];
     self.isDirty = YES;

@@ -790,14 +790,14 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         }
     }else{
         //XXX Is there a better way to do this than by name?
-        NSMenuItem *deleteMenuItem = [menu itemWithTitle:@"Delete"];
-        assert(deleteMenuItem);
-        
+        //NSMenuItem *deleteMenuItem = [menu itemWithTitle:@"Delete"];
+        //assert(deleteMenuItem);        
         //[menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
-        [deleteMenuItem setRepresentedObject:item];    
+        //[deleteMenuItem setRepresentedObject:item];    
         // Ensure the menu items are visible. 
         for(NSMenuItem *menuItem in [menu itemArray]){
             [menuItem setHidden:FALSE];
+            [menuItem setRepresentedObject:item];    
         }
     }
 }
@@ -835,7 +835,15 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 - (IBAction)refreshDatabaseAction:(id)sender{
+    NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];        
+    SVBaseNavigationDescriptor *descriptor = [item representedObject];
+    SBCouchDatabase *couchObject = [descriptor.userInfo objectForKey:@"couchobject"];
+    // 1] Create an operation that creates an NSTreeNode for this database. 
+    // 2] Replace the children of item with the children of the new tree node. 
+    // 3] Run the operation in blocking mode at first. Make async later. 
     [lock lock];
+    
+    
     [self.sourceView reloadData];
     [lock unlock];
 }

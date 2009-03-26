@@ -42,9 +42,12 @@ static NSString *DAVENPORT_TEST_VIEW_NAME_3 = @"jazzMen";
 }
 
 -(SBCouchResponse*)provisionViews{
-    SBCouchView *view = [[SBCouchView alloc] initWithName:@"totals" andMap:MAP_FUNCTION andReduce:REDUCE_FUNCTION];
+    SBCouchView *view = [[SBCouchView alloc] initWithName:@"totals"];
+    view.map = MAP_FUNCTION;
+    view.reduce = REDUCE_FUNCTION;
     
-    SBCouchDesignDocument *designDocument = [[SBCouchDesignDocument alloc] initWithDesignDomain:DAVENPORT_TEST_DESIGN_NAME couchDatabase:self.couchDatabase];
+    SBCouchDesignDocument *designDocument = [[SBCouchDesignDocument alloc] initWithName:DAVENPORT_TEST_DESIGN_NAME 
+                                                                          couchDatabase:self.couchDatabase];
     [designDocument addView:view withName:DAVENPORT_TEST_VIEW_NAME_1];
     [designDocument addView:view withName:DAVENPORT_TEST_VIEW_NAME_2];
     [designDocument addView:view withName:DAVENPORT_TEST_VIEW_NAME_3];

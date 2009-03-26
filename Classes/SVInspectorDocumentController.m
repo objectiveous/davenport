@@ -40,9 +40,10 @@
 
 - (void) initControllerSettingsWithDocumentInformation{
     // This would give use rev 16 or 16, for example
-    numberOfRevisions = [[self.couchDocument objectForKey:@"_revs"] count]; 
-    currentRevision = numberOfRevisions;
-    [self setRevisions:[self.couchDocument objectForKey:@"_revs"]];
+    self.numberOfRevisions = [self.couchDocument numberOfRevisions]; 
+    self.currentRevision = numberOfRevisions;
+    // _revs_info
+    self.revisions = [self.couchDocument revisions];
     
     [[[self versionTextField] cell] setTitle:[NSString stringWithFormat:@"Showing revision %i of %i", currentRevision , numberOfRevisions]];
     
@@ -212,8 +213,17 @@
 }
 
 -(IBAction)showNextRevisionAction:(id)sender{    
-    int realCurrentIndex = numberOfRevisions - currentRevision;    
-    id nextRevision = [self.revisions objectAtIndex:realCurrentIndex-1];
+    int realCurrentIndex = numberOfRevisions - currentRevision; 
+    NSLog(@"Revisions Array Count : %i", [self.revisions count]);
+    NSLog(@"Current Index         : %i", currentRevision);
+    NSLog(@"Number of Revisions   : %i", numberOfRevisions);
+    NSLog(@"Real Current Index    : %i", realCurrentIndex);
+    
+    for(id r in self.revisions){
+        NSLog(@"---> %@", r);
+    }
+    
+    id nextRevision = [self.revisions objectAtIndex:currentRevision];
         
     //NSString *documentId = [self.couchDocument identity];
     SBCouchDocument *document = [self.couchDocument getWithRevisionCount:YES andInfo:YES revision:nextRevision];

@@ -79,7 +79,7 @@
 					<object class="NSTextField" id="444491356">
 						<reference key="NSNextResponder" ref="381729004"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{260, 553}, {96, 22}}</string>
+						<string key="NSFrame">{{287, 553}, {96, 22}}</string>
 						<reference key="NSSuperview" ref="381729004"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="835615072">
@@ -174,38 +174,6 @@
 						</object>
 						<bool key="NSEditable">YES</bool>
 					</object>
-					<object class="NSImageView" id="241758355">
-						<reference key="NSNextResponder" ref="381729004"/>
-						<int key="NSvFlags">268</int>
-						<object class="NSMutableSet" key="NSDragTypes">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="NSMutableArray" key="set.sortedObjects">
-								<bool key="EncodedWithXMLCoder">YES</bool>
-								<string>Apple PDF pasteboard type</string>
-								<string>Apple PICT pasteboard type</string>
-								<string>Apple PNG pasteboard type</string>
-								<string>NSFilenamesPboardType</string>
-								<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-								<string>NeXT TIFF v4.0 pasteboard type</string>
-							</object>
-						</object>
-						<string key="NSFrame">{{208, 273}, {236, 264}}</string>
-						<reference key="NSSuperview" ref="381729004"/>
-						<bool key="NSEnabled">YES</bool>
-						<object class="NSImageCell" key="NSCell" id="38653960">
-							<int key="NSCellFlags">130560</int>
-							<int key="NSCellFlags2">33554432</int>
-							<object class="NSCustomResource" key="NSContents">
-								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">divan-4</string>
-							</object>
-							<int key="NSAlign">0</int>
-							<int key="NSScale">0</int>
-							<int key="NSStyle">0</int>
-							<bool key="NSAnimates">YES</bool>
-						</object>
-						<bool key="NSEditable">YES</bool>
-					</object>
 				</object>
 				<string key="NSFrameSize">{889, 617}</string>
 				<reference key="NSSuperview"/>
@@ -258,11 +226,10 @@
 						<reference key="object" ref="381729004"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="938926464"/>
 							<reference ref="360343591"/>
-							<reference ref="444491356"/>
+							<reference ref="938926464"/>
 							<reference ref="844754307"/>
-							<reference ref="241758355"/>
+							<reference ref="444491356"/>
 						</object>
 						<reference key="parent" ref="1002"/>
 					</object>
@@ -322,20 +289,6 @@
 						<reference key="object" ref="451868416"/>
 						<reference key="parent" ref="844754307"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">13</int>
-						<reference key="object" ref="241758355"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="38653960"/>
-						</object>
-						<reference key="parent" ref="381729004"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="38653960"/>
-						<reference key="parent" ref="241758355"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -357,7 +310,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{17, 488}, {889, 617}}</string>
+					<string>{{414, 445}, {889, 617}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

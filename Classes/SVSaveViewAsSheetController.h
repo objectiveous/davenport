@@ -18,7 +18,7 @@
 	IBOutlet NSForm*		editForm;
 }
 
-- (NSString*)edit:(NSDictionary*)startingValues from:(NSWindowController*)sender;
+- (void)edit:(NSMutableDictionary*)startingValues from:(NSWindowController*)sender;
 - (BOOL)wasCancelled;
 
 - (IBAction)done:(id)sender;

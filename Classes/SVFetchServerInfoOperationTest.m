@@ -13,7 +13,7 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:self.couchServer];
         
-    [queue addOperation:fetchOperation];        
+    [queue addOperation:fetchOperation];    
     [queue waitUntilAllOperationsAreFinished];
     STAssertNotNil(fetchOperation.rootNode, @"operation failed to return a server information in the form of a treenode");    
     [fetchOperation release];

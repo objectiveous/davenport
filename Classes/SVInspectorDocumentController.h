@@ -36,7 +36,7 @@
 @property (retain) NSButton             *nextRevisionButton;
 @property (retain) NSButton             *previousRevisionButton;
 @property (retain) NSButton             *saveButton;
-@property (retain) NSArray              *revisions;
+@property (copy)   NSArray              *revisions;
 @property (retain) NSTreeNode           *rootNode;
 //@property (retain) NSString             *documentIdentity;
 @property NSInteger numberOfRevisions;

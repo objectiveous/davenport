@@ -34,8 +34,8 @@
 
 -(BOOL)installViews{
     //SBCouchDesignDocument *mileStoneDesignDoc = [[[SBCouchDesignDocument alloc] initWithDesignDomain:@"milestones"] autorelease];
-    SBCouchResponse *response2 = [self.cushionDatabase putDocument:[[[SBCouchDesignDocument alloc] initWithDesignDomain:@"Ticket Bins"] autorelease]];
-    SBCouchResponse *response = [self.cushionDatabase putDocument:[[[SBCouchDesignDocument alloc] initWithDesignDomain:@"Milestones"] autorelease]];
+    SBCouchResponse *response2 = [self.cushionDatabase putDocument:[[[SBCouchDesignDocument alloc] initWithName:@"Ticket Bins"] autorelease]];
+    SBCouchResponse *response = [self.cushionDatabase putDocument:[[[SBCouchDesignDocument alloc] initWithName:@"Milestones"] autorelease]];
     
     if(response.ok && response2.ok)
         return TRUE;

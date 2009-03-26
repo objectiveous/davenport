@@ -25,14 +25,18 @@
 }
 
 // XXX Should sender be a more generic type?
-- (NSString*)edit:(NSDictionary*)startingValues from:(NSWindowController*)sender{
+- (void)edit:(NSMutableDictionary*)newViewDictionary from:(NSWindowController*)sender{
 	NSWindow* window = [self window];
 	cancelled = NO;
     
-    // XXX This is a sick hack and should be replaced with something based on a 
-    //     convention. 
- 
+    //[editForm insertEntry:@"XXXXXXXX" atIndex:0];
+    //[editForm insertEntry:@"XXXXXXXX" atIndex:1];
     
+    [[editForm cellAtIndex:0] setStringValue:[newViewDictionary objectForKey:@"designName"]];
+    [[editForm cellAtIndex:1] setStringValue:[newViewDictionary objectForKey:@"viewName"]];    
+    
+    // XXX This is a sick hack and should be replaced with something based on a convention. 
+
 	[NSApp beginSheet:window modalForWindow:[sender window] modalDelegate:nil didEndSelector:nil contextInfo:nil];
 	[NSApp runModalForWindow:window];
     
@@ -40,7 +44,11 @@
 	[window orderOut:self];
 
     // XXX Obviously this will change but first we have to get the panel to display properly. 
-	return [[[editForm cells] objectAtIndex:0] stringValue];
+    NSString *designName = [[[editForm cells] objectAtIndex:0] stringValue];
+    NSString *viewName = [[[editForm cells] objectAtIndex:1] stringValue];
+     
+    [newViewDictionary setObject:viewName forKey:@"viewName"];
+    [newViewDictionary setObject:designName forKey:@"designName"];    
 }
 
 - (IBAction)done:(id)sender{

@@ -139,4 +139,10 @@
     return @"No idea what this tree node is";
 }
 
+- (NSArray*) nodesHoldingUserDataOfType:(Class)clazz{
+    NSLog(@"Here we go");
+    return nil;
+}
+
+
 @end

@@ -4,6 +4,12 @@
 
 @implementation SVDatabaseCreateSheetController
 
+@synthesize cancelled;
+//@synthesize savedFields;	
+@synthesize doneButton;
+@synthesize cancelButton;
+@synthesize editForm;
+
 - (id)init{
 	self = [super init];
 	return self;
@@ -16,7 +22,7 @@
 
 - (void)dealloc{
 	[super dealloc];
-	[savedFields release];
+//	self.savedFields release];
 }
 
 - (NSString*)edit:(NSDictionary*)startingValues from:(SVMainWindowController*)sender{

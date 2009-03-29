@@ -25,12 +25,14 @@
     NSTreeNode *rootNodeOfLeftHandNav = mainWindowController.rootNode;
     
     STAssertNotNil(rootNodeOfLeftHandNav, @"Could not grab the root node from Davenport");
-    //NSTreeNode *databaseNode = [self findADatabaseTreeNode:rootNodeOfLeftHandNav];
-
-    NSArray *list = [rootNodeOfLeftHandNav nodesHoldingUserDataOfType:[SBCouchDatabase class]];
-    //STAssertNotNil(list,nil);
- 
-    //STAssertNotNil(databaseNode, @"Could not find a database Node");
+  
+    NSArray *list = [rootNodeOfLeftHandNav nodesWithCouchObjectOfType:[SBCouchDatabase class]];
+    STAssertNotNil(list,nil);
+    STAssertTrue([list count] > 0, @"list of TreeNodes is empy.");
+    for(NSTreeNode *node in list){
+        id object = [node couchObject];
+        STAssertTrue([object isKindOfClass:[SBCouchDatabase class]], nil);
+    }
     id node = nil;
     SVFetchDatabaseInfoOperation *operation = [[SVFetchDatabaseInfoOperation alloc] initWithCouchDatabaseTreeNode:node];
             
@@ -39,30 +41,13 @@
    
     [operation release];
     [operationQueue release];
-}
 
--(NSTreeNode*)findADatabaseTreeNode:(NSTreeNode*)rootNode{
-    id <DPContributionNavigationDescriptor> descriptor = [rootNode representedObject];
-    id couchDocument = [[descriptor userInfo] objectForKey:@"couchobject"];
-
-    if([couchDocument isKindOfClass:[SBCouchDatabase class]])
-        return rootNode;
-    
-    for(NSTreeNode *node in [rootNode childNodes]){
-        id databaseNode = [self findADatabaseTreeNode:node];
-        if(databaseNode){
-            return databaseNode;
-        }else{
-            return [self findADatabaseTreeNode:node];
-        }
-    }    
-    return nil;
 }
 
 #pragma mark -
 
 - (void) setUp{
-    // don't call supers setup because we're gonna rely on Davenports 
+    // don't call super's setup because we're gonna rely on Davenports 
     // internal state for testing. 
 }
 

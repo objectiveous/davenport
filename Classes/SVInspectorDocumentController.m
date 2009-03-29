@@ -213,7 +213,9 @@
 }
 
 -(IBAction)showNextRevisionAction:(id)sender{    
+    // This is done because the order of revisions is in reverse. 
     int realCurrentIndex = numberOfRevisions - currentRevision; 
+    /*
     NSLog(@"Revisions Array Count : %i", [self.revisions count]);
     NSLog(@"Current Index         : %i", currentRevision);
     NSLog(@"Number of Revisions   : %i", numberOfRevisions);
@@ -222,7 +224,7 @@
     for(id r in self.revisions){
         NSLog(@"---> %@", r);
     }
-    
+    */
     id nextRevision = [self.revisions objectAtIndex:currentRevision];
         
     //NSString *documentId = [self.couchDocument identity];

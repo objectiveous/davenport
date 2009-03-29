@@ -71,10 +71,15 @@
     SVDebug(@"selected menu item name: %@", menueItemViewName);
     
     SBCouchView *view  = [self.designDocument view:menueItemViewName];
-    if(view.reduce){
-        SBCouchQueryOptions *queryOptions = [[SBCouchQueryOptions new] autorelease];
-        queryOptions.group = YES;        
-        view.queryOptions = queryOptions;
+    [self synchChangesOfView:view];
+    if(view.queryOptions == nil)
+        view.queryOptions = [ [SBCouchQueryOptions new] autorelease]; 
+    
+    NSLog(@"reduce %@: ", view.reduce);
+    if(view.reduce && [view.reduce length] > 0 ){       
+        view.queryOptions.group = YES;        
+    }else{
+        view.queryOptions.group = NO;
     }
 
     // 404 /cushion-tickets/sprint?limit=30&group=true
@@ -100,7 +105,7 @@
     NSString *viewName = [self.viewComboBox objectValueOfSelectedItem];
     [self synchChanges:viewName];
     [self.designDocument put];
-    self.isDirty = NO;
+    self.isDirty = NO;               
 }
 
 - (IBAction)saveAsDesignDocumentAction:(id)sender{
@@ -165,9 +170,13 @@
     NSString *currentValueOfReduceFunction = [self.reduceTextView string];
     
     couchView.map = currentValueOfMapFunction;
-    if(currentValueOfReduceFunction && ! [@"" isEqualToString:currentValueOfReduceFunction]){
-        couchView.reduce = currentValueOfReduceFunction;
-    }        
+    couchView.reduce = currentValueOfReduceFunction;
+ 
+    // If we have a reduce function. 
+    if(couchView.reduce && [couchView.reduce length] != 0 && couchView.queryOptions){
+        couchView.queryOptions.group = YES;
+    }
+    
 }
 
 
@@ -190,7 +199,7 @@
         map = [NSString stringWithFormat:@"--> %@", menueItemViewName];
     }
     // XXX Only create this once, please. 
-    NSFont *font = [NSFont fontWithName:@"Monaco" size:18];
+    NSFont *font = [NSFont fontWithName:@"Monaco" size:14];
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
         
     NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];

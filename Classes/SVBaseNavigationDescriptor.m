@@ -65,6 +65,16 @@
         return (NSViewController*) sharedController; 
     }else if(self.type == DPDescriptorCouchView){
         SBCouchView *view = [userInfo objectForKey:@"couchobject"];
+        SBCouchQueryOptions *queryOptions = [[SBCouchQueryOptions new] autorelease];
+
+        if(view.reduce){
+            queryOptions.group = YES;
+        }else{
+            queryOptions.group = NO;            
+        }
+
+        view.queryOptions = queryOptions;
+        
         NSLog(@"ID %@", view.identity);
         NSEnumerator *couchResults = [view viewEnumerator];
         

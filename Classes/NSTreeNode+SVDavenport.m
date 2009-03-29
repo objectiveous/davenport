@@ -15,7 +15,7 @@
 
 -(NSDictionary*)convertJSONObjectToDictionary:(NSTreeNode*)treeNode;
 -(NSArray*)convertJSONArrayToDictionary:(NSTreeNode*)treeNode;
-
+-(NSArray*)findADatabaseTreeNode:(NSArray*)rootNode ofType:(Class)clazz;
 
 @end
 
@@ -50,6 +50,8 @@
     [[self mutableChildNodes] addObject:node];
     return node;
 }
+
+
 
 -(NSDictionary *)asDictionary{
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:[[self childNodes] count]];
@@ -139,10 +141,35 @@
     return @"No idea what this tree node is";
 }
 
-- (NSArray*) nodesHoldingUserDataOfType:(Class)clazz{
-    NSLog(@"Here we go");
-    return nil;
+- (NSArray*) nodesWithCouchObjectOfType:(Class)clazz{
+    return [self findADatabaseTreeNode:[self childNodes] ofType:clazz];
 }
 
+-(NSArray*)findADatabaseTreeNode:(NSArray*)nodes ofType:(Class)clazz{
+    NSMutableArray *matches = [NSMutableArray arrayWithCapacity:1];
+    for(NSTreeNode *node in nodes){
+        id nodeCouchDocument = [node couchObject];
+        
+        if([nodeCouchDocument isKindOfClass:clazz])
+            [matches addObject:node];
+                
+        NSArray *databaseNodes = [node findADatabaseTreeNode:[node childNodes] ofType:clazz];
+        [matches addObjectsFromArray:databaseNodes];
+    }
+    
+    return matches;
+}
+
+- (id)couchObject{
+    id representedObject = [self representedObject];
+    if([representedObject respondsToSelector:@selector(userInfo)]){
+        NSDictionary *userInfo = [representedObject userInfo];
+        id couchobject =  [userInfo objectForKey:@"couchobject"];
+        return couchobject;
+    }
+    
+    
+    return nil;
+}
 
 @end

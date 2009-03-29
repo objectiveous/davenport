@@ -17,10 +17,15 @@
 - (NSTreeNode*) addChildNodeWithObject:(id)object;
 - (NSDictionary*)asDictionary;
 
-// Returns an array of NSTreeNodes representing DPContributionNavigationDescriptors that 
+// returns the value of the couchobject key, held by the DPContributionNavigationDescriptor or 
+// nil in the event that the reciever is not representing a DPContributionNavigationDescriptor
+// or, if the reciever is lacking userinfo. 
+- (id)couchObject;
+
+// Returns an array of NSTreeNodes representing/holding DPContributionNavigationDescriptors that 
 // in turn are holding an instance of type clazz. The instance in question is held in the 
 // userData dictionary supplied by DPContributionNavigationDescriptor
-- (NSArray*) nodesHoldingUserDataOfType:(Class)clazz;
+- (NSArray*) nodesWithCouchObjectOfType:(Class)clazz;
 #pragma mark -
 
 - (NSString*) prettyPrint;

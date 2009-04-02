@@ -19,34 +19,27 @@
 #define DESIGN                  @"DESIGN"
 
 
+@interface SVFetchServerInfoOperation (Private)
+-(void)createNodesForDatabases:(NSArray*)couchDatabaseList serverNode:(NSTreeNode*)serverNode;
+-(void)createNodesForDesignDocs:(SBCouchDatabase*)couchDatabase databaseNode:(NSTreeNode*)databaseTreeNode;
+@end
+
 @implementation SVFetchServerInfoOperation
 
-@synthesize rootNode;
+//@synthesize rootNode;
 @synthesize couchServer;
+//@synthesize resourceFactory;
 
 -(id) initWithCouchServer:(SBCouchServer *)server rootTreeNode:(NSTreeNode*)rootTreeNode{
-    self = [super init];
+    self = [super initWithCouchTreeNode:rootTreeNode indexPath:nil resourceFactory:[(SVAppDelegate*) [NSApp delegate] mainWindowController]];
     if(self){
         self.couchServer = server;
-        self.rootNode = rootTreeNode;
     }
     return self;
 }
 
-// XXX A list of things I don't like with this method: 
-//     - Too long. 
-//     - Seems like SVBaseNavigationDescriptor could have a simpler constructor 
-//     - Seems to do more than one thing - needs some decomposition. 
-//     - I'm a little worried about loading in the view data as I think it impacts 
-//       performance. 
-//     - Return fetched data is obsolete 
-//
-//      Consider using anohter operaton to load Views. 
 - (void)main {
     SVDebug(@"Trying to fetch server information from localhot:5983");
-    fetchReturnedData = NO;
-    id <DPResourceFactory> factory = [(SVAppDelegate*) [NSApp delegate] mainWindowController];
-    
     assert(couchServer);
     NSArray *databases = [couchServer listDatabases];
     
@@ -54,66 +47,36 @@
         SVDebug(@"No databases found.");
         return;
     }
-    fetchReturnedData = YES;
-
-
-    NSString *hostAndPort = [NSString stringWithFormat:@"%@:%i",self.couchServer.host, self.couchServer.port];
-    NSTreeNode *couchServerNode = [self.rootNode addCouchServerSection:hostAndPort];
-
-    for(NSString *databaseName in databases){
-        SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];
-            
-        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
-        [userInfo setObject:couchDatabase forKey:@"couchobject"];
-        
-        SVBaseNavigationDescriptor *databaseDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:databaseName
-                                                                                               andIdentity:databaseName
-                                                                                                      type:DPDescriptorCouchDatabase
-                                                                                                    userInfo:userInfo];
-        
-        databaseDescriptor.couchDatabase = couchDatabase;
-        databaseDescriptor.resourceFactory = factory;
-        
-        NSTreeNode *databaseTreeNode = [couchServerNode addChildNodeWithObject:databaseDescriptor];                
-        NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
-
-        SBCouchDesignDocument *designDoc;
-        while((designDoc = [designDocs nextObject])){                        
-          //SBCouchDesignDocument *designDoc = [SBCouchDesignDocument designDocumentFromDocument:couchDocument];
-            
-          NSString *label = [designDoc.identity lastPathComponent];
-
-          NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
-          [userInfo setObject:designDoc forKey:@"couchobject"];
-
-           SVBaseNavigationDescriptor *designDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:label
-                                                                                                andIdentity:designDoc.identity
-                                                                                                       type:DPDescriptorCouchDesign
-                                                                                                   userInfo:userInfo];
-           designDescriptor.couchDatabase = couchDatabase;
-           designDescriptor.resourceFactory = factory;
-           NSTreeNode *designNode = [databaseTreeNode addChildNodeWithObject:designDescriptor];
-            
-            NSDictionary *dictionaryOfViews =  [designDoc views];
-            for(id viewName in dictionaryOfViews){
-                SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
-
-                NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:2];
-                [userInfo setObject:couchView forKey:@"couchobject"];
-                
-                SVBaseNavigationDescriptor *viewDescriptor = [[SVBaseNavigationDescriptor alloc] initWithLabel:couchView.name
-                                                                                                   andIdentity:[couchView identity]
-                                                                                                          type:DPDescriptorCouchView
-                                                                                                      userInfo:userInfo];
-                viewDescriptor.resourceFactory = factory;
-                                
-                [designNode addChildNodeWithObject:viewDescriptor];
-            }                        
-        }
-    }        
+    
+    NSTreeNode *couchServerNode = [self.rootNode addCouchServerNode:self.couchServer resourceFactory:self.resourceFactory];    
+    [self createNodesForDatabases:databases serverNode:couchServerNode];        
 }
 
--(BOOL)fetchReturnedData{
-    return fetchReturnedData;
+-(void)createNodesForDatabases:(NSArray*)couchDatabaseList serverNode:(NSTreeNode*)serverNode{
+ 
+    for(NSString *databaseName in couchDatabaseList){
+        SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];                       
+        NSTreeNode *databaseTreeNode = [serverNode addCouchDatabaseNode:couchDatabase resourceFactory:self.resourceFactory];            
+
+        [self createNodesForDesignDocs:couchDatabase databaseNode:databaseTreeNode];            
+    } 
+}
+
+-(void)createNodesForDesignDocs:(SBCouchDatabase*)couchDatabase databaseNode:(NSTreeNode*)databaseTreeNode{
+    NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
+    SBCouchDesignDocument *designDoc;
+    NSTreeNode *designNode;
+    
+    while((designDoc = [designDocs nextObject])){
+        
+        designNode = [databaseTreeNode addCouchDesignNode:designDoc resourceFactory:self.resourceFactory];        
+        NSDictionary *dictionaryOfViews =  [designDoc views];
+
+        for(id viewName in dictionaryOfViews){
+            SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
+            
+            [designNode addCouchViewNode:couchView resourceFactory:self.resourceFactory];
+        }                        
+    }
 }
 @end

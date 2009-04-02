@@ -31,7 +31,12 @@
 @property (retain) SBCouchDatabase       *couchDatabase;
 @property (retain) id <DPResourceFactory> resourceFactory;
 
++(id) serverDescriptor:(SBCouchServer*)couchServer resourceFactory:(id <DPResourceFactory>)factory;
++(id) databaseDescriptor:(SBCouchDatabase*)couchDatabase resourceFactory:(id <DPResourceFactory>)factory;
++(id) designDescriptor:(SBCouchDesignDocument*)couchDesignDoc resourceFactory:(id <DPResourceFactory>)factory;
++(id) viewDescriptor:(SBCouchView*)couchView resourceFactory:(id <DPResourceFactory>)factory;
 
+#pragma mark -
 -(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType userInfo:(NSMutableDictionary*)userInfo;
 -(id)initWithLabel:(NSString*)nodeLabel andIdentity:(NSString*)nodeIdentity type:(DPNavigationDescriptorTypes)aType;
 -(BOOL)isGroupItem;

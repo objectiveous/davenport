@@ -7,12 +7,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "DPResourceFactory.h"
 
 @interface NSTreeNode (SVDavenport) 
     
-- (NSTreeNode*) addSection:(NSString *)sectionName;
+- (NSTreeNode*) addSection:(NSString *)sectionName __attribute__ ((deprecated));
+
+
 - (NSTreeNode*) addCouchServerSection:(NSString *)sectionName;
+- (NSTreeNode*) addCouchServerNode:(SBCouchServer*)couchServer resourceFactory:(id <DPResourceFactory>)resourceFactory;
+- (NSTreeNode*) addCouchDatabaseNode:(SBCouchDatabase*)couchDatabase resourceFactory:(id <DPResourceFactory>)resourceFactory;
+- (NSTreeNode*) addCouchDesignNode:(SBCouchDesignDocument*)couchDesign resourceFactory:(id <DPResourceFactory>)resourceFactory;
+
+- (NSTreeNode*) addCouchViewNode:(SBCouchView*)couchView resourceFactory:(id <DPResourceFactory>)resourceFactory;
+
 - (NSTreeNode*) addDatabase:(NSString *)addDatabase;
 - (NSTreeNode*) addChildNodeWithObject:(id)object;
 - (NSDictionary*)asDictionary;

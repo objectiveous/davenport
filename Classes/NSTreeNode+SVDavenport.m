@@ -29,6 +29,34 @@
     return [self addChildNodeWithObject:section];
 }
 
+- (NSTreeNode*) addCouchServerNode:(SBCouchServer*)couchServer resourceFactory:(id <DPResourceFactory>)resourceFactory{
+    SVBaseNavigationDescriptor *serverDescriptor = [SVBaseNavigationDescriptor serverDescriptor:couchServer 
+                                                                                resourceFactory:resourceFactory];  
+    NSTreeNode *couchServerNode = [self addChildNodeWithObject:serverDescriptor];
+    return couchServerNode;
+}
+
+- (NSTreeNode*) addCouchDatabaseNode:(SBCouchDatabase*)couchDatabase resourceFactory:(id <DPResourceFactory>)resourceFactory{
+    SVBaseNavigationDescriptor *databaseDescriptor = [SVBaseNavigationDescriptor databaseDescriptor:couchDatabase                                                                                             
+                                                                                    resourceFactory:resourceFactory];
+    NSTreeNode *databaseTreeNode = [self addChildNodeWithObject:databaseDescriptor];
+    return databaseTreeNode;
+}
+
+- (NSTreeNode*) addCouchDesignNode:(SBCouchDesignDocument*)couchDesign resourceFactory:(id <DPResourceFactory>)resourceFactory{
+    SVBaseNavigationDescriptor *designDescriptor = [SVBaseNavigationDescriptor designDescriptor:couchDesign                                                                                            
+                                                                                    resourceFactory:resourceFactory];
+    NSTreeNode *designTreeNode = [self addChildNodeWithObject:designDescriptor];
+    return designTreeNode;
+}
+
+- (NSTreeNode*) addCouchViewNode:(SBCouchView*)couchView resourceFactory:(id <DPResourceFactory>)resourceFactory{
+    SVBaseNavigationDescriptor *viewDescriptor = [SVBaseNavigationDescriptor viewDescriptor:couchView                                                                                            
+                                                                                resourceFactory:resourceFactory];
+    NSTreeNode *viewTreeNode = [self addChildNodeWithObject:viewDescriptor];
+    return viewTreeNode;
+}
+
 -(NSTreeNode *) addSection:(NSString *)sectionName{
     SVBaseNavigationDescriptor *section = [[SVBaseNavigationDescriptor alloc] initWithLabel:sectionName
                                                                                 andIdentity:sectionName

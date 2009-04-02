@@ -8,19 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/SBCouchServer.h>
-
-@interface SVFetchServerInfoOperation : NSOperation {
-    NSTreeNode *rootNode;
-    BOOL fetchReturnedData;
+#import "DPResourceFactory.h"
+#import "SVAbstractCouchNodeOperation.h"
+@interface SVFetchServerInfoOperation : SVAbstractCouchNodeOperation {
 @protected
-    SBCouchServer *couchServer;
-    
+    SBCouchServer          *couchServer;
 }
 
-@property (retain) NSTreeNode    *rootNode;
-@property (retain) SBCouchServer *couchServer;
+@property (retain) SBCouchServer          *couchServer;
 
 -(id) initWithCouchServer:(SBCouchServer *)server rootTreeNode:(NSTreeNode*)rootTreeNode;
--(BOOL)fetchReturnedData;
 
 @end

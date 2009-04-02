@@ -14,9 +14,9 @@
  */
 
 NSString * const DPContributionPluginDidLoadNavigationItemsNotification = @"DPContributionPluginDidLoadNavigationItemsNotification";
-NSString * const SV_NOTIFICATION_RUN_SLOW_VIEW = @"SV_NOTIFICATION_RUN_SLOW_VIEW";
+NSString * const DPRunSlowViewNotification = @"DPRunSlowViewNotification";
 NSString * const DPLocalDatabaseNeedsRefreshNotification = @"DPLocalDatabaseNeedsRefreshNotification";
-
+NSString * const DPServerNeedsRefreshNotification = @"DPServerNeedsRefreshNotification";
 
 #pragma mark - 
 

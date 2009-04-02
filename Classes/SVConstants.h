@@ -20,8 +20,10 @@ typedef enum sharedViewControllers{
 #pragma mark Notifications
 
 extern NSString * const DPContributionPluginDidLoadNavigationItemsNotification;
-extern NSString * const SV_NOTIFICATION_RUN_SLOW_VIEW;
+/// TODO keep naming consistent
+extern NSString * const DPRunSlowViewNotification;
 extern NSString * const DPLocalDatabaseNeedsRefreshNotification;
+extern NSString * const DPServerNeedsRefreshNotification;
 
 
 

@@ -78,6 +78,7 @@
 - (IBAction)showAdminView:(id)sender;
 - (IBAction)showCreateDocument:(id)sender;
 - (IBAction)showInspector:(id)sender;
+- (IBAction)refreshServerNodeAction:(id)sender;
 
 // CONTEXT MENU HANDLERS
 - (IBAction)deleteDatabaseAction:(id)sender;

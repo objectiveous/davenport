@@ -8,8 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="250"/>
-			<integer value="1" id="9"/>
+			<integer value="110"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -76,8 +75,8 @@
 								<object class="NSMutableString" key="NSToolbarItemIdentifier">
 									<characters key="NS.bytes">320219C4-4AB4-406E-A93F-F8937958F4B2</characters>
 								</object>
-								<string key="NSToolbarItemLabel">Refresh View</string>
-								<string key="NSToolbarItemPaletteLabel">Refresh View</string>
+								<string key="NSToolbarItemLabel">Refresh Databases</string>
+								<string key="NSToolbarItemPaletteLabel">Refresh Server</string>
 								<string key="NSToolbarItemToolTip"/>
 								<nil key="NSToolbarItemView"/>
 								<object class="NSCustomResource" key="NSToolbarItemImage">
@@ -102,7 +101,7 @@
 								<string key="NSToolbarItemPaletteLabel">Create Document</string>
 								<string key="NSToolbarItemToolTip"/>
 								<nil key="NSToolbarItemView"/>
-								<object class="NSCustomResource" key="NSToolbarItemImage" id="540360871">
+								<object class="NSCustomResource" key="NSToolbarItemImage" id="820572811">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">documents</string>
 								</object>
@@ -144,7 +143,7 @@
 								<string key="NSToolbarItemPaletteLabel">New View</string>
 								<string key="NSToolbarItemToolTip"/>
 								<nil key="NSToolbarItemView"/>
-								<reference key="NSToolbarItemImage" ref="540360871"/>
+								<reference key="NSToolbarItemImage" ref="820572811"/>
 								<nil key="NSToolbarItemTarget"/>
 								<nil key="NSToolbarItemAction"/>
 								<string key="NSToolbarItemMinSize">{0, 0}</string>
@@ -543,7 +542,7 @@
 											<int key="tag">0</int>
 											<float key="minDimension">1.000000e+00</float>
 											<float key="maxDimension">1.000000e+06</float>
-											<double key="fraction">3.051758e-04</double>
+											<double key="fraction">0.000000e+00</double>
 											<bool key="canCollapse">NO</bool>
 										</object>
 									</object>
@@ -20942,7 +20941,7 @@ LS0tLS0tLQoKIA</bytes>
 														<int key="NSColorSpace">1</int>
 														<bytes key="NSRGB">MCAwIDEAA</bytes>
 													</object>
-													<reference ref="9"/>
+													<integer value="1" id="9"/>
 												</object>
 											</object>
 											<nil key="NSDefaultParagraphStyle"/>
@@ -21003,7 +21002,7 @@ LS0tLS0tLQoKIA</bytes>
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMenuItem" id="983586469">
 						<reference key="NSMenu" ref="871216817"/>
-						<string key="NSTitle">Refresh Database</string>
+						<string key="NSTitle">RefreshDatabase</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSImage">
@@ -21247,11 +21246,11 @@ LS0tLS0tLQoKIA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">refreshDatabaseAction:</string>
+						<string key="label">refreshServerNodeAction:</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="197721755"/>
 					</object>
-					<int key="connectionID">254</int>
+					<int key="connectionID">257</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -21924,15 +21923,15 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{367, 333}, {1024, 768}}</string>
+					<string>{{72, 333}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO" id="6"/>
 					<reference ref="6"/>
-					<string>{{367, 333}, {1024, 768}}</string>
+					<string>{{72, 333}, {1024, 768}}</string>
 					<boolean value="YES" id="5"/>
 					<reference ref="5"/>
 					<string>{1024, 768}</string>
-					<string>{{378, 1064}, {616, 0}}</string>
+					<string>{{276, 874}, {616, 227}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -21960,7 +21959,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{77, 1033}, {174, 63}}</string>
+					<string>{{77, 1033}, {169, 63}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -22005,7 +22004,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">254</int>
+			<int key="maxID">257</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -22065,6 +22064,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 							<string>createDatabaseAction:</string>
 							<string>deleteDatabaseAction:</string>
 							<string>refreshDatabaseAction:</string>
+							<string>refreshServerNodeAction:</string>
 							<string>showAdminView:</string>
 							<string>showCreateDocument:</string>
 							<string>showInspector:</string>
@@ -22072,6 +22072,7 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

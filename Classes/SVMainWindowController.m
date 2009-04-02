@@ -25,6 +25,7 @@
 #import "SVFetchServerInfoOperation.h"
 #import "SVPluginContributionLoaderOperation.h"
 #import "DPContributionNavigationDescriptor.h"
+#import "SVRefreshCouchDatabaseNodeOperation.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -43,9 +44,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 @interface SVMainWindowController (Private)
 
 - (void)updateBreadCrumbs:(NSTreeNode*)descriptor;
-
 - (void)fetchViews:(NSTreeNode*)designNode;
-- (void)refreshLocalDatabaseList:(NSNotification*)notification;
 - (NSTreeNode*)locateCouchServerDescriptionWithinTree:(NSTreeNode*)aRootNode;
 - (void)registerNotificationListeners;
 - (void)loadPlugins;
@@ -59,6 +58,10 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 - (void)loadViewNodes:(NSTreeNode*)treeNode;
 - (void)sizeViewToBody:(NSView*)aView;
 - (void)sizeViewToInspector:(NSView*)aView;
+
+- (void)refreshDatabaseNode:(NSNotification*)notification;
+- (void)refreshServerNode:(NSNotification*)notification;
+
 @end 
 
 @implementation SVMainWindowController
@@ -146,30 +149,24 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     
     [notificationCenter addObserver:self
                            selector:@selector(refreshLocalDatabaseList:)
-                               name:SV_NOTIFICATION_RUN_SLOW_VIEW
+                               name:DPRunSlowViewNotification
                              object:nil];    
     
     [notificationCenter addObserver:self
-                           selector:@selector(refreshLocalDatabaseList:)
+                           selector:@selector(refreshDatabaseNode:)
                                name:DPLocalDatabaseNeedsRefreshNotification
                              object:nil];
     
+    [notificationCenter addObserver:self
+                           selector:@selector(refreshServerNode:)
+                               name:DPServerNeedsRefreshNotification
+                             object:nil];
+    
+
+    
 }
 
 
-// XXX This really ought to call an operation that just gets a list of databases. 
-- (void) refreshLocalDatabaseList:(NSNotification*)notification{
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:[[NSApp delegate] couchServer] rootTreeNode:self.rootNode];
-    
-    [fetchOperation addObserver:self
-                     forKeyPath:@"isFinished" 
-                        options:0
-                        context:nil];
-    [queue addOperation:fetchOperation];                
-    [fetchOperation release];
-    
-}
 
 
 
@@ -836,20 +833,73 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 - (IBAction)refreshDatabaseAction:(id)sender{
     NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];        
-    SVBaseNavigationDescriptor *descriptor = [item representedObject];
-    SBCouchDatabase *couchObject = [descriptor.userInfo objectForKey:@"couchobject"];
-    // 1] Create an operation that creates an NSTreeNode for this database. 
-    // 2] Replace the children of item with the children of the new tree node. 
-    // 3] Run the operation in blocking mode at first. Make async later. 
-    [lock lock];
+    NSNotification *notification = [NSNotification notificationWithName:DPLocalDatabaseNeedsRefreshNotification object:item];
+    [self refreshDatabaseNode:notification];
+
+}
+
+- (IBAction)refreshServerNodeAction:(id)sender{
+    //NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];
     
-    
-    [self.sourceView reloadData];
-    [lock unlock];
+    for(id node in [self.rootNode childNodes]){
+        if(! [[node representedObject] isKindOfClass:[SVBaseNavigationDescriptor class]])
+            continue;
+
+        NSLog(@" %@", [node class]);
+        NSNotification *notification = [NSNotification notificationWithName:DPServerNeedsRefreshNotification object:node];
+        [self refreshServerNode:notification];
+    }        
 }
 
 #pragma mark -
 #pragma mark Notification Handlers
+// XXX This really ought to call an operation that just gets a list of databases. 
+
+
+- (void)refreshServerNode:(NSNotification*)notification{
+    NSTreeNode *item = [notification object];
+    
+    if(operationQueue == nil){
+        operationQueue = [[NSOperationQueue alloc] init];
+    }
+    
+}
+
+
+- (void)refreshDatabaseNode:(NSNotification*)notification{
+    NSTreeNode *item = [notification object];
+    
+    if(operationQueue == nil){
+        operationQueue = [[NSOperationQueue alloc] init];
+    }
+    
+    SVRefreshCouchDatabaseNodeOperation *operation = [[SVRefreshCouchDatabaseNodeOperation alloc] initWithCouchDatabaseTreeNode:self.rootNode
+                                                                                                        indexPath:[item indexPath]];
+    
+    [operationQueue addOperation:operation];        
+    [operationQueue waitUntilAllOperationsAreFinished]; 
+    
+    [lock lock];        
+    [self.sourceView reloadData];
+    [lock unlock];
+    
+    
+    [operation release];
+    
+    /*
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:[[NSApp delegate] couchServer] rootTreeNode:self.rootNode];
+    
+    [fetchOperation addObserver:self
+                     forKeyPath:@"isFinished" 
+                        options:0
+                        context:nil];
+    [queue addOperation:fetchOperation];                
+    [fetchOperation release];
+    */
+    
+}
+
 - (void) loadPluginsNavigationContributions:(NSNotification*)notification{
     NSString *pluginID = [notification object];
     id <DPContributionPlugin> plugin = [[[NSApp delegate] pluginRegistry] objectForKey:pluginID];

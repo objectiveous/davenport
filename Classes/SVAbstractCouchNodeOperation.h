@@ -10,8 +10,9 @@
 #import "DPResourceFactory.h"
 
 @interface SVAbstractCouchNodeOperation : NSOperation {
-    NSTreeNode  *rootNode;
-    NSIndexPath *databaseIndexPath;
+    NSTreeNode    *rootNode;
+    NSIndexPath   *databaseIndexPath;
+    SBCouchServer *couchServer;
 @protected    
     id <DPResourceFactory> resourceFactory;
 }
@@ -19,8 +20,11 @@
 @property (retain) NSTreeNode  *rootNode;
 @property (retain) NSIndexPath *databaseIndexPath; 
 @property (assign) id <DPResourceFactory> resourceFactory;
+@property (retain) SBCouchServer          *couchServer;
 
 -(id) initWithCouchTreeNode:(NSTreeNode*)couchTreeNode indexPath:(NSIndexPath*)indexPath resourceFactory:(id <DPResourceFactory>)resourceFactory;
 
-
+#pragma mark - 
+-(void)createNodesForDatabases:(NSArray*)couchDatabaseList serverNode:(NSTreeNode*)serverNode;
+-(void)createNodesForDesignDocs:(SBCouchDatabase*)couchDatabase databaseNode:(NSTreeNode*)databaseTreeNode;
 @end

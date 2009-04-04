@@ -12,10 +12,10 @@
 #import "SVAbstractCouchNodeOperation.h"
 @interface SVFetchServerInfoOperation : SVAbstractCouchNodeOperation {
 @protected
-    SBCouchServer          *couchServer;
+    //SBCouchServer          *couchServer;
 }
 
-@property (retain) SBCouchServer          *couchServer;
+
 
 -(id) initWithCouchServer:(SBCouchServer *)server rootTreeNode:(NSTreeNode*)rootTreeNode;
 

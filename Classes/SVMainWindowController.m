@@ -858,13 +858,10 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 - (void)refreshServerNode:(NSNotification*)notification{
     NSTreeNode *item = [notification object];
-    
     if(operationQueue == nil){
         operationQueue = [[NSOperationQueue alloc] init];
     }
-    
 }
-
 
 - (void)refreshDatabaseNode:(NSNotification*)notification{
     NSTreeNode *item = [notification object];
@@ -882,8 +879,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [lock lock];        
     [self.sourceView reloadData];
     [lock unlock];
-    
-    
+        
     [operation release];
     
     /*

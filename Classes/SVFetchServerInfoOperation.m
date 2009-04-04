@@ -19,15 +19,12 @@
 #define DESIGN                  @"DESIGN"
 
 
-@interface SVFetchServerInfoOperation (Private)
--(void)createNodesForDatabases:(NSArray*)couchDatabaseList serverNode:(NSTreeNode*)serverNode;
--(void)createNodesForDesignDocs:(SBCouchDatabase*)couchDatabase databaseNode:(NSTreeNode*)databaseTreeNode;
-@end
+
 
 @implementation SVFetchServerInfoOperation
 
 //@synthesize rootNode;
-@synthesize couchServer;
+//@synthesize couchServer;
 //@synthesize resourceFactory;
 
 -(id) initWithCouchServer:(SBCouchServer *)server rootTreeNode:(NSTreeNode*)rootTreeNode{
@@ -52,31 +49,5 @@
     [self createNodesForDatabases:databases serverNode:couchServerNode];        
 }
 
--(void)createNodesForDatabases:(NSArray*)couchDatabaseList serverNode:(NSTreeNode*)serverNode{
- 
-    for(NSString *databaseName in couchDatabaseList){
-        SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];                       
-        NSTreeNode *databaseTreeNode = [serverNode addCouchDatabaseNode:couchDatabase resourceFactory:self.resourceFactory];            
 
-        [self createNodesForDesignDocs:couchDatabase databaseNode:databaseTreeNode];            
-    } 
-}
-
--(void)createNodesForDesignDocs:(SBCouchDatabase*)couchDatabase databaseNode:(NSTreeNode*)databaseTreeNode{
-    NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
-    SBCouchDesignDocument *designDoc;
-    NSTreeNode *designNode;
-    
-    while((designDoc = [designDocs nextObject])){
-        
-        designNode = [databaseTreeNode addCouchDesignNode:designDoc resourceFactory:self.resourceFactory];        
-        NSDictionary *dictionaryOfViews =  [designDoc views];
-
-        for(id viewName in dictionaryOfViews){
-            SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
-            
-            [designNode addCouchViewNode:couchView resourceFactory:self.resourceFactory];
-        }                        
-    }
-}
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SVAbstractCouchNodeOperation.h"
+#import "NSTreeNode+SVDavenport.h"
 
 
 
@@ -14,13 +15,15 @@
 @synthesize rootNode;
 @synthesize databaseIndexPath;
 @synthesize resourceFactory;
+@synthesize couchServer;
 
--(id) initWithCouchTreeNode:(NSTreeNode*)couchTreeNode indexPath:(NSIndexPath*)indexPath resourceFactory:(id <DPResourceFactory>)resourceFactory{    
+
+-(id) initWithCouchTreeNode:(NSTreeNode*)couchTreeNode indexPath:(NSIndexPath*)indexPath resourceFactory:(id <DPResourceFactory>)rezFactory{    
     self = [super init];
     if(self){
         self.rootNode = couchTreeNode;
         self.databaseIndexPath = indexPath;
-        self.resourceFactory = resourceFactory;
+        self.resourceFactory = rezFactory;
     }
     return self;
 }
@@ -28,6 +31,35 @@
     self.rootNode = nil;
     self.databaseIndexPath = nil;
     [super dealloc];
+}
+
+#pragma mark -
+-(void)createNodesForDatabases:(NSArray*)couchDatabaseList serverNode:(NSTreeNode*)serverNode{
+    
+    for(NSString *databaseName in couchDatabaseList){
+        SBCouchDatabase *couchDatabase = [self.couchServer database:databaseName];                       
+        NSTreeNode *databaseTreeNode = [serverNode addCouchDatabaseNode:couchDatabase resourceFactory:self.resourceFactory];            
+        
+        [self createNodesForDesignDocs:couchDatabase databaseNode:databaseTreeNode];            
+    } 
+}
+
+-(void)createNodesForDesignDocs:(SBCouchDatabase*)couchDatabase databaseNode:(NSTreeNode*)databaseTreeNode{
+    NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
+    SBCouchDesignDocument *designDoc;
+    NSTreeNode *designNode;
+    
+    while((designDoc = [designDocs nextObject])){
+        
+        designNode = [databaseTreeNode addCouchDesignNode:designDoc resourceFactory:self.resourceFactory];        
+        NSDictionary *dictionaryOfViews =  [designDoc views];
+        
+        for(id viewName in dictionaryOfViews){
+            SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
+            
+            [designNode addCouchViewNode:couchView resourceFactory:self.resourceFactory];
+        }                        
+    }
 }
 
 @end

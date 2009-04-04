@@ -8,50 +8,62 @@
 #import "NSTreeNode+SVDavenport.h"
 #import "SVRefreshCouchServerNodeOperation.h"
 
+static const NSString *TEST_DATABASE_DOINK = @"doink"; 
 @interface SVRefreshServerNodeOperationIntegrationTest : SVAbstractIntegrationTest{
 }
+- (NSTreeNode *) rootNavigationNodeFromDavenport;
 @end
 
 @implementation SVRefreshServerNodeOperationIntegrationTest
 
+
+
+
+
 -(void)testRefreshOfServerNode{
-	SVDebug(@"Empty Test.");
     NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];  
     
-    SVAppDelegate *appDelegate = [NSApp delegate];
-    SVMainWindowController *mainWindowController = appDelegate.mainWindowController;
-    NSTreeNode *rootNodeOfLeftHandNav = mainWindowController.rootNode;
-    
-    //STAssertNotNil(rootNodeOfLeftHandNav, @"Could not grab the root node from Davenport");    
+    NSTreeNode *rootNodeOfLeftHandNav = [self rootNavigationNodeFromDavenport];
+
     NSArray *list = [rootNodeOfLeftHandNav nodesWithCouchObjectOfType:[SBCouchServer class]];
     STAssertNotNil(list, @"Empty list of TreeNodes w/ SBCouchServer objects ");
     STAssertTrue([list count] > 0 , @"Server Nodes = %i", [list count]);
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"representedObject.userInfo.couchobject.name like 'it-for-davenport*'"];
-    //NSArray *filteredListOfNodes =  [list filteredArrayUsingPredicate:predicate];
-
-    /*
-    
-    
-       
-    NSTreeNode *nodeToRefresh = [filteredListOfNodes lastObject];    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"representedObject.userInfo.couchobject.name like 'localhost*'"];
+    NSArray *filteredListOfNodes =  [list filteredArrayUsingPredicate:predicate];
+    STAssertNotNil(filteredListOfNodes, nil);
+    STAssertTrue([filteredListOfNodes count], @" Server list is empty");
+    NSTreeNode *nodeToRefresh = [filteredListOfNodes lastObject];
+    STAssertNotNil(nodeToRefresh, nil);
     NSIndexPath *indexPath = [nodeToRefresh indexPath];
     
     NSTreeNode *serverNode;
+    SBCouchServer *server = [nodeToRefresh couchObject];
+    STAssertNotNil(server, @"Missing a server %@", server);
+    [server createDatabase:@"doink"];
     
-    SVRefreshCouchServerNodeOperation *operation = [[SVRefreshCouchServerNodeOperation alloc] initWithCouchServerTreeNode:serverNode
+    SVRefreshCouchServerNodeOperation *operation = [[SVRefreshCouchServerNodeOperation alloc] initWithCouchServerTreeNode:nodeToRefresh
                                                                                                                       indexPath:indexPath];
     
-    
-    //[self addDesignDocument:[nodeToRefresh couchObject]];
+
     
     [operationQueue addOperation:operation];        
     [operationQueue waitUntilAllOperationsAreFinished];       
     [operation release];
     [operationQueue release];
     
-    NSTreeNode *updatedNode = [rootNodeOfLeftHandNav descendantNodeAtIndexPath:indexPath];
-    STAssertTrue(updatedNode == nodeToRefresh, nil);
-    */
+    NSArray *refreshedList = [rootNodeOfLeftHandNav nodesWithCouchObjectOfType:[SBCouchDatabase class]];
+    NSPredicate *doinkDatabasePredicate = [NSPredicate predicateWithFormat:@"representedObject.userInfo.couchobject.name like 'doink*'"];
+    NSArray *doinkDatabases =  [refreshedList filteredArrayUsingPredicate:doinkDatabasePredicate];   
+    STAssertNotNil(doinkDatabases, nil);
+    STAssertTrue([doinkDatabases count] == 1, nil);
+    [server deleteDatabase:@"doink"];
 }
 
+- (NSTreeNode *) rootNavigationNodeFromDavenport {
+    SVAppDelegate *appDelegate = [NSApp delegate];
+    SVMainWindowController *mainWindowController = appDelegate.mainWindowController;
+    NSTreeNode *rootNodeOfLeftHandNav = mainWindowController.rootNode;
+    return rootNodeOfLeftHandNav;
+}    
+    
 @end

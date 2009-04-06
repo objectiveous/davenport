@@ -25,6 +25,7 @@
     SVSaveViewAsSheetController             *saveViewAsController;
     SBCouchDesignDocument                   *designDocument;
     id <DPContributionNavigationDescriptor> navContribution;
+    NSTreeNode                              *navigationTreeNode;
     // Might want to make this a weak reference using the __weak type modifier.
     id delegate;
     @private
@@ -37,10 +38,16 @@
 @property (nonatomic, retain) NSButton                     *saveButton;
 @property (nonatomic, retain) NSButton                     *saveAsButton;
 @property (retain) id <DPContributionNavigationDescriptor> navContribution;
+@property (assign)            NSTreeNode                   *navigationTreeNode; 
 @property                     BOOL                         isDirty;
 @property (nonatomic, retain) SVSaveViewAsSheetController  *saveViewAsController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navigationTreeNode:(NSTreeNode*)aTreeNode;
+
+
+
 - (id)delegate;
 - (void)setDelegate:(id)newDelegate;
 

@@ -75,7 +75,6 @@
 		543FA05A0F471FAD00E1559C /* TPBaseDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA0590F471FAD00E1559C /* TPBaseDescriptor.m */; };
 		543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */; };
 		5444639B0F379AE30098BD0E /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
-		544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */; };
 		5444665A0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
 		5444665B0F3865D00098BD0E /* SVDocumentControlBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 544466590F3865D00098BD0E /* SVDocumentControlBarView.m */; };
 		544466820F3869AC0098BD0E /* segment1.png in Resources */ = {isa = PBXBuildFile; fileRef = 544466810F3869AC0098BD0E /* segment1.png */; };
@@ -122,6 +121,7 @@
 		546647BE0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
 		546647BF0F349E8600A8A709 /* SVDatabaseCreateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546647BD0F349E8600A8A709 /* SVDatabaseCreateSheetController.m */; };
 		546769BD0F2538A9006F6114 /* CouchDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546769BB0F2538A9006F6114 /* CouchDocument.xib */; };
+		5477CA340F792931008C72F6 /* SVAbstractIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */; };
 		54790A220F3A004100461FEB /* button-reload-on.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A1E0F3A004100461FEB /* button-reload-on.pdf */; };
 		54790A230F3A004100461FEB /* button-reload.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A1F0F3A004100461FEB /* button-reload.pdf */; };
 		54790A240F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54790A200F3A004100461FEB /* TB_Btn-Glyph-Run-Norm.pdf */; };
@@ -145,6 +145,8 @@
 		547CC7DE0F7305820050AF8A /* SaveViewAsPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 547CC7DB0F7305820050AF8A /* SaveViewAsPanel.xib */; };
 		547CC7F20F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */; };
 		547CC7F30F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */; };
+		547CCA440F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CCA430F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m */; };
+		547CCA450F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CCA430F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m */; };
 		5488D7080F5B551C00ECE7D3 /* DPSharedController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5488D7060F5B551C00ECE7D3 /* DPSharedController.h */; };
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
 		548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
@@ -179,11 +181,11 @@
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		54DA6F670F590201009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54DA6F6A0F590273009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
-		54DA70090F590A8C009C3D91 /* SVFetchQueryInfoOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */; };
-		54DA70390F590DB5009C3D91 /* SVCouchDocumentTreeNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */; };
-		54DA703B0F590DE3009C3D91 /* SVFetchServerInfoOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */; };
-		54DA70430F590F09009C3D91 /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */; };
-		54DA70490F591031009C3D91 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */; };
+		54EB07960F841E59009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB07950F841E59009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m */; };
+		54EB081F0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB081E0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m */; };
+		54EB08200F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB081E0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m */; };
+		54EB08390F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB08380F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m */; };
+		54EB083A0F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB08380F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m */; };
 		54F73B4E0F1CDC2100B7B9F4 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		54F73B570F1CDC3E00B7B9F4 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
@@ -204,6 +206,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 543F9EFE0F4610C100E1559C;
 			remoteInfo = SVTestPlugin;
+		};
+		544133530F7AC4A7006FFC9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 544133500F7AC489006FFC9E;
+			remoteInfo = "All Tests";
 		};
 		549F37490F3331480033A0C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -398,6 +407,9 @@
 		547CC7DC0F7305820050AF8A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SaveViewAsPanel.xib; sourceTree = "<group>"; };
 		547CC7F00F73079C0050AF8A /* SVSaveViewAsSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSaveViewAsSheetController.h; sourceTree = "<group>"; };
 		547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSaveViewAsSheetController.m; sourceTree = "<group>"; };
+		547CCA420F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRefreshCouchDatabaseNodeOperation.h; sourceTree = "<group>"; };
+		547CCA430F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRefreshCouchDatabaseNodeOperation.m; sourceTree = "<group>"; };
+		547CCA870F756A5B0050AF8A /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRefreshCouchDatabaseNodeOperationIntegrationTest.m; sourceTree = "<group>"; };
 		5488D7060F5B551C00ECE7D3 /* DPSharedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSharedController.h; sourceTree = "<group>"; };
 		548AACAB0F0AD50C009A49AD /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/QueryResultView.xib; sourceTree = "<group>"; };
 		548BB1840F3654AC00DB4DCB /* NSDictionary+SVDavenport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SVDavenport.h"; sourceTree = "<group>"; };
@@ -433,6 +445,12 @@
 		54DF2F810F30C59000A720D9 /* Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Tests-Info.plist"; path = "Resources/Tests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F820F30C59000A720D9 /* Unit Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Unit Tests-Info.plist"; path = "Resources/Unit Tests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F830F30C59000A720D9 /* vendorTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "vendorTests-Info.plist"; path = "Resources/vendorTests-Info.plist"; sourceTree = "<group>"; };
+		54EB07950F841E59009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRefreshServerNodeOperationIntegrationTest.m; sourceTree = "<group>"; };
+		54EB081D0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRefreshCouchServerNodeOperation.h; sourceTree = "<group>"; };
+		54EB081E0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRefreshCouchServerNodeOperation.m; sourceTree = "<group>"; };
+		54EB08370F850AE9009FF7CC /* SVAbstractCouchNodeOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVAbstractCouchNodeOperation.h; sourceTree = "<group>"; };
+		54EB08380F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVAbstractCouchNodeOperation.m; sourceTree = "<group>"; };
+		54F4353F0F75A58900EEC9DB /* SimpleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleTest.m; sourceTree = "<group>"; };
 		54F73B4D0F1CDC2100B7B9F4 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RBSplitView.framework; sourceTree = "<group>"; };
 		54F9F3330F0080B100EE414E /* Unit Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContributionPlugin.h; sourceTree = "<group>"; };
@@ -693,6 +711,7 @@
 		54008A1C0F30C49D002D56A4 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				54F4353F0F75A58900EEC9DB /* SimpleTest.m */,
 			);
 			name = Unit;
 			sourceTree = "<group>";
@@ -702,11 +721,13 @@
 			children = (
 				544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */,
 				544463C40F379CF10098BD0E /* SVAbstractIntegrationTest.m */,
-				549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */,
 				544463D50F379DD20098BD0E /* SVCouchDocumentTreeNodeTest.m */,
 				549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */,
 				54FECB180F45A71300652DEE /* SVLoadNavigationContributionsFromPluginsTest.m */,
 				549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */,
+				549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */,
+				547CCA870F756A5B0050AF8A /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m */,
+				54EB07950F841E59009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m */,
 			);
 			name = Integration;
 			sourceTree = "<group>";
@@ -755,9 +776,12 @@
 			isa = PBXGroup;
 			children = (
 				543F9D040F45B88D00E1559C /* headers */,
-				540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */,
 				549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */,
 				543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */,
+				54EB08380F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m */,
+				540089B90F30C040002D56A4 /* SVFetchServerInfoOperation.m */,
+				54EB081E0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m */,
+				547CCA430F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -765,6 +789,9 @@
 		543F9D040F45B88D00E1559C /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				54EB08370F850AE9009FF7CC /* SVAbstractCouchNodeOperation.h */,
+				54EB081D0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.h */,
+				547CCA420F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.h */,
 				543F9D000F45B85F00E1559C /* SVPluginContributionLoaderOperation.h */,
 				540089B80F30C040002D56A4 /* SVFetchServerInfoOperation.h */,
 				549946BB0F3CA55200E9C328 /* SVFetchQueryInfoOperation.h */,
@@ -860,6 +887,7 @@
 			children = (
 				54B09E8D0F195834005D3E2F /* CouchObjC.framework */,
 				54B09E8F0F195834005D3E2F /* Tests.octest */,
+				544133540F7AC4A7006FFC9E /* AllTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -939,7 +967,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 54B7DE8A0F097BF00081F3A3 /* Build configuration list for PBXNativeTarget "Integration Tests" */;
 			buildPhases = (
-				54B7DE810F097BF00081F3A3 /* Resources */,
 				54B7DE820F097BF00081F3A3 /* Sources */,
 				54B7DE870F097BF00081F3A3 /* Frameworks */,
 				54B7DE890F097BF00081F3A3 /* Run Tests */,
@@ -1042,6 +1069,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		544133540F7AC4A7006FFC9E /* AllTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AllTests.octest;
+			remoteRef = 544133530F7AC4A7006FFC9E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		54B09E8D0F195834005D3E2F /* CouchObjC.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1114,13 +1148,6 @@
 			files = (
 				54447F160F4CB93C0051AA83 /* TPTaskItem.xib in Resources */,
 				5444801E0F4CC63D0051AA83 /* TPMilestone.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54B7DE810F097BF00081F3A3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1222,7 +1249,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/UnitTesting/RunMacOSUnitTests.sh\n#\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
+			shellScript = "#/Users/robevans/Projects/iPhone/google-toolbox-for-mac-1-5-1/UnitTesting/RunMacOSUnitTests.sh\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"";
 			showEnvVarsInLog = 0;
 		};
 		54B98F8F0F4F323200F52859 /* ShellScript */ = {
@@ -1284,6 +1311,9 @@
 				543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 				5488D7080F5B551C00ECE7D3 /* DPSharedController.h in Sources */,
 				547CC7F30F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */,
+				547CCA450F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */,
+				54EB08200F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */,
+				54EB083A0F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,12 +1334,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				544463C50F379CF10098BD0E /* SVAbstractIntegrationTest.m in Sources */,
-				54DA703B0F590DE3009C3D91 /* SVFetchServerInfoOperationTest.m in Sources */,
-				54DA70390F590DB5009C3D91 /* SVCouchDocumentTreeNodeTest.m in Sources */,
-				54DA70090F590A8C009C3D91 /* SVFetchQueryInfoOperationTest.m in Sources */,
-				54DA70430F590F09009C3D91 /* SVLoadNavigationContributionsFromPluginsTest.m in Sources */,
-				54DA70490F591031009C3D91 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m in Sources */,
+				5477CA340F792931008C72F6 /* SVAbstractIntegrationTest.m in Sources */,
+				54EB07960F841E59009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,6 +1385,9 @@
 				544528F70F42801C00AB1845 /* SVSourceView.m in Sources */,
 				543F9D020F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
 				547CC7F20F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */,
+				547CCA440F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */,
+				54EB081F0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */,
+				54EB08390F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1609,11 +1638,12 @@
 					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
 					"\"$(SRCROOT)/../couchobj/build/Debug\"",
 				);
+				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_ENABLE_OBJC_GC = supported;
-				GCC_MODEL_TUNING = G5;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_MODEL_TUNING = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
@@ -1667,7 +1697,7 @@
 					SenTestingKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "Unit Tests";
+				PRODUCT_NAME = IntegrationTests;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};

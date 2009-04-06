@@ -26,6 +26,7 @@
 #import "SVPluginContributionLoaderOperation.h"
 #import "DPContributionNavigationDescriptor.h"
 #import "SVRefreshCouchDatabaseNodeOperation.h"
+#import "SVRefreshCouchServerNodeOperation.h"
 
 // XXX these thingies need to be defined in one place only. 
 //     
@@ -50,17 +51,20 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 - (void)loadPlugins;
 - (void)autoExpandGroupItems;
 // Methods used for adding Views into the Body or Inspector areas of the Davenport host. 
-- (void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor;
-- (void)showDesignEditorInMainView:(id<DPContributionNavigationDescriptor>)navDescriptor;
-- (void)showDesignView:(id<DPContributionNavigationDescriptor>)navDescriptor;
+- (void)showCouchViewInBody:(NSTreeNode*)navigationTreeNode;
+- (void)showDesignEditorInMainView:(NSTreeNode*)navigationTreeNode;
+- (void)showDesignView:(NSTreeNode*)navigationTreeNode;
+
 - (void)showEmptyInspectorView;
 - (void)showEmptyBodyView;
+
 - (void)loadViewNodes:(NSTreeNode*)treeNode;
 - (void)sizeViewToBody:(NSView*)aView;
 - (void)sizeViewToInspector:(NSView*)aView;
 
 - (void)refreshDatabaseNode:(NSNotification*)notification;
 - (void)refreshServerNode:(NSNotification*)notification;
+- (void)refreshTreeNode:(NSNotification*)notification;
 
 @end 
 
@@ -162,6 +166,10 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
                                name:DPServerNeedsRefreshNotification
                              object:nil];
     
+    [notificationCenter addObserver:self
+                           selector:@selector(refreshTreeNode:)
+                               name:DPRefreshNotification
+                             object:nil];
 
     
 }
@@ -456,22 +464,30 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 #pragma mark -
 #pragma mark SourceView Selection Handlers and Supporting Methods
 
-- (void)showDesignView:(id<DPContributionNavigationDescriptor>)navDescriptor{
+- (void)showDesignView:(NSTreeNode*)navigationTreeNode{
     [self showEmptyInspectorView]; 
-    [self showDesignEditorInMainView:navDescriptor];
+    [self showDesignEditorInMainView:navigationTreeNode];
     //[self showEmptyBodyView];     
 }
 
--(void)showDesignEditorInMainView:(id<DPContributionNavigationDescriptor>)navDescriptor{
+-(void)showDesignEditorInMainView:(NSTreeNode*)navigationTreeNode{
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
     }
     
     // SHOW FUNTION EDITOR IN THE MAIN VIEW
+    /*
     SVDesignDocumentEditorController *functionController = [[SVDesignDocumentEditorController alloc]                                                                 
                                                                     initWithNibName:NIB_DesignDocumentEditor 
                                                                              bundle:nil
                                                                     navContribution:navDescriptor];    
+    */
+    
+    SVDesignDocumentEditorController *functionController;
+    functionController = [[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor 
+                                                                            bundle:nil
+                                                                navigationTreeNode:navigationTreeNode];
+    
     [self sizeViewToBody:[functionController view]];
     /*
     for (id view in [inspectorView subviews]){
@@ -510,12 +526,12 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 
--(void)showSlowViewInMainView:(id<DPContributionNavigationDescriptor>)navContribution{
-
+-(void)showSlowViewInMainView:(NSTreeNode*)navigationTreeNode{
+    id <DPContributionNavigationDescriptor> navDescriptor = [navigationTreeNode representedObject];
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
     SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                                                                bundle:nil 
-                                                                                              navContribution:navContribution];
+                                                                                              navContribution:navDescriptor];
     
     
     for (id view in [inspectorView subviews]){
@@ -527,7 +543,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 
--(void)showCouchViewInBody:(id<DPContributionNavigationDescriptor>)navDescriptor{    
+-(void)showCouchViewInBody:(NSTreeNode*)navigationTreeNode{
+    id <DPContributionNavigationDescriptor> navDescriptor = [navigationTreeNode representedObject];
     NSViewController *queryResultController = [navDescriptor contributionMainViewController];
 
     for (NSView *view in [bodyView subviews]) {
@@ -575,32 +592,32 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
     [self.bodyView addSubview:self.emptyBodyView];
 }
-
+// XXX Is it a little strange to just igone the notification object all together? 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification{
     if([sourceView selectedRow] == -1)
         return;
     
-    NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
-    id <DPContributionNavigationDescriptor, NSObject> descriptor = [item representedObject];
+    NSTreeNode *selectedTreeNode = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
+    id <DPContributionNavigationDescriptor, NSObject> descriptor = [selectedTreeNode representedObject];
     
     if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
         SVDebug(@"item does not conform to Contribution protocol");
         return;
     }
     
-    [self updateBreadCrumbs:item];
+    [self updateBreadCrumbs:selectedTreeNode];
 
     if([descriptor type] == DPDescriptorCouchDatabase){
-        [self showCouchViewInBody:descriptor];
+        [self showCouchViewInBody:selectedTreeNode];
     }else if([descriptor type] == DPDescriptorCouchDesign){
-        [self showDesignView:descriptor];
+        [self showDesignView:selectedTreeNode];
     }else if([descriptor type] == DPDescriptorCouchView){
         //[self showDesignEditorInMainView:descriptor];
-        [self showCouchViewInBody:descriptor];
+        [self showCouchViewInBody:selectedTreeNode];
     }else if([descriptor type] == DPDescriptorPluginProvided){
-        [self delagateSelectionDidChange:item];
+        [self delagateSelectionDidChange:selectedTreeNode];
     }else{
-        [self delagateSelectionDidChange:item];
+        [self delagateSelectionDidChange:selectedTreeNode];
     }    
 }
 
@@ -827,7 +844,18 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
         [couchServer createDatabase:newDatabaseName];
         // Now reaload all the datafrom the server. 
-        [(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];    
+        //[(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];
+        
+        // XXX Seems like we ought to be able to get a handle to the server object. 
+        for(id node in [self.rootNode childNodes]){
+            if(! [[node representedObject] isKindOfClass:[SVBaseNavigationDescriptor class]])
+                continue;
+            
+            //NSLog(@" %@", [node class]);
+            NSNotification *notification = [NSNotification notificationWithName:DPServerNeedsRefreshNotification object:node];
+            [self refreshServerNode:notification];
+        } 
+        
 	}
 }
 
@@ -855,12 +883,47 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 #pragma mark Notification Handlers
 // XXX This really ought to call an operation that just gets a list of databases. 
 
+- (void)refreshTreeNode:(NSNotification*)notification{
+    NSTreeNode *nodeToRefresh = [notification object];
+    id couchObject = [nodeToRefresh couchObject];
+    if([couchObject isKindOfClass:[SBCouchServer class]]){
+        [self refreshServerNode:notification];
+    }else if([couchObject isKindOfClass:[SBCouchDatabase class]]){
+        [self refreshDatabaseNode:notification];
+    }else if([couchObject isKindOfClass:[SBCouchDesignDocument class]]){        
+        NSTreeNode *parentDatabase = [nodeToRefresh parentNode];
+        NSNotification * newNotification = [NSNotification notificationWithName:@"" object:parentDatabase];
+        [self refreshDatabaseNode:newNotification];
+                        
+        // Trigger a selection change
+        NSInteger rowIndexForDatabase = [self.sourceView rowForItem:nodeToRefresh];
+        [self.sourceView selectRowIndexes: [NSIndexSet indexSetWithIndex:rowIndexForDatabase] byExtendingSelection:NO];
+        [self outlineViewSelectionDidChange:newNotification];
+        [self.sourceView expandItem:parentDatabase expandChildren:YES];
+    }
+    
 
+    
+}
 - (void)refreshServerNode:(NSNotification*)notification{
-    NSTreeNode *item = [notification object];
+    NSTreeNode *nodeToRefresh = [notification object];
     if(operationQueue == nil){
         operationQueue = [[NSOperationQueue alloc] init];
     }
+    
+    NSIndexPath *indexPath = [nodeToRefresh indexPath];
+    
+    SVRefreshCouchServerNodeOperation *operation = [[SVRefreshCouchServerNodeOperation alloc] initWithCouchServerTreeNode:nodeToRefresh
+                                                                                                                indexPath:indexPath];
+    
+    [operationQueue addOperation:operation];        
+    [operationQueue waitUntilAllOperationsAreFinished];       
+    [operation release];
+    //[operationQueue release];
+    
+    [lock lock];        
+    [self.sourceView reloadData];
+    [lock unlock];
 }
 
 - (void)refreshDatabaseNode:(NSNotification*)notification{
@@ -881,18 +944,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [lock unlock];
         
     [operation release];
-    
-    /*
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:[[NSApp delegate] couchServer] rootTreeNode:self.rootNode];
-    
-    [fetchOperation addObserver:self
-                     forKeyPath:@"isFinished" 
-                        options:0
-                        context:nil];
-    [queue addOperation:fetchOperation];                
-    [fetchOperation release];
-    */
     
 }
 
@@ -948,6 +999,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 #pragma mark -
 #pragma mark DPResourceFactory Protocol 
+
+// XXX Memory leak city! autorelease is your friend. 
 -(id)namedResource:(DPSharedResources)resourceName{
     // XXX Switch statement....please. 
     if(resourceName == DPSharedViewContollerNamedFunctionEditor){

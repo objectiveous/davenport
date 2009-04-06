@@ -12,7 +12,7 @@
 #import "SVAppDelegate.h"
 #import "DPContributionNavigationDescriptor.h"
 #import "SVSaveViewAsSheetController.h"
-
+#import <CouchObjC/CouchObjC.h>
 
 @interface SVDesignDocumentEditorController (Private)
 
@@ -32,9 +32,20 @@
 @synthesize saveAsButton;                       
 @synthesize isDirty;
 @synthesize saveViewAsController;
+@synthesize navigationTreeNode;
+@synthesize navContribution;
 
 #pragma mark -
-
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navigationTreeNode:(NSTreeNode*)aTreeNode{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        self.navigationTreeNode = aTreeNode;
+        navContribution = [aTreeNode representedObject];
+        self.designDocument = [aTreeNode couchObject]; 
+        self.saveViewAsController = [[SVSaveViewAsSheetController alloc] initWithWindowNibName:@"SaveViewAsPanel"];
+    }    
+    return self;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution{ 
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self){
@@ -153,6 +164,7 @@
         //[couchServer createDatabase:newDatabaseName];
         // Now reaload all the datafrom the server. 
         //[(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];    
+          [[NSNotificationCenter defaultCenter] postNotificationName:DPRefreshNotification object:self.navigationTreeNode];
 	}
 }
 

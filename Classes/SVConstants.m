@@ -17,7 +17,7 @@ NSString * const DPContributionPluginDidLoadNavigationItemsNotification = @"DPCo
 NSString * const DPRunSlowViewNotification = @"DPRunSlowViewNotification";
 NSString * const DPLocalDatabaseNeedsRefreshNotification = @"DPLocalDatabaseNeedsRefreshNotification";
 NSString * const DPServerNeedsRefreshNotification = @"DPServerNeedsRefreshNotification";
-
+NSString * const DPRefreshNotification = @"DPRefreshNotification";
 #pragma mark - 
 
 NSString * const DPNamedControllerFunctionEditor = @"DPNamedControllerFunctionEditor";

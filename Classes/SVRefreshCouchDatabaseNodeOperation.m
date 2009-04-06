@@ -33,8 +33,15 @@
     id <DPResourceFactory> factory = [(SVAppDelegate*) [NSApp delegate] mainWindowController];
     
     NSTreeNode *databaseNode = [self.rootNode descendantNodeAtIndexPath:self.databaseIndexPath];
-    SBCouchDatabase *couchDatabase = [databaseNode couchObject];
+
+    id couchDatabase = [databaseNode couchObject];
     
+    // If we've been handed a tree node holding a CouchDocument, we can still update the 
+    // database. 
+    if([couchDatabase isKindOfClass:[SBCouchDocument class]]){
+        couchDatabase = [(SBCouchDocument*)couchDatabase couchDatabase];
+    }
+        
     NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        
     
     SBCouchDesignDocument *designDoc;
@@ -74,8 +81,7 @@
         [childNodes removeAllObjects];        
         for(NSTreeNode *newChildNode in [newDatabaseTreeNode mutableChildNodes]){
             [childNodes addObject:newChildNode];
-            NSLog(@"--> %@, %i", [[newChildNode couchObject] class], [childNodes count]);
-            
+            //NSLog(@"--> %@, %i", [[newChildNode couchObject] class], [childNodes count]);            
         }
     }
 }

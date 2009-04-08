@@ -170,13 +170,15 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
                            selector:@selector(refreshTreeNode:)
                                name:DPRefreshNotification
                              object:nil];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(createDatabaseAction:)
+                               name:DPCreateDatabaseAction
+                             object:nil];
+
 
     
 }
-
-
-
-
 
 -(void) dealloc{
     [urlImage release];
@@ -297,60 +299,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     //[self.sourceView reloadData];
     //[lock unlock];
 }
-
-/*
-- (void)outlineViewItemWillExpand:(NSNotification *)notification{ 
-    id treeNode = [[notification userInfo] objectForKey:@"NSObject"];
-    if(treeNode && [treeNode isKindOfClass:[NSTreeNode class]]){
-        SVBaseNavigationDescriptor *desc = [treeNode representedObject];
-        // Hard coding this for now but it could possibly be supported in the protocol. Or we might just want to expand everything. 
-        if([desc isKindOfClass:[SVBaseNavigationDescriptor class]]){
-            //[desc.couchDatabase]
-
-            id couchObject = [[desc userInfo] objectForKey:@"couchobject"];
-            if(couchObject && desc.type == DPDescriptorCouchDatabase){
-                for(NSTreeNode *child in [treeNode childNodes]){
-                    id <DPContributionNavigationDescriptor, NSObject> childDesc = [child representedObject]; 
-                    SBCouchDesignDocument *couchDesignDocument = [[childDesc userInfo] objectForKey:@"couchobject"];
-                    NSLog(@"%@", couchDesignDocument);
-                    NSLog(@"%@", [couchDesignDocument views]);
-                    
-                    NSDictionary *dictionaryOfViews =  [couchDesignDocument views];
-                    for(SBCouchView *viewName in dictionaryOfViews){
-                        SBCouchView *couchView = [dictionaryOfViews objectForKey:viewName];
-                        SBCouchEnumerator *viewResults = (SBCouchEnumerator*) [couchView getEnumerator];
-                        SVBaseNavigationDescriptor *slug = [[SVBaseNavigationDescriptor alloc] initWithLabel:@"AAAA" andIdentity:@"AAAA" type:DPDescriptorCouchView userInfo:nil];
-
-                        [[treeNode mutableChildNodes] addObject:[NSTreeNode treeNodeWithRepresentedObject:slug]];
-                    }
-                }
-            }
-        }
-        
-    }
-       
-}
- 
-*/
- 
-/*
-- (void)outlineViewItemDidExpand:(NSNotification *)notification{
-    id sv = [notification object];
-    NSDictionary *dict = [notification userInfo];
-    id thing = [[notification userInfo] objectForKey:@"NSObject"];
-    
-    NSLog(@"selectedRow %i", [sv  selectedRow]);   
-    if([sv selectedRow] == -1)
-        return;
-    
-    // Here we could fetch the children... 
-    NSTreeNode *item = (NSTreeNode*)[sourceView itemAtRow: [sourceView selectedRow]];
-    id <DPContributionNavigationDescriptor, NSObject> descriptor = [item representedObject];
-    
-    NSLog(@"--> %@", descriptor);    
-    
-}
-*/ 
  
 -(void)fetchViews:(NSTreeNode*)designNode{
     if(operationQueue == nil){
@@ -783,57 +731,53 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 #pragma mark -
-#pragma mark ContextMenu Handlers and Delegate Methods
+#pragma mark Context Menu Handlers and Delegate Methods
 
 /*
- Controls what Conext Menu items are shown for a given NSOutlineView selection. 
+ Controls what Conext Menu items are shown for a given NSOutlineView selection. The control 
+ of what menu items should be shown is left to the represented DPContributionNavigationDescriptor. 
  */
 - (void)menuNeedsUpdate:(NSMenu *)menu {
-    NSInteger clickedRow = [sourceView clickedRow];
+    NSInteger selectedRow = [sourceView clickedRow];
     
-    if(clickedRow == -1)
+    if(selectedRow == -1)
         return;
         
-    NSTreeNode *item = [sourceView itemAtRow:clickedRow];
-    SVBaseNavigationDescriptor *descriptor = [item representedObject];
+    NSTreeNode *item = [sourceView itemAtRow:selectedRow];
 
-    if(descriptor.type != DPDescriptorCouchDatabase){
-        // hide all the menu items. This will prevent any context menu from appearing. 
-        for(NSMenuItem *menuItem in [menu itemArray]){
-            [menuItem setHidden:TRUE];
-        }
-    }else{
-        //XXX Is there a better way to do this than by name?
-        //NSMenuItem *deleteMenuItem = [menu itemWithTitle:@"Delete"];
-        //assert(deleteMenuItem);        
-        //[menuItem setTitle:[NSString stringWithFormat:@"Delete '%@'", [descriptor label]]];    
-        //[deleteMenuItem setRepresentedObject:item];    
-        // Ensure the menu items are visible. 
-        for(NSMenuItem *menuItem in [menu itemArray]){
-            [menuItem setHidden:FALSE];
-            [menuItem setRepresentedObject:item];    
-        }
-    }
+    // This will allow each navigation node to update its context menue. This pushes the the 
+    // menu configuration down to the plugin but its not clear how to handle actions. I suppose 
+    // we could have a standard set of notificatons and let the not fire them off.  
+    id <DPContributionNavigationDescriptor> descriptor = [item representedObject];
+    [descriptor menuNeedsUpdate:menu forItem:item];
+    
 }
 
 - (IBAction)deleteDatabaseAction:(id)sender{
     if(![sender isKindOfClass:[NSMenuItem class]])
         return;
 
-    NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];        
-    SVBaseNavigationDescriptor *descriptor = [item representedObject];
+    //NSIndexSet *selectedRows = [self.sourceView selectedRowIndexes];
     
-    SVDebug(@"Going to delete database [%@]", [descriptor label]);
-
-    SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
-    BOOL didDelete = [couchServer deleteDatabase:[descriptor label]];
-    
-    if(didDelete){
-        [[[item parentNode] mutableChildNodes] removeObject:item];
-        [lock lock];
-        [self.sourceView reloadData];
-        [lock unlock];
-    }
+    NSIndexSet *rows = [self.sourceView selectedRowIndexes];
+	
+	unsigned current_index = [rows lastIndex];
+    while (current_index != NSNotFound){
+        NSTreeNode *item = [self.sourceView itemAtRow:current_index];
+        id couchObject = [item couchObject];
+        
+        NSLog(@"%@", item);
+        current_index = [rows indexLessThanIndex: current_index];
+        
+        SBCouchResponse *response = [couchObject delete];
+        
+        if(response.ok){
+            [[[item parentNode] mutableChildNodes] removeObject:item];
+            [lock lock];
+            [self.sourceView reloadData];
+            [lock unlock];
+        }                
+    }        
 }
 
 - (IBAction)createDatabaseAction:(id)sender{
@@ -854,13 +798,12 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
             //NSLog(@" %@", [node class]);
             NSNotification *notification = [NSNotification notificationWithName:DPServerNeedsRefreshNotification object:node];
             [self refreshServerNode:notification];
-        } 
-        
+        }         
 	}
 }
 
 - (IBAction)refreshDatabaseAction:(id)sender{
-    NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];        
+    NSTreeNode *item = (NSTreeNode*)[(NSMenuItem*)sender representedObject];    
     NSNotification *notification = [NSNotification notificationWithName:DPLocalDatabaseNeedsRefreshNotification object:item];
     [self refreshDatabaseNode:notification];
 
@@ -892,14 +835,18 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         [self refreshDatabaseNode:notification];
     }else if([couchObject isKindOfClass:[SBCouchDesignDocument class]]){        
         NSTreeNode *parentDatabase = [nodeToRefresh parentNode];
+        // Take the index for the database before it disapears. 
+        NSInteger rowIndexToNodeToRefresh = [self.sourceView rowForItem:nodeToRefresh];
+        
         NSNotification * newNotification = [NSNotification notificationWithName:@"" object:parentDatabase];
-        [self refreshDatabaseNode:newNotification];
-                        
+        [self refreshDatabaseNode:newNotification];        
+        
         // Trigger a selection change
-        NSInteger rowIndexForDatabase = [self.sourceView rowForItem:nodeToRefresh];
-        [self.sourceView selectRowIndexes: [NSIndexSet indexSetWithIndex:rowIndexForDatabase] byExtendingSelection:NO];
+        //[self.sourceView selectRowIndexes: [NSIndexSet indexSetWithIndex:rowIndexToNodeToRefresh] byExtendingSelection:NO];
         [self outlineViewSelectionDidChange:newNotification];
-        [self.sourceView expandItem:parentDatabase expandChildren:YES];
+        NSTreeNode *nodeToRefresh = [self.sourceView itemAtRow:rowIndexToNodeToRefresh];
+        if(nodeToRefresh)
+            [self.sourceView expandItem:nodeToRefresh expandChildren:YES];
     }
     
 

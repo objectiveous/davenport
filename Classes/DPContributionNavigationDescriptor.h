@@ -35,4 +35,7 @@ typedef enum documentTypes{
 // If set to true, the NSOutlineView row will be drawn in the “group row” style
 // See NSOutlineView outlineView:isGroupItem: for more information
 -(BOOL)isGroupItem;
+
+// Context Menu support. 
+- (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item;
 @end

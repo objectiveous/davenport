@@ -55,10 +55,7 @@ int LOCAL_PORT = 5984;
     if(LOCAL_PORT == 5983)
         [self launchCouchDB];
     else
-        [self performFetchServerInfoOperation];     
-    
-    
-   	
+        [self performFetchServerInfoOperation];
 }
 
 - (void) performFetchServerInfoOperation {
@@ -78,8 +75,11 @@ int LOCAL_PORT = 5984;
 	return YES;
 }
 
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification{
+    [self loadMainWindow]; 
+}
 - (void)applicationDidFinishLaunching:(NSNotification*)notification{
-    [self loadMainWindow];        
+    [self.mainWindowController.sourceView reloadData];
 }
 
 #pragma mark -
@@ -89,7 +89,7 @@ int LOCAL_PORT = 5984;
     if([keyPath isEqual:@"isFinished"] && [object isKindOfClass:[SVFetchServerInfoOperation class]]){     
         NSTreeNode *sourceViewModelRootNode = [(SVFetchServerInfoOperation*)object rootNode];
         [mainWindowController appendNSTreeNodeToNavigationRootNode:sourceViewModelRootNode];
-    } 
+    }     
 }
 
 #pragma mark -

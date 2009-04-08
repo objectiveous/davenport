@@ -16,9 +16,9 @@
 
 static NSString *PLUGIN_NAME           = @"TPPlugin";
 static NSString *DATABASE_NAME         = @"cushion-tickets";
-static NSString *PLUGIN_NODE_NAME      = @"Cushion Tickets";
-static NSString *PLUGIN_NODE_MILESTONE = @"milestone";
-static NSString *PLUGIN_NODE_TASK      = @"task";
+//static NSString *PLUGIN_NODE_NAME      = @"Cushion Tickets";
+//static NSString *PLUGIN_NODE_MILESTONE = @"milestone";
+//static NSString *PLUGIN_NODE_TASK      = @"task";
 
 
 @implementation TPPlugin

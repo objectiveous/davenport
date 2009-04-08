@@ -229,7 +229,7 @@
     NSLog(@"-------------------");
     NSLog(@"%@", [self.reduceTextView string]);
     
-    id userInfo = [aNotification userInfo];
+    //id userInfo = [aNotification userInfo];
     [self.saveButton highlight:YES];
     self.isDirty = YES;
 }

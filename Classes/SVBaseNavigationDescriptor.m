@@ -10,6 +10,23 @@
 #import "DPResourceFactory.h"
 #import "DPSharedController.h"
 
+
+@interface SVBaseNavigationDescriptor (Private)
+
+- (void) contributeToMenu:(NSMenu*)menu forItem:(NSTreeNode*)item;
+- (void) activateMenuItemsForDatabase:(NSMenu*)menu forItem:(NSTreeNode*)item;
+- (void) activateMenuItemsForDesignDocument:(NSMenu*)menu forItem:(NSTreeNode*)item;
+- (void) removeAllMenuItems:(NSMenu*)menu; 
+
+- (IBAction) refreshAction:(NSMenuItem*)sender;
+- (IBAction) newDesignAction:(NSMenuItem*)sender;
+- (IBAction) newDatabaseAction:(NSMenuItem*)sender;
+- (IBAction) deleteNodeAction:(NSMenuItem*)sender;
+
+
+@end
+
+
 @implementation SVBaseNavigationDescriptor
 
 @synthesize label;
@@ -19,6 +36,16 @@
 @synthesize type;
 @synthesize couchDatabase;
 @synthesize resourceFactory;
+@synthesize contributed;
+
+NSString *MenuItemNewDatabase    = @"Database New"; 
+NSString *MenuItemDeleteDatabase = @"Database Delete"; 
+
+NSString *MenuItemNewDesignDoc    = @"Design New";
+NSString *MenuItemDeleteDesignDoc = @"Design Delete";
+
+NSString *MenuItemRefresh         = @"Refresh";
+
 
 
 + (NSMutableDictionary *) createUserInfoDictionary:(id) couchObject  {
@@ -142,6 +169,109 @@
 }
 -(NSDictionary*)userInfo{
     return userInfo;
+}
+
+#pragma mark --
+#pragma mark Context Menu Support
+- (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item{
+    [self removeAllMenuItems:menu];
+    [self contributeToMenu:menu forItem:(NSTreeNode*)item];
+
+    switch (self.type) {
+        case DPDescriptorCouchDatabase:
+            [self activateMenuItemsForDatabase:menu forItem:item];
+            break;
+            
+        case DPDescriptorCouchDesign:
+            [self activateMenuItemsForDesignDocument:menu forItem:item];
+            break;            
+            
+        default:
+            [self removeAllMenuItems:menu];
+            break;
+    }
+}
+
+- (void)contributeToMenu:(NSMenu*)menu forItem:(NSTreeNode*)item{
+    
+    if(![menu itemWithTitle:@"sep"]){
+        NSMenuItem *seperator = [NSMenuItem separatorItem];
+        [seperator setEnabled:YES];
+        [seperator setTitle:@"sep"];
+        [menu addItem:seperator];
+    }
+    
+    // REFRESH
+    if(![menu itemWithTitle:MenuItemRefresh]){
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemRefresh action:@selector(refreshAction:) keyEquivalent:@""];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:item];
+    }
+    
+    // NEW DESIGN
+    if(![menu itemWithTitle:MenuItemNewDesignDoc]){
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemNewDesignDoc action:@selector(newDesignAction:) keyEquivalent:@""];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:item];
+    }
+    
+    // DELETE DESIGN
+    if(![menu itemWithTitle:MenuItemDeleteDesignDoc]){
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemDeleteDesignDoc action:@selector(deleteNodeAction:) keyEquivalent:@""];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:item];
+    }   
+    
+    // NEW DATABASE
+    if(![menu itemWithTitle:MenuItemNewDatabase]){
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemNewDatabase action:@selector(newDatabaseAction:) keyEquivalent:@""];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:item];
+    }   
+    
+    // DELETE DATABASE
+    if(![menu itemWithTitle:MenuItemDeleteDatabase]){
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemDeleteDatabase action:@selector(deleteNodeAction:) keyEquivalent:@""];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:item];
+    }      
+}
+
+- (void) activateMenuItemsForDatabase:(NSMenu*)menu forItem:(NSTreeNode*)item{
+    [[menu itemWithTitle:MenuItemNewDatabase] setHidden:NO];
+    [[menu itemWithTitle:MenuItemDeleteDatabase] setHidden:NO];
+
+    
+    [[menu itemWithTitle:MenuItemNewDesignDoc] setHidden:NO];
+    [[menu itemWithTitle:MenuItemDeleteDesignDoc] setHidden:NO];
+}
+
+- (void) activateMenuItemsForDesignDocument:(NSMenu*)menu forItem:(NSTreeNode*)item{
+    [[menu itemWithTitle:MenuItemNewDesignDoc] setHidden:NO];
+    [[menu itemWithTitle:MenuItemDeleteDesignDoc] setHidden:NO];
+}
+
+- (void) removeAllMenuItems:(NSMenu*)menu{
+    
+    for(NSMenuItem *item in [menu itemArray]){
+        [menu removeItem:item];
+    }
+}
+
+- (IBAction) refreshAction:(NSMenuItem*)sender{
+    NSTreeNode *treeNode = [sender representedObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DPRefreshNotification object:treeNode];
+}
+
+- (IBAction) newDesignAction:(NSMenuItem*)sender{
+    
+}
+- (IBAction) newDatabaseAction:(NSMenuItem*)sender{
+    NSTreeNode *treeNode = [sender representedObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DPCreateDatabaseAction object:treeNode];
+}
+- (IBAction) deleteNodeAction:(NSMenuItem*)sender{
+ 
 }
 
 @end

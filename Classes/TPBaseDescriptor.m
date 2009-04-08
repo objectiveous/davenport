@@ -99,4 +99,9 @@
 -(NSDictionary*)userInfo{
     return userInfo;
 }
+
+- (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item{
+
+    return;
+}
 @end

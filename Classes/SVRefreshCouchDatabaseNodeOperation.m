@@ -40,6 +40,7 @@
     // database. 
     if([couchDatabase isKindOfClass:[SBCouchDocument class]]){
         couchDatabase = [(SBCouchDocument*)couchDatabase couchDatabase];
+        databaseNode = [databaseNode parentNode];
     }
         
     NSEnumerator *designDocs = [couchDatabase getDesignDocuments];        

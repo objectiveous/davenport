@@ -59,4 +59,6 @@
 - (NSViewController*) contributionInspectorViewController;
 - (NSViewController*) contributionMainViewController;
 - (NSDictionary*)userInfo;
+
+- (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item;
 @end

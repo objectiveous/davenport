@@ -21,7 +21,7 @@
 - (IBAction) refreshAction:(NSMenuItem*)sender;
 - (IBAction) newDesignAction:(NSMenuItem*)sender;
 - (IBAction) newDatabaseAction:(NSMenuItem*)sender;
-- (IBAction) deleteNodeAction:(NSMenuItem*)sender;
+- (IBAction) deleteItemAction:(NSMenuItem*)sender;
 
 
 @end
@@ -37,6 +37,8 @@
 @synthesize couchDatabase;
 @synthesize resourceFactory;
 @synthesize contributed;
+
+NSString *MenuItemDeleteItem = @"Delete Item";
 
 NSString *MenuItemNewDatabase    = @"Database New"; 
 NSString *MenuItemDeleteDatabase = @"Database Delete"; 
@@ -171,7 +173,7 @@ NSString *MenuItemRefresh         = @"Refresh";
     return userInfo;
 }
 
-#pragma mark --
+#pragma mark -
 #pragma mark Context Menu Support
 - (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item{
     [self removeAllMenuItems:menu];
@@ -194,18 +196,27 @@ NSString *MenuItemRefresh         = @"Refresh";
 
 - (void)contributeToMenu:(NSMenu*)menu forItem:(NSTreeNode*)item{
     
-    if(![menu itemWithTitle:@"sep"]){
-        NSMenuItem *seperator = [NSMenuItem separatorItem];
-        [seperator setEnabled:YES];
-        [seperator setTitle:@"sep"];
-        [menu addItem:seperator];
-    }
+
     
     // REFRESH
     if(![menu itemWithTitle:MenuItemRefresh]){
         NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemRefresh action:@selector(refreshAction:) keyEquivalent:@""];
         [menuItem setTarget:self];
         [menuItem setRepresentedObject:item];
+    }
+    // DELETE ITEM
+    if(![menu itemWithTitle:MenuItemDeleteItem]){
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemDeleteItem action:@selector(deleteItemAction:) keyEquivalent:@""];
+        [menuItem setTarget:self];
+        [menuItem setRepresentedObject:item];
+    }   
+    
+    
+    if(![menu itemWithTitle:@"sep"]){
+        NSMenuItem *seperator = [NSMenuItem separatorItem];
+        [seperator setEnabled:YES];
+        [seperator setTitle:@"sep"];
+        [menu addItem:seperator];
     }
     
     // NEW DESIGN
@@ -215,12 +226,7 @@ NSString *MenuItemRefresh         = @"Refresh";
         [menuItem setRepresentedObject:item];
     }
     
-    // DELETE DESIGN
-    if(![menu itemWithTitle:MenuItemDeleteDesignDoc]){
-        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemDeleteDesignDoc action:@selector(deleteNodeAction:) keyEquivalent:@""];
-        [menuItem setTarget:self];
-        [menuItem setRepresentedObject:item];
-    }   
+
     
     // NEW DATABASE
     if(![menu itemWithTitle:MenuItemNewDatabase]){
@@ -230,11 +236,13 @@ NSString *MenuItemRefresh         = @"Refresh";
     }   
     
     // DELETE DATABASE
+    /*
     if(![menu itemWithTitle:MenuItemDeleteDatabase]){
-        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemDeleteDatabase action:@selector(deleteNodeAction:) keyEquivalent:@""];
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemDeleteDatabase action:@selector(deleteDatabaseAction:) keyEquivalent:@""];
         [menuItem setTarget:self];
         [menuItem setRepresentedObject:item];
     }      
+    */
 }
 
 - (void) activateMenuItemsForDatabase:(NSMenu*)menu forItem:(NSTreeNode*)item{
@@ -270,8 +278,9 @@ NSString *MenuItemRefresh         = @"Refresh";
     NSTreeNode *treeNode = [sender representedObject];
     [[NSNotificationCenter defaultCenter] postNotificationName:DPCreateDatabaseAction object:treeNode];
 }
-- (IBAction) deleteNodeAction:(NSMenuItem*)sender{
- 
+- (IBAction) deleteItemAction:(NSMenuItem*)sender{
+    NSTreeNode *treeNode = [sender representedObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DPDeleteItemAction object:treeNode];
 }
 
 @end

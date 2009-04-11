@@ -176,8 +176,11 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
                                name:DPCreateDatabaseAction
                              object:nil];
 
+    [notificationCenter addObserver:self
+                           selector:@selector(deleteItemAction:)
+                               name:DPDeleteItemAction
+                             object:nil];
 
-    
 }
 
 -(void) dealloc{
@@ -753,9 +756,10 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     
 }
 
-- (IBAction)deleteDatabaseAction:(id)sender{
-    if(![sender isKindOfClass:[NSMenuItem class]])
-        return;
+- (IBAction)deleteItemAction:(id)sender{
+    
+    //if(![sender isKindOfClass:[NSMenuItem class]])
+    //    return;
 
     //NSIndexSet *selectedRows = [self.sourceView selectedRowIndexes];
     
@@ -984,8 +988,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     
     return NO;
 }
-
-
 @end
 
 

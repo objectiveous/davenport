@@ -338,7 +338,7 @@
 		540089C30F30C040002D56A4 /* SVQueryResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVQueryResultController.m; sourceTree = "<group>"; };
 		540089C60F30C040002D56A4 /* SVSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListCell.h; sourceTree = "<group>"; };
 		540089C70F30C040002D56A4 /* SVSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListCell.m; sourceTree = "<group>"; };
-		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = SOURCE_ROOT; };
+		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = "<group>"; };
 		5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLoadNavigationOperation.h; sourceTree = "<group>"; };
 		5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoadNavigationOperation.m; sourceTree = "<group>"; };
 		5405DFE10F50FEEA004DFCCA /* SVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVConstants.h; sourceTree = "<group>"; };
@@ -887,7 +887,7 @@
 			children = (
 				54B09E8D0F195834005D3E2F /* CouchObjC.framework */,
 				54B09E8F0F195834005D3E2F /* Tests.octest */,
-				544133540F7AC4A7006FFC9E /* AllTests.octest */,
+				544133540F7AC4A7006FFC9E /* Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1069,10 +1069,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		544133540F7AC4A7006FFC9E /* AllTests.octest */ = {
+		544133540F7AC4A7006FFC9E /* Tests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = AllTests.octest;
+			path = Tests.octest;
 			remoteRef = 544133530F7AC4A7006FFC9E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

@@ -26,7 +26,7 @@ extern NSString * const DPLocalDatabaseNeedsRefreshNotification;
 extern NSString * const DPServerNeedsRefreshNotification;
 extern NSString * const DPRefreshNotification;
 extern NSString * const DPCreateDatabaseAction;
-
+extern NSString * const DPDeleteItemAction;
 
 
 

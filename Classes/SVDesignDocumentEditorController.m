@@ -211,7 +211,7 @@
         map = [NSString stringWithFormat:@"--> %@", menueItemViewName];
     }
     // XXX Only create this once, please. 
-    NSFont *font = [NSFont fontWithName:@"Monaco" size:14];
+    NSFont *font = [NSFont fontWithName:@"Monaco" size:12];
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
         
     NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];

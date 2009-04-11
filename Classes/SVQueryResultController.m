@@ -56,8 +56,14 @@
         return @"ERROR";
     
     
-    if([ [tableColumn identifier] isEqualToString:@"Key"])
-        return [item valueForKey:@"key"];
+    if([ [tableColumn identifier] isEqualToString:@"Key"]){
+        id key = [item valueForKey:@"key"];        
+
+        if([key isKindOfClass:[NSArray class]])
+            return [key JSONRepresentation];
+        return key;
+    }
+        
 
     if([ [tableColumn identifier] isEqualToString:@"Value"]){
         

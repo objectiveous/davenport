@@ -81,7 +81,7 @@
 - (IBAction)refreshServerNodeAction:(id)sender;
 
 // CONTEXT MENU HANDLERS
-- (IBAction)deleteDatabaseAction:(id)sender;
+- (IBAction)deleteItemAction:(id)sender;
 - (IBAction)createDatabaseAction:(id)sender;
 - (IBAction)refreshDatabaseAction:(id)sender;
 

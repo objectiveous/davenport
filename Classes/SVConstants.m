@@ -20,6 +20,7 @@ NSString * const DPServerNeedsRefreshNotification = @"DPServerNeedsRefreshNotifi
 NSString * const DPRefreshNotification = @"DPRefreshNotification";
 
 NSString * const DPCreateDatabaseAction = @"DPCreateDatabaseAction";
+NSString * const DPDeleteItemAction = @"DPDeleteDatabaseAction";
 
 #pragma mark - 
 

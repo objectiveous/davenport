@@ -178,7 +178,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					265.58349609375,
+					801,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -265,7 +265,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXTargetDataSource_PrimaryAttribute;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					338,
+					873,
 					60,
 					20,
 					48,
@@ -282,23 +282,10 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 261156271;
-			PBXWorkspaceStateSaveDate = 261156271;
+			PBXPerProjectTemplateStateSaveDate = 261178166;
+			PBXWorkspaceStateSaveDate = 261178166;
 		};
 		perUserProjectItems = {
-			540D470C0F90EDCC00CFF826 /* PBXTextBookmark */ = 540D470C0F90EDCC00CFF826 /* PBXTextBookmark */;
-			540D470E0F90EDDA00CFF826 /* PBXTextBookmark */ = 540D470E0F90EDDA00CFF826 /* PBXTextBookmark */;
-			540D47160F90EDFB00CFF826 /* PBXTextBookmark */ = 540D47160F90EDFB00CFF826 /* PBXTextBookmark */;
-			540D47180F90EE0800CFF826 /* PBXTextBookmark */ = 540D47180F90EE0800CFF826 /* PBXTextBookmark */;
-			540D471C0F90EF8800CFF826 /* PBXTextBookmark */ = 540D471C0F90EF8800CFF826 /* PBXTextBookmark */;
-			540D471E0F90EF8E00CFF826 /* PBXTextBookmark */ = 540D471E0F90EF8E00CFF826 /* PBXTextBookmark */;
-			540D47220F90EFC600CFF826 /* PBXTextBookmark */ = 540D47220F90EFC600CFF826 /* PBXTextBookmark */;
-			540D47240F90EFD900CFF826 /* PBXTextBookmark */ = 540D47240F90EFD900CFF826 /* PBXTextBookmark */;
-			540D47270F90F0DA00CFF826 /* PBXTextBookmark */ = 540D47270F90F0DA00CFF826 /* PBXTextBookmark */;
-			540D47290F90F0DF00CFF826 /* PBXTextBookmark */ = 540D47290F90F0DF00CFF826 /* PBXTextBookmark */;
-			540D472B0F90F0EF00CFF826 /* PBXTextBookmark */ = 540D472B0F90F0EF00CFF826 /* PBXTextBookmark */;
-			540D472D0F90F0F000CFF826 /* PBXTextBookmark */ = 540D472D0F90F0F000CFF826 /* PBXTextBookmark */;
-			540D47300F90F3DF00CFF826 /* PBXTextBookmark */ = 540D47300F90F3DF00CFF826 /* PBXTextBookmark */;
 			546A241F0F8EA644009DC033 = 546A241F0F8EA644009DC033 /* PBXTextBookmark */;
 			546A24200F8EA644009DC033 = 546A24200F8EA644009DC033 /* PBXTextBookmark */;
 			546A24210F8EA644009DC033 = 546A24210F8EA644009DC033 /* PBXTextBookmark */;
@@ -310,18 +297,23 @@
 			546A24290F8EA644009DC033 = 546A24290F8EA644009DC033 /* PBXTextBookmark */;
 			546A242A0F8EA644009DC033 = 546A242A0F8EA644009DC033 /* PBXTextBookmark */;
 			546A242B0F8EA644009DC033 = 546A242B0F8EA644009DC033 /* PBXTextBookmark */;
+			54957F750F9143490011A3CC /* PBXTextBookmark */ = 54957F750F9143490011A3CC /* PBXTextBookmark */;
+			54957F870F9143860011A3CC /* PBXTextBookmark */ = 54957F870F9143860011A3CC /* PBXTextBookmark */;
+			54957F9D0F9145B50011A3CC /* PBXTextBookmark */ = 54957F9D0F9145B50011A3CC /* PBXTextBookmark */;
+			54957F9E0F9145B50011A3CC /* PBXTextBookmark */ = 54957F9E0F9145B50011A3CC /* PBXTextBookmark */;
+			54957F9F0F9145B50011A3CC /* PBXTextBookmark */ = 54957F9F0F9145B50011A3CC /* PBXTextBookmark */;
+			54957FA00F9145B50011A3CC /* PBXTextBookmark */ = 54957FA00F9145B50011A3CC /* PBXTextBookmark */;
+			54957FA40F9145BD0011A3CC /* PBXTextBookmark */ = 54957FA40F9145BD0011A3CC /* PBXTextBookmark */;
+			54CDA4A70F91412A0070B826 = 54CDA4A70F91412A0070B826 /* PBXTextBookmark */;
+			54CDA4F30F91424E0070B826 = 54CDA4F30F91424E0070B826 /* PBXTextBookmark */;
 			54E715630F8EF4AE00ECCDBE = 54E715630F8EF4AE00ECCDBE /* PBXTextBookmark */;
 			54E715640F8EF4AE00ECCDBE = 54E715640F8EF4AE00ECCDBE /* PBXTextBookmark */;
 			54E715650F8EF4AE00ECCDBE = 54E715650F8EF4AE00ECCDBE /* PBXTextBookmark */;
-			54E715670F8EF4AE00ECCDBE = 54E715670F8EF4AE00ECCDBE /* PBXTextBookmark */;
 			54E715680F8EF4AE00ECCDBE = 54E715680F8EF4AE00ECCDBE /* PBXTextBookmark */;
 			54E715690F8EF4AE00ECCDBE = 54E715690F8EF4AE00ECCDBE /* PBXTextBookmark */;
 			54E7156A0F8EF4AE00ECCDBE = 54E7156A0F8EF4AE00ECCDBE /* PBXTextBookmark */;
 			54E7157C0F8F1E9100ECCDBE = 54E7157C0F8F1E9100ECCDBE /* PBXTextBookmark */;
-			54E7157E0F8F1E9100ECCDBE = 54E7157E0F8F1E9100ECCDBE /* PBXTextBookmark */;
-			54E7157F0F8F1E9100ECCDBE = 54E7157F0F8F1E9100ECCDBE /* PBXTextBookmark */;
 			54E715940F8F1F5A00ECCDBE = 54E715940F8F1F5A00ECCDBE /* PBXTextBookmark */;
-			54E715BD0F8FA32700ECCDBE = 54E715BD0F8FA32700ECCDBE /* PBXTextBookmark */;
 		};
 		sourceControlManager = 543B92D50F48A01500C5515B /* Source Control */;
 		userBuildSettings = {
@@ -473,9 +465,9 @@
 	};
 	540089C30F30C040002D56A4 /* SVQueryResultController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 4101}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 3968}}";
 			sepNavSelRange = "{1839, 0}";
-			sepNavVisRange = "{1151, 1163}";
+			sepNavVisRange = "{0, 710}";
 		};
 	};
 	540089C70F30C040002D56A4 /* SVSourceListCell.m */ = {
@@ -549,136 +541,6 @@
 			5428768D0F4E620E000BA663 /* Davenport with Embedded CouchDB */,
 		);
 	};
-	540D470C0F90EDCC00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1128;
-		vrLoc = 1149;
-	};
-	540D470E0F90EDDA00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D47160F90EDFB00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 797;
-		vrLoc = 1317;
-	};
-	540D47180F90EE0800CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D471C0F90EF8800CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D471E0F90EF8E00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D47220F90EFC600CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D47240F90EFD900CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D47270F90F0DA00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 797;
-		vrLoc = 1317;
-	};
-	540D47290F90F0DF00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D472B0F90F0EF00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D472D0F90F0F000CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1156;
-		vrLoc = 1151;
-	};
-	540D47300F90F3DF00CFF826 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1163;
-		vrLoc = 1151;
-	};
 	5428768D0F4E620E000BA663 /* Davenport with Embedded CouchDB */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -716,7 +578,7 @@
 		ignoreCount = 0;
 		lineNumber = 43;
 		location = Davenport;
-		modificationTime = 261157104.590524;
+		modificationTime = 261178806.635897;
 		state = 2;
 	};
 	543208340F7BE21A00473D7E /* SVInspectorDocumentController.m:48 */ = {
@@ -733,7 +595,7 @@
 		ignoreCount = 0;
 		lineNumber = 48;
 		location = Davenport;
-		modificationTime = 261157104.591408;
+		modificationTime = 261178806.636689;
 		state = 2;
 	};
 	5432083C0F7BE34D00473D7E /* SVInspectorDocumentController.m:191 */ = {
@@ -750,7 +612,7 @@
 		ignoreCount = 0;
 		lineNumber = 191;
 		location = Davenport;
-		modificationTime = 261157104.591904;
+		modificationTime = 261178806.637456;
 		state = 2;
 	};
 	5432084A0F7BE49C00473D7E /* SVInspectorDocumentController.m:215 */ = {
@@ -767,7 +629,7 @@
 		ignoreCount = 0;
 		lineNumber = 215;
 		location = Davenport;
-		modificationTime = 261157104.59243;
+		modificationTime = 261178806.639542;
 		state = 2;
 	};
 	543208520F7BE4F500473D7E /* SVInspectorDocumentController.m:228 */ = {
@@ -784,7 +646,7 @@
 		ignoreCount = 0;
 		lineNumber = 228;
 		location = Davenport;
-		modificationTime = 261157104.593158;
+		modificationTime = 261178806.640323;
 		state = 2;
 	};
 	5432088E0F7BE8CA00473D7E /* SVInspectorDocumentController.m:231 */ = {
@@ -801,7 +663,7 @@
 		ignoreCount = 0;
 		lineNumber = 231;
 		location = Davenport;
-		modificationTime = 261157104.593664;
+		modificationTime = 261178806.641092;
 		state = 2;
 	};
 	543208B20F7C090800473D7E /* SVMainWindowController.m:547 */ = {
@@ -818,7 +680,7 @@
 		ignoreCount = 0;
 		lineNumber = 547;
 		location = Davenport;
-		modificationTime = 261157104.594211;
+		modificationTime = 261178806.641838;
 		state = 2;
 	};
 	543208B90F7C094C00473D7E /* SVBaseNavigationDescriptor.m:19 */ = {
@@ -835,7 +697,7 @@
 		ignoreCount = 0;
 		lineNumber = 19;
 		location = Davenport;
-		modificationTime = 261157104.59478;
+		modificationTime = 261178806.642721;
 		state = 2;
 	};
 	543208D90F7C0EC400473D7E /* SVDesignDocumentEditorController.m */ = {
@@ -859,7 +721,7 @@
 		ignoreCount = 0;
 		lineNumber = 79;
 		location = Davenport;
-		modificationTime = 261157104.595484;
+		modificationTime = 261178806.643685;
 		state = 2;
 	};
 	543208F60F7C0FC200473D7E /* SVDesignDocumentEditorController.m:100 */ = {
@@ -876,7 +738,7 @@
 		ignoreCount = 0;
 		lineNumber = 100;
 		location = Davenport;
-		modificationTime = 261157104.596015;
+		modificationTime = 261178806.645417;
 		state = 2;
 	};
 	543209980F7C3E4F00473D7E /* SBCouchView.m */ = {
@@ -900,7 +762,7 @@
 		ignoreCount = 0;
 		lineNumber = 85;
 		location = CouchObjC;
-		modificationTime = 261157104.596512;
+		modificationTime = 261178806.64629;
 		state = 2;
 	};
 	543209DE0F7C42DF00473D7E /* SVDesignDocumentEditorController.m:90 */ = {
@@ -917,7 +779,7 @@
 		ignoreCount = 0;
 		lineNumber = 90;
 		location = Davenport;
-		modificationTime = 261157104.601063;
+		modificationTime = 261178806.64952;
 		state = 2;
 	};
 	543B92A80F489FE600C5515B /* Davenport */ = {
@@ -1079,7 +941,7 @@
 		ignoreCount = 0;
 		lineNumber = 111;
 		location = Davenport;
-		modificationTime = 261157104.587694;
+		modificationTime = 261178806.632397;
 		state = 2;
 	};
 	5441321C0F7A9690006FFC9E /* SVDesignDocumentEditorController.m */ = {
@@ -1103,7 +965,7 @@
 		ignoreCount = 0;
 		lineNumber = 115;
 		location = Davenport;
-		modificationTime = 261157104.588252;
+		modificationTime = 261178806.633155;
 		state = 2;
 	};
 	544132260F7A986A006FFC9E /* SVDesignDocumentEditorController.m:226 */ = {
@@ -1120,7 +982,7 @@
 		ignoreCount = 0;
 		lineNumber = 226;
 		location = Davenport;
-		modificationTime = 261157104.588738;
+		modificationTime = 261178806.633849;
 		state = 2;
 	};
 	544132410F7A9A07006FFC9E /* SVDesignDocumentEditorController.m:178 */ = {
@@ -1137,7 +999,7 @@
 		ignoreCount = 0;
 		lineNumber = 178;
 		location = Davenport;
-		modificationTime = 261157104.589481;
+		modificationTime = 261178806.634517;
 		state = 2;
 	};
 	544134F70F7AECB5006FFC9E /* SBCouchDocument.m */ = {
@@ -1160,7 +1022,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 251;
-		modificationTime = 261157104.590031;
+		modificationTime = 261178806.635201;
 		state = 2;
 	};
 	544463C30F379CF10098BD0E /* SVAbstractIntegrationTest.h */ = {
@@ -1226,7 +1088,7 @@
 		ignoreCount = 0;
 		lineNumber = 176;
 		location = Davenport;
-		modificationTime = 261157104.601663;
+		modificationTime = 261178806.650781;
 		state = 2;
 	};
 	544E9B270F7ED597003F6025 /* NSTreeNode+SVDavenport.m:179 */ = {
@@ -1243,7 +1105,7 @@
 		ignoreCount = 0;
 		lineNumber = 179;
 		location = Davenport;
-		modificationTime = 261157104.602187;
+		modificationTime = 261178806.654552;
 		state = 2;
 	};
 	544E9B6B0F7EE122003F6025 /* NSTreeNode+SVDavenport.m:195 */ = {
@@ -1260,7 +1122,7 @@
 		ignoreCount = 0;
 		lineNumber = 195;
 		location = Davenport;
-		modificationTime = 261157104.602698;
+		modificationTime = 261178806.65629;
 		state = 2;
 	};
 	544E9B770F7EE18B003F6025 /* NSTreeNode+SVDavenport.m:193 */ = {
@@ -1277,7 +1139,7 @@
 		ignoreCount = 0;
 		lineNumber = 193;
 		location = Davenport;
-		modificationTime = 261157104.603536;
+		modificationTime = 261178806.65788;
 		state = 2;
 	};
 	544E9BA40F7EF05B003F6025 /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m:5 */ = {
@@ -1294,7 +1156,7 @@
 		ignoreCount = 0;
 		lineNumber = 5;
 		location = IntegrationTests;
-		modificationTime = 261157104.60431;
+		modificationTime = 261178806.658988;
 		state = 2;
 	};
 	544E9BDF0F7EF381003F6025 /* NSTreeNode+SVDavenport.m */ = {
@@ -1318,7 +1180,7 @@
 		ignoreCount = 0;
 		lineNumber = 196;
 		location = Davenport;
-		modificationTime = 261157104.604835;
+		modificationTime = 261178806.65996;
 		state = 2;
 	};
 	544E9BF10F7EF561003F6025 /* NSTreeNode+SVDavenport.m:194 */ = {
@@ -1335,7 +1197,7 @@
 		ignoreCount = 0;
 		lineNumber = 194;
 		location = Davenport;
-		modificationTime = 261157104.621434;
+		modificationTime = 261178806.661811;
 		state = 2;
 	};
 	546647BC0F349E8600A8A709 /* SVDatabaseCreateSheetController.h */ = {
@@ -1366,7 +1228,7 @@
 		ignoreCount = 0;
 		lineNumber = 430;
 		location = Davenport;
-		modificationTime = 261157104.696355;
+		modificationTime = 261178806.688305;
 		state = 2;
 	};
 	546A1D4C0F8A7AD3009DC033 /* SVDesignDocumentEditorController.m:39 */ = {
@@ -1383,7 +1245,7 @@
 		ignoreCount = 0;
 		lineNumber = 39;
 		location = Davenport;
-		modificationTime = 261157104.697676;
+		modificationTime = 261178806.689344;
 		state = 2;
 	};
 	546A1D9B0F8A8238009DC033 /* SVDesignDocumentEditorController.m:144 */ = {
@@ -1400,7 +1262,7 @@
 		ignoreCount = 0;
 		lineNumber = 144;
 		location = Davenport;
-		modificationTime = 261157104.698325;
+		modificationTime = 261178806.690291;
 		state = 2;
 	};
 	546A1DEC0F8A874E009DC033 /* SVRefreshCouchDatabaseNodeOperation.m */ = {
@@ -1424,7 +1286,7 @@
 		ignoreCount = 0;
 		lineNumber = 41;
 		location = Davenport;
-		modificationTime = 261157104.699539;
+		modificationTime = 261178806.691159;
 		state = 2;
 	};
 	546A1EC40F8AB23A009DC033 /* SVMainWindowController.m:759 */ = {
@@ -1441,7 +1303,7 @@
 		ignoreCount = 0;
 		lineNumber = 759;
 		location = Davenport;
-		modificationTime = 261157104.700321;
+		modificationTime = 261178806.696805;
 		state = 2;
 	};
 	546A1F5E0F8BEAFC009DC033 /* SVMainWindowController.m:773 */ = {
@@ -1458,7 +1320,7 @@
 		ignoreCount = 0;
 		lineNumber = 773;
 		location = Davenport;
-		modificationTime = 261157104.701424;
+		modificationTime = 261178806.703645;
 		state = 2;
 	};
 	546A1F970F8CFAEA009DC033 /* SVMainWindowController.m:743 */ = {
@@ -1475,7 +1337,7 @@
 		ignoreCount = 0;
 		lineNumber = 743;
 		location = Davenport;
-		modificationTime = 261157104.703689;
+		modificationTime = 261178806.715531;
 		state = 2;
 	};
 	546A20040F8D06F2009DC033 /* SVAppDelegate.m:92 */ = {
@@ -1492,7 +1354,7 @@
 		ignoreCount = 0;
 		lineNumber = 92;
 		location = Davenport;
-		modificationTime = 261157104.706384;
+		modificationTime = 261178806.719007;
 		state = 2;
 	};
 	546A20D80F8D0EDC009DC033 /* SVBaseNavigationDescriptor.m:19 */ = {
@@ -1509,7 +1371,7 @@
 		ignoreCount = 0;
 		lineNumber = 19;
 		location = Davenport;
-		modificationTime = 261157104.707118;
+		modificationTime = 261178806.754019;
 		state = 2;
 	};
 	546A21380F8D1F22009DC033 /* SVBaseNavigationDescriptor.m:24 */ = {
@@ -1526,7 +1388,7 @@
 		ignoreCount = 0;
 		lineNumber = 24;
 		location = Davenport;
-		modificationTime = 261157104.707797;
+		modificationTime = 261178806.755023;
 		state = 2;
 	};
 	546A213A0F8D1F23009DC033 /* SVBaseNavigationDescriptor.m:24 */ = {
@@ -1543,7 +1405,7 @@
 		ignoreCount = 0;
 		lineNumber = 24;
 		location = Davenport;
-		modificationTime = 261157104.70883;
+		modificationTime = 261178806.755929;
 		state = 2;
 	};
 	546A213C0F8D1F24009DC033 /* SVBaseNavigationDescriptor.m:24 */ = {
@@ -1560,7 +1422,7 @@
 		ignoreCount = 0;
 		lineNumber = 24;
 		location = Davenport;
-		modificationTime = 261157104.71133;
+		modificationTime = 261178806.757013;
 		state = 2;
 	};
 	546A21420F8D1FDA009DC033 /* SVBaseNavigationDescriptor.m:24 */ = {
@@ -1577,7 +1439,7 @@
 		ignoreCount = 0;
 		lineNumber = 24;
 		location = Davenport;
-		modificationTime = 261157104.712055;
+		modificationTime = 261178806.757977;
 		state = 2;
 	};
 	546A21680F8D22F6009DC033 /* SVBaseNavigationDescriptor.m:19 */ = {
@@ -1594,7 +1456,7 @@
 		ignoreCount = 0;
 		lineNumber = 19;
 		location = Davenport;
-		modificationTime = 261157104.71505;
+		modificationTime = 261178806.77021;
 		state = 2;
 	};
 	546A21690F8D2310009DC033 /* SVMainWindowController.m */ = {
@@ -1618,7 +1480,7 @@
 		ignoreCount = 0;
 		lineNumber = 749;
 		location = Davenport;
-		modificationTime = 261157104.715864;
+		modificationTime = 261178806.771418;
 		state = 2;
 	};
 	546A218D0F8D2808009DC033 /* SVBaseNavigationDescriptor.m:24 */ = {
@@ -1634,7 +1496,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 24;
-		modificationTime = 261157104.716746;
+		modificationTime = 261178806.776081;
 		state = 2;
 	};
 	546A21920F8D2828009DC033 /* SVBaseNavigationDescriptor.m:19 */ = {
@@ -1651,7 +1513,7 @@
 		ignoreCount = 0;
 		lineNumber = 19;
 		location = Davenport;
-		modificationTime = 261157104.717684;
+		modificationTime = 261178806.777196;
 		state = 2;
 	};
 	546A21940F8D2855009DC033 /* SVBaseNavigationDescriptor.m:19 */ = {
@@ -1668,7 +1530,7 @@
 		ignoreCount = 0;
 		lineNumber = 19;
 		location = Davenport;
-		modificationTime = 261157104.718322;
+		modificationTime = 261178806.778352;
 		state = 2;
 	};
 	546A219A0F8D28AB009DC033 /* SVMainWindowController.m:843 */ = {
@@ -1685,7 +1547,7 @@
 		ignoreCount = 0;
 		lineNumber = 843;
 		location = Davenport;
-		modificationTime = 261157104.719115;
+		modificationTime = 261178806.779368;
 		state = 2;
 	};
 	546A21A70F8D2B3E009DC033 /* SVMainWindowController.m:852 */ = {
@@ -1702,7 +1564,7 @@
 		ignoreCount = 0;
 		lineNumber = 852;
 		location = Davenport;
-		modificationTime = 261157104.720217;
+		modificationTime = 261178806.781639;
 		state = 2;
 	};
 	546A21B20F8D2C73009DC033 /* SVMainWindowController.m:261 */ = {
@@ -1719,7 +1581,7 @@
 		ignoreCount = 0;
 		lineNumber = 261;
 		location = Davenport;
-		modificationTime = 261157104.721628;
+		modificationTime = 261178806.782618;
 		state = 1;
 	};
 	546A241F0F8EA644009DC033 /* PBXTextBookmark */ = {
@@ -1884,7 +1746,7 @@
 	};
 	5488D7060F5B551C00ECE7D3 /* DPSharedController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {978, 649}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 570}}";
 			sepNavSelRange = "{147, 9}";
 			sepNavVisRange = "{0, 370}";
 		};
@@ -1916,6 +1778,76 @@
 			sepNavSelRange = "{227, 0}";
 			sepNavVisRange = "{0, 256}";
 		};
+	};
+	54957F750F9143490011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
+		name = "SVQueryResultController.m: 63";
+		rLen = 0;
+		rLoc = 1839;
+		rType = 0;
+		vrLen = 861;
+		vrLoc = 0;
+	};
+	54957F870F9143860011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
+		name = "SVQueryResultController.m: 63";
+		rLen = 0;
+		rLoc = 1839;
+		rType = 0;
+		vrLen = 861;
+		vrLoc = 0;
+	};
+	54957F9D0F9145B50011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
+		name = "SVQueryResultController.m: 63";
+		rLen = 0;
+		rLoc = 1839;
+		rType = 0;
+		vrLen = 710;
+		vrLoc = 0;
+	};
+	54957F9E0F9145B50011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5488D7060F5B551C00ECE7D3 /* DPSharedController.h */;
+		name = "DPSharedController.h: 10";
+		rLen = 9;
+		rLoc = 147;
+		rType = 0;
+		vrLen = 370;
+		vrLoc = 0;
+	};
+	54957F9F0F9145B50011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
+		name = "SVQueryResultController.m: 63";
+		rLen = 0;
+		rLoc = 1839;
+		rType = 0;
+		vrLen = 710;
+		vrLoc = 0;
+	};
+	54957FA00F9145B50011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5488D7060F5B551C00ECE7D3 /* DPSharedController.h */;
+		name = "DPSharedController.h: 10";
+		rLen = 9;
+		rLoc = 147;
+		rType = 0;
+		vrLen = 370;
+		vrLoc = 0;
+	};
+	54957FA40F9145BD0011A3CC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5488D7060F5B551C00ECE7D3 /* DPSharedController.h */;
+		name = "DPSharedController.h: 10";
+		rLen = 9;
+		rLoc = 147;
+		rType = 0;
+		vrLen = 370;
+		vrLoc = 0;
 	};
 	549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */ = {
 		uiCtxt = {
@@ -1965,6 +1897,26 @@
 			sepNavVisRange = "{147, 505}";
 		};
 	};
+	54CDA4A70F91412A0070B826 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
+		name = "SVQueryResultController.m: 63";
+		rLen = 0;
+		rLoc = 1839;
+		rType = 0;
+		vrLen = 861;
+		vrLoc = 0;
+	};
+	54CDA4F30F91424E0070B826 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
+		name = "SVQueryResultController.m: 63";
+		rLen = 0;
+		rLoc = 1839;
+		rType = 0;
+		vrLen = 861;
+		vrLoc = 0;
+	};
 	54E715630F8EF4AE00ECCDBE /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */;
@@ -1994,16 +1946,6 @@
 		rType = 0;
 		vrLen = 1084;
 		vrLoc = 4649;
-	};
-	54E715670F8EF4AE00ECCDBE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */;
-		name = "SVPluginContributionLoaderOperation.m: 12";
-		rLen = 0;
-		rLoc = 291;
-		rType = 0;
-		vrLen = 737;
-		vrLoc = 0;
 	};
 	54E715680F8EF4AE00ECCDBE /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2049,7 +1991,7 @@
 		ignoreCount = 0;
 		lineNumber = 60;
 		location = Davenport;
-		modificationTime = 261157104.722323;
+		modificationTime = 261178806.78415;
 		state = 2;
 	};
 	54E7157C0F8F1E9100ECCDBE /* PBXTextBookmark */ = {
@@ -2062,26 +2004,6 @@
 		vrLen = 1450;
 		vrLoc = 7677;
 	};
-	54E7157E0F8F1E9100ECCDBE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5441321C0F7A9690006FFC9E /* SVDesignDocumentEditorController.m */;
-		name = "SVDesignDocumentEditorController.m: 214";
-		rLen = 4;
-		rLoc = 8337;
-		rType = 0;
-		vrLen = 1450;
-		vrLoc = 7677;
-	};
-	54E7157F0F8F1E9100ECCDBE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 61";
-		rLen = 0;
-		rLoc = 1861;
-		rType = 0;
-		vrLen = 1021;
-		vrLoc = 1315;
-	};
 	54E715940F8F1F5A00ECCDBE /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
@@ -2091,16 +2013,6 @@
 		rType = 0;
 		vrLen = 742;
 		vrLoc = 1318;
-	};
-	54E715BD0F8FA32700ECCDBE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 540089C30F30C040002D56A4 /* SVQueryResultController.m */;
-		name = "SVQueryResultController.m: 63";
-		rLen = 0;
-		rLoc = 1839;
-		rType = 0;
-		vrLen = 1173;
-		vrLoc = 1134;
 	};
 	54EB05FF0F838575009FF7CC /* SVMainWindowController.m:809 */ = {
 		isa = PBXFileBreakpoint;
@@ -2116,7 +2028,7 @@
 		ignoreCount = 0;
 		lineNumber = 809;
 		location = Davenport;
-		modificationTime = 261157104.647969;
+		modificationTime = 261178806.670451;
 		state = 2;
 	};
 	54EB065F0F83929E009FF7CC /* SVDesignDocumentEditorController.m:129 */ = {
@@ -2133,7 +2045,7 @@
 		ignoreCount = 0;
 		lineNumber = 129;
 		location = Davenport;
-		modificationTime = 261157104.670812;
+		modificationTime = 261178806.671299;
 		state = 2;
 	};
 	54EB06610F8392A2009FF7CC /* SVDesignDocumentEditorController.m:122 */ = {
@@ -2150,7 +2062,7 @@
 		ignoreCount = 0;
 		lineNumber = 122;
 		location = Davenport;
-		modificationTime = 261157104.671552;
+		modificationTime = 261178806.672527;
 		state = 2;
 	};
 	54EB06800F83A3D7009FF7CC /* SVMainWindowController.m */ = {
@@ -2174,7 +2086,7 @@
 		ignoreCount = 0;
 		lineNumber = 880;
 		location = Davenport;
-		modificationTime = 261157104.67211;
+		modificationTime = 261178806.673467;
 		state = 2;
 	};
 	54EB068D0F83FC2F009FF7CC /* SVMainWindowController.m:859 */ = {
@@ -2191,7 +2103,7 @@
 		ignoreCount = 0;
 		lineNumber = 859;
 		location = Davenport;
-		modificationTime = 261157104.672666;
+		modificationTime = 261178806.67459;
 		state = 2;
 	};
 	54EB06A80F83FE39009FF7CC /* SVMainWindowController.m:819 */ = {
@@ -2208,7 +2120,7 @@
 		ignoreCount = 0;
 		lineNumber = 819;
 		location = Davenport;
-		modificationTime = 261157104.675439;
+		modificationTime = 261178806.675566;
 		state = 2;
 	};
 	54EB07270F841070009FF7CC /* SVFetchServerInfoOperation.m:49 */ = {
@@ -2225,7 +2137,7 @@
 		ignoreCount = 0;
 		lineNumber = 49;
 		location = Davenport;
-		modificationTime = 261157104.681978;
+		modificationTime = 261178806.676386;
 		state = 2;
 	};
 	54EB07950F841E59009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m */ = {
@@ -2250,7 +2162,7 @@
 		ignoreCount = 0;
 		lineNumber = 46;
 		location = IntegrationTests;
-		modificationTime = 261157104.685951;
+		modificationTime = 261178806.677298;
 		state = 2;
 	};
 	54EB07B30F842EF7009FF7CC /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m:36 */ = {
@@ -2267,7 +2179,7 @@
 		ignoreCount = 0;
 		lineNumber = 36;
 		location = IntegrationTests;
-		modificationTime = 261157104.686764;
+		modificationTime = 261178806.678396;
 		state = 2;
 	};
 	54EB081D0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.h */ = {
@@ -2319,7 +2231,7 @@
 		ignoreCount = 0;
 		lineNumber = 52;
 		location = Davenport;
-		modificationTime = 261157104.688969;
+		modificationTime = 261178806.679245;
 		state = 2;
 	};
 	54EB09BB0F851D1F009FF7CC /* NSTreeNode+SVDavenport.m:54 */ = {
@@ -2336,7 +2248,7 @@
 		ignoreCount = 0;
 		lineNumber = 54;
 		location = Davenport;
-		modificationTime = 261157104.68982;
+		modificationTime = 261178806.680946;
 		state = 2;
 	};
 	54EB09C40F851D6E009FF7CC /* SVFetchServerInfoOperation.m:52 */ = {
@@ -2353,7 +2265,7 @@
 		ignoreCount = 0;
 		lineNumber = 52;
 		location = Davenport;
-		modificationTime = 261157104.691885;
+		modificationTime = 261178806.68245;
 		state = 2;
 	};
 	54EB10910F87F6AC009FF7CC /* SVRefreshCouchServerNodeOperation.m:40 */ = {
@@ -2370,7 +2282,7 @@
 		ignoreCount = 0;
 		lineNumber = 40;
 		location = Davenport;
-		modificationTime = 261157104.693025;
+		modificationTime = 261178806.683382;
 		state = 2;
 	};
 	54EB10A70F87F6E6009FF7CC /* SVRefreshServerNodeOperationIntegrationTest.m */ = {
@@ -2393,9 +2305,8 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 44;
-		location = IntegrationTests;
-		modificationTime = 261157108.143024;
-		state = 1;
+		modificationTime = 261178807.830138;
+		state = 0;
 	};
 	54EB10D40F87F7EF009FF7CC /* SVRefreshCouchServerNodeOperation.m:29 */ = {
 		isa = PBXFileBreakpoint;
@@ -2411,7 +2322,7 @@
 		ignoreCount = 0;
 		lineNumber = 29;
 		location = Davenport;
-		modificationTime = 261157104.69477;
+		modificationTime = 261178806.685439;
 		state = 2;
 	};
 	54EB118A0F894760009FF7CC /* SVMainWindowController.m:787 */ = {
@@ -2428,7 +2339,7 @@
 		ignoreCount = 0;
 		lineNumber = 787;
 		location = Davenport;
-		modificationTime = 261157104.69577;
+		modificationTime = 261178806.686288;
 		state = 2;
 	};
 	54F4353F0F75A58900EEC9DB /* SimpleTest.m */ = {
@@ -2451,8 +2362,8 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 10;
-		modificationTime = 261157852.995492;
-		state = 1;
+		modificationTime = 261178807.697759;
+		state = 0;
 	};
 	54F9A2CB0F82AC3E00B9ABB2 /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m:5 */ = {
 		isa = PBXFileBreakpoint;
@@ -2467,8 +2378,8 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 5;
-		modificationTime = 261157852.996526;
-		state = 1;
+		modificationTime = 261178807.801391;
+		state = 0;
 	};
 	54F9A2CD0F82AC4000B9ABB2 /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m:5 */ = {
 		isa = PBXFileBreakpoint;
@@ -2484,7 +2395,7 @@
 		ignoreCount = 0;
 		lineNumber = 5;
 		location = IntegrationTests;
-		modificationTime = 261157104.622587;
+		modificationTime = 261178806.664564;
 		state = 2;
 	};
 	54F9A2FB0F82AFD900B9ABB2 /* SVRefreshCouchDatabaseNodeOperationIntegrationTest.m:5 */ = {
@@ -2501,7 +2412,7 @@
 		ignoreCount = 0;
 		lineNumber = 5;
 		location = IntegrationTests;
-		modificationTime = 261157104.623118;
+		modificationTime = 261178806.666473;
 		state = 2;
 	};
 	54F9A3190F82B90C00B9ABB2 /* SVRefreshCouchDatabaseNodeOperation.m:15 */ = {
@@ -2518,7 +2429,7 @@
 		ignoreCount = 0;
 		lineNumber = 15;
 		location = Davenport;
-		modificationTime = 261157104.62374;
+		modificationTime = 261178806.667462;
 		state = 2;
 	};
 	54F9A37D0F82CC5000B9ABB2 /* SVRefreshCouchDatabaseNodeOperation.m:32 */ = {
@@ -2535,7 +2446,7 @@
 		ignoreCount = 0;
 		lineNumber = 32;
 		location = Davenport;
-		modificationTime = 261157104.624285;
+		modificationTime = 261178806.668346;
 		state = 2;
 	};
 	54F9A3950F82D8D200B9ABB2 /* SVRefreshCouchDatabaseNodeOperation.m:86 */ = {
@@ -2552,7 +2463,7 @@
 		ignoreCount = 0;
 		lineNumber = 86;
 		location = Davenport;
-		modificationTime = 261157104.624835;
+		modificationTime = 261178806.669204;
 		state = 1;
 	};
 	54F9F2230F006DE900EE414E /* Unit Tests */ = {

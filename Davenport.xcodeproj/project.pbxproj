@@ -147,7 +147,6 @@
 		547CC7F30F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CC7F10F73079C0050AF8A /* SVSaveViewAsSheetController.m */; };
 		547CCA440F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CCA430F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m */; };
 		547CCA450F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CCA430F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m */; };
-		5488D7080F5B551C00ECE7D3 /* DPSharedController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5488D7060F5B551C00ECE7D3 /* DPSharedController.h */; };
 		548AACAC0F0AD50C009A49AD /* QueryResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 548AACAA0F0AD50C009A49AD /* QueryResultView.xib */; };
 		548BB1860F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
 		548BB1870F3654AC00DB4DCB /* NSDictionary+SVDavenport.m in Sources */ = {isa = PBXBuildFile; fileRef = 548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */; };
@@ -193,13 +192,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		540C88CA0F31D51700E02727 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = CouchObjC;
-		};
 		543FA00D0F4626B300E1559C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -207,33 +199,26 @@
 			remoteGlobalIDString = 543F9EFE0F4610C100E1559C;
 			remoteInfo = SVTestPlugin;
 		};
-		544133530F7AC4A7006FFC9E /* PBXContainerItemProxy */ = {
+		54957F800F9143650011A3CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
+			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 544133500F7AC489006FFC9E;
-			remoteInfo = "All Tests";
-		};
-		549F37490F3331480033A0C9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* CouchObjC.framework */;
 			remoteInfo = CouchObjC;
 		};
-		54B09E8C0F195834005D3E2F /* PBXContainerItemProxy */ = {
+		54957F820F9143650011A3CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
+			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = CouchObjC;
-		};
-		54B09E8E0F195834005D3E2F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5315EE640D94078D001E3B2E;
+			remoteGlobalIDString = 5315EE640D94078D001E3B2E /* Tests.octest */;
 			remoteInfo = Tests;
+		};
+		54957F840F9143650011A3CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 544133500F7AC489006FFC9E /* Tests.octest */;
+			remoteInfo = "All Tests";
 		};
 		54B7DE800F097BF00081F3A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -338,7 +323,7 @@
 		540089C30F30C040002D56A4 /* SVQueryResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVQueryResultController.m; sourceTree = "<group>"; };
 		540089C60F30C040002D56A4 /* SVSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSourceListCell.h; sourceTree = "<group>"; };
 		540089C70F30C040002D56A4 /* SVSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSourceListCell.m; sourceTree = "<group>"; };
-		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobj/vendor/JSON/build/Release/JSON.framework; sourceTree = "<group>"; };
+		540108BC0F1DA33D002AC9E5 /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = ../couchobjc/vendor/JSON/build/Release/JSON.framework; sourceTree = "<group>"; };
 		5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPLoadNavigationOperation.h; sourceTree = "<group>"; };
 		5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPLoadNavigationOperation.m; sourceTree = "<group>"; };
 		5405DFE10F50FEEA004DFCCA /* SVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVConstants.h; sourceTree = "<group>"; };
@@ -416,14 +401,14 @@
 		548BB1850F3654AC00DB4DCB /* NSDictionary+SVDavenport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SVDavenport.m"; sourceTree = "<group>"; };
 		548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVJSONDescriptor.h; sourceTree = "<group>"; };
 		548BB1BB0F365B5A00DB4DCB /* SVJSONDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVJSONDescriptor.m; sourceTree = "<group>"; };
+		54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobjc/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
 		549946480F3C9CCE00E9C328 /* SVFetchServerInfoOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchServerInfoOperationTest.m; sourceTree = "<group>"; };
 		549946AD0F3CA48900E9C328 /* SVFetchQueryInfoOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchQueryInfoOperationTest.m; sourceTree = "<group>"; };
 		549946BB0F3CA55200E9C328 /* SVFetchQueryInfoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVFetchQueryInfoOperation.h; sourceTree = "<group>"; };
 		549946BC0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVFetchQueryInfoOperation.m; sourceTree = "<group>"; };
 		549947150F3CAAA400E9C328 /* SVEnsureThatTheIntegrationTestBaseClassWorksTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEnsureThatTheIntegrationTestBaseClassWorksTest.m; sourceTree = "<group>"; };
 		549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BWToolkitFramework.framework; sourceTree = "<group>"; };
-		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobj/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
-		54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CouchObjC.xcodeproj; path = ../couchobj/CouchObjC.xcodeproj; sourceTree = SOURCE_ROOT; };
+		54B09E650F192DAC005D3E2F /* CouchObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchObjC.framework; path = ../couchobjc/build/Debug/CouchObjC.framework; sourceTree = SOURCE_ROOT; };
 		54B546090F31D006004E675B /* arrow-25.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "arrow-25.jpg"; path = "Images/arrow-25.jpg"; sourceTree = "<group>"; };
 		54B5460A0F31D006004E675B /* arrow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow.jpg; path = Images/arrow.jpg; sourceTree = "<group>"; };
 		54B5460B0F31D006004E675B /* divan-2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "divan-2.icns"; path = "Images/divan-2.icns"; sourceTree = "<group>"; };
@@ -560,7 +545,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* stigmergic */ = {
 			isa = PBXGroup;
 			children = (
-				54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */,
+				54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */,
 				5400899C0F30C040002D56A4 /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
@@ -873,6 +858,16 @@
 			name = headers;
 			sourceTree = "<group>";
 		};
+		54957F7B0F9143650011A3CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54957F810F9143650011A3CC /* CouchObjC.framework */,
+				54957F830F9143650011A3CC /* Tests.octest */,
+				54957F850F9143650011A3CC /* Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		549942C60F3BCDFB00E9C328 /* headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,16 +875,6 @@
 				548BB1BA0F365B5A00DB4DCB /* SVJSONDescriptor.h */,
 			);
 			name = headers;
-			sourceTree = "<group>";
-		};
-		54B09E880F195834005D3E2F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				54B09E8D0F195834005D3E2F /* CouchObjC.framework */,
-				54B09E8F0F195834005D3E2F /* Tests.octest */,
-				544133540F7AC4A7006FFC9E /* Tests.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		54FEC8A40F45885D00652DEE /* Plugin API */ = {
@@ -937,7 +922,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				540C88C90F31D51700E02727 /* PBXTargetDependency */,
 			);
 			name = "Davenport with Embedded CouchDB";
 			productInstallPath = "$(HOME)/Applications";
@@ -1032,7 +1016,6 @@
 			);
 			dependencies = (
 				543FA00E0F4626B300E1559C /* PBXTargetDependency */,
-				549F374A0F3331480033A0C9 /* PBXTargetDependency */,
 			);
 			name = Davenport;
 			productInstallPath = "$(HOME)/Applications";
@@ -1052,8 +1035,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 54B09E880F195834005D3E2F /* Products */;
-					ProjectRef = 54B09E870F195834005D3E2F /* CouchObjC.xcodeproj */;
+					ProductGroup = 54957F7B0F9143650011A3CC /* Products */;
+					ProjectRef = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1069,25 +1052,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		544133540F7AC4A7006FFC9E /* Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = Tests.octest;
-			remoteRef = 544133530F7AC4A7006FFC9E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		54B09E8D0F195834005D3E2F /* CouchObjC.framework */ = {
+		54957F810F9143650011A3CC /* CouchObjC.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CouchObjC.framework;
-			remoteRef = 54B09E8C0F195834005D3E2F /* PBXContainerItemProxy */;
+			remoteRef = 54957F800F9143650011A3CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		54B09E8F0F195834005D3E2F /* Tests.octest */ = {
+		54957F830F9143650011A3CC /* Tests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = Tests.octest;
-			remoteRef = 54B09E8E0F195834005D3E2F /* PBXContainerItemProxy */;
+			remoteRef = 54957F820F9143650011A3CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		54957F850F9143650011A3CC /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = 54957F840F9143650011A3CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1309,7 +1292,6 @@
 				549946BE0F3CA55200E9C328 /* SVFetchQueryInfoOperation.m in Sources */,
 				544528F60F42801C00AB1845 /* SVSourceView.m in Sources */,
 				543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */,
-				5488D7080F5B551C00ECE7D3 /* DPSharedController.h in Sources */,
 				547CC7F30F73079C0050AF8A /* SVSaveViewAsSheetController.m in Sources */,
 				547CCA450F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */,
 				54EB08200F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */,
@@ -1394,20 +1376,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		540C88C90F31D51700E02727 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CouchObjC;
-			targetProxy = 540C88CA0F31D51700E02727 /* PBXContainerItemProxy */;
-		};
 		543FA00E0F4626B300E1559C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 543F9EFE0F4610C100E1559C /* SVTestPlugin */;
 			targetProxy = 543FA00D0F4626B300E1559C /* PBXContainerItemProxy */;
-		};
-		549F374A0F3331480033A0C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CouchObjC;
-			targetProxy = 549F37490F3331480033A0C9 /* PBXContainerItemProxy */;
 		};
 		54B7DE7F0F097BF00081F3A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1570,8 +1542,8 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../couchobj/build/Debug\"",
-					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobjc/build/Debug\"",
+					"\"$(SRCROOT)/../couchobjc/vendor/JSON/build/Release\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1601,8 +1573,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../couchobj/build/Debug\"",
-					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobjc/build/Debug\"",
+					"\"$(SRCROOT)/../couchobjc/vendor/JSON/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
@@ -1852,9 +1824,9 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../couchobj/build/Release\"",
-					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
-					"\"$(SRCROOT)/../couchobj/build/Debug\"",
+					"\"$(SRCROOT)/../couchobjc/build/Release\"",
+					"\"$(SRCROOT)/../couchobjc/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobjc/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -1886,9 +1858,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../couchobj/build/Release\"",
-					"\"$(SRCROOT)/../couchobj/vendor/JSON/build/Release\"",
-					"\"$(SRCROOT)/../couchobj/build/Debug\"",
+					"\"$(SRCROOT)/../couchobjc/build/Release\"",
+					"\"$(SRCROOT)/../couchobjc/vendor/JSON/build/Release\"",
+					"\"$(SRCROOT)/../couchobjc/build/Debug\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DPContributionPlugin.h"
-#import "SVConstants.h"
-#import "DPResourceFactory.h"
+
+@class DPResourceFactory;
+@class DPContributionPlugin;
 
 /*
 typedef enum descriptorType{

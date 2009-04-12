@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SVAbstractCouchNodeOperation.h"
+
+#import "SVAbstractCouchNodeOperation.h";
 
 @interface SVRefreshCouchServerNodeOperation : SVAbstractCouchNodeOperation{
 

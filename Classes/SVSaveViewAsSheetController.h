@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 @class SVMainWindowController;
 
 @interface SVSaveViewAsSheetController : NSWindowController {

@@ -6,13 +6,17 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
-#import "SVDesignDocumentEditorController.h"
-#import "NSTreeNode+SVDavenport.h";
 #import <CouchObjC/CouchObjC.h>;
+#import "DPSharedController.h"
+#import "DPContributionNavigationDescriptor.h"
+#import "SVDesignDocumentEditorController.h"
+#import "SVDesignDocumentEditorController.h"
+#import "DPResourceFactory.h"
+#import "NSTreeNode+SVDavenport.h";
 #import "SVAppDelegate.h"
 #import "DPContributionNavigationDescriptor.h"
 #import "SVSaveViewAsSheetController.h"
-#import <CouchObjC/CouchObjC.h>
+
 
 @interface SVDesignDocumentEditorController (Private)
 

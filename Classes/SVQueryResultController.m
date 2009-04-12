@@ -6,13 +6,18 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //  
 
-#import "SVQueryResultController.h"
+
 #import <CouchObjC/CouchObjC.h>
-#import "SVAppDelegate.h"
 #import <JSON/JSON.h>
+#import "DPResourceFactory.h"
+#import "DPSharedController.h"
+#import "DPContributionNavigationDescriptor.h"
+#import "SVAppDelegate.h"
+#import "SVQueryResultController.h"
 #import "SVInspectorDocumentController.h"
 #import "NSTreeNode+SVDavenport.h"
-#import "DPSharedController.h"
+
+
 
 
 @interface  SVQueryResultController (Private)
@@ -27,8 +32,11 @@
 @synthesize queryResult;
 @synthesize couchDatabase;
 @synthesize viewResultOutlineView;
-
+@synthesize resultCountSummaryTextField;
+@synthesize nextBatch;
+@synthesize previousBatch;
 #pragma mark -
+
 
 
 #pragma mark -
@@ -37,7 +45,22 @@
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
     // This isn't exactly correct as a GET could return fewer rows than the limit. 
     // best way to this value is to actually as the SBCouchEnumerator. 
-    return [self.queryResult count];
+
+    NSInteger count = [self.queryResult count];
+
+    NSString *label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", self.queryResult.offset+1, self.queryResult.sizeOfLastFetch, self.queryResult.totalRows];        
+    
+    if(count == 0){
+        label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", 0, 0, 0];
+    }
+
+    [[self.resultCountSummaryTextField cell] setTitle:label];
+
+    if([self.queryResult shouldFetchNextBatch]){
+          [self.nextBatch setEnabled:YES];
+    }
+    
+    return count; 
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
@@ -188,6 +211,7 @@
         return;
 
     self.queryResult = configurationData;
+
     [self.viewResultOutlineView reloadData];
 }
 

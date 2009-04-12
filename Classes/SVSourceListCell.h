@@ -1,7 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-@interface SVSourceListCell : NSTextFieldCell
-{
+@interface SVSourceListCell : NSTextFieldCell{
 @private
 	NSImage *image;
 }

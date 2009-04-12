@@ -5,29 +5,36 @@
 //  Created by Robert Evans on 12/29/08.
 //  Copyright 2008 South And Valley. All rights reserved.
 //
+#import <CouchObjC/CouchObjC.h>
 
-#import "SVMainWindowController.h"
+#import "DPResourceFactory.h"
+#import "DPSharedController.h"
+#import "DPContributionNavigationDescriptor.h"
+#import "DPContributionPlugin.h"
+#import "DPContributionNavigationDescriptor.h"
+
+#import "SVDavenport.h"
+
 #import "SVBaseNavigationDescriptor.h"
 #import "SVSourceListCell.h"
-#import "NSTreeNode+SVDavenport.h"
 #import "SVBreadCrumbCell.h"
+
+#import "SVMainWindowController.h"
 #import "SVQueryResultController.h"
 #import "SVDesignDocumentEditorController.h"
 #import "SVInspectorDocumentController.h"
-#import <CouchObjC/CouchObjC.h>
+
 #import "SVAppDelegate.h"
 #import "SVDatabaseCreateSheetController.h"
 
-#import "SVFetchQueryInfoOperation.h"
-#import "SVDavenport.h"
-#import "DPContributionNavigationDescriptor.h"
-#import "DPContributionPlugin.h"
-#import "SVFetchServerInfoOperation.h"
+#import "SVAbstractCouchNodeOperation.h"
 #import "SVPluginContributionLoaderOperation.h"
-#import "DPContributionNavigationDescriptor.h"
 #import "SVRefreshCouchDatabaseNodeOperation.h"
 #import "SVRefreshCouchServerNodeOperation.h"
+#import "SVFetchServerInfoOperation.h"
+#import "SVFetchQueryInfoOperation.h"
 
+#import "NSTreeNode+SVDavenport.h"
 // XXX these thingies need to be defined in one place only. 
 //     
 #define QUERIES                 @"QUERIES"
@@ -557,7 +564,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     }
     
     [self updateBreadCrumbs:selectedTreeNode];
-
+    // XXX Case statement or call a method on the object directly. 
     if([descriptor type] == DPDescriptorCouchDatabase){
         [self showCouchViewInBody:selectedTreeNode];
     }else if([descriptor type] == DPDescriptorCouchDesign){

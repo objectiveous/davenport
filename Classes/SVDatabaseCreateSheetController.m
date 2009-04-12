@@ -1,5 +1,6 @@
 
 #import "SVDatabaseCreateSheetController.h"
+#import "DPResourceFactory.h"
 #import "SVMainWindowController.h"
 
 @implementation SVDatabaseCreateSheetController

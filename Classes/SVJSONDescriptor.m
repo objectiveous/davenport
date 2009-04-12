@@ -6,8 +6,8 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import "SVBaseNavigationDescriptor.h"
 #import "SVJSONDescriptor.h"
-
 
 @implementation SVJSONDescriptor
 

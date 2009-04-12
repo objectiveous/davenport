@@ -7,9 +7,11 @@
 //
 
 #import "SVPluginContributionLoaderOperation.h"
+#import "DPResourceFactory.h"
 #import "DPContributionPlugin.h"
 #import "DPResourceFactory.h"
 #import "SVAppDelegate.h"
+
 
 @implementation SVPluginContributionLoaderOperation
 

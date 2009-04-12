@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TPBaseDescriptor.h"
-#import "DPContributionNavigationDescriptor.h"
-#import "DPResourceFactory.h"
-#import "TPPlugin.h"
 #import <CouchObjC/CouchObjC.h>
+#import "DPContributionNavigationDescriptor.h"
+
+@class TPBaseDescriptor;
+@class DPContributionNavigationDescriptor;
+@class DPResourceFactory;
+@class TPPlugin;
 
 @interface TPBaseDescriptor : NSObject <DPContributionNavigationDescriptor>{
     SBCouchDatabase            *couchDatabase;

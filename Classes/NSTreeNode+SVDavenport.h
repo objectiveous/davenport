@@ -7,7 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DPResourceFactory.h"
+#import <CouchObjC/CouchObjC.h>
+
+@class DPResourceFactory;
 
 @interface NSTreeNode (SVDavenport) 
     

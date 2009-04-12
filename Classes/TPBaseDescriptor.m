@@ -6,7 +6,11 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import "DPResourceFactory.h"
+#import "DPContributionNavigationDescriptor.h"
 #import "TPBaseDescriptor.h"
+#import "DPContributionPlugin.h"
+#import "TPPlugin.h"
 #import "DPSharedController.h"
 
 @implementation TPBaseDescriptor

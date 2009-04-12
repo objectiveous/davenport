@@ -4,7 +4,9 @@
 
 #import "SVInspectorDocumentController.h"
 #import <JSON/JSON.h>
+#import "DPResourceFactory.h"
 #import "NSTreeNode+SVDavenport.h"
+#import "SVBaseNavigationDescriptor.h"
 #import "SVJSONDescriptor.h"
 #import "NSDictionary+SVDavenport.h"
 

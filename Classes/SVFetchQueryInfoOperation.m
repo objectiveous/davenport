@@ -6,8 +6,9 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
-#import "SVFetchQueryInfoOperation.h"
 #import <CouchObjC/CouchObjC.h>
+#import "DPResourceFactory.h"
+#import "SVFetchQueryInfoOperation.h"
 #import "NSTreeNode+SVDavenport.h"
 #import "DPContributionPlugin.h"
 #import "SVBaseNavigationDescriptor.h"

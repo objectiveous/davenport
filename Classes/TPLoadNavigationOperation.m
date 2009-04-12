@@ -6,11 +6,15 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import <CouchObjC/CouchObjC.h>
+#import "DPResourceFactory.h"
 #import "TPLoadNavigationOperation.h"
+#import "DPContributionPlugin.h"
 #import "TPPlugin.h"
+#import "DPContributionNavigationDescriptor.h"
 #import "NSTreeNode+TP.h"
 #import "NSTreeNode+SVDavenport.h"
-#import <CouchObjC/CouchObjC.h>
+
 #import "TPBaseDescriptor.h"
 
 @implementation TPLoadNavigationOperation

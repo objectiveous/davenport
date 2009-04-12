@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DPResourceFactory.h"
+
+@class DPResourceFactory;
 
 @interface TPLoadNavigationOperation : NSOperation{
     NSTreeNode *rootContributionNode;

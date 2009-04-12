@@ -6,13 +6,17 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import "SVConstants.h"
+#import "DPResourceFactory.h"
+#import "DPContributionPlugin.h"
 #import "TPPlugin.h"
+#import "DPContributionNavigationDescriptor.h"
 #import "TPBaseDescriptor.h"
 #import "TPDatabaseInstallerOperation.h"
 #import "TPLoadNavigationOperation.h"
 #import "NSTreeNode+TP.h"
 #import <CouchObjC/CouchObjC.h>
-#import "DPResourceFactory.h"
+
 
 static NSString *PLUGIN_NAME           = @"TPPlugin";
 static NSString *DATABASE_NAME         = @"cushion-tickets";

@@ -1,4 +1,5 @@
 #import "SVBreadCrumbCell.h"
+#import "SVPathControl.h"
 
 @interface SVBreadCrumbCell (Private)
 - (void) drawPathLabel:(NSRect)cellFrame;

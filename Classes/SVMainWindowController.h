@@ -6,15 +6,17 @@
 //
  
 #import <Cocoa/Cocoa.h>
-#import "SVControlBarView.h"
-#import "SVPathControl.h"
+
 #import <RBSplitView/RBSplitView.h>
 #import <RBSplitView/RBSplitSubview.h>
 #import <BWToolkitFramework/BWSplitView.h>
-#import "SVEmptyInspectorView.h"
-#import "SVSourceView.h"
-#import "DPResourceFactory.h"
+
+@class SVControlBarView;
+@class SVPathControl;
+@class SVEmptyInspectorView;
+@class DPResourceFactory;
 @class SVDatabaseCreateSheetController;
+
 
 @interface SVMainWindowController : NSWindowController <DPResourceFactory>{
     IBOutlet NSOutlineView	         *sourceView;    

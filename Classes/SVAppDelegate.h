@@ -7,9 +7,8 @@
 //
 #import <CouchObjC/SBCouchServer.h>
 #import <Cocoa/Cocoa.h>
-#import "SVMainWindowController.h"
 
-
+@class SVMainWindowController;
 
 @interface SVAppDelegate : NSObject {
 	SVMainWindowController *mainWindowController;

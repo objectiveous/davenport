@@ -203,21 +203,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* CouchObjC.framework */;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = CouchObjC;
 		};
 		54957F820F9143650011A3CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 5315EE640D94078D001E3B2E /* Tests.octest */;
+			remoteGlobalIDString = 5315EE640D94078D001E3B2E;
 			remoteInfo = Tests;
 		};
 		54957F840F9143650011A3CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 544133500F7AC489006FFC9E /* Tests.octest */;
+			remoteGlobalIDString = 544133500F7AC489006FFC9E;
 			remoteInfo = "All Tests";
 		};
 		54B7DE800F097BF00081F3A3 /* PBXContainerItemProxy */ = {

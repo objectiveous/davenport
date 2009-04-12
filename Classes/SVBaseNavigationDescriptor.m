@@ -7,9 +7,8 @@
 //
 
 #import "SVBaseNavigationDescriptor.h"
-#import "DPResourceFactory.h"
+#import "DPContributionNavigationDescriptor.h"
 #import "DPSharedController.h"
-
 
 @interface SVBaseNavigationDescriptor (Private)
 
@@ -137,7 +136,7 @@ NSString *MenuItemRefresh         = @"Refresh";
 //     method should be rethought. 
 - (NSViewController*) contributionMainViewController{    
     if(self.type == DPDescriptorCouchDatabase){
-        NSEnumerator *couchResults = [self.couchDatabase allDocsInBatchesOf:100];
+        NSEnumerator *couchResults = [self.couchDatabase allDocsInBatchesOf:5];
         // This call will set self as the data source to the NSOutlineView. This may or may not be 
         // a good approach. 
         id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];

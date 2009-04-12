@@ -6,7 +6,7 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
-#import "DPResourceFactory.h"
+@class DPResourceFactory;
 
 #pragma mark -
 #pragma mark Notifications

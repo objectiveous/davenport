@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TPPlugin.h"
-#import "DPContributionNavigationDescriptor.h"
+
+@class TPPlugin;
+@class DPContributionNavigationDescriptor;
+@class DPResourceFactory;
 
 @interface NSTreeNode(TP) 
 

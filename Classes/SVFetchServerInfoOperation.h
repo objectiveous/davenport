@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/SBCouchServer.h>
-#import "DPResourceFactory.h"
 #import "SVAbstractCouchNodeOperation.h"
+
+@class DPResourceFactory;
+
 @interface SVFetchServerInfoOperation : SVAbstractCouchNodeOperation {
 @protected
     //SBCouchServer          *couchServer;

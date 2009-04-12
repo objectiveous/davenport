@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/CouchObjC.h>
+
 #import "SVAbstractCouchNodeOperation.h"
+
 
 @interface SVRefreshCouchDatabaseNodeOperation : SVAbstractCouchNodeOperation {
    // NSTreeNode  *rootNode;

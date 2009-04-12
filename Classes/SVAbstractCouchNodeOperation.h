@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DPResourceFactory.h"
+#import <CouchObjC/CouchObjC.h>
+
+@class DPResourceFactory;
+
 
 @interface SVAbstractCouchNodeOperation : NSOperation {
     NSTreeNode    *rootNode;

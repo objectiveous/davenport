@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CouchObjC/CouchObjC.h>
 #import "DPContributionNavigationDescriptor.h"
 #import "DPResourceFactory.h"
-#import <CouchObjC/CouchObjC.h>
 
 @interface SVBaseNavigationDescriptor : NSObject <DPContributionNavigationDescriptor>{
     // A label is the text show to the user. For example, in an outline view we might display a design document named _design/numberOfJazzBands as Number Of Jazz Bands

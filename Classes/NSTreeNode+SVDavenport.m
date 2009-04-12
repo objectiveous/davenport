@@ -6,7 +6,9 @@
 //  Copyright 2008 South And Valley. All rights reserved.
 //
 
+#import "DPResourceFactory.h"
 #import "NSTreeNode+SVDavenport.h"
+#import "SVBaseNavigationDescriptor.h"
 #import "SVJSONDescriptor.h"
 #import "SVBaseNavigationDescriptor.h"
 #import "DPContributionNavigationDescriptor.h"

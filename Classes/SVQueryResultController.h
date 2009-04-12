@@ -8,21 +8,29 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/CouchObjC.h>
-#import "DPContributionNavigationDescriptor.h"
-#import "DPSharedController.h"
 
+
+@class DPSharedController;
+@class DPContributionNavigationDescriptor;
 
 @interface SVQueryResultController : NSViewController <DPSharedController>{
     NSString               *databaseName;
     SBCouchEnumerator      *queryResult;
     SBCouchDatabase        *couchDatabase;
+
     IBOutlet NSOutlineView *viewResultOutlineView;
+    IBOutlet NSTextField   *resultCountSummaryTextField;
+    IBOutlet NSButton      *nextBatch;
+    IBOutlet NSButton      *previousBatch; 
+    
 }
 
-@property (copy)   NSString          *databaseName;
-@property (retain) SBCouchEnumerator *queryResult;
-@property (retain) SBCouchDatabase   *couchDatabase;
-@property (retain) NSOutlineView     *viewResultOutlineView;
-
+@property (copy)              NSString          *databaseName;
+@property (retain)            SBCouchEnumerator *queryResult;
+@property (retain)            SBCouchDatabase   *couchDatabase;
+@property (retain)            NSOutlineView     *viewResultOutlineView;
+@property (nonatomic, retain) NSTextField       *resultCountSummaryTextField;
+@property (nonatomic, retain) NSButton          *nextBatch;
+@property (nonatomic, retain) NSButton          *previousBatch;
 
 @end

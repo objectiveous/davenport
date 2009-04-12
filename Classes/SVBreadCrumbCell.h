@@ -1,5 +1,7 @@
 #import <Cocoa/Cocoa.h>
-#import "SVPathControl.h"
+
+
+@class SVPathControl;
 
 @interface SVBreadCrumbCell : NSPathComponentCell {
 	SVPathControl	*pathControl;

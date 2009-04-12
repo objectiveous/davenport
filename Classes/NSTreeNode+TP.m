@@ -6,9 +6,13 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import "DPResourceFactory.h"
+#import "DPContributionNavigationDescriptor.h"
 #import "NSTreeNode+TP.h"
 #import "TPBaseDescriptor.h"
+#import "DPContributionPlugin.h"
 #import "TPPlugin.h"
+
 
 @implementation NSTreeNode(TP)
 

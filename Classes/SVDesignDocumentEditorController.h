@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SVDesignDocumentEditorController.h"
+
 #import <CouchObjC/CouchObjC.h>
-#import "DPContributionNavigationDescriptor.h"
-#import "DPSharedController.h"
+
+@class SVDesignDocumentEditorController;
+@class DPContributionNavigationDescriptor;
+@class DPSharedController;
 
 @class SVSaveViewAsSheetController;
 

@@ -7,7 +7,9 @@
 //
 
 #import "SVAppDelegate.h"
+#import "DPResourceFactory.h"
 #import "SVMainWindowController.h"
+#import "SVAbstractCouchNodeOperation.h"
 #import "SVFetchServerInfoOperation.h"
 #import "SVPluginContributionLoaderOperation.h"
 #import "DPContributionPlugin.h"

@@ -4,7 +4,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CouchObjC/CouchObjC.h>
-#import "SVControlBarView.h"
+
+@class SVControlBarView;
 
 @interface SVInspectorDocumentController : NSViewController {
     IBOutlet SVControlBarView     *documentControlBar;

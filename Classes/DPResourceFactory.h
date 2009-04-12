@@ -7,7 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "DPContributionNavigationDescriptor.h"
+//#import "DPContributionNavigationDescriptor.h"
+
+@class DPContributionNavigationDescriptor;
 
 typedef enum sharedResources{
     DPSharedViewContollerNamedFunctionEditor  = 1,

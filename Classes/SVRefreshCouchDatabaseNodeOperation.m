@@ -6,6 +6,8 @@
 //  Copyright 2009 South And Valley. All rights reserved.
 //
 
+#import "DPResourceFactory.h"
+#import "SVAbstractCouchNodeOperation.h"
 #import "SVRefreshCouchDatabaseNodeOperation.h"
 #import "NSTreeNode+SVDavenport.h"
 #import "SVBaseNavigationDescriptor.h"

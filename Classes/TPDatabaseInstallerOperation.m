@@ -8,7 +8,10 @@
 
 #import "TPDatabaseInstallerOperation.h"
 #import <CouchObjC/CouchObjC.h>
+#import "DPResourceFactory.h"
+#import "DPContributionPlugin.h"
 #import "TPPlugin.h"
+#import "SVConstants.h"
 
 @interface TPDatabaseInstallerOperation (Private)
 - (BOOL)installViews;

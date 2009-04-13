@@ -23,6 +23,7 @@
 #import "SVQueryResultController.h"
 #import "SVDesignDocumentEditorController.h"
 #import "SVInspectorDocumentController.h"
+#import "SVEmptyInspectorView.h"
 
 #import "SVAppDelegate.h"
 #import "SVDatabaseCreateSheetController.h"

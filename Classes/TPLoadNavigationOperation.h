@@ -10,6 +10,15 @@
 
 @class DPResourceFactory;
 
+/*!
+ * @class       TPLoadNavigationOperation
+ * @abstract    xxx
+ * @discussion  xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *              xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *              xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *              xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *
+ */
 @interface TPLoadNavigationOperation : NSOperation{
     NSTreeNode *rootContributionNode;
     id <DPResourceFactory> resourceFactory;

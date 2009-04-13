@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="33"/>
+			<integer value="32"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -249,7 +249,7 @@
 							<object class="NSTextField" id="1048141498">
 								<reference key="NSNextResponder" ref="394917115"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{42, 6}, {230, 17}}</string>
+								<string key="NSFrame">{{49, 4}, {172, 17}}</string>
 								<reference key="NSSuperview" ref="394917115"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSTextFieldCell" key="NSCell" id="415960515">
@@ -270,11 +270,11 @@
 							<object class="NSButton" id="449806357">
 								<reference key="NSNextResponder" ref="394917115"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{219, 5}, {17, 21}}</string>
+								<string key="NSFrame">{{226, -1}, {17, 28}}</string>
 								<reference key="NSSuperview" ref="394917115"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="675925197">
-									<int key="NSCellFlags">604110336</int>
+									<int key="NSCellFlags">-2080244224</int>
 									<int key="NSCellFlags2">134217728</int>
 									<string key="NSContents"/>
 									<reference key="NSSupport" ref="74831338"/>
@@ -298,7 +298,7 @@
 							<object class="NSButton" id="622532159">
 								<reference key="NSNextResponder" ref="394917115"/>
 								<int key="NSvFlags">264</int>
-								<string key="NSFrame">{{20, 5}, {17, 21}}</string>
+								<string key="NSFrame">{{20, -1}, {17, 28}}</string>
 								<reference key="NSSuperview" ref="394917115"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="770579645">
@@ -376,6 +376,38 @@
 						<reference key="destination" ref="1048141498"/>
 					</object>
 					<int key="connectionID">39</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">nextBatch</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="449806357"/>
+					</object>
+					<int key="connectionID">40</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">previousBatch</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="622532159"/>
+					</object>
+					<int key="connectionID">41</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">fetchNextPageAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="449806357"/>
+					</object>
+					<int key="connectionID">42</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">fetchPreviousPageAction:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="622532159"/>
+					</object>
+					<int key="connectionID">43</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -579,7 +611,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{314, 155}, {673, 530}}</string>
+					<string>{{519, 608}, {673, 530}}</string>
 					<string>com.brandonwalkin.BWToolkit</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -608,7 +640,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">43</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -645,15 +677,32 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SVQueryResultController</string>
 					<string key="superclassName">NSViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>fetchNextPageAction:</string>
+							<string>fetchPreviousPageAction:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>nextBatch</string>
+							<string>previousBatch</string>
 							<string>resultCountSummaryTextField</string>
 							<string>viewResultOutlineView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSButton</string>
+							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSOutlineView</string>
 						</object>

@@ -35,6 +35,7 @@
 @synthesize resultCountSummaryTextField;
 @synthesize nextBatch;
 @synthesize previousBatch;
+@synthesize pageNumber;
 #pragma mark -
 
 
@@ -43,23 +44,45 @@
 #pragma mark NSOutlineViewDataSource delegate
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    // This isn't exactly correct as a GET could return fewer rows than the limit. 
-    // best way to this value is to actually as the SBCouchEnumerator. 
+    // The number of children will always be either A] the limit placed on query OR 
+    // the value of [couchEnumerator count];
 
-    NSInteger count = [self.queryResult count];
+    NSInteger count = self.queryResult.queryOptions.limit;
+    if(count <= 0)
+        count = [self.queryResult count];
 
-    NSString *label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", self.queryResult.offset+1, self.queryResult.sizeOfLastFetch, self.queryResult.totalRows];        
-    
-    if(count == 0){
-        label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", 0, 0, 0];
+    // FRACTIONAL PAGES 
+    //% self.queryResult.queryOptions.limit;
+    NSInteger fractionalPage = self.queryResult.totalRows - self.queryResult.offset;
+    // If we have a partial page AND the index is increasing, then show a partial page of data. 
+    // of the index is not increasing, we are scrolling backwards and should show a full page. 
+    // && self.queryResult.currentIndex >= self.queryResult.offset
+    if(fractionalPage < self.queryResult.queryOptions.limit && ! self.queryResult.currentIndex > [self.queryResult count]){
+       count = fractionalPage;
     }
-
+        
+    
+    NSString *label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", 
+                       [self.queryResult startIndexOfPage:self.pageNumber],
+                       [self.queryResult endIndexOfPage:self.pageNumber], 
+                       self.queryResult.totalRows];        
+    
     [[self.resultCountSummaryTextField cell] setTitle:label];
 
-    if([self.queryResult shouldFetchNextBatch]){
-          [self.nextBatch setEnabled:YES];
+    // -------------------------------
+    if([self.queryResult hasNextBatch]){
+        [self.nextBatch setEnabled:YES];
+    } else{
+        [self.nextBatch setEnabled:NO];
     }
-    
+        
+    if(self.pageNumber > 1){
+        [self.previousBatch setEnabled:YES];
+    } else{
+        [self.previousBatch setEnabled:NO];
+    }
+        // -------------------------------
+            
     return count; 
 }
 
@@ -68,7 +91,8 @@
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    id object = [[self queryResult] itemAtIndex:index];
+    // SBCouchEnumerator indexes start with 1. 
+    id object = [[self queryResult] objectAtIndex:index+1 ofPage:self.pageNumber];
     return object;
 }
 
@@ -212,9 +236,22 @@
 
     self.queryResult = configurationData;
 
+    // XXX This is a hack to force the fetching of the first page 
+    //     and get things ready for reloadData. There should be a 
+    //     better way. 
+    [self.queryResult count];
+    self.pageNumber = 1;
     [self.viewResultOutlineView reloadData];
 }
 
-
+-(IBAction)fetchNextPageAction:(id)sender{
+    [self.queryResult fetchNextPage];
+    self.pageNumber++;
+    [self.viewResultOutlineView reloadData];
+}
+-(IBAction)fetchPreviousPageAction:(id)sender{
+    self.pageNumber--;
+    [self.viewResultOutlineView reloadData];
+}
 
 @end

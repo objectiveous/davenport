@@ -12,6 +12,16 @@
 @class DPContributionNavigationDescriptor;
 @class DPResourceFactory;
 
+/*!
+ * @class       NSTreeNode+TP
+ * @abstract    xxx
+ * @discussion  xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *              xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *              xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *              xxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxx xxxxxxxxxx xxxxxxx
+ *
+ */
+
 @interface NSTreeNode(TP) 
 
 +(NSTreeNode*)nodeWithLabel:(NSString*)alabel identity:(NSString*)anIdentity descriptorType:(DPNavigationDescriptorTypes)aType resourceFactory:(id<DPResourceFactory>)rezFactory  group:(BOOL)isGroup;

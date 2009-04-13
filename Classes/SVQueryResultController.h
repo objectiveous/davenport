@@ -23,6 +23,8 @@
     IBOutlet NSButton      *nextBatch;
     IBOutlet NSButton      *previousBatch; 
     
+    NSInteger               pageNumber;
+    
 }
 
 @property (copy)              NSString          *databaseName;
@@ -32,5 +34,9 @@
 @property (nonatomic, retain) NSTextField       *resultCountSummaryTextField;
 @property (nonatomic, retain) NSButton          *nextBatch;
 @property (nonatomic, retain) NSButton          *previousBatch;
+@property                     NSInteger          pageNumber;
 
+
+-(IBAction)fetchNextPageAction:(id)sender;
+-(IBAction)fetchPreviousPageAction:(id)sender;
 @end

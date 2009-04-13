@@ -22,9 +22,7 @@
     IBOutlet NSOutlineView	         *sourceView;    
     IBOutlet SVEmptyInspectorView    *emptyInspectorView;
     IBOutlet SVEmptyInspectorView    *emptyBodyView;
-
     
-    // The three primary views of Davenport. 
     IBOutlet NSView                  *adminView;
     IBOutlet NSView                  *bodyView;
     IBOutlet RBSplitSubview          *inspectorView;
@@ -46,14 +44,15 @@
     BOOL                              inspectorShowing;
     
     SVDatabaseCreateSheetController  *createDatabaseSheet;
-    @private
-    NSOperationQueue                  *operationQueue;
-    NSLock                            *lock;
-    NSBundle                          *bundle;
+
+@private
+    NSOperationQueue                 *operationQueue;
+    NSLock                           *lock;
+    NSBundle                         *bundle;
 }
 
-@property (retain)  NSTreeNode                     *rootNode;
-@property (retain)  NSImage                        *urlImage;
+@property (retain)            NSTreeNode           *rootNode;
+@property (retain)            NSImage              *urlImage;
 @property (nonatomic, retain) NSOutlineView        *sourceView;
 @property (nonatomic, retain) NSViewController     *dataViewController;
 @property (nonatomic, retain) NSView               *adminView;

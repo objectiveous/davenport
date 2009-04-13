@@ -44,45 +44,15 @@
 #pragma mark NSOutlineViewDataSource delegate
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    // The number of children will always be either A] the limit placed on query OR 
-    // the value of [couchEnumerator count];
 
-    NSInteger count = self.queryResult.queryOptions.limit;
-    if(count <= 0)
-        count = [self.queryResult count];
-
-    // FRACTIONAL PAGES 
-    //% self.queryResult.queryOptions.limit;
-    NSInteger fractionalPage = self.queryResult.totalRows - self.queryResult.offset;
-    // If we have a partial page AND the index is increasing, then show a partial page of data. 
-    // of the index is not increasing, we are scrolling backwards and should show a full page. 
-    // && self.queryResult.currentIndex >= self.queryResult.offset
-    if(fractionalPage < self.queryResult.queryOptions.limit && ! self.queryResult.currentIndex > [self.queryResult count]){
-       count = fractionalPage;
-    }
-        
-    
+    NSInteger count = [self.queryResult numberOfRowsForPage:self.pageNumber];
+           
     NSString *label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", 
                        [self.queryResult startIndexOfPage:self.pageNumber],
                        [self.queryResult endIndexOfPage:self.pageNumber], 
                        self.queryResult.totalRows];        
     
-    [[self.resultCountSummaryTextField cell] setTitle:label];
-
-    // -------------------------------
-    if([self.queryResult hasNextBatch]){
-        [self.nextBatch setEnabled:YES];
-    } else{
-        [self.nextBatch setEnabled:NO];
-    }
-        
-    if(self.pageNumber > 1){
-        [self.previousBatch setEnabled:YES];
-    } else{
-        [self.previousBatch setEnabled:NO];
-    }
-        // -------------------------------
-            
+    [[self.resultCountSummaryTextField cell] setTitle:label];    
     return count; 
 }
 
@@ -91,8 +61,7 @@
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    // SBCouchEnumerator indexes start with 1. 
-    id object = [[self queryResult] objectAtIndex:index+1 ofPage:self.pageNumber];
+    id object = [[self queryResult] objectAtIndex:index ofPage:self.pageNumber];
     return object;
 }
 
@@ -186,8 +155,9 @@
 -(void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument{
     SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
     NSView *inspectorView = [mainWindowController inspectorView]; 
+    //NSViewController *inspectorView = [mainWindowController inspectorView]; 
 
-    SVDebug(@"inspectorView [%@]", inspectorView);
+    //SVDebug(@"inspectorView [%@]", inspectorView);
     
     // XXX Commenting this out as a test to see if we can keep views around and just 
     //     re-provision them. 
@@ -239,18 +209,54 @@
     // XXX This is a hack to force the fetching of the first page 
     //     and get things ready for reloadData. There should be a 
     //     better way. 
-    [self.queryResult count];
+    NSInteger count = [self.queryResult count];
     self.pageNumber = 1;
+    
+    if(count < self.queryResult.queryOptions.limit)
+        [self.nextBatch setEnabled:NO];
+    
     [self.viewResultOutlineView reloadData];
 }
 
 -(IBAction)fetchNextPageAction:(id)sender{
     [self.queryResult fetchNextPage];
     self.pageNumber++;
+    
+    
+    if([self.queryResult hasNextBatch]){
+        [self.nextBatch setEnabled:YES];
+    } else{
+        [self.nextBatch setEnabled:NO];
+    }
+    
+    if(self.pageNumber > 1){
+        [self.previousBatch setEnabled:YES];
+    } else{
+        [self.previousBatch setEnabled:NO];
+    }
+
+    
     [self.viewResultOutlineView reloadData];
 }
 -(IBAction)fetchPreviousPageAction:(id)sender{
+    [self.nextBatch setEnabled:YES];
+    /*
+    if([self.queryResult hasNextBatch]){
+        [self.nextBatch setEnabled:YES];
+    } else{
+        [self.nextBatch setEnabled:NO];
+    }
+    */
+   
     self.pageNumber--;
+
+    //NSInteger newIndex = [self.queryResult startIndexOfPage:self.pageNumber];
+    if(self.pageNumber > 1){
+        [self.previousBatch setEnabled:YES];
+    } else{
+        [self.previousBatch setEnabled:NO];
+    } 
+    
     [self.viewResultOutlineView reloadData];
 }
 

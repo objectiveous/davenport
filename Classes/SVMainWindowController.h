@@ -26,23 +26,21 @@
     IBOutlet NSView                  *adminView;
     IBOutlet NSView                  *bodyView;
     IBOutlet RBSplitSubview          *inspectorView;
+    IBOutlet RBSplitView             *horizontalSplitView;
+    
     IBOutlet NSView                  *logView;
-
     IBOutlet NSTextView              *outputView;
     IBOutlet SVControlBarView        *controlBar;
     IBOutlet SVPathControl           *pathControl;    
     IBOutlet NSToolbar               *toolBar;
     IBOutlet NSToolbarItem           *createDocumentToolBarItem;
 
-    IBOutlet RBSplitView             *horizontalSplitView;
-
     IBOutlet NSMenu                  *outlineViewContextMenu;
     
     NSViewController                 *dataViewController;
     NSTreeNode                       *rootNode;
    	NSImage                          *urlImage;
-    BOOL                              inspectorShowing;
-    
+    BOOL                              inspectorShowing;    
     SVDatabaseCreateSheetController  *createDatabaseSheet;
 
 @private
@@ -69,6 +67,7 @@
 @property (nonatomic, retain) SVEmptyInspectorView *emptyInspectorView;
 @property (nonatomic, retain) SVEmptyInspectorView *emptyBodyView;
 @property (retain)            NSBundle             *bundle;
+@property (retain)            SVDatabaseCreateSheetController *createDatabaseSheet;
 
 - (void)appendNSTreeNodeToNavigationRootNode:(NSTreeNode *)treeToAppend;
 

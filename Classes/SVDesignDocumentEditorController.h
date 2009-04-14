@@ -23,6 +23,7 @@
     IBOutlet NSComboBox                     *viewComboBox;
     IBOutlet NSButton                       *saveButton;
     IBOutlet NSButton                       *saveAsButton;
+    IBOutlet NSButton                       *reduceCheckBox;
     
     SVSaveViewAsSheetController             *saveViewAsController;
     SBCouchDesignDocument                   *designDocument;
@@ -43,6 +44,7 @@
 @property (assign)            NSTreeNode                   *navigationTreeNode; 
 @property                     BOOL                         isDirty;
 @property (nonatomic, retain) SVSaveViewAsSheetController  *saveViewAsController;
+@property (nonatomic, retain) NSButton                     *reduceCheckBox;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
 
@@ -58,4 +60,6 @@
 - (IBAction)saveDesignDocumentAction:(id)sender;
 - (IBAction)saveAsDesignDocumentAction:(id)sender;
 - (IBAction)saveViewAsAction:(id)sender;
+- (IBAction)reduceCheckBoxAction:(id)sender;
+
 @end

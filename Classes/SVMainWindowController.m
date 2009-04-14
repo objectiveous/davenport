@@ -96,6 +96,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 @synthesize emptyInspectorView;
 @synthesize emptyBodyView;
 @synthesize bundle;
+@synthesize createDatabaseSheet;
 
 - (void)awakeFromNib{
     // XXX This should live in the init. 
@@ -107,7 +108,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     // but this is not how things worked at first and it caused some problems. 
     rootNode = [[NSTreeNode alloc] init];
     
-  	createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
+  	self.createDatabaseSheet = [[SVDatabaseCreateSheetController alloc] initWithWindowNibName:@"CreateDatabasePanel"];
     inspectorShowing = YES;
     [[self inspectorView] setHidden:NO];
    
@@ -198,6 +199,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [lock release];
     self.rootNode = nil;
     self.pathControl = nil;
+    self.createDatabaseSheet = nil;
     [super dealloc];
 }
 
@@ -431,36 +433,23 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     //[self showEmptyBodyView];     
 }
 
+
 -(void)showDesignEditorInMainView:(NSTreeNode*)navigationTreeNode{
     for (NSView *view in [bodyView subviews]) {
         [view removeFromSuperview];
     }
     
-    // SHOW FUNTION EDITOR IN THE MAIN VIEW
-    /*
-    SVDesignDocumentEditorController *functionController = [[SVDesignDocumentEditorController alloc]                                                                 
-                                                                    initWithNibName:NIB_DesignDocumentEditor 
-                                                                             bundle:nil
-                                                                    navContribution:navDescriptor];    
-    */
-    
     SVDesignDocumentEditorController *functionController;
-    functionController = [[[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor 
+    functionController = [[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor 
                                                                             bundle:nil
-                                                                navigationTreeNode:navigationTreeNode] autorelease];
+                                                                navigationTreeNode:navigationTreeNode];
     
     [self sizeViewToBody:[functionController view]];
-    /*
-    for (id view in [inspectorView subviews]){
-        [view removeFromSuperview];
-    }
-    */
-    
     [self.bodyView addSubview:[functionController view]];
     
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
-    SVQueryResultController *queryResultController = [[[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
-                                                                                               bundle:nil] autorelease];
+    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
+                                                                                               bundle:nil];
 
     [inspectorView addSubview:[queryResultController view]];
     [self sizeViewToInspector:[queryResultController view]];
@@ -808,8 +797,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 - (IBAction)createDatabaseAction:(id)sender{
     SVDebug(@"Show a view for database");
     
-	NSString  *newDatabaseName = [createDatabaseSheet edit:nil from:self];
-	if (![createDatabaseSheet wasCancelled] && newDatabaseName){
+	NSString  *newDatabaseName = [self.createDatabaseSheet edit:nil from:self];
+	if (![self.createDatabaseSheet wasCancelled] && newDatabaseName){
         SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
         [couchServer createDatabase:newDatabaseName];
         // Now reaload all the datafrom the server. 

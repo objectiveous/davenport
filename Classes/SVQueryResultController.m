@@ -9,6 +9,8 @@
 
 #import <CouchObjC/CouchObjC.h>
 #import <JSON/JSON.h>
+#import <RBSplitView/RBSplitView.h>
+#import <RBSplitView/RBSplitSubview.h>
 #import "DPResourceFactory.h"
 #import "DPSharedController.h"
 #import "DPContributionNavigationDescriptor.h"
@@ -16,10 +18,13 @@
 #import "SVQueryResultController.h"
 #import "SVInspectorDocumentController.h"
 #import "NSTreeNode+SVDavenport.h"
+#import "SVMainWindowController.h"
 
 @interface  SVQueryResultController (Private)
 - (NSString*)stripNewLines:(NSString*)string;
 - (void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument;
+- (void) managePaginationButtonRight;
+- (void) managePaginationButtonLeft;
 @end
 
 
@@ -39,21 +44,21 @@
 #pragma mark -
 
 #pragma mark -
+#pragma mark -
 
+- (void)awakeFromNib{
+    [self.pageSizePopUp removeAllItems];
+}
+/*
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        [self.pageSizePopUp removeAllItems];
+    }    
+    return self;
+}
+*/
 -(void)dealloc{
-    /*
-    @property (copy)              NSString          *databaseName;
-    @property (retain)            SBCouchEnumerator *queryResult;
-    @property (retain)            SBCouchDatabase   *couchDatabase;
-    @property (retain)            NSOutlineView     *viewResultOutlineView;
-    @property (nonatomic, retain) NSTextField       *resultCountSummaryTextField;
-    @property (nonatomic, retain) NSButton          *nextBatch;
-    @property (nonatomic, retain) NSButton          *previousBatch;
-    @property (nonatomic, retain) NSPopUpButton     *pageSizePopUp;
-    @property                     NSInteger          pageNumber;
-    @property                     NSInteger          pageSize;
-    */
-    
     self.databaseName = nil;
     self.queryResult = nil;
     self.couchDatabase = nil;
@@ -104,10 +109,11 @@
         
         id value = [item valueForKey:@"value"];
 
-        if([value isKindOfClass:[NSString class]])
-            return value;
-        else
+        if([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]] )
             return [value JSONRepresentation];
+        else
+            return value;
+
         
         //return [value JSONRepresentation];
         // this can cause problems if the reciever does no respond to JSONRepresentation. 
@@ -174,8 +180,9 @@
 
 // XXX We need to be caching here. 
 -(void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument{
-    SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
-    NSView *inspectorView = [mainWindowController inspectorView]; 
+    SVMainWindowController *mainWindowController = (SVMainWindowController*) [(SVAppDelegate*)[NSApp delegate] mainWindowController];
+
+    RBSplitView *inspectorView = (RBSplitView*) mainWindowController.inspectorView; 
    
     SVInspectorDocumentController *documentController; 
     documentController = [[SVInspectorDocumentController alloc] initWithNibName:@"CouchDocument" 
@@ -183,15 +190,9 @@
                                                                   couchDocument:couchDocument
                                                                   couchDatabase:self.couchDatabase]; 
 
-    NSView *documentView = nil;
-    
-    [documentController title];
-    [documentController setTitle:@"FFFF"];
-    [documentController view];
-    documentView = [documentController view];
-        
-                
-        [inspectorView addSubview:documentView];
+    NSView *documentView = [documentController view];
+                        
+    [inspectorView addSubview:documentView];
         
         // One would think that this would not be necissary... 
         NSRect frame = [documentView frame];
@@ -204,16 +205,19 @@
 #pragma mark -
 #pragma mark DPSharedController Protocol Support
 -(void)provision:(id)configurationData{
+    [self.pageSizePopUp addItemWithTitle:@"10"];
+    [self.pageSizePopUp addItemWithTitle:@"100"];
+    [self.pageSizePopUp addItemWithTitle:@"1000"];
     
     NSView *couchViewResultView = [self view];
     // We don't have a parent view here because we were removed from. 
     NSView *parentView = [couchViewResultView superview];
     [parentView addSubview:couchViewResultView];
-    NSArray *subviews = [parentView subviews];
-    SVDebug(@"subview count : %i ", [subviews count]);
+    //NSArray *subviews = [parentView subviews];
     
     if(! [configurationData isKindOfClass:[SBCouchEnumerator class]])
         return;
+    
     self.queryResult = nil;
     self.queryResult = configurationData;
 
@@ -231,22 +235,16 @@
     if(count < self.queryResult.queryOptions.limit)
         [self.nextBatch setEnabled:NO];
 
-    [self.pageSizePopUp selectItemWithTitle:@"10"];
-    
-    
+    [self.pageSizePopUp selectItemWithTitle:@"10"];        
     [self.viewResultOutlineView reloadData];
 }
 
+#pragma mark -
 -(IBAction)fetchNextPageAction:(id)sender{
     [self.queryResult fetchNextPage];
     self.pageNumber++;
-    
-    
-    if([self.queryResult hasNextBatch]){
-        [self.nextBatch setEnabled:YES];
-    } else{
-        [self.nextBatch setEnabled:NO];
-    }
+        
+    [self managePaginationButtonRight];    
     
     if(self.pageNumber > 1){
         [self.previousBatch setEnabled:YES];
@@ -269,18 +267,28 @@
     
     [self.viewResultOutlineView reloadData];
 }
+
+#pragma mark -
+#pragma mark Action Handlers
 // XXX Maybe we should be using bindings for this...
 -(IBAction)adjustPageSizeAction:(id)sender{
     NSMenuItem *menuItem = [sender selectedItem];
     NSString *pageSizeString = [menuItem title];
     self.pageSize = [pageSizeString intValue];
-    
-    [self.queryResult resetLimit:self.pageSize];
-    
-    if(![self.queryResult hasNextBatch]){
-         [self.previousBatch setEnabled:NO];
-    }
-
+    self.pageNumber = 1;
+    [self.queryResult resetLimit:self.pageSize];    
+    [self managePaginationButtonRight];    
     [self.viewResultOutlineView reloadData];
+}
+#pragma mark -
+- (void) managePaginationButtonRight{
+    if(![self.queryResult hasNextBatch]){
+        [self.nextBatch setEnabled:NO];
+    }else{
+        [self.nextBatch setEnabled:YES];
+    }    
+}
+- (void) managePaginationButtonLeft{
+    
 }
 @end

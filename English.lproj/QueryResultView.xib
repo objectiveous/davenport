@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="5"/>
+			<integer value="32"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -249,13 +249,13 @@
 							<object class="NSTextField" id="1048141498">
 								<reference key="NSNextResponder" ref="394917115"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{49, 4}, {172, 17}}</string>
+								<string key="NSFrame">{{46, 4}, {215, 17}}</string>
 								<reference key="NSSuperview" ref="394917115"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSTextFieldCell" key="NSCell" id="415960515">
 									<int key="NSCellFlags">68288064</int>
 									<int key="NSCellFlags2">272630784</int>
-									<string key="NSContents">Showing 1-10 of 65 rows</string>
+									<string key="NSContents">Showing 1000-1001 of 100 rows</string>
 									<reference key="NSSupport" ref="74831338"/>
 									<reference key="NSControlView" ref="1048141498"/>
 									<object class="NSColor" key="NSBackgroundColor">
@@ -269,8 +269,8 @@
 							</object>
 							<object class="NSButton" id="449806357">
 								<reference key="NSNextResponder" ref="394917115"/>
-								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{226, -1}, {17, 28}}</string>
+								<int key="NSvFlags">270</int>
+								<string key="NSFrame">{{254, -1}, {17, 28}}</string>
 								<reference key="NSSuperview" ref="394917115"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="675925197">
@@ -750,7 +750,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{519, 608}, {673, 530}}</string>
+					<string>{{691, 625}, {673, 530}}</string>
 					<string>com.brandonwalkin.BWToolkit</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

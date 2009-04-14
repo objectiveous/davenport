@@ -17,6 +17,7 @@
 #import "DPContributionNavigationDescriptor.h"
 #import "SVSaveViewAsSheetController.h"
 
+static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    return sum(values);\n}";
 
 @interface SVDesignDocumentEditorController (Private)
 
@@ -38,6 +39,7 @@
 @synthesize saveViewAsController;
 @synthesize navigationTreeNode;
 @synthesize navContribution;
+@synthesize reduceCheckBox;
 
 #pragma mark -
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navigationTreeNode:(NSTreeNode*)aTreeNode{
@@ -70,7 +72,9 @@
         // If we have views, add a seperator and start adding menuitems in reverse order. 
         // Reversing the order is done to keep the interface consistant with 1] couch's 
         // structure of the data and 2] how futon displays data. 
-        [self.viewComboBox insertItemWithObjectValue:@"---------------------" atIndex:0];        
+
+        //[self.viewComboBox insertItemWithObjectValue:@"---------------------" atIndex:0];     
+        
         NSArray *keys = [views allKeys];
         for(id key in [keys reverseObjectEnumerator]){
             [self.viewComboBox insertItemWithObjectValue:key atIndex:0];
@@ -87,12 +91,21 @@
     
     SBCouchView *view  = [self.designDocument view:menueItemViewName];
     [self synchChangesOfView:view];
-    if(view.queryOptions == nil)
-        view.queryOptions = [ [SBCouchQueryOptions new] autorelease]; 
+    if(view.queryOptions == nil){
+        view.queryOptions = [ [SBCouchQueryOptions new] autorelease];
+        view.queryOptions.limit = 10;
+    }
+        
+
+    // XXX This does not really belong here. Seems like somethign else ought to be 
+    // handeling this. 
+    //view.queryOptions.limit = 10;
     
     NSLog(@"reduce %@: ", view.reduce);
     if(view.reduce && [view.reduce length] > 0 ){       
-        view.queryOptions.group = YES;        
+        view.queryOptions.group = YES;
+        // You can't use the limit query option when reducing. 
+        view.queryOptions.limit = 0;
     }else{
         view.queryOptions.group = NO;
     }
@@ -162,16 +175,18 @@
         
         [designDocumentForSaveAs addView:newView withName:newViewName];        
         [designDocumentForSaveAs put];
-        [designDocumentForSaveAs release];
-        
-        //SBCouchServer *couchServer = [(SVAppDelegate*)[NSApp delegate] couchServer];
-        //[couchServer createDatabase:newDatabaseName];
-        // Now reaload all the datafrom the server. 
-        //[(SVAppDelegate*)[NSApp delegate] performFetchServerInfoOperation];    
-          [[NSNotificationCenter defaultCenter] postNotificationName:DPRefreshNotification object:self.navigationTreeNode];
+        [designDocumentForSaveAs release];  
+        [[NSNotificationCenter defaultCenter] postNotificationName:DPRefreshNotification object:self.navigationTreeNode];
 	}
 }
-
+- (IBAction)reduceCheckBoxAction:(id)sender{
+    if([self.reduceCheckBox state] == NSOnState){
+        [[self.reduceTextView textStorage] setForegroundColor:[NSColor blackColor]];
+        [self textDidChange:nil];
+    }else{
+        [[self.reduceTextView textStorage] setForegroundColor:[NSColor lightGrayColor]]; 
+    }
+}
 
 #pragma mark -
 
@@ -181,15 +196,24 @@
 }
 -(void)synchChangesOfView:(SBCouchView*)couchView{
     //[self.reduceTextView textStorage] 
+    BOOL wantToRunWithReduce = [self.reduceCheckBox state] == NSOnState;
+    NSLog([self.reduceCheckBox state] ? @"Checkbox is ON" : @"Checkbox is OFF");
+    
     
     NSString *currentValueOfMapFunction = [self.mapTextView string];
     NSString *currentValueOfReduceFunction = [self.reduceTextView string];
     
+    if(wantToRunWithReduce){
+        couchView.reduce = currentValueOfReduceFunction;
+    }else{
+        [couchView removeObjectForKey:@"reduce"];
+    }
+        
+    
     couchView.map = currentValueOfMapFunction;
-    couchView.reduce = currentValueOfReduceFunction;
- 
-    // If we have a reduce function. 
-    if(couchView.reduce && [couchView.reduce length] != 0 && couchView.queryOptions){
+
+    // If the user wants to run w/ a reduce AND we have a reduce function. 
+    if(wantToRunWithReduce && couchView.reduce && [couchView.reduce length] != 0 && couchView.queryOptions){
         couchView.queryOptions.group = YES;
     }
     
@@ -197,18 +221,20 @@
 
 
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification{
-    
+    // Turn the reduce botton off. We'll turn it on later, if the view 
+    // that was selected actually has a reduce function. 
+    [self.reduceCheckBox setState:NSOffState];
     NSString *menueItemViewName = [self.viewComboBox objectValueOfSelectedItem];
     
     SBCouchView *view  = [self.designDocument view:menueItemViewName];
     NSString *map = @"";
-    NSString *reduce = @"";
+    NSString *reduce = REDUCE_STRING;
     if(view){
         map = [view map];
         reduce = [view reduce];
         // Sorta cheesey
         if(!reduce)
-            reduce = @"";
+            reduce = REDUCE_STRING;
     } else if([menueItemViewName isEqualToString:SV_MENU_ITEM_NAME_TEMPORARY_VIEW]){
         map = @"function(){\n   emit(doc._id, doc);\n}";
     } else{
@@ -216,10 +242,14 @@
     }
     // XXX Only create this once, please. 
     NSFont *font = [NSFont fontWithName:@"Monaco" size:12];
-    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-        
+    
+    NSMutableDictionary *attrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    
+    NSMutableDictionary *reduceAttrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    [reduceAttrsDictionary setObject:[NSColor lightGrayColor] forKey:NSForegroundColorAttributeName];
+    
     NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];
-    NSAttributedString *reduceString = [[NSAttributedString alloc] initWithString:reduce attributes:attrsDictionary];
+    NSAttributedString *reduceString = [[NSAttributedString alloc] initWithString:reduce attributes:reduceAttrsDictionary];
     
     [[self.mapTextView textStorage] setAttributedString:mapString];
     [[self.reduceTextView textStorage] setAttributedString:reduceString];
@@ -228,12 +258,6 @@
 }
 
 - (void)textDidChange:(NSNotification *)aNotification{
-    NSTextView *object = [aNotification object];
-    NSLog(@"%@", [object string]);
-    NSLog(@"-------------------");
-    NSLog(@"%@", [self.reduceTextView string]);
-    
-    //id userInfo = [aNotification userInfo];
     [self.saveButton highlight:YES];
     self.isDirty = YES;
 }

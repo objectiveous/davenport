@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1" id="9"/>
+			<integer value="172"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -347,7 +347,7 @@
 																<object class="NSOutlineView" id="713963218">
 																	<reference key="NSNextResponder" ref="292400142"/>
 																	<int key="NSvFlags">4370</int>
-																	<string key="NSFrameSize">{250, 268}</string>
+																	<string key="NSFrameSize">{183, 268}</string>
 																	<reference key="NSSuperview" ref="292400142"/>
 																	<bool key="NSEnabled">YES</bool>
 																	<object class="_NSCornerView" key="NSCornerView">
@@ -359,7 +359,7 @@
 																		<bool key="EncodedWithXMLCoder">YES</bool>
 																		<object class="NSTableColumn" id="150405947">
 																			<string key="NSIdentifier">LabelColumn</string>
-																			<double key="NSWidth">2.470000e+02</double>
+																			<double key="NSWidth">1.800000e+02</double>
 																			<double key="NSMinWidth">1.800000e+02</double>
 																			<double key="NSMaxWidth">1.000000e+03</double>
 																			<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -437,7 +437,7 @@
 																		</object>
 																	</object>
 																	<double key="NSRowHeight">2.000000e+01</double>
-																	<int key="NSTvFlags">-633339904</int>
+																	<int key="NSTvFlags">-631242752</int>
 																	<int key="NSColumnAutoresizingStyle">4</int>
 																	<int key="NSDraggingSourceMaskForLocal">15</int>
 																	<int key="NSDraggingSourceMaskForNonLocal">0</int>
@@ -446,7 +446,7 @@
 																	<float key="NSOutlineViewIndentationPerLevelKey">1.400000e+01</float>
 																</object>
 															</object>
-															<string key="NSFrameSize">{250, 268}</string>
+															<string key="NSFrameSize">{180, 268}</string>
 															<reference key="NSSuperview" ref="480605547"/>
 															<reference key="NSNextKeyView" ref="713963218"/>
 															<reference key="NSDocView" ref="713963218"/>
@@ -468,6 +468,7 @@
 															<int key="NSvFlags">-2147483392</int>
 															<string key="NSFrame">{{-100, -100}, {223, 15}}</string>
 															<reference key="NSSuperview" ref="480605547"/>
+															<bool key="NSEnabled">YES</bool>
 															<int key="NSsFlags">1</int>
 															<reference key="NSTarget" ref="480605547"/>
 															<string key="NSAction">_doScroller:</string>
@@ -475,23 +476,23 @@
 															<double key="NSPercent">9.955357e-01</double>
 														</object>
 													</object>
-													<string key="NSFrameSize">{250, 268}</string>
+													<string key="NSFrameSize">{180, 268}</string>
 													<reference key="NSSuperview" ref="939225901"/>
 													<reference key="NSNextKeyView" ref="292400142"/>
-													<int key="NSsFlags">528</int>
+													<int key="NSsFlags">656</int>
 													<reference key="NSVScroller" ref="40204396"/>
 													<reference key="NSHScroller" ref="403640424"/>
 													<reference key="NSContentView" ref="292400142"/>
 													<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 												</object>
 											</object>
-											<string key="NSFrameSize">{250, 268}</string>
+											<string key="NSFrameSize">{180, 268}</string>
 											<reference key="NSSuperview" ref="578605848"/>
 											<string key="identifier"/>
 											<int key="tag">0</int>
 											<float key="minDimension">1.000000e+02</float>
 											<float key="maxDimension">3.500000e+02</float>
-											<double key="fraction">4.417419e-01</double>
+											<double key="fraction">0.000000e+00</double>
 											<bool key="canCollapse">NO</bool>
 										</object>
 										<object class="RBSplitSubview" id="197244704">
@@ -502,18 +503,18 @@
 												<object class="NSCustomView" id="340379435">
 													<reference key="NSNextResponder" ref="197244704"/>
 													<int key="NSvFlags">4370</int>
-													<string key="NSFrameSize">{389, 268}</string>
+													<string key="NSFrameSize">{459, 268}</string>
 													<reference key="NSSuperview" ref="197244704"/>
 													<string key="NSClassName">SVEmptyInspectorView</string>
 												</object>
 											</object>
-											<string key="NSFrame">{{251, 0}, {389, 268}}</string>
+											<string key="NSFrame">{{181, 0}, {459, 268}}</string>
 											<reference key="NSSuperview" ref="578605848"/>
 											<string key="identifier"/>
 											<int key="tag">0</int>
 											<float key="minDimension">1.000000e+00</float>
 											<float key="maxDimension">1.000000e+06</float>
-											<double key="fraction">-4.417419e-01</double>
+											<double key="fraction">9.469604e-02</double>
 											<bool key="canCollapse">NO</bool>
 										</object>
 									</object>
@@ -20989,7 +20990,7 @@ LS0tLS0tLQoKIA</bytes>
 														<int key="NSColorSpace">1</int>
 														<bytes key="NSRGB">MCAwIDEAA</bytes>
 													</object>
-													<reference ref="9"/>
+													<integer value="1" id="9"/>
 												</object>
 											</object>
 											<nil key="NSDefaultParagraphStyle"/>
@@ -21954,11 +21955,11 @@ Qy0yNTFDRkVGODUyRTKGkoSYmZmag6jS/7+DyoyKloaGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{114, 352}, {640, 480}}</string>
+					<string>{{402, 614}, {640, 480}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO" id="6"/>
 					<reference ref="6"/>
-					<string>{{114, 352}, {640, 480}}</string>
+					<string>{{402, 614}, {640, 480}}</string>
 					<boolean value="YES"/>
 					<reference ref="6"/>
 					<string>{1024, 768}</string>

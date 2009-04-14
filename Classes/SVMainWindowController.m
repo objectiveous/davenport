@@ -115,7 +115,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
            
     [self setUrlImage:[[[NSWorkspace sharedWorkspace] iconForFileType:NSFileTypeForHFSTypeCode(kGenericURLIcon)] retain]];
     [[self urlImage] setSize:NSMakeSize(16,16)];
-	[pathControl setFrameSize: NSMakeSize([pathControl bounds].size.width,27)];
+	[self.pathControl setFrameSize: NSMakeSize([pathControl bounds].size.width,27)];
     
     [self loadPlugins];
 }
@@ -196,7 +196,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [urlImage release];
     [operationQueue release];
     [lock release];
-    [rootNode release];
+    self.rootNode = nil;
+    self.pathControl = nil;
     [super dealloc];
 }
 
@@ -444,9 +445,9 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     */
     
     SVDesignDocumentEditorController *functionController;
-    functionController = [[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor 
+    functionController = [[[SVDesignDocumentEditorController alloc] initWithNibName:NIB_DesignDocumentEditor 
                                                                             bundle:nil
-                                                                navigationTreeNode:navigationTreeNode];
+                                                                navigationTreeNode:navigationTreeNode] autorelease];
     
     [self sizeViewToBody:[functionController view]];
     /*
@@ -458,8 +459,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [self.bodyView addSubview:[functionController view]];
     
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
-                                                                                               bundle:nil];
+    SVQueryResultController *queryResultController = [[[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
+                                                                                               bundle:nil] autorelease];
 
     [inspectorView addSubview:[queryResultController view]];
     [self sizeViewToInspector:[queryResultController view]];
@@ -489,9 +490,9 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 -(void)showSlowViewInMainView:(NSTreeNode*)navigationTreeNode{
     id <DPContributionNavigationDescriptor> navDescriptor = [navigationTreeNode representedObject];
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
-    SVQueryResultController *queryResultController = [[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
+    SVQueryResultController *queryResultController = [[[SVQueryResultController alloc] initWithNibName:NIB_QueryResultView
                                                                                                bundle:nil 
-                                                                                              navContribution:navDescriptor];
+                                                                                              navContribution:navDescriptor] autorelease];
     
     
     for (id view in [inspectorView subviews]){
@@ -657,6 +658,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     
     // Now we reverse the order of the collection
     NSArray *objectInReversOrder = [[pathElementCells reverseObjectEnumerator] allObjects];
+
     [pathControl setPathComponentCells:objectInReversOrder];
     [pathControl setNeedsDisplay];    
 }
@@ -664,26 +666,36 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 -(void) appendBreadCrumb:(NSNotification*)notification{
     id pathLabel = [notification object];
     
-    NSArray *currentPath = [pathControl pathComponentCells];
-        
-    if ( [[currentPath lastObject] isContent] ){
-        [self removeBreadCrumb:nil];
-    }
+    NSArray *currentPath = [self.pathControl pathComponentCells];
+    [currentPath retain];
+
 
     NSMutableArray *newPath = [NSMutableArray arrayWithArray:currentPath];
+    if ( [[newPath lastObject] isContent] ){
+        [newPath removeLastObject];
+    }
     
-    SVBreadCrumbCell *newNode = [[[SVBreadCrumbCell alloc] initWithPathLabel:[pathLabel description]] autorelease];
+    [newPath retain];
+    
+    NSLog(@"retain count %i", [currentPath retainCount]);
+    // This releases the object for good as the retainCount hits zero. 
+    [currentPath release];
+
+    SVBreadCrumbCell *newNode = [[SVBreadCrumbCell alloc] initWithPathLabel:[pathLabel description]];
     newNode.isContent = YES;
     [newPath addObject:newNode];
     [pathControl setPathComponentCells:newPath];
 }
 
 -(void) removeBreadCrumb:(NSNotification*)notification{
-    NSArray *currentPath = [pathControl pathComponentCells];
+    NSMutableArray *currentPath = (NSMutableArray*) [pathControl pathComponentCells];
+    [currentPath removeLastObject];
+    /*
     NSMutableArray *newPath = [NSMutableArray arrayWithArray:currentPath];
     [newPath removeLastObject];
     
     [pathControl setPathComponentCells:newPath];
+     */
 }
 
 #pragma mark -

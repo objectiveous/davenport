@@ -17,9 +17,6 @@
 #import "SVInspectorDocumentController.h"
 #import "NSTreeNode+SVDavenport.h"
 
-
-
-
 @interface  SVQueryResultController (Private)
 - (NSString*)stripNewLines:(NSString*)string;
 - (void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument;
@@ -36,13 +33,35 @@
 @synthesize nextBatch;
 @synthesize previousBatch;
 @synthesize pageNumber;
+@synthesize pageSizePopUp;
+@synthesize pageSize;
+
 #pragma mark -
 
-
-
 #pragma mark -
+
+-(void)dealloc{
+    /*
+    @property (copy)              NSString          *databaseName;
+    @property (retain)            SBCouchEnumerator *queryResult;
+    @property (retain)            SBCouchDatabase   *couchDatabase;
+    @property (retain)            NSOutlineView     *viewResultOutlineView;
+    @property (nonatomic, retain) NSTextField       *resultCountSummaryTextField;
+    @property (nonatomic, retain) NSButton          *nextBatch;
+    @property (nonatomic, retain) NSButton          *previousBatch;
+    @property (nonatomic, retain) NSPopUpButton     *pageSizePopUp;
+    @property                     NSInteger          pageNumber;
+    @property                     NSInteger          pageSize;
+    */
+    
+    self.databaseName = nil;
+    self.queryResult = nil;
+    self.couchDatabase = nil;
+    self.viewResultOutlineView = nil;
+    [super dealloc];
+}
+
 #pragma mark NSOutlineViewDataSource delegate
-
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
 
     NSInteger count = [self.queryResult numberOfRowsForPage:self.pageNumber];
@@ -88,7 +107,7 @@
         if([value isKindOfClass:[NSString class]])
             return value;
         else
-            return value;
+            return [value JSONRepresentation];
         
         //return [value JSONRepresentation];
         // this can cause problems if the reciever does no respond to JSONRepresentation. 
@@ -141,6 +160,7 @@
     NSOutlineView *object = [notification object];
 
     SBCouchDocument *couchDocument = [object itemAtRow:[object selectedRow]];
+    [couchDocument retain];
     SVDebug(@"selected document [%@]", [couchDocument objectForKey:@"key"] );
     
     // TODO make notification name a define
@@ -148,6 +168,7 @@
                                                         object:[couchDocument objectForKey:@"key"]];
     
     [self handleCouchDocumentSelected:couchDocument];
+    [couchDocument release];
 }
 
 
@@ -155,30 +176,20 @@
 -(void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument{
     SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
     NSView *inspectorView = [mainWindowController inspectorView]; 
-    //NSViewController *inspectorView = [mainWindowController inspectorView]; 
-
-    //SVDebug(@"inspectorView [%@]", inspectorView);
-    
-    // XXX Commenting this out as a test to see if we can keep views around and just 
-    //     re-provision them. 
-    /*
-    for (id view in [inspectorView subviews]){
-        [view removeFromSuperview];
-    }
-    */
-    
-    // This should probably check to see if the inspector is showing. If its not, there's really 
-    // no need to show the view. I'd fix it now but I need to think about how to how to handle 
-    // drawing the inspector views when the inspector becomes un-hidden and there's no inspector 
-    // subview in existence. 
- 
-        
-        SVInspectorDocumentController *documentController = [[SVInspectorDocumentController alloc]                                                                  
-                                                                initWithNibName:@"CouchDocument" 
+   
+    SVInspectorDocumentController *documentController; 
+    documentController = [[SVInspectorDocumentController alloc] initWithNibName:@"CouchDocument" 
                                                                          bundle:nil
                                                                   couchDocument:couchDocument
-                                                                  couchDatabase:[self couchDatabase]]; 
-        NSView *documentView = [documentController view];
+                                                                  couchDatabase:self.couchDatabase]; 
+
+    NSView *documentView = nil;
+    
+    [documentController title];
+    [documentController setTitle:@"FFFF"];
+    [documentController view];
+    documentView = [documentController view];
+        
                 
         [inspectorView addSubview:documentView];
         
@@ -203,7 +214,7 @@
     
     if(! [configurationData isKindOfClass:[SBCouchEnumerator class]])
         return;
-
+    self.queryResult = nil;
     self.queryResult = configurationData;
 
     // XXX This is a hack to force the fetching of the first page 
@@ -212,8 +223,16 @@
     NSInteger count = [self.queryResult count];
     self.pageNumber = 1;
     
+    if(self.queryResult.queryOptions.limit == 0){
+        [self.nextBatch setEnabled:NO];
+        [self.pageSizePopUp removeAllItems];
+    }
+    
     if(count < self.queryResult.queryOptions.limit)
         [self.nextBatch setEnabled:NO];
+
+    [self.pageSizePopUp selectItemWithTitle:@"10"];
+    
     
     [self.viewResultOutlineView reloadData];
 }
@@ -240,17 +259,8 @@
 }
 -(IBAction)fetchPreviousPageAction:(id)sender{
     [self.nextBatch setEnabled:YES];
-    /*
-    if([self.queryResult hasNextBatch]){
-        [self.nextBatch setEnabled:YES];
-    } else{
-        [self.nextBatch setEnabled:NO];
-    }
-    */
-   
     self.pageNumber--;
 
-    //NSInteger newIndex = [self.queryResult startIndexOfPage:self.pageNumber];
     if(self.pageNumber > 1){
         [self.previousBatch setEnabled:YES];
     } else{
@@ -259,5 +269,18 @@
     
     [self.viewResultOutlineView reloadData];
 }
+// XXX Maybe we should be using bindings for this...
+-(IBAction)adjustPageSizeAction:(id)sender{
+    NSMenuItem *menuItem = [sender selectedItem];
+    NSString *pageSizeString = [menuItem title];
+    self.pageSize = [pageSizeString intValue];
+    
+    [self.queryResult resetLimit:self.pageSize];
+    
+    if(![self.queryResult hasNextBatch]){
+         [self.previousBatch setEnabled:NO];
+    }
 
+    [self.viewResultOutlineView reloadData];
+}
 @end

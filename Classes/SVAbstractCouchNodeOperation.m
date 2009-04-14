@@ -30,6 +30,8 @@
 -(void) dealloc{
     self.rootNode = nil;
     self.databaseIndexPath = nil;
+    self.couchServer = nil;
+    self.resourceFactory = nil;
     [super dealloc];
 }
 

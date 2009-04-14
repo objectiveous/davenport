@@ -46,12 +46,13 @@ int LOCAL_PORT = 5984;
     [lock release], lock = nil;
     [couchServer release], couchServer = nil;
     [pluginRegistry release], pluginRegistry = nil;
+    self.mainWindowController = nil;
     [super dealloc];
 }
 
 - (void) loadMainWindow{
     SVDebug(@"loading MainWindow nib.");
-    mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+    self.mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
     [mainWindowController showWindow:self];
     
     if(LOCAL_PORT == 5983)
@@ -65,10 +66,10 @@ int LOCAL_PORT = 5984;
     SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer rootTreeNode:mainWindowController.rootNode];
     
     [fetchOperation addObserver:self
-                     forKeyPath:@"isFinished" 
+                     forKeyPath:@"isFinished"
                         options:0
                         context:nil];
-    [queue addOperation:fetchOperation];              
+    [queue addOperation:fetchOperation];      
     [fetchOperation release];
     
 }

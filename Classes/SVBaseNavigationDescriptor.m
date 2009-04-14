@@ -136,7 +136,7 @@ NSString *MenuItemRefresh         = @"Refresh";
 //     method should be rethought. 
 - (NSViewController*) contributionMainViewController{    
     if(self.type == DPDescriptorCouchDatabase){
-        NSEnumerator *couchResults = [self.couchDatabase allDocsInBatchesOf:5];
+        NSEnumerator *couchResults = [self.couchDatabase allDocsInBatchesOf:10];
         // This call will set self as the data source to the NSOutlineView. This may or may not be 
         // a good approach. 
         id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];

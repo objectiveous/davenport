@@ -71,12 +71,21 @@
                                                                  revision:nil];
         
         self.couchDocument = couchDoc;
-        [self setRootNode:[self.couchDocument asNSTreeNode]];
-        //[self setDocumentIdentity:[self.couchDocument identity]];
-        //[self setCouchDatabase:couchDB];
+        self.rootNode = [self.couchDocument asNSTreeNode];
     }
     return self;
 }
+
+-(void)dealloc{
+    self.revisions = nil;
+    self.rootNode = nil;
+    self.couchDocument;
+    self.documentOutlineView;
+    self.documentControlBar;
+    [super dealloc];
+}
+
+#pragma mark -
 
 -(void)reloadDocument{
     [self setCouchDocument:[self.couchDocument getWithRevisionCount:YES andInfo:YES revision:nil]];

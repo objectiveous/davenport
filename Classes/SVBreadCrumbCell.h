@@ -16,7 +16,7 @@
     BOOL             isContent;
 }
 
-@property (assign) SVPathControl *pathControl;
+@property (retain) SVPathControl *pathControl;
 @property BOOL isContent;
 
 - (BOOL) isFirstPathComponent;

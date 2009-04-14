@@ -234,6 +234,13 @@
 			remoteGlobalIDString = 8D15AC270486D014006FF6A4;
 			remoteInfo = Davenport;
 		};
+		54D241620F941B7500E895BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* CouchObjC */;
+			remoteInfo = CouchObjC;
+		};
 		54F9F2270F006DF000EE414E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -1016,6 +1023,7 @@
 			);
 			dependencies = (
 				543FA00E0F4626B300E1559C /* PBXTargetDependency */,
+				54D241630F941B7500E895BB /* PBXTargetDependency */,
 			);
 			name = Davenport;
 			productInstallPath = "$(HOME)/Applications";
@@ -1390,6 +1398,11 @@
 			isa = PBXTargetDependency;
 			target = 8D15AC270486D014006FF6A4 /* Davenport */;
 			targetProxy = 54B991AB0F4F5C2400F52859 /* PBXContainerItemProxy */;
+		};
+		54D241630F941B7500E895BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CouchObjC;
+			targetProxy = 54D241620F941B7500E895BB /* PBXContainerItemProxy */;
 		};
 		54F9F2280F006DF000EE414E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

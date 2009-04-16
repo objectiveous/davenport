@@ -83,11 +83,14 @@
         //self.bodyController = (NSViewController*) sharedController;
         id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
         
+        
         self.bodyController = [[[NSViewController alloc] initWithNibName:@"TPMilestone" bundle:[plugin bundle]] autorelease];
     }
     if(self.privateType == DPDescriptorCouchView) {
         id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];
-               
+        
+        [sharedController setOutlineDelegate:self];
+        
         SBCouchQueryOptions *queryOptions = [[SBCouchQueryOptions new] autorelease];
         queryOptions.limit = 5;
         SBCouchView *view = [[SBCouchView alloc] initWithName:[self identity] couchDatabase:self.couchDatabase queryOptions:queryOptions ];
@@ -120,7 +123,8 @@
     if([menu itemWithTitle:@"New Task"])
         return;
     
-    NSMenuItem *menuItem = [menu addItemWithTitle:@"New Task" action:@selector(showNewTaskFormAction:) keyEquivalent:@""];
+    NSMenuItem *menuItem = [menu addItemWithTitle:@"New Task" action:@selector(showNewTaskFormAction:) keyEquivalent:@"w"];
+    [menuItem setKeyEquivalentModifierMask:NSControlKeyMask];
     [menuItem setTarget:self];
     [menuItem setRepresentedObject:item];
     
@@ -134,6 +138,17 @@
     // XX Memory leak
     TPNewTaskController *controller = [[TPNewTaskController alloc] initWithNibName:@"TPNewTask" bundle:[plugin bundle] treeNode:self];
 
-     [[NSNotificationCenter defaultCenter] postNotificationName:DPDisplayView object:controller];
+     [[NSNotificationCenter defaultCenter] postNotificationName:DPDisplayViewInMainArea object:controller];
 }
+
+#pragma mark -
+#pragma mark NSOutlineView Delegate 
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification{
+    id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
+    TPNewTaskController *controller = [[[TPNewTaskController alloc] initWithNibName:@"TPNewTask" bundle:[plugin bundle] treeNode:self.couchDocument] autorelease];
+    //TPNewTaskController *controller = [[TPNewTaskController alloc] initWithNibName:@"TPNewTask" bundle:nil treeNode:self.couchDocument];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DPDisplayViewInInspectorArea object:controller];
+}
+
 @end

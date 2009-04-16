@@ -41,8 +41,19 @@
 @synthesize pageNumber;
 @synthesize pageSizePopUp;
 @synthesize pageSize;
+@synthesize outlineDelegate;
 
 #pragma mark -
+
+/*
+-(id) initWithNibName:(NSString*)nibName bundle:(NSBundle*)bundle{
+    self = [super initWithNibName:nibName bundle:bundle];
+    if(self){
+        self.viewResultOutlineView = [[NSOutlineView alloc] init];
+    }
+    return self;
+}
+*/
 
 - (void)awakeFromNib{
     [self.pageSizePopUp removeAllItems];
@@ -202,7 +213,14 @@
     [self.pageSizePopUp addItemWithTitle:@"100"];
     [self.pageSizePopUp addItemWithTitle:@"1000"];
     [self logPopUp];
+
     NSView *couchViewResultView = [self view];
+
+    if(self.outlineDelegate)
+        [self.viewResultOutlineView setDelegate:self.outlineDelegate];
+    else
+        [self.viewResultOutlineView setDelegate:self];
+    
     // We don't have a parent view here because we were removed from. 
     NSView *parentView = [couchViewResultView superview];
     [parentView addSubview:couchViewResultView];

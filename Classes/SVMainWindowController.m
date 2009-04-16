@@ -193,10 +193,14 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     
     
     [notificationCenter addObserver:self
-                           selector:@selector(displayViewAction:)
-                               name:DPDisplayView
+                           selector:@selector(displayViewInBodyAction:)
+                               name:DPDisplayViewInMainArea
                              object:nil];
     
+    [notificationCenter addObserver:self
+                           selector:@selector(displayViewInInspectorAction:)
+                               name:DPDisplayViewInInspectorArea
+                             object:nil];
 
 }
 
@@ -929,16 +933,28 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
      */ 
 }
 
-- (void) displayViewAction:(NSNotification*)notification{
+- (void) displayViewInBodyAction:(NSNotification*)notification{
     NSLog(@"Nifty %@", notification);
     NSViewController *controller = [notification object];
-    for (NSView *view in [bodyView subviews]) {
+    for (NSView *view in [self.bodyView subviews]) {
         [view removeFromSuperview];
     }
     [self sizeViewToBody:[controller view]];
     [self.bodyView addSubview:[controller view]];
     
 }
+
+- (void) displayViewInInspectorAction:(NSNotification*)notification{
+    NSViewController *controller = [notification object];
+    for (NSView *view in [self.inspectorView subviews]) {
+        [view removeFromSuperview];
+    }
+    [self sizeViewToInspector:[controller view]];
+    [self.inspectorView addSubview:[controller view]];
+    
+}
+
+
 
 #pragma mark - 
 - (void)autoExpandGroupItems{

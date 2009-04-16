@@ -27,7 +27,8 @@ extern NSString * const DPServerNeedsRefreshNotification;
 extern NSString * const DPRefreshNotification;
 extern NSString * const DPCreateDatabaseAction;
 extern NSString * const DPDeleteItemAction;
-extern NSString * const DPDisplayView;
+extern NSString * const DPDisplayViewInMainArea;
+extern NSString * const DPDisplayViewInInspectorArea;
 
 
 

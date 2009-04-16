@@ -97,7 +97,7 @@
 - (void) removeBreadCrumb:(NSNotification*)notification;
 - (void) appendBreadCrumb:(NSNotification*)notification;
 - (void) loadPluginsNavigationContributions:(NSNotification*)notification;
-- (void) displayViewAction:(NSNotification*)notification;
+- (void) displayViewInBodyAction:(NSNotification*)notification;
 
 
 @end

@@ -20,7 +20,8 @@ NSString * const DPServerNeedsRefreshNotification                       = @"DPSe
 NSString * const DPRefreshNotification                                  = @"DPRefreshNotification";
 NSString * const DPCreateDatabaseAction                                 = @"DPCreateDatabaseAction";
 NSString * const DPDeleteItemAction                                     = @"DPDeleteDatabaseAction";
-NSString * const DPDisplayView                                          = @"DPDisplayView";
+NSString * const DPDisplayViewInMainArea                                = @"DPDisplayViewInMainArea";
+NSString * const DPDisplayViewInInspectorArea                           = @"DPDisplayViewInInspectorArea";
 
 
 #pragma mark - 

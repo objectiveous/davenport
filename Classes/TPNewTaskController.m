@@ -35,7 +35,5 @@
     SBCouchDatabase *couchDatabase = [self.treeNode couchDatabase];
 
     SBCouchResponse *response = [couchDatabase postDocument:taskDocument];
-    
-    NSLog(@"Okay");
 }
 @end

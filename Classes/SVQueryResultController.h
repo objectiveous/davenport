@@ -25,6 +25,8 @@
     IBOutlet NSPopUpButton *pageSizePopUp;
     NSInteger               pageSize;
     NSInteger               pageNumber;
+    // The object that will acts a delegate to the outline. 
+    id                      outlineDelegate;
 }
 
 @property (copy)              NSString          *databaseName;
@@ -37,7 +39,7 @@
 @property (nonatomic, retain) NSPopUpButton     *pageSizePopUp;
 @property                     NSInteger          pageNumber;
 @property                     NSInteger          pageSize;
-
+@property (retain)            id                 outlineDelegate;
 
 
 -(IBAction)fetchNextPageAction:(id)sender;

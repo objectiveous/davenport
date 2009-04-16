@@ -232,9 +232,13 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
     if(view){
         map = [view map];
         reduce = [view reduce];
-        // Sorta cheesey
-        if(!reduce)
+        // XXX Can we please get rid of all this goofy logic?
+        if(!reduce){                    
             reduce = REDUCE_STRING;
+        }else{
+            [self.reduceCheckBox setState:NSOnState];
+            [[self.reduceTextView textStorage] setForegroundColor:[NSColor blackColor]];
+        }    
     } else if([menueItemViewName isEqualToString:SV_MENU_ITEM_NAME_TEMPORARY_VIEW]){
         map = @"function(){\n   emit(doc._id, doc);\n}";
     } else{
@@ -243,16 +247,22 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
     // XXX Only create this once, please. 
     NSFont *font = [NSFont fontWithName:@"Monaco" size:12];
     
-    NSMutableDictionary *attrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    
-    NSMutableDictionary *reduceAttrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    [reduceAttrsDictionary setObject:[NSColor lightGrayColor] forKey:NSForegroundColorAttributeName];
-    
-    NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];
+    NSColor *reduceColor; 
+    if([view reduce])
+        reduceColor = [NSColor blackColor];
+    else
+        reduceColor = [NSColor lightGrayColor];
+
+
+    NSMutableDictionary *reduceAttrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];    
+    [reduceAttrsDictionary setObject:reduceColor forKey:NSForegroundColorAttributeName];
     NSAttributedString *reduceString = [[NSAttributedString alloc] initWithString:reduce attributes:reduceAttrsDictionary];
-    
-    [[self.mapTextView textStorage] setAttributedString:mapString];
     [[self.reduceTextView textStorage] setAttributedString:reduceString];
+    
+    
+    NSMutableDictionary *attrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];        
+    [[self.mapTextView textStorage] setAttributedString:mapString];
     [self.saveButton highlight:NO];
     
 }

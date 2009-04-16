@@ -25,6 +25,7 @@
 - (void) handleCouchDocumentSelected:(SBCouchDocument*)couchDocument;
 - (void) managePaginationButtonRight;
 - (void) managePaginationButtonLeft;
+- (void)logPopUp;
 @end
 
 
@@ -43,21 +44,11 @@
 
 #pragma mark -
 
-#pragma mark -
-#pragma mark -
-
 - (void)awakeFromNib{
     [self.pageSizePopUp removeAllItems];
+    [self.pageSizePopUp addItemWithTitle:@"WTF"];
 }
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{    
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if(self){
-        [self.pageSizePopUp removeAllItems];
-    }    
-    return self;
-}
-*/
+
 -(void)dealloc{
     self.databaseName = nil;
     self.queryResult = nil;
@@ -66,9 +57,11 @@
     [super dealloc];
 }
 
+#pragma mark -
 #pragma mark NSOutlineViewDataSource delegate
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-
+    //[self logPopUp];
+    
     NSInteger count = [self.queryResult numberOfRowsForPage:self.pageNumber];
            
     NSString *label = [NSString stringWithFormat:@"Showing %i-%i of %i rows", 
@@ -208,12 +201,11 @@
     [self.pageSizePopUp addItemWithTitle:@"10"];
     [self.pageSizePopUp addItemWithTitle:@"100"];
     [self.pageSizePopUp addItemWithTitle:@"1000"];
-    
+    [self logPopUp];
     NSView *couchViewResultView = [self view];
     // We don't have a parent view here because we were removed from. 
     NSView *parentView = [couchViewResultView superview];
     [parentView addSubview:couchViewResultView];
-    //NSArray *subviews = [parentView subviews];
     
     if(! [configurationData isKindOfClass:[SBCouchEnumerator class]])
         return;
@@ -235,7 +227,8 @@
     if(count < self.queryResult.queryOptions.limit)
         [self.nextBatch setEnabled:NO];
 
-    [self.pageSizePopUp selectItemWithTitle:@"10"];        
+    [self.pageSizePopUp selectItemWithTitle:@"10"];
+    //[self logPopUp];
     [self.viewResultOutlineView reloadData];
 }
 
@@ -290,5 +283,11 @@
 }
 - (void) managePaginationButtonLeft{
     
+}
+- (void)logPopUp{
+    NSLog(@"LOG POPUP");
+    for(id item in [self.pageSizePopUp itemArray]){
+        NSLog(@" menu item : %@", item);
+    }
 }
 @end

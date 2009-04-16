@@ -63,4 +63,5 @@
 - (NSDictionary*)userInfo;
 
 - (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item;
+- (void)showNewTaskFormAction:(NSMenuItem*)sender;
 @end

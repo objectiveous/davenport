@@ -12,6 +12,13 @@
 #import "DPContributionPlugin.h"
 #import "TPPlugin.h"
 #import "DPSharedController.h"
+#import "SVConstants.h"
+#import "TPNewTaskController.h"
+
+@interface TPBaseDescriptor (Private)
+
+@end
+
 
 @implementation TPBaseDescriptor
 @synthesize label; 
@@ -69,21 +76,26 @@
 
 - (NSViewController*) contributionMainViewController{
     if(self.privateType == DPDescriptorCouchDesign){
-        id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor];
-        NSString *urlPath = [self identity];
-        id designDoc = [self.couchDatabase getDesignDocument:urlPath];
-        [sharedController provision:designDoc];
-        self.bodyController = (NSViewController*) sharedController;
+        //id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedFunctionEditor];
+        //NSString *urlPath = [self identity];
+        //id designDoc = [self.couchDatabase getDesignDocument:urlPath];
+        //[sharedController provision:designDoc];
+        //self.bodyController = (NSViewController*) sharedController;
+        id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
+        
+        self.bodyController = [[[NSViewController alloc] initWithNibName:@"TPMilestone" bundle:[plugin bundle]] autorelease];
     }
     if(self.privateType == DPDescriptorCouchView) {
         id <DPSharedController> sharedController = [self.resourceFactory namedResource:DPSharedViewContollerNamedViewResults];
                
-        SBCouchQueryOptions *queryOptions = [SBCouchQueryOptions new];
+        SBCouchQueryOptions *queryOptions = [[SBCouchQueryOptions new] autorelease];
+        queryOptions.limit = 5;
         SBCouchView *view = [[SBCouchView alloc] initWithName:[self identity] couchDatabase:self.couchDatabase queryOptions:queryOptions ];
         SBCouchEnumerator *viewEnumerator = (SBCouchEnumerator*) [view viewEnumerator];
         
         [sharedController provision:viewEnumerator];
-        self.bodyController = (NSViewController*) sharedController;                
+        self.bodyController = (NSViewController*) sharedController;
+        [view release];
     }
     return self.bodyController;
 }
@@ -105,7 +117,23 @@
 }
 
 - (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item{
-
+    if([menu itemWithTitle:@"New Task"])
+        return;
+    
+    NSMenuItem *menuItem = [menu addItemWithTitle:@"New Task" action:@selector(showNewTaskFormAction:) keyEquivalent:@""];
+    [menuItem setTarget:self];
+    [menuItem setRepresentedObject:item];
+    
     return;
+}
+
+#pragma mark - 
+#pragma mark Action Handlers
+- (void)showNewTaskFormAction:(NSMenuItem*)sender{
+     id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
+    // XX Memory leak
+    TPNewTaskController *controller = [[TPNewTaskController alloc] initWithNibName:@"TPNewTask" bundle:[plugin bundle] treeNode:self];
+
+     [[NSNotificationCenter defaultCenter] postNotificationName:DPDisplayView object:controller];
 }
 @end

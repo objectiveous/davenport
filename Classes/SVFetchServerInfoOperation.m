@@ -43,8 +43,10 @@
     return self;
 }
 
+#pragma mark -
+
 - (void)main {
-    SVDebug(@"Trying to fetch server information from localhot:5983");
+    SVDebug(@"Trying to fetch server information from localhot:5984");
     assert(couchServer);
     NSArray *databases = [couchServer listDatabases];
     

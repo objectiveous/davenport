@@ -259,7 +259,6 @@ NSString *MenuItemRefresh         = @"Refresh";
 }
 
 - (void) removeAllMenuItems:(NSMenu*)menu{
-    
     for(NSMenuItem *item in [menu itemArray]){
         [menu removeItem:item];
     }

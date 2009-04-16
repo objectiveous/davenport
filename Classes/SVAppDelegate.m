@@ -50,6 +50,7 @@ int LOCAL_PORT = 5984;
     [super dealloc];
 }
 
+#pragma mark -
 - (void) loadMainWindow{
     SVDebug(@"loading MainWindow nib.");
     self.mainWindowController = [[SVMainWindowController alloc] initWithWindowNibName:@"MainWindow"];
@@ -63,15 +64,30 @@ int LOCAL_PORT = 5984;
 
 - (void) performFetchServerInfoOperation {
     SVDebug(@"Queue'ing up a fetch operation"); 
-    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer rootTreeNode:mainWindowController.rootNode];
+    
+    // XXX Memory Leak
+    
+    SBCouchServer *remoteServer = [[SBCouchServer alloc] initWithHost:@"vincent.local" port:5984];
+    
+    SVFetchServerInfoOperation *fetchRemoteOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:remoteServer
+                                                                                            rootTreeNode:mainWindowController.rootNode];
+    
+    
+     
+    SVFetchServerInfoOperation *fetchOperation = [[SVFetchServerInfoOperation alloc] initWithCouchServer:couchServer 
+                                                                                            rootTreeNode:mainWindowController.rootNode];
+    
     
     [fetchOperation addObserver:self
                      forKeyPath:@"isFinished"
                         options:0
                         context:nil];
-    [queue addOperation:fetchOperation];      
-    [fetchOperation release];
-    
+
+    [queue addOperation:fetchOperation];
+    [queue addOperation:fetchRemoteOperation];
+
+    [fetchOperation release];    
+    [fetchRemoteOperation release];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender{

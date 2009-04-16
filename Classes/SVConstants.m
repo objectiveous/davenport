@@ -14,13 +14,14 @@
  */
 
 NSString * const DPContributionPluginDidLoadNavigationItemsNotification = @"DPContributionPluginDidLoadNavigationItemsNotification";
-NSString * const DPRunSlowViewNotification = @"DPRunSlowViewNotification";
-NSString * const DPLocalDatabaseNeedsRefreshNotification = @"DPLocalDatabaseNeedsRefreshNotification";
-NSString * const DPServerNeedsRefreshNotification = @"DPServerNeedsRefreshNotification";
-NSString * const DPRefreshNotification = @"DPRefreshNotification";
+NSString * const DPRunSlowViewNotification                              = @"DPRunSlowViewNotification";
+NSString * const DPLocalDatabaseNeedsRefreshNotification                = @"DPLocalDatabaseNeedsRefreshNotification";
+NSString * const DPServerNeedsRefreshNotification                       = @"DPServerNeedsRefreshNotification";
+NSString * const DPRefreshNotification                                  = @"DPRefreshNotification";
+NSString * const DPCreateDatabaseAction                                 = @"DPCreateDatabaseAction";
+NSString * const DPDeleteItemAction                                     = @"DPDeleteDatabaseAction";
+NSString * const DPDisplayView                                          = @"DPDisplayView";
 
-NSString * const DPCreateDatabaseAction = @"DPCreateDatabaseAction";
-NSString * const DPDeleteItemAction = @"DPDeleteDatabaseAction";
 
 #pragma mark - 
 

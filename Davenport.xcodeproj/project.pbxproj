@@ -68,6 +68,8 @@
 		540C89210F31D61F00E02727 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549BC6AF0EFDC106002DFF80 /* BWToolkitFramework.framework */; };
 		540C892E0F31D63300E02727 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		540C89340F31D63B00E02727 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; };
+		542DCF5A0F96CC0800E3D19C /* TPNewTaskController.h in Headers */ = {isa = PBXBuildFile; fileRef = 542DCF580F96CC0800E3D19C /* TPNewTaskController.h */; };
+		542DCF5B0F96CC0800E3D19C /* TPNewTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 542DCF590F96CC0800E3D19C /* TPNewTaskController.m */; };
 		543D2A880F09650D00AAA9A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 543D2A860F09650D00AAA9A5 /* MainWindow.xib */; };
 		543F9D020F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */; };
 		543F9D030F45B85F00E1559C /* SVPluginContributionLoaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */; };
@@ -107,7 +109,7 @@
 		544467E60F38BB570098BD0E /* button-forward.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 544467CE0F38BB570098BD0E /* button-forward.pdf */; };
 		544467F40F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
 		544467F50F38C1570098BD0E /* blank-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 544467F30F38C1570098BD0E /* blank-back.png */; };
-		54447F160F4CB93C0051AA83 /* TPTaskItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54447F150F4CB93C0051AA83 /* TPTaskItem.xib */; };
+		54447F160F4CB93C0051AA83 /* TPNewTask.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54447F150F4CB93C0051AA83 /* TPNewTask.xib */; };
 		5444801E0F4CC63D0051AA83 /* TPMilestone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5444801D0F4CC63D0051AA83 /* TPMilestone.xib */; };
 		544480BC0F4DA0AD0051AA83 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		544480C30F4DA0D20051AA83 /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540108BC0F1DA33D002AC9E5 /* JSON.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -238,7 +240,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 54957F7A0F9143650011A3CC /* CouchObjC.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* CouchObjC */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CouchObjC;
 		};
 		54F9F2270F006DF000EE414E /* PBXContainerItemProxy */ = {
@@ -342,6 +344,8 @@
 		540C88FE0F31D51700E02727 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info copy.plist"; path = "Resources/Info copy.plist"; sourceTree = "<group>"; };
 		540C893F0F31D66E00E02727 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		5428768C0F4E620E000BA663 /* Davenport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Davenport.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		542DCF580F96CC0800E3D19C /* TPNewTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPNewTaskController.h; sourceTree = "<group>"; };
+		542DCF590F96CC0800E3D19C /* TPNewTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPNewTaskController.m; sourceTree = "<group>"; };
 		543D2A870F09650D00AAA9A5 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		543F9D000F45B85F00E1559C /* SVPluginContributionLoaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPluginContributionLoaderOperation.h; sourceTree = "<group>"; };
 		543F9D010F45B85F00E1559C /* SVPluginContributionLoaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPluginContributionLoaderOperation.m; sourceTree = "<group>"; };
@@ -373,7 +377,7 @@
 		544467CD0F38BB570098BD0E /* button-back.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-back.pdf"; path = "Images/button-back.pdf"; sourceTree = "<group>"; };
 		544467CE0F38BB570098BD0E /* button-forward.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "button-forward.pdf"; path = "Images/button-forward.pdf"; sourceTree = "<group>"; };
 		544467F30F38C1570098BD0E /* blank-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blank-back.png"; path = "Images/blank-back.png"; sourceTree = "<group>"; };
-		54447F150F4CB93C0051AA83 /* TPTaskItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TPTaskItem.xib; sourceTree = "<group>"; };
+		54447F150F4CB93C0051AA83 /* TPNewTask.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TPNewTask.xib; sourceTree = "<group>"; };
 		5444801D0F4CC63D0051AA83 /* TPMilestone.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TPMilestone.xib; sourceTree = "<group>"; };
 		544481420F4DC9870051AA83 /* TPDatabaseInstallerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPDatabaseInstallerOperation.h; sourceTree = "<group>"; };
 		544481430F4DC9870051AA83 /* TPDatabaseInstallerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPDatabaseInstallerOperation.m; sourceTree = "<group>"; };
@@ -576,7 +580,6 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				54447F140F4CB27F0051AA83 /* TPPlugin XIBs */,
 				545AC1F90F48F68000312877 /* Info.plist */,
 				540C88FE0F31D51700E02727 /* Info copy.plist */,
 				545AC1D90F48C7E700312877 /* SVTestPlugin-Info.plist */,
@@ -794,6 +797,7 @@
 		543F9F300F4613A100E1559C /* Test Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				54447F140F4CB27F0051AA83 /* TPPlugin XIBs */,
 				5444815E0F4DCBF10051AA83 /* Integration Tests */,
 				543FA0490F471E8900E1559C /* headers */,
 				543F9F170F46114400E1559C /* TPPlugin.m */,
@@ -801,6 +805,7 @@
 				543FA2AB0F47679A00E1559C /* NSTreeNode+TP.m */,
 				544481430F4DC9870051AA83 /* TPDatabaseInstallerOperation.m */,
 				5405DFA20F50F8C1004DFCCA /* TPLoadNavigationOperation.m */,
+				542DCF590F96CC0800E3D19C /* TPNewTaskController.m */,
 			);
 			name = "Test Plugin";
 			sourceTree = "<group>";
@@ -808,6 +813,7 @@
 		543FA0490F471E8900E1559C /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				542DCF580F96CC0800E3D19C /* TPNewTaskController.h */,
 				543FA2AA0F47679A00E1559C /* NSTreeNode+TP.h */,
 				5405DFA10F50F8C1004DFCCA /* TPLoadNavigationOperation.h */,
 				544481420F4DC9870051AA83 /* TPDatabaseInstallerOperation.h */,
@@ -835,10 +841,11 @@
 		54447F140F4CB27F0051AA83 /* TPPlugin XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				54447F150F4CB93C0051AA83 /* TPTaskItem.xib */,
+				54447F150F4CB93C0051AA83 /* TPNewTask.xib */,
 				5444801D0F4CC63D0051AA83 /* TPMilestone.xib */,
 			);
 			name = "TPPlugin XIBs";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		5444815E0F4DCBF10051AA83 /* Integration Tests */ = {
@@ -870,7 +877,7 @@
 			children = (
 				54957F810F9143650011A3CC /* CouchObjC.framework */,
 				54957F830F9143650011A3CC /* Tests.octest */,
-				54957F850F9143650011A3CC /* Tests.octest */,
+				54957F850F9143650011A3CC /* AllTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -909,6 +916,7 @@
 				5444825D0F4E109B0051AA83 /* TPPlugin.h in Headers */,
 				5405DFA30F50F8C1004DFCCA /* TPLoadNavigationOperation.h in Headers */,
 				5405EA670F54690B004DFCCA /* DPResourceFactory.h in Headers */,
+				542DCF5A0F96CC0800E3D19C /* TPNewTaskController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,10 +1082,10 @@
 			remoteRef = 54957F820F9143650011A3CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		54957F850F9143650011A3CC /* Tests.octest */ = {
+		54957F850F9143650011A3CC /* AllTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = Tests.octest;
+			path = AllTests.octest;
 			remoteRef = 54957F840F9143650011A3CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -1137,7 +1145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54447F160F4CB93C0051AA83 /* TPTaskItem.xib in Resources */,
+				54447F160F4CB93C0051AA83 /* TPNewTask.xib in Resources */,
 				5444801E0F4CC63D0051AA83 /* TPMilestone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1317,6 +1325,7 @@
 				543FA2AC0F47679A00E1559C /* NSTreeNode+TP.m in Sources */,
 				544481440F4DC9870051AA83 /* TPDatabaseInstallerOperation.m in Sources */,
 				5405DFA40F50F8C1004DFCCA /* TPLoadNavigationOperation.m in Sources */,
+				542DCF5B0F96CC0800E3D19C /* TPNewTaskController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -190,6 +190,13 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
                            selector:@selector(deleteItemAction:)
                                name:DPDeleteItemAction
                              object:nil];
+    
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(displayViewAction:)
+                               name:DPDisplayView
+                             object:nil];
+    
 
 }
 
@@ -430,9 +437,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 - (void)showDesignView:(NSTreeNode*)navigationTreeNode{
     [self showEmptyInspectorView]; 
     [self showDesignEditorInMainView:navigationTreeNode];
-    //[self showEmptyBodyView];     
 }
-
 
 -(void)showDesignEditorInMainView:(NSTreeNode*)navigationTreeNode{
     for (NSView *view in [bodyView subviews]) {
@@ -459,23 +464,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 }
 
-- (void)sizeViewToBody:(NSView*)aView{
-    NSRect frame = [aView frame];
-    NSRect superFrame = [bodyView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [aView setFrame:frame];    
-}
-
-- (void)sizeViewToInspector:(NSView*)aView{
-    NSRect frame = [aView frame];
-    NSRect superFrame = [inspectorView frame];
-    frame.size.width = superFrame.size.width;
-    frame.size.height = superFrame.size.height;
-    [aView setFrame:frame];    
-}
-
-
 -(void)showSlowViewInMainView:(NSTreeNode*)navigationTreeNode{
     id <DPContributionNavigationDescriptor> navDescriptor = [navigationTreeNode representedObject];
     // SHOW THE VIEW RESULTS IN THE INSPECTOR VIEW
@@ -491,7 +479,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     [self sizeViewToInspector:[queryResultController view]];
     
 }
-
 
 -(void)showCouchViewInBody:(NSTreeNode*)navigationTreeNode{
     id <DPContributionNavigationDescriptor> navDescriptor = [navigationTreeNode representedObject];
@@ -515,13 +502,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     for (NSView *view in [self.emptyInspectorView subviews]) {
         [view removeFromSuperview];
     }
-    
-    /*
-    for (NSView *view in [self.inspectorView subviews]) {
-        [view removeFromSuperview];
-    }
-    */
-    
+        
     [self.inspectorView addSubview:self.emptyInspectorView];
 }
 
@@ -542,6 +523,52 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
     [self.bodyView addSubview:self.emptyBodyView];
 }
+
+- (void) delagateSelectionDidChange:(NSTreeNode*)item{
+    if(item == NULL)
+        return;
+
+    id descriptor = [item representedObject];    
+    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
+        SVDebug(@"item does not conform to Contribution protocol");
+        return;
+    }
+    
+    NSViewController *mainViewController = mainViewController = [descriptor contributionMainViewController];
+
+    for (NSView *view in [bodyView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    for (NSView *view in [inspectorView subviews]) {
+        [view removeFromSuperview];
+    }
+    
+    NSLog(@"** MAIN VIEW %@", [mainViewController view]);
+    
+    [self.bodyView addSubview:[mainViewController view]];
+    [self sizeViewToBody:[mainViewController view]];
+    
+    [self showEmptyInspectorView];
+}
+
+#pragma mark -
+- (void)sizeViewToBody:(NSView*)aView{
+    NSRect frame = [aView frame];
+    NSRect superFrame = [bodyView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [aView setFrame:frame];    
+}
+
+- (void)sizeViewToInspector:(NSView*)aView{
+    NSRect frame = [aView frame];
+    NSRect superFrame = [inspectorView frame];
+    frame.size.width = superFrame.size.width;
+    frame.size.height = superFrame.size.height;
+    [aView setFrame:frame];    
+}
+
 // XXX Is it a little strange to just igone the notification object all together? 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification{
     if([sourceView selectedRow] == -1)
@@ -574,36 +601,6 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 
 #pragma mark -
 #pragma mark Plugin Delegate Invocations
-- (void) delagateSelectionDidChange:(NSTreeNode*)item{
-    if(item == NULL)
-        return;
-    
-    // As per usual, the represented object ought to be a DPContributionNavigationDescriptor
-    id descriptor = [item representedObject];    
-    if(! [descriptor conformsToProtocol:@protocol(DPContributionNavigationDescriptor)]){
-        SVDebug(@"item does not conform to Contribution protocol");
-        return;
-    }
-    NSString *pluginID = [descriptor pluginID];
-    id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:pluginID];
-    [plugin selectionDidChange:item];
-
-    NSViewController *mainViewController = [plugin contributionMainViewController];
-    NSViewController *inspectorViewController = [plugin contributionInspectorViewController];        
-    for (NSView *view in [bodyView subviews]) {
-        [view removeFromSuperview];
-    }
-        
-    for (NSView *view in [inspectorView subviews]) {
-        [view removeFromSuperview];
-    }
-    
-    [self.bodyView addSubview:[mainViewController view]];
-    [self sizeViewToBody:[mainViewController view]];
-    
-    [self.inspectorView addSubview:[inspectorViewController view]];
-    [self sizeViewToInspector:[inspectorViewController view]];
-}
 
 
 #pragma mark -
@@ -719,6 +716,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         inspectorShowing = YES;    
           }        
 }
+
+
 
 #pragma mark -
 
@@ -928,6 +927,17 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     SBCouchView *view = [notification object];
     [self showSlowViewInMainView:view];
      */ 
+}
+
+- (void) displayViewAction:(NSNotification*)notification{
+    NSLog(@"Nifty %@", notification);
+    NSViewController *controller = [notification object];
+    for (NSView *view in [bodyView subviews]) {
+        [view removeFromSuperview];
+    }
+    [self sizeViewToBody:[controller view]];
+    [self.bodyView addSubview:[controller view]];
+    
 }
 
 #pragma mark - 

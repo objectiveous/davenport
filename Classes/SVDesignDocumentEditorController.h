@@ -15,6 +15,7 @@
 @class DPSharedController;
 
 @class SVSaveViewAsSheetController;
+@class SyntaxHightlightingTextViewDelegate;
 
 @interface SVDesignDocumentEditorController : NSViewController <DPSharedController>{
     
@@ -33,6 +34,7 @@
     id delegate;
     @private
     BOOL                                    isDirty;
+    SyntaxHightlightingTextViewDelegate                      *textDelegate;
 }
 @property (nonatomic, retain) NSTextView                   *mapTextView;
 @property (nonatomic, retain) NSTextView                   *reduceTextView;
@@ -45,6 +47,7 @@
 @property                     BOOL                         isDirty;
 @property (nonatomic, retain) SVSaveViewAsSheetController  *saveViewAsController;
 @property (nonatomic, retain) NSButton                     *reduceCheckBox;
+@property (retain)            SyntaxHightlightingTextViewDelegate           *textDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navContribution:(id <DPContributionNavigationDescriptor>)aNavContribution;
 

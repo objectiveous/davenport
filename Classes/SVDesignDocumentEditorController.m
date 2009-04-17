@@ -16,14 +16,14 @@
 #import "SVAppDelegate.h"
 #import "DPContributionNavigationDescriptor.h"
 #import "SVSaveViewAsSheetController.h"
-
+#import "SyntaxHightlightingTextViewDelegate.h"
 static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    return sum(values);\n}";
 
 @interface SVDesignDocumentEditorController (Private)
 
 -(void)synchChanges:(NSString*)couchViewName;
 -(void)synchChangesOfView:(SBCouchView*)couchView;
-
+-(void) highlightJavaScript:(NSTextStorage*)textStorage;
 @end
 
 
@@ -40,6 +40,7 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
 @synthesize navigationTreeNode;
 @synthesize navContribution;
 @synthesize reduceCheckBox;
+@synthesize textDelegate;
 
 #pragma mark -
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil navigationTreeNode:(NSTreeNode*)aTreeNode{
@@ -49,6 +50,7 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
         navContribution = [aTreeNode representedObject];
         self.designDocument = [aTreeNode couchObject]; 
         self.saveViewAsController = [[SVSaveViewAsSheetController alloc] initWithWindowNibName:@"SaveViewAsPanel"];
+        self.textDelegate = [[[SyntaxHightlightingTextViewDelegate alloc] init] autorelease];
     }    
     return self;
 }
@@ -60,12 +62,15 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
         id couchDesignDocument = [[aNavContribution userInfo] objectForKey:@"couchobject"];
         assert(couchDesignDocument);
         self.designDocument = couchDesignDocument;    
-        self.saveViewAsController = [[SVSaveViewAsSheetController alloc] initWithWindowNibName:@"SaveViewAsPanel"];
+        self.saveViewAsController = [[[SVSaveViewAsSheetController alloc] initWithWindowNibName:@"SaveViewAsPanel"] autorelease];
     }    
     return self;
 }
 
 - (void)awakeFromNib{    
+    //[[self.mapTextView textStorage] setDelegate:self.textDelegate];
+    //[[self.reduceTextView textStorage] setDelegate:self.textDelegate];
+    
     NSDictionary *views = [self.designDocument views];
   
     if([views count] > 0){
@@ -83,7 +88,8 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
     }
 
 }
-#pragma mark - Actions
+#pragma mark -
+#pragma mark - Action Handlers 
 - (IBAction)runCouchViewAction:(id)sender{
     
     NSString *menueItemViewName = [self.viewComboBox objectValueOfSelectedItem];
@@ -146,7 +152,7 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
 - (IBAction)saveViewAsAction:(id)sender{
 
     //edit should be a dictionary. 
-    SVMainWindowController *mainWindowController = [(SVAppDelegate*)[NSApp delegate] mainWindowController];
+    NSWindowController *mainWindowController = (NSWindowController*) [(SVAppDelegate*)[NSApp delegate] mainWindowController];
     
     // Althought it might be possible to pass in a DesignDocument or a CouchView, I think 
     // it'll be easier to keep the model clean if we just use a dictionary. 
@@ -182,7 +188,7 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
 - (IBAction)reduceCheckBoxAction:(id)sender{
     if([self.reduceCheckBox state] == NSOnState){
         [[self.reduceTextView textStorage] setForegroundColor:[NSColor blackColor]];
-        [self textDidChange:nil];
+        [self textDidChange:[NSNotification notificationWithName:@"" object:self.reduceTextView]];
     }else{
         [[self.reduceTextView textStorage] setForegroundColor:[NSColor lightGrayColor]]; 
     }
@@ -216,7 +222,6 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
     if(wantToRunWithReduce && couchView.reduce && [couchView.reduce length] != 0 && couchView.queryOptions){
         couchView.queryOptions.group = YES;
     }
-    
 }
 
 
@@ -235,43 +240,37 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
         // XXX Can we please get rid of all this goofy logic?
         if(!reduce){                    
             reduce = REDUCE_STRING;
+            [[self.reduceTextView textStorage] setForegroundColor:[NSColor lightGrayColor]]; 
         }else{
             [self.reduceCheckBox setState:NSOnState];
             [[self.reduceTextView textStorage] setForegroundColor:[NSColor blackColor]];
         }    
     } else if([menueItemViewName isEqualToString:SV_MENU_ITEM_NAME_TEMPORARY_VIEW]){
-        map = @"function(){\n   emit(doc._id, doc);\n}";
+        map = @"function(doc){\n   emit(doc._id, doc);\n}";
     } else{
         map = [NSString stringWithFormat:@"--> %@", menueItemViewName];
     }
-    // XXX Only create this once, please. 
-    NSFont *font = [NSFont fontWithName:@"Monaco" size:12];
-    
-    NSColor *reduceColor; 
-    if([view reduce])
-        reduceColor = [NSColor blackColor];
-    else
-        reduceColor = [NSColor lightGrayColor];
 
-
-    NSMutableDictionary *reduceAttrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];    
-    [reduceAttrsDictionary setObject:reduceColor forKey:NSForegroundColorAttributeName];
-    NSAttributedString *reduceString = [[NSAttributedString alloc] initWithString:reduce attributes:reduceAttrsDictionary];
-    [[self.reduceTextView textStorage] setAttributedString:reduceString];
+    [self.mapTextView selectAll:self];
+    [self.mapTextView delete:nil];
+    [self.reduceTextView selectAll:self];
+    [self.reduceTextView delete:nil];
     
+    [self.reduceTextView insertText:reduce];
+    [self.mapTextView insertText:map];
     
-    NSMutableDictionary *attrsDictionary = [NSMutableDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    NSAttributedString *mapString = [[NSAttributedString alloc] initWithString:map attributes:attrsDictionary];        
-    [[self.mapTextView textStorage] setAttributedString:mapString];
     [self.saveButton highlight:NO];
-    
 }
 
 - (void)textDidChange:(NSNotification *)aNotification{
+    NSTextView *textView = [aNotification object];
     [self.saveButton highlight:YES];
     self.isDirty = YES;
+    
+    if(textView == self.mapTextView || ( textView == self.reduceTextView &&  [self.reduceCheckBox state] == NSOnState) ){
+        [self.textDelegate textDidChange:aNotification];
+    }
 }
-
 
 - (id)delegate {
     return delegate;
@@ -283,8 +282,46 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
 
 #pragma mark -
 #pragma mark DPSharedController Protocol Support
+
 -(void)provision:(id)configurationData{
     self.designDocument = configurationData;
+}
+
+#pragma mark -
+#pragma mark JavaScript Syntax Support
+
+- (void)textStorageDidProcessEditing:(NSNotification *)notification{
+	NSTextStorage *textStorage = [notification object];
+    [self highlightJavaScript:textStorage];
+}
+
+-(void) highlightJavaScript:(NSTextStorage*)textStorage{
+    NSRange found, area;
+	NSString *string = [textStorage string];
+	NSMutableDictionary *attr = [[NSMutableDictionary alloc] init];
+	NSLayoutManager *lm = [[textStorage layoutManagers] objectAtIndex: 0];
+	unsigned int length = [string length];
+    
+	[attr setObject: [NSColor blueColor]
+			 forKey: NSForegroundColorAttributeName];
+	
+	area.location = 0;
+	area.length = length;
+	
+	while (area.length)
+	{
+		found = [string rangeOfString: @"function"
+					          options: NSCaseInsensitiveSearch
+                                range: area];
+		
+		if (found.location == NSNotFound) break;
+		[lm addTemporaryAttributes: attr forCharacterRange: found];
+		
+		area.location = NSMaxRange(found);
+		area.length = length - area.location;
+	}
+	
+	[attr release];
 }
 
 @end

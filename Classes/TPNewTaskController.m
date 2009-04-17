@@ -22,6 +22,13 @@
     }
     return self;
 }
+
+
+- (void)awakeFromNib{
+	//[self.view setNextResponder:[[self.view window] nextResponder]];
+	//[[self.view window] setNextResponder:self.view];
+}
+
 #pragma mark -
 -(void) cancelAction:(id)sender{
     NSLog(@"Okay");

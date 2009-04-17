@@ -229,7 +229,7 @@ NSString *MenuItemRefresh         = @"Refresh";
     
     // NEW DATABASE
     if(![menu itemWithTitle:MenuItemNewDatabase]){
-        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemNewDatabase action:@selector(newDatabaseAction:) keyEquivalent:@""];
+        NSMenuItem *menuItem = [menu addItemWithTitle:MenuItemNewDatabase action:@selector(newDatabaseAction:) keyEquivalent:@"e"];
         [menuItem setTarget:self];
         [menuItem setRepresentedObject:item];
     }   

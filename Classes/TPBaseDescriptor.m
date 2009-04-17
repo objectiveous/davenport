@@ -120,10 +120,13 @@
 }
 
 - (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item{
-    if([menu itemWithTitle:@"New Task"])
+    NSMenuItem *menuItem;
+    if(menuItem = [menu itemWithTitle:@"New Task"]){
+        [menuItem setRepresentedObject:item];
         return;
-    
-    NSMenuItem *menuItem = [menu addItemWithTitle:@"New Task" action:@selector(showNewTaskFormAction:) keyEquivalent:@"w"];
+    }
+            
+    menuItem = [menu addItemWithTitle:@"New Task" action:@selector(showNewTaskFormAction:) keyEquivalent:@"n"];
     [menuItem setKeyEquivalentModifierMask:NSControlKeyMask];
     [menuItem setTarget:self];
     [menuItem setRepresentedObject:item];
@@ -131,9 +134,9 @@
     return;
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Action Handlers
-- (void)showNewTaskFormAction:(NSMenuItem*)sender{
+- (IBAction)showNewTaskFormAction:(NSMenuItem*)sender{
      id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
     // XX Memory leak
     TPNewTaskController *controller = [[TPNewTaskController alloc] initWithNibName:@"TPNewTask" bundle:[plugin bundle] treeNode:self];

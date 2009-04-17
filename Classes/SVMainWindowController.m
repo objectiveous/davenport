@@ -244,7 +244,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
         
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
-
+        
     return childNode;
 }
 

@@ -179,6 +179,10 @@
 		54BC49F90F39D6EF002B4874 /* SVEmptyInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */; };
 		54BC49FB0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
 		54BC49FC0F39D915002B4874 /* background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 54BC49FA0F39D915002B4874 /* background.pdf */; };
+		54C4EF330F9850D300609954 /* lexer.l in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF320F9850D300609954 /* lexer.l */; };
+		54C4EF340F9850D300609954 /* lexer.l in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF320F9850D300609954 /* lexer.l */; };
+		54C4EF370F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */; };
+		54C4EF380F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */; };
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		54DA6F670F590201009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54DA6F6A0F590273009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -435,6 +439,9 @@
 		54BC49F60F39D6EF002B4874 /* SVEmptyInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVEmptyInspectorView.h; sourceTree = "<group>"; };
 		54BC49F70F39D6EF002B4874 /* SVEmptyInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVEmptyInspectorView.m; sourceTree = "<group>"; };
 		54BC49FA0F39D915002B4874 /* background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = background.pdf; path = Images/background.pdf; sourceTree = "<group>"; };
+		54C4EF320F9850D300609954 /* lexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = lexer.l; sourceTree = "<group>"; };
+		54C4EF350F98512400609954 /* SyntaxHightlightingTextViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHightlightingTextViewDelegate.h; sourceTree = "<group>"; };
+		54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHightlightingTextViewDelegate.m; sourceTree = "<group>"; };
 		54C53FED0F06527300C337BC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		54DF2F7F0F30C59000A720D9 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "IntegrationTests-Info.plist"; path = "Resources/IntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F800F30C59000A720D9 /* Test Bundle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Test Bundle-Info.plist"; path = "Resources/Test Bundle-Info.plist"; sourceTree = "<group>"; };
@@ -571,6 +578,7 @@
 		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				54C4EF320F9850D300609954 /* lexer.l */,
 				5406C33E0F32BA510049C387 /* Davenport_Prefix.pch */,
 				540089A40F30C040002D56A4 /* main.m */,
 			);
@@ -650,6 +658,8 @@
 		540089EF0F30C12D002D56A4 /* Controllers and Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				54C4EF350F98512400609954 /* SyntaxHightlightingTextViewDelegate.h */,
+				54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */,
 				5456930B0F3256F400100237 /* headers */,
 				540089AA0F30C040002D56A4 /* SVAppDelegate.m */,
 				540089BF0F30C040002D56A4 /* SVMainWindowController.m */,
@@ -1312,6 +1322,8 @@
 				547CCA450F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */,
 				54EB08200F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */,
 				54EB083A0F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */,
+				54C4EF330F9850D300609954 /* lexer.l in Sources */,
+				54C4EF370F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1387,6 +1399,8 @@
 				547CCA440F7429ED0050AF8A /* SVRefreshCouchDatabaseNodeOperation.m in Sources */,
 				54EB081F0F850A82009FF7CC /* SVRefreshCouchServerNodeOperation.m in Sources */,
 				54EB08390F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */,
+				54C4EF340F9850D300609954 /* lexer.l in Sources */,
+				54C4EF380F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

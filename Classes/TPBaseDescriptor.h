@@ -15,7 +15,7 @@
 @class DPResourceFactory;
 @class TPPlugin;
 
-@interface TPBaseDescriptor : NSObject <DPContributionNavigationDescriptor>{
+@interface TPBaseDescriptor : NSResponder <DPContributionNavigationDescriptor>{
     SBCouchDatabase            *couchDatabase;
     SBCouchDocument            *couchDocument;
     NSString                   *label;
@@ -64,4 +64,5 @@
 
 - (void)menuNeedsUpdate:(NSMenu *)menu forItem:(NSTreeNode*)item;
 - (IBAction)showNewTaskFormAction:(NSMenuItem*)sender;
+- (IBAction)showNewTaskFormAction;
 @end

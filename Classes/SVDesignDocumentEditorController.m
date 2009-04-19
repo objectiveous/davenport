@@ -253,6 +253,10 @@ static NSString *REDUCE_STRING = @"function (key, values, rereduce) {\n    retur
 
     [self.mapTextView selectAll:self];
     [self.mapTextView delete:nil];
+
+    [self.mapTextView setContinuousSpellCheckingEnabled:NO];
+    [self.reduceTextView setContinuousSpellCheckingEnabled:NO];
+    
     [self.reduceTextView selectAll:self];
     [self.reduceTextView delete:nil];
     

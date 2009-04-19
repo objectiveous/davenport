@@ -35,6 +35,7 @@
 #import "SVRefreshCouchServerNodeOperation.h"
 #import "SVFetchServerInfoOperation.h"
 #import "SVFetchQueryInfoOperation.h"
+#import "SVKeyBindingsResponder.h"
 
 #import "NSTreeNode+SVDavenport.h"
 // XXX these thingies need to be defined in one place only. 
@@ -119,6 +120,16 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 	[self.pathControl setFrameSize: NSMakeSize([pathControl bounds].size.width,27)];
     
     [self loadPlugins];
+    
+    
+    SEL mySelector = @selector(testBinding);    
+    NSMethodSignature *sig = [[self class] instanceMethodSignatureForSelector:mySelector];    
+    NSInvocation *myInvocation = [NSInvocation invocationWithMethodSignature:sig];
+    [myInvocation setTarget:self];
+    [myInvocation setSelector:mySelector];
+        
+    SVKeyBindingsResponder *keyBindings = [SVKeyBindingsResponder sharedManager];
+    [keyBindings registerBindingForKey:@"n" target:self selector:@selector(testBinding)];    
 }
 
 - (void)loadPlugins{
@@ -215,6 +226,19 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
 }
 
 #pragma mark -
+
+/*
+- (void)keyDown:(NSEvent *)theEvent {
+    NSLog(@" %@ ", theEvent);
+    [super keyDown:theEvent];
+}   
+- (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
+    NSLog(@" %@ ", theEvent);
+    return NO;
+}
+*/
+ 
+#pragma mark -
 #pragma mark NSOutlineViewDataSource delegate ( Left Hand Nav. )
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {          
@@ -244,6 +268,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         return [[(NSTreeNode *)rootNode childNodes] objectAtIndex:index];
         
     NSTreeNode *childNode = [[(NSTreeNode *)item childNodes] objectAtIndex:index];
+    //id representedObject = [childNode representedObject];
         
     return childNode;
 }
@@ -548,7 +573,7 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
         [view removeFromSuperview];
     }
     
-    NSLog(@"** MAIN VIEW %@", [mainViewController view]);
+    //NSLog(@"** MAIN VIEW %@", [mainViewController view]);
     
     [self.bodyView addSubview:[mainViewController view]];
     [self sizeViewToBody:[mainViewController view]];
@@ -1000,6 +1025,16 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     } 
     return nil;
 }
+
+- (id) lookupPlugin:(NSString*)pluginID{
+    return [(SVAppDelegate*)[NSApp delegate] lookupPlugin:pluginID];
+}
+- (id) keyBindingManager{
+    return [SVKeyBindingsResponder sharedManager];
+}
+- (void) testBinding{
+    NSLog(@"XXXXXXXXXXXXXXXXXXXXX");
+}
 @end
 
 #pragma mark -
@@ -1024,6 +1059,8 @@ static NSString *NIB_QueryResultView = @"QueryResultView";
     
     return NO;
 }
+
+
 @end
 
 

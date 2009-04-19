@@ -99,5 +99,5 @@
 - (void) loadPluginsNavigationContributions:(NSNotification*)notification;
 - (void) displayViewInBodyAction:(NSNotification*)notification;
 
-
+- (void) testBinding;
 @end

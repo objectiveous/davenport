@@ -183,6 +183,9 @@
 		54C4EF340F9850D300609954 /* lexer.l in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF320F9850D300609954 /* lexer.l */; };
 		54C4EF370F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */; };
 		54C4EF380F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */; };
+		54C4F3450F9A738000609954 /* SVKeyBindingsResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4F3440F9A738000609954 /* SVKeyBindingsResponder.m */; };
+		54C4F3460F9A738000609954 /* SVKeyBindingsResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C4F3440F9A738000609954 /* SVKeyBindingsResponder.m */; };
+		54C4F4C80F9BAC5B00609954 /* DPKeyBindingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 54C4F4B80F9BAB0C00609954 /* DPKeyBindingManager.h */; };
 		54C53FEE0F06527300C337BC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C53FEC0F06527300C337BC /* MainMenu.xib */; };
 		54DA6F670F590201009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
 		54DA6F6A0F590273009C3D91 /* CouchObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B09E650F192DAC005D3E2F /* CouchObjC.framework */; };
@@ -442,6 +445,9 @@
 		54C4EF320F9850D300609954 /* lexer.l */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lex; path = lexer.l; sourceTree = "<group>"; };
 		54C4EF350F98512400609954 /* SyntaxHightlightingTextViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHightlightingTextViewDelegate.h; sourceTree = "<group>"; };
 		54C4EF360F98512400609954 /* SyntaxHightlightingTextViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHightlightingTextViewDelegate.m; sourceTree = "<group>"; };
+		54C4F3430F9A738000609954 /* SVKeyBindingsResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVKeyBindingsResponder.h; sourceTree = "<group>"; };
+		54C4F3440F9A738000609954 /* SVKeyBindingsResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVKeyBindingsResponder.m; sourceTree = "<group>"; };
+		54C4F4B80F9BAB0C00609954 /* DPKeyBindingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPKeyBindingManager.h; sourceTree = "<group>"; };
 		54C53FED0F06527300C337BC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		54DF2F7F0F30C59000A720D9 /* IntegrationTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "IntegrationTests-Info.plist"; path = "Resources/IntegrationTests-Info.plist"; sourceTree = "<group>"; };
 		54DF2F800F30C59000A720D9 /* Test Bundle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Test Bundle-Info.plist"; path = "Resources/Test Bundle-Info.plist"; sourceTree = "<group>"; };
@@ -668,6 +674,8 @@
 				54790A950F3A0D1300461FEB /* SVInspectorDocumentController.m */,
 				540089BB0F30C040002D56A4 /* SVDesignDocumentEditorController.m */,
 				540089C30F30C040002D56A4 /* SVQueryResultController.m */,
+				54C4F3430F9A738000609954 /* SVKeyBindingsResponder.h */,
+				54C4F3440F9A738000609954 /* SVKeyBindingsResponder.m */,
 			);
 			name = "Controllers and Delegates";
 			sourceTree = "<group>";
@@ -910,6 +918,7 @@
 				54FEC8D00F458D3100652DEE /* DPContributionPlugin.h */,
 				543FA0340F471DCE00E1559C /* DPContributionNavigationDescriptor.h */,
 				5405EA640F54690B004DFCCA /* DPResourceFactory.h */,
+				54C4F4B80F9BAB0C00609954 /* DPKeyBindingManager.h */,
 			);
 			name = "Plugin API";
 			sourceTree = "<group>";
@@ -921,6 +930,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C4F4C80F9BAC5B00609954 /* DPKeyBindingManager.h in Headers */,
 				54B990CB0F4F4F3200F52859 /* TPDatabaseInstallerOperation.h in Headers */,
 				54B990CA0F4F4F2F00F52859 /* TPBaseDescriptor.h in Headers */,
 				5444825D0F4E109B0051AA83 /* TPPlugin.h in Headers */,
@@ -1324,6 +1334,7 @@
 				54EB083A0F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */,
 				54C4EF330F9850D300609954 /* lexer.l in Sources */,
 				54C4EF370F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */,
+				54C4F3460F9A738000609954 /* SVKeyBindingsResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1401,6 +1412,7 @@
 				54EB08390F850AE9009FF7CC /* SVAbstractCouchNodeOperation.m in Sources */,
 				54C4EF340F9850D300609954 /* lexer.l in Sources */,
 				54C4EF380F98512400609954 /* SyntaxHightlightingTextViewDelegate.m in Sources */,
+				54C4F3450F9A738000609954 /* SVKeyBindingsResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

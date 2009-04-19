@@ -14,7 +14,8 @@
 #import "DPSharedController.h"
 #import "SVConstants.h"
 #import "TPNewTaskController.h"
-
+#import "SVKeyBindingsResponder.h"
+#import "DPKeyBindingManager.h"
 @interface TPBaseDescriptor (Private)
 
 @end
@@ -37,7 +38,7 @@
 -(id)init{    
     self = [super init];
     if(self){
-        self.groupItem = NO;
+        self.groupItem = NO;                 
     }
     return self;
 }
@@ -58,11 +59,27 @@
         self.identity = anIdentity;
         self.groupItem = isGroup;
         self.type = aType;
-        self.resourceFactory = rezFactory;
+        self.resourceFactory = rezFactory;        
+        id <DPKeyBindingManager> keyBindingManager = [self.resourceFactory keyBindingManager];
+        
+        [keyBindingManager registerBindingForKey:@"m" target:self selector:@selector(showNewTaskFormAction)]; 
     }
     return self;
 }
 
+
+#pragma mark -
+/*
+- (BOOL)performKeyEquivalent:(NSEvent *)theEvent{
+    return YES;
+}
+
+- (BOOL)acceptsFirstResponder{
+    return YES;
+}
+*/
+ 
+ 
 #pragma mark -
 
 -(BOOL)isGroupItem{
@@ -136,6 +153,15 @@
 
 #pragma mark -
 #pragma mark Action Handlers
+- (IBAction)showNewTaskFormAction{
+    id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
+    // XX Memory leak
+    TPNewTaskController *controller = [[TPNewTaskController alloc] initWithNibName:@"TPNewTask" 
+                                                                            bundle:[plugin bundle] treeNode:self];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DPDisplayViewInMainArea object:controller];
+    
+}
 - (IBAction)showNewTaskFormAction:(NSMenuItem*)sender{
      id <DPContributionPlugin> plugin = [[NSApp delegate] lookupPlugin:self.pluginID];
     // XX Memory leak

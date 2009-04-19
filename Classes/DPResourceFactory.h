@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 //#import "DPContributionNavigationDescriptor.h"
-
-@class DPContributionNavigationDescriptor;
+//#import "DPContributionPlugin.h"
+//@class DPContributionNavigationDescriptor;
+//@class DPKeyBindingManager;
+//@class DPContributionPlugin;
 
 typedef enum sharedResources{
     DPSharedViewContollerNamedFunctionEditor  = 1,
@@ -32,5 +34,7 @@ typedef enum sharedResources{
  
 */
 @protocol DPResourceFactory 
--(id)namedResource:(DPSharedResources)resourceName;
+- (id) namedResource:(DPSharedResources)resourceName;
+- (id) keyBindingManager;
+- (id) lookupPlugin:(NSString*)pluginName;
 @end

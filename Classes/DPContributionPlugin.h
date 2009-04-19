@@ -73,4 +73,5 @@
 - (void)start;
 // stop (DVPluginContext*)
 
+- (NSBundle*) bundle;
 @end

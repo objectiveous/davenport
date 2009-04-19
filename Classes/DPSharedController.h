@@ -16,5 +16,5 @@ this method name sucks but its meant to convey the idea that shared resources
  
 */
 -(void)provision:(id)configurationData;
-
+-(void)setDelegate:(id)delegate;
 @end
